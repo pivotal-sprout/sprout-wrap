@@ -20,8 +20,8 @@ Prepares a Mac running OS X Mountain Lion for Ruby development with some help fr
   
 ### 4. Clone this project
   
-    git clone git@github.com:hiremaga/workstation.git
-    cd workstation
+    git clone git@github.com:hiremaga/sprout-wrap-ruby.git
+    cd sprout-wrap-ruby
   
 ### 5. Install soloist & and other required gems
 
