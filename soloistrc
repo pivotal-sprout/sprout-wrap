@@ -1,0 +1,13 @@
+recipes:
+- pivotal_workstation::meta_osx_base
+- pivotal_workstation::meta_osx_development
+- pivotal_workstation::meta_ruby_development
+node_attributes:
+  git_pairs_domain: pivotallabs.com
+  git_pairs_authors:
+    - initials: ah
+      name: Abhijit Hiremagalur
+      shortname: abhi
+    - initials: bc
+      name: Brian Cunnie
+      shortname: cunnie
