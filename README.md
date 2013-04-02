@@ -1,6 +1,6 @@
 # sprout-wrap-ruby
 
-Prepares a Mac running OS X Mountain Lion for Ruby development with some help from [soloist](https://github.com/mkocher/soloist) and [Pivotal Workstation](https://github.com/pivotal/pivotal_workstation)
+Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](https://github.com/mkocher/soloist) and [Pivotal Workstation](https://github.com/pivotal/pivotal_workstation)
 
 ## Installation
 
