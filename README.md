@@ -26,7 +26,7 @@ Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](h
 ### 5. Install soloist & and other required gems
 
     sudo gem install bundler
-    bundle install --binstubs
+    bundle
 
 ### 6. Run soloist
   
