@@ -14,8 +14,8 @@ Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](h
   
 ### 3. Clone this project
   
-    git clone https://github.com/hiremaga/sprout-wrap-ruby.git
-    cd sprout-wrap-ruby
+    git clone https://github.com/hiremaga/sprout-wrap.git
+    cd sprout-wrap
   
 ### 4. Install soloist & and other required gems
 
