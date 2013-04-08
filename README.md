@@ -1,5 +1,7 @@
 # sprout-wrap
 
+[![Build Status](https://travis-ci.org/hiremaga/sprout-wrap.png?branch=master)](https://travis-ci.org/hiremaga/sprout-wrap)
+
 Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](https://github.com/mkocher/soloist) and [Pivotal Workstation](https://github.com/pivotal/pivotal_workstation)
 
 ## Installation
