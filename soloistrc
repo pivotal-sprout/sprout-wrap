@@ -1,7 +1,7 @@
 recipes:
-- pivotal_workstation::meta_osx_base
-- pivotal_workstation::meta_osx_development
-- pivotal_workstation::meta_ruby_development
+- meta::osx_base
+- meta::osx_development
+- meta::ruby_development
 node_attributes:
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:

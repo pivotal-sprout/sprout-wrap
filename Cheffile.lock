@@ -11,6 +11,13 @@ GIT
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
 
+PATH
+  remote: site-cookbooks/meta
+  specs:
+    meta (0.1.0)
+      pivotal_workstation (>= 0.0.0)
+
 DEPENDENCIES
+  meta (>= 0)
   pivotal_workstation (>= 0)
 
