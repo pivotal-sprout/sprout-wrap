@@ -2,6 +2,7 @@ recipes:
 - meta::osx_base
 - meta::osx_development
 - meta::ruby_development
+- pivotal_workstation::git_projects
 node_attributes:
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:
@@ -11,3 +12,7 @@ node_attributes:
     - initials: bc
       name: Brian Cunnie
       shortname: cunnie
+  git_projects:
+    -
+      - sprout-wrap
+      - https://github.com/hiremaga/sprout-wrap.git
