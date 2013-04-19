@@ -1,6 +1,6 @@
 include_recipe "pivotal_workstation::default_editor"
 include_recipe "pivotal_workstation::flycut"
-include_recipe "pivotal_workstation::function_keys"
+include_recipe "sprout-osx-settings::function_keys"
 include_recipe "pivotal_workstation::github_ssh_keys"
 include_recipe "pivotal_workstation::input_on_login"
 include_recipe "pivotal_workstation::keyboard_preferences"

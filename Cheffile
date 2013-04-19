@@ -4,4 +4,13 @@ cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
 cookbook 'pivotal_workstation',
-  :git => 'git://github.com/pivotal/pivotal_workstation.git'
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'pivotal_workstation'
+
+cookbook 'sprout-osx-apps',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-osx-apps'
+  
+cookbook 'sprout-osx-settings',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-osx-settings'
