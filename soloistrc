@@ -15,4 +15,4 @@ node_attributes:
   git_projects:
     -
       - sprout-wrap
-      - https://github.com/hiremaga/sprout-wrap.git
+      - https://github.com/pivotal-sprout/sprout-wrap.git
