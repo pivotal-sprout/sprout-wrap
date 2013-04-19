@@ -1,7 +1,6 @@
 # sprout-wrap
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
-[![Dependency Status](https://gemnasium.com/pivotal-sprout/sprout-wrap.png)](https://gemnasium.com/pivotal-sprout/sprout-wrap)
 
 Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](https://github.com/mkocher/soloist) and [Pivotal Workstation](https://github.com/pivotal/pivotal_workstation)
 
