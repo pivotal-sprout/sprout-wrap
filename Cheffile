@@ -15,6 +15,10 @@ cookbook 'sprout-osx-settings',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'sprout-osx-settings'
 
+cookbook 'sprout-textmate',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-textmate'
+
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'osx'
