@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::default_editor"
+include_recipe "sprout-textmate::default_editor"
 include_recipe "pivotal_workstation::flycut"
 include_recipe "sprout-osx-settings::function_keys"
 include_recipe "pivotal_workstation::github_ssh_keys"
