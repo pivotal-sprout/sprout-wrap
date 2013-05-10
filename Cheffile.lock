@@ -1,0 +1,59 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    dmg (1.1.0)
+    homebrew (1.3.2)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: osx
+  ref: master
+  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  specs:
+    osx (0.1.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: pivotal_workstation
+  ref: master
+  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  specs:
+    pivotal_workstation (1.0.0)
+      dmg (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-apps
+  ref: master
+  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-settings
+  ref: master
+  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  specs:
+    sprout-osx-settings (0.1.0)
+      osx (>= 0.0.0)
+
+PATH
+  remote: site-cookbooks/meta
+  specs:
+    meta (0.1.0)
+      pivotal_workstation (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+DEPENDENCIES
+  meta (>= 0)
+  osx (>= 0)
+  pivotal_workstation (>= 0)
+  sprout-osx-apps (>= 0)
+  sprout-osx-settings (>= 0)
+
