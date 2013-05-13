@@ -8,7 +8,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
-  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  sha: 4bd50d39510bd0c631fb579dc44401c1e38c6baa
   specs:
     osx (0.1.0)
 
@@ -16,7 +16,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: pivotal_workstation
   ref: master
-  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  sha: 4bd50d39510bd0c631fb579dc44401c1e38c6baa
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -28,7 +28,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-apps
   ref: master
-  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  sha: 4bd50d39510bd0c631fb579dc44401c1e38c6baa
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -37,7 +37,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-settings
   ref: master
-  sha: f357baf1b4e13e4f3135620589e4c373d5a4480e
+  sha: 4bd50d39510bd0c631fb579dc44401c1e38c6baa
   specs:
     sprout-osx-settings (0.1.0)
       osx (>= 0.0.0)
