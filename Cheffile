@@ -19,6 +19,10 @@ cookbook 'sprout-osx-settings',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'sprout-osx-settings'
 
+cookbook 'sprout-pivotal',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-pivotal'
+
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'osx'
