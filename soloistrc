@@ -1,18 +1,64 @@
 recipes:
 - meta::osx_base
 - meta::osx_development
-- meta::ruby_development
+- pivotal_workstation::rvm
+- pivotal_workstation::gem_setup
+- pivotal_workstation::rubymine
+- pivotal_workstation::rubymine_preferences_pivotal
+- sprout-osx-apps::imagemagick
+- sprout-osx-apps::node_js
+- pivotal_workstation::postgres
+- pivotal_workstation::qt
 - pivotal_workstation::git_projects
+- sprout-osx-settings::remove_expose_keyboard_shortcuts
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-base::homebrew
+- sprout-osx-apps::chrome
+- sprout-osx-apps::firefox
+- pivotal_workstation::git
+- pivotal_workstation::java
+- sprout-osx-apps::libreoffice
+- sprout-osx-apps::s3cmd
+#- sprout-osx-apps::gpg
+- sprout-osx-apps::truecrypt
+- pivotal_workstation::sublime_text
+- pivotal_workstation::unix_essentials
+- sprout-osx-apps::virtualbox
+- sprout-osx-apps::vagrant
+- pivotal_workstation::vim
+- sprout-osx-apps::gpgtools
+# - lyraphase_workstation::osxfuse
+- sprout-osx-apps::onyx
+- sprout-osx-apps::pacifist
+- lyraphase_workstation::traktor
 node_attributes:
-  git_pairs_domain: pivotallabs.com
+  workspace_directory: src
+  git_pairs_domain: tangogroup.com
   git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
+   - initials: jc
+     name: James Cuzella
+     shortname: jcuzella
+   - initials: an
+     name: Aaron Nichols
+     shortname: anichols
   git_projects:
-    -
-      - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
+   - 
+     - sprout-wrap
+     - https://github.com/pivotal-sprout/sprout-wrap.git
+     - src/pub/soloist
+   - 
+     - gloo-vagrant
+     - git@github.com:TangoGroup/gloo-vagrant.git
+     - src/gloo
+   - 
+     - program_creator
+     - git@github.com:TangoGroup/program_creator.git
+     - src/gloo
+  vim_config_git: git@github.com:trinitronx/dot-vimrc.git
+  vim_hash: HEAD
+  vim_alias_vi_to_minimal_vim: false
+  sprout:
+    vagrant:
+      dmg:
+        source: http://files.vagrantup.com/packages/7e400d00a3c5a0fdf2809c8b5001a035415a607b/Vagrant-1.2.2.dmg
+        checksum: 1581552841e076043308f330a5b1130b455c604846116c54b5330bb17240c7ee
