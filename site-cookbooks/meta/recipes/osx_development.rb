@@ -1,4 +1,4 @@
-include_recipe "pivotal_workstation::bash_it"
+include_recipe "sprout-osx-base::bash_it"
 include_recipe "pivotal_workstation::ccmenu"
 include_recipe "pivotal_workstation::git_config_global_defaults"
 include_recipe "pivotal_workstation::git_scripts"
