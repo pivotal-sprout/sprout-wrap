@@ -1,13 +1,8 @@
-SITE
-  remote: http://community.opscode.com/api/v1
-  specs:
-    dmg (1.1.0)
-
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
+  sha: 23ec334996bc7f5229e2db989a8e212a5bc620ab
   specs:
     osx (0.1.0)
 
@@ -15,7 +10,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: pivotal_workstation
   ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
+  sha: 23ec334996bc7f5229e2db989a8e212a5bc620ab
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -27,40 +22,48 @@ GIT
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-apps
-  ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-base
   ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
+  sha: 23ec334996bc7f5229e2db989a8e212a5bc620ab
   specs:
     sprout-osx-base (0.1.0)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-settings
-  ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
-  specs:
-    sprout-osx-settings (0.1.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: master
-  sha: 059a14a2a1b6e5bbda31a550c55d4664ecf0d4ed
+  sha: 23ec334996bc7f5229e2db989a8e212a5bc620ab
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/dmg
+  ref: develop
+  sha: 30c91f455535b39ae60bb2e48a65a6590244a6d0
+  specs:
+    dmg (1.1.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-apps
+  ref: develop
+  sha: dea6309e714aa068a6ba9f384cf68819118c025a
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-settings
+  ref: idempotent-expose-keyboard-shortcut-recipe
+  sha: daad2e7e23f110ebc8120791129761fed896f547
+  specs:
+    sprout-osx-settings (0.1.0)
+      osx (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
 PATH
@@ -72,6 +75,7 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
+  dmg (>= 0)
   meta (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
