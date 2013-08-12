@@ -1,36 +1,50 @@
 recipes:
+- lyraphase_workstation::omnifocus
+- lyraphase_workstation::traktor
+- lyraphase_workstation::traktor_audio_2
 - meta::osx_base
 - meta::osx_development
-- pivotal_workstation::rvm
-- pivotal_workstation::gem_setup
-- pivotal_workstation::rubymine
-- pivotal_workstation::rubymine_preferences_pivotal
-- sprout-osx-apps::imagemagick
-- sprout-osx-apps::node_js
-- pivotal_workstation::postgres
-- pivotal_workstation::qt
-- pivotal_workstation::git_projects
-- sprout-osx-settings::remove_expose_keyboard_shortcuts
+# - meta::ruby_development # Removed b/c it installs postgres + mysql. We'll list these here (rvm, rubymine, etc...)
 - sprout-osx-settings::defaults_fast_key_repeat_rate
-- sprout-osx-base::homebrew
-- sprout-osx-apps::chrome
-- sprout-osx-apps::firefox
+- sprout-osx-settings::enable_assistive_devices
+- sprout-osx-settings::remove_expose_keyboard_shortcuts
+- pivotal_workstation::bartender
+- pivotal_workstation::gem_setup
 - pivotal_workstation::git
-- pivotal_workstation::java
-- sprout-osx-apps::libreoffice
-- sprout-osx-apps::s3cmd
-#- sprout-osx-apps::gpg
-- sprout-osx-apps::truecrypt
+- pivotal_workstation::git_projects
+- pivotal_workstation::iterm2
+- pivotal_workstation::rubymine_preferences_pivotal
+- pivotal_workstation::rvm
 - pivotal_workstation::sublime_text
-- pivotal_workstation::unix_essentials
-- sprout-osx-apps::virtualbox
-- sprout-osx-apps::vagrant
 - pivotal_workstation::vim
-- sprout-osx-apps::gpgtools
-# - lyraphase_workstation::osxfuse
+- pivotal_workstation::vim_config
+- sprout-osx-apps::adium
+- sprout-osx-apps::daisydisk
+- sprout-osx-apps::chrome
+- sprout-osx-apps::cyberduck
+- sprout-osx-apps::firefox
+- sprout-osx-apps::gist
+- sprout-osx-apps::gpg
+- sprout-osx-apps::gpgsuite
+- sprout-osx-apps::handbrake
+- sprout-osx-apps::hiss
+- sprout-osx-apps::imagemagick
+- sprout-osx-apps::java
+- sprout-osx-apps::lastpass
+- sprout-osx-apps::libreoffice
+- sprout-osx-apps::node_js
+- sprout-osx-apps::nosleep
 - sprout-osx-apps::onyx
+- sprout-osx-apps::p7zip
 - sprout-osx-apps::pacifist
-- lyraphase_workstation::traktor
+- sprout-osx-apps::rubymine
+- sprout-osx-apps::s3cmd
+- sprout-osx-apps::truecrypt
+- sprout-osx-apps::vagrant
+- sprout-osx-apps::virtualbox
+- sprout-osx-apps::vlc
+- sprout-osx-base::homebrew
+
 node_attributes:
   workspace_directory: src
   git_pairs_domain: tangogroup.com
@@ -57,6 +71,8 @@ node_attributes:
   vim_config_git: git@github.com:trinitronx/dot-vimrc.git
   vim_hash: HEAD
   vim_alias_vi_to_minimal_vim: false
+  vlc_version: 2.0.7
+  vlc_checksum: 53b5b4786c435e0dd06597139a767cf140f0ef2b54676c8eb5ae62e0f31b3497
   sprout:
     vagrant:
       dmg:
