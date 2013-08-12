@@ -24,7 +24,8 @@ cookbook 'sprout-osx-apps',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
+  :ref => 'develop',
   :path => 'sprout-osx-settings'
 
 cookbook 'sprout-pivotal',
@@ -36,7 +37,8 @@ cookbook 'osx',
   :path => 'osx'
 
 cookbook 'lyraphase_workstation',
-  :git => '/Users/jcuzella/src/pub/soloist/lyraphase_workstation'
+  :git => '/Users/jcuzella/src/pub/soloist/lyraphase_workstation',
+  :ref => 'develop'
 
 # For debugging only
 cookbook 'dmg', 
