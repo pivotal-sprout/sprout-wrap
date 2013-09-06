@@ -11,8 +11,4 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'guard-shell'
-  gem 'vagrant', '1.2.8.dev'
-  gem 'ffi', '>= 1.0.11', '~> 1.0'
-  gem 'net-ssh', '~> 2.6.6'
-  gem 'net-scp', '~> 1.1.0'
 end

@@ -17,8 +17,6 @@ GEM
       ohai (>= 0.6.0)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
-    childprocess (0.3.9)
-      ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
     diff-lcs (1.2.4)
     erubis (2.7.0)
@@ -40,7 +38,6 @@ GEM
       guard (>= 1.1.0)
     hashie (1.2.0)
     highline (1.6.16)
-    i18n (0.6.4)
     ipaddress (0.8.0)
     json (1.7.7)
     librarian (0.1.0)
@@ -54,7 +51,6 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
-    log4r (1.1.10)
     lumberjack (1.0.4)
     method_source (0.8.2)
     mime-types (1.22)
@@ -64,8 +60,6 @@ GEM
     mixlib-config (1.1.2)
     mixlib-log (1.6.0)
     mixlib-shellout (1.1.0)
-    net-scp (1.1.2)
-      net-ssh (>= 2.6.5)
     net-ssh (2.6.6)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
@@ -110,13 +104,6 @@ GEM
       thor
     systemu (2.5.2)
     thor (0.18.1)
-    vagrant (1.2.8.dev)
-      childprocess (~> 0.3.7)
-      erubis (~> 2.7.0)
-      i18n (~> 0.6.0)
-      log4r (~> 1.1.9)
-      net-scp (~> 1.1.0)
-      net-ssh (~> 2.6.6)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -125,14 +112,10 @@ PLATFORMS
 DEPENDENCIES
   bundler
   chef (= 11.4.0)
-  ffi (~> 1.0, >= 1.0.11)
   guard
   guard-bundler
   guard-rspec
   guard-shell
   librarian-chef
-  net-scp (~> 1.1.0)
-  net-ssh (~> 2.6.6)
   plist
   soloist
-  vagrant (= 1.2.8.dev)
