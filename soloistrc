@@ -49,12 +49,60 @@ node_attributes:
   workspace_directory: src
   git_pairs_domain: tangogroup.com
   git_pairs_authors:
-   - initials: jc
-     name: James Cuzella
-     shortname: jcuzella
    - initials: an
      name: Aaron Nichols
      shortname: anichols
+   - initials: ab
+     name: Adam Bourg
+     shortname: abourg
+   - initials: al
+     name: Alex Lauderdale
+     shortname: alauderdale
+   - initials: bl
+     name: Brian Ledbetter
+     shortname: bledbetter
+   - initials: bc
+     name: Brian McKinney
+     shortname: bmckinney
+   - initials: bh
+     name: Brooks Hollar
+     shortname: bhollar
+   - initials: ch
+     name: Caleb Hanson
+     shortname: chanson
+   - initials: cc
+     name: Chien Chi Stump
+     shortname: chienchi
+   - initials: dl
+     name: Dave Lange
+     shortname: dlange
+   - initials: ek
+     name: Eli Klein
+     shortname: eklein
+   - initials: jc
+     name: James Cuzella
+     shortname: jcuzella
+   - initials: jg
+     name: Josh Garner
+     shortname: jgarner
+   - initials: jve
+     name: Justin Van Eaton
+     shortname: jvaneaton
+   - initials: mf
+     name: Matt Farrar
+     shortname: mfarrar
+   - initials: mg
+     name: Matt Getty
+     shortname: mgetty
+   - initials: pk
+     name: Peter Klipfel
+     shortname: pklipfel
+   - initials: rs
+     name: Rolland Suh
+     shortname: rsuh
+   - initials: ss
+     name: Sam Steward
+     shortname: ssteward
   git_projects:
    - 
      - sprout-wrap
