@@ -106,7 +106,7 @@ node_attributes:
   git_projects:
    - 
      - sprout-wrap
-     - https://github.com/pivotal-sprout/sprout-wrap.git
+     - https://github.com/TangoGroup/sprout-wrap.git
      - src/pub/soloist
    - 
      - gloo-vagrant
