@@ -1,11 +1,17 @@
 recipes:
-- meta::osx_base
+- pivotal_workstation::create_var_chef_cache
+- pivotal_workstation::sshd_on
+- pivotal_workstation::screen_sharing_app
+# - meta::osx_base
 # - meta::osx_development
 # - meta::ruby_development
+# - sprout-osx-apps::xcode
+- gloo-workstation::xcode
 - sprout-osx-apps::chrome
 - sprout-osx-apps::cyberduck
 - sprout-osx-settings::enable_assistive_devices
 - sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-apps::dropbox
 - sprout-osx-apps::firefox
 - sprout-osx-apps::gist
 - pivotal_workstation::git
@@ -19,16 +25,12 @@ recipes:
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
+- pivotal_workstation::locate_on
 - sprout-osx-apps::node_js
 - sprout-osx-apps::p7zip
-- sprout-osx-apps::rubymine
 - pivotal_workstation::rvm
 - sprout-osx-apps::s3cmd
 - pivotal_workstation::sublime_text
-- pivotal_workstation::textmate
-- pivotal_workstation::textmate_bundles
-- pivotal_workstation::textmate_preferences
-- sprout-osx-apps::truecrypt
 - pivotal_workstation::unix_essentials
 - sprout-osx-apps::vagrant
 - pivotal_workstation::vim
