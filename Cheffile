@@ -13,6 +13,9 @@ cookbook 'pivotal_workstation',
   :ref => 'fix-recursive-git-repo-dirs',
   :path => 'pivotal_workstation'
 
+cookbook 'gloo-workstation',
+  :git => 'https://github.com/TangoGroup/gloo-workstation.git'
+
 # Both switched from pivotal-sprout/sprout due to many pending PRs
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
