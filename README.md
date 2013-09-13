@@ -1,6 +1,4 @@
-# sprout-wrap
-
-[![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
+# sprout-fs
 
 Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](https://github.com/mkocher/soloist) and [Sprout](https://github.com/pivotal-sprout/sprout)
 
@@ -14,16 +12,42 @@ Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](h
   
   XCode > Preferences > Downloads
   
-### 3. Clone this project
-  
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
-    cd sprout-wrap
-  
-### 4. Install soloist & and other required gems
+### 3. Download and run bootstrap script
 
-    sudo gem install bundler
-    bundle
+    curl https://raw.github.com/fs/sprout-fs/customizations/bootstrap | bash
 
-### 5. Run soloist
-  
-    bundle exec soloist
+## What is in the box
+
+### browsers
+- firefox
+- chrome
+
+### messengers
+- skype
+- hipchat
+- propane
+
+### dev tools
+- iTerm2
+- homebrew
+- virtualbox
+- btsync
+- git config
+- vim config
+
+# ruby
+- rbenv
+- 1.9.3-p448
+- 2.0.0-p247
+
+Default ruby is 2.0.0-p247
+
+# Libs
+- ImageMagick
+- QT
+- node
+
+# databases
+- mysql
+- postgres
+- mongodb

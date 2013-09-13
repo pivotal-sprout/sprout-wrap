@@ -1,9 +1,13 @@
-include_recipe "pivotal_workstation::rvm"
+# ruby
+include_recipe "pivotal_workstation::rbenv"
 include_recipe "pivotal_workstation::gem_setup"
-include_recipe "pivotal_workstation::mysql"
-include_recipe "pivotal_workstation::postgres"
-include_recipe "pivotal_workstation::rubymine"
-include_recipe "pivotal_workstation::rubymine_preferences_pivotal"
+
+# Libs
 include_recipe "sprout-osx-apps::imagemagick"
 include_recipe "sprout-osx-apps::node_js"
 include_recipe "pivotal_workstation::qt"
+
+# databases
+include_recipe "pivotal_workstation::mysql"
+include_recipe "pivotal_workstation::postgres"
+include_recipe "pivotal_workstation::mongodb"

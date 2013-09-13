@@ -2,17 +2,13 @@ recipes:
 - meta::osx_base
 - meta::osx_development
 - meta::ruby_development
-- pivotal_workstation::git_projects
+
 node_attributes:
-  git_pairs_domain: pivotallabs.com
-  git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
-  git_projects:
-    -
-      - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
+  rbenv:
+    rubies:
+      1.9.3-p448: {}
+      2.0.0-p247: {}
+    default_ruby: 2.0.0-p247
+  git:
+    name: Test User
+    email: test@example.com
