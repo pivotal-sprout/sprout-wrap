@@ -1,14 +1,8 @@
-include_recipe "pivotal_workstation::create_var_chef_cache"
-include_recipe "pivotal_workstation::sshd_on"
-include_recipe "pivotal_workstation::screen_sharing_app"
-include_recipe "sprout-osx-apps::skype"
-include_recipe "pivotal_workstation::shiftit"
+# browsers
 include_recipe "sprout-osx-apps::firefox"
-include_recipe "pivotal_workstation::inputrc"
-include_recipe "pivotal_workstation::locate_on"
-include_recipe "sprout-osx-apps::dropbox"
 include_recipe "sprout-osx-apps::chrome"
-include_recipe "pivotal_workstation::mouse_locator"
-include_recipe "sprout-osx-settings::defaults_fast_key_repeat_rate"
-include_recipe "pivotal_workstation::menumeters"
-include_recipe "pivotal_workstation::bettertouchtool"
+
+# messengers
+include_recipe "sprout-osx-apps::skype"
+include_recipe "sprout-osx-apps::hipchat"
+include_recipe "sprout-osx-apps::propane"
