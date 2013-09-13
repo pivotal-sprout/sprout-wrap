@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+`git clone https://github.com/pivotal-sprout/sprout-wrap.git`
+`cd sprout-wrap`
+`git checkout customizations`
+`sudo gem install bundler`
+`bundle`
+`bundle exec soloist`
