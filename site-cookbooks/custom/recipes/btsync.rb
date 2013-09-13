@@ -1,3 +1,4 @@
+include_attribute 'custom::btsync'
 puts node['sprout'].inspect
 dmg_properties = node['sprout']['btsync']['dmg']
 
