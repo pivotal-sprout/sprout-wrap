@@ -6,8 +6,8 @@ recipes:
 node_attributes:
   rbenv:
     rubies:
-      - 1.9.3-p448
-      - 2.0.0-p247
+      1.9.3-p448: {}
+      2.0.0-p247: {}
     default_ruby: 2.0.0-p247
   git:
     name: Test User
