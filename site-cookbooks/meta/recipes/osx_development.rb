@@ -1,7 +1,7 @@
 include_recipe "sprout-osx-apps::iterm2"
 include_recipe "sprout-osx-base::homebrew"
 include_recipe "sprout-osx-apps::virtualbox"
-include_recipe "custom::btsync"
+#include_recipe "custom::btsync"
 
 # GIT
 include_recipe "pivotal_workstation::git_config_global_defaults"
