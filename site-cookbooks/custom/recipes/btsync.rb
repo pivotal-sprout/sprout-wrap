@@ -1,3 +1,4 @@
+puts node['sprout'].inspect
 dmg_properties = node['sprout']['btsync']['dmg']
 
 dmg_package "BitTorrent Sync" do

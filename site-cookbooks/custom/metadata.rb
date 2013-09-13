@@ -1,4 +1,4 @@
-name             'custom
+name             'custom'
 maintainer       'FlatStack'
 maintainer_email 'fs-admin@flatstack.com'
 license          'MIT'
