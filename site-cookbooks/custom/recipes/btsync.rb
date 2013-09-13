@@ -1,11 +1,6 @@
-include_attribute 'custom::btsync'
-puts node['sprout'].inspect
-dmg_properties = node['sprout']['btsync']['dmg']
-
 dmg_package "BitTorrent Sync" do
-  dmg_name    dmg_properties['dmg_name']
-  source      dmg_properties['source']
-  checksum    dmg_properties['checksum']
+  dmg_name    'BTSync'
+  source      'http://download-lb.utorrent.com/endpoint/btsync/os/osx/track/stable'
   action :install
   owner node['current_user']
 end
