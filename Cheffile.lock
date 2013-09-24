@@ -1,14 +1,14 @@
 GIT
   remote: /Users/jcuzella/src/pub/cookbooks/dmg
   ref: fix-dmg-detach
-  sha: 30c91f455535b39ae60bb2e48a65a6590244a6d0
+  sha: 82634ce1ea012270b07bedf7dc653c4ac51e686f
   specs:
     dmg (1.1.0)
 
 GIT
   remote: /Users/jcuzella/src/pub/soloist/lyraphase_workstation
   ref: develop
-  sha: 6a5e13ad5979160de7fc4206a83d7571958d8a92
+  sha: 8c4443d481e9ea8a7be7430c6e9465970fd0ee54
   specs:
     lyraphase_workstation (0.1.0)
 
@@ -16,7 +16,7 @@ GIT
   remote: /Users/jcuzella/src/pub/soloist/sprout
   path: sprout-osx-apps
   ref: develop
-  sha: 01a637555eca3961f0099c13a0f52e3343df25e3
+  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -27,7 +27,7 @@ GIT
   remote: /Users/jcuzella/src/pub/soloist/sprout
   path: sprout-osx-base
   ref: develop
-  sha: 01a637555eca3961f0099c13a0f52e3343df25e3
+  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
   specs:
     sprout-osx-base (0.1.0)
 
@@ -35,9 +35,10 @@ GIT
   remote: /Users/jcuzella/src/pub/soloist/sprout
   path: sprout-osx-settings
   ref: develop
-  sha: 01a637555eca3961f0099c13a0f52e3343df25e3
+  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
   specs:
     sprout-osx-settings (0.1.0)
+      dmg (>= 0.0.0)
       osx (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
@@ -58,7 +59,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
-  sha: ffeb1bd1461a42e530649558ea94f33e316b9eb4
+  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
   specs:
     osx (0.1.0)
 
@@ -66,7 +67,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: master
-  sha: ffeb1bd1461a42e530649558ea94f33e316b9eb4
+  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
