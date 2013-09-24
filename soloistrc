@@ -8,11 +8,13 @@ recipes:
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - sprout-osx-settings::enable_assistive_devices
 - sprout-osx-settings::remove_expose_keyboard_shortcuts
+- pivotal_workstation::osx_updates
 - pivotal_workstation::bartender
 - pivotal_workstation::gem_setup
 - pivotal_workstation::git
 - pivotal_workstation::git_projects
 - pivotal_workstation::iterm2
+#- pivotal_workstation::mysql
 - pivotal_workstation::rubymine_preferences_pivotal
 - pivotal_workstation::rvm
 - pivotal_workstation::sublime_text
@@ -43,6 +45,7 @@ recipes:
 - sprout-osx-apps::vagrant
 - sprout-osx-apps::virtualbox
 - sprout-osx-apps::vlc
+- sprout-osx-apps::wemux
 - sprout-osx-base::homebrew
 
 node_attributes:
