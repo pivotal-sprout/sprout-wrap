@@ -19,6 +19,7 @@ pushd `pwd`
 
 # Bootstrap XCode from dmg
 if [ ! -d "/Applications/Xcode.app" ]; then
+  echo "INFO: XCode.app not found. Installing XCode..."
   [ -e "$XCODE_DMG" ] || curl -L -O "http://gloo.ops.s3.amazonaws.com/${XCODE_DMG}"
   hdiutil attach "$XCODE_DMG"
   export __CFPREFERENCES_AVOID_DAEMON=1
@@ -28,6 +29,7 @@ fi
 
 mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR"
 
+echo "INFO: Checking out sprout-wrap..."
 if [ -d sprout-wrap ]; then
   pushd sprout-wrap && git pull
 else
@@ -38,6 +40,7 @@ fi
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
 if [ -x "$(which expect)" ]; then
+  echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
   expect ./bootstrap-scripts/accept-xcodebuild-license.exp
 else
   echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
