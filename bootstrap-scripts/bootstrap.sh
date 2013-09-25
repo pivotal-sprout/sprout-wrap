@@ -53,13 +53,14 @@ else
   exit 1
 fi
 
-if rvm --version 2>/dev/null; then
+rvm --version 2>/dev/null
+if [ ! -x "$(which gem)" -a "$?" -eq 0 ]; then
   gem install bundler
 else
   sudo gem install bundler
 fi
 
-bundle install --without development
+if bundle check; then bundle install --without development ; fi
 
 soloist
 
@@ -72,4 +73,4 @@ if [ -d "${HOME}/src/gloo/gloo-chef" ]; then
   bash ./update.sh
 fi
 
-popd
+popd; popd
