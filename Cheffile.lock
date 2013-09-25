@@ -42,7 +42,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-apps
   ref: develop
-  sha: dea6309e714aa068a6ba9f384cf68819118c025a
+  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
