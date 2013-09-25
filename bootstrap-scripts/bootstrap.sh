@@ -63,5 +63,13 @@ bundle install --without development
 
 soloist
 
+
+
 popd
+
+if [ -d "${HOME}/src/gloo/gloo-chef" ]; then
+  pushd "${HOME}/src/gloo/gloo-chef"
+  bash ./update.sh
+fi
+
 popd
