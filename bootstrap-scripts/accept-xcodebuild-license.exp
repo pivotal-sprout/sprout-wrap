@@ -49,14 +49,13 @@ match_max 100000
 expect {
   -regex {.*Hit the Enter key.*} {
     send -- "\r"
+    exp_continue
   }
   -regex {.*Press 'space' for more, or 'q' to quit.*} { 
         set exp_internal 1 
         send -- "G"
+        exp_continue
       }
-}
-
-expect {
   -regex {.*agree, print, cancel.*} {
         set exp_internal 1
         send -- "agree\r"

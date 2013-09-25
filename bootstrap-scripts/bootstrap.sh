@@ -12,7 +12,7 @@
 # (c) 2012, Tom Hallett
 # This script may be freely distributed under the MIT license.
 
-SOLOIST_DIR='~/src/pub/soloist/'
+SOLOIST_DIR="${HOME}/src/pub/soloist/"
 XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 
 pushd `pwd`
