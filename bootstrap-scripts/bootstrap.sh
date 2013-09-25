@@ -69,6 +69,7 @@ soloist
 popd
 
 if [ -d "${HOME}/src/gloo/gloo-chef" ]; then
+  . ~/.rvm/scripts/rvm
   pushd "${HOME}/src/gloo/gloo-chef"
   bash ./update.sh
 fi
