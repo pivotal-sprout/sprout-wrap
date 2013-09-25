@@ -83,15 +83,15 @@ node_attributes:
    - 
      - sprout-wrap
      - https://github.com/TangoGroup/sprout-wrap.git
-     - src/pub/soloist
+     - pub/soloist
    - 
-     - gloo-vagrant
-     - git@github.com:TangoGroup/gloo-vagrant.git
-     - src/gloo
+     - gloo-chef
+     - git@github.com:TangoGroup/gloo-chef.git
+     - gloo
    - 
      - program_creator
      - git@github.com:TangoGroup/program_creator.git
-     - src/gloo
+     - gloo
   vim_alias_vi_to_minimal_vim: false
   sprout:
     vagrant:
