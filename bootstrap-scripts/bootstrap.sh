@@ -18,7 +18,7 @@ XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 pushd `pwd`
 
 # Bootstrap XCode from dmg
-if [ ! -f "/Applications/XCode.app" ]; then
+if [ ! -d "/Applications/Xcode.app" ]; then
   [ -e "$XCODE_DMG" ] || curl -L -O "http://gloo.ops.s3.amazonaws.com/${XCODE_DMG}"
   hdiutil attach "$XCODE_DMG"
   export __CFPREFERENCES_AVOID_DAEMON=1
