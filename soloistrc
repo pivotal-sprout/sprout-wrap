@@ -49,21 +49,9 @@ node_attributes:
    - initials: al
      name: Alex Lauderdale
      shortname: alauderdale
-   - initials: bl
-     name: Brian Ledbetter
-     shortname: bledbetter
-   - initials: bc
-     name: Brian McKinney
-     shortname: bmckinney
    - initials: bh
      name: Brooks Hollar
      shortname: bhollar
-   - initials: ch
-     name: Caleb Hanson
-     shortname: chanson
-   - initials: cc
-     name: Chien Chi Stump
-     shortname: chienchi
    - initials: dl
      name: Dave Lange
      shortname: dlange
@@ -85,9 +73,6 @@ node_attributes:
    - initials: mg
      name: Matt Getty
      shortname: mgetty
-   - initials: pk
-     name: Peter Klipfel
-     shortname: pklipfel
    - initials: rs
      name: Rolland Suh
      shortname: rsuh
