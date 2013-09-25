@@ -12,7 +12,7 @@
 # (c) 2012, Tom Hallett
 # This script may be freely distributed under the MIT license.
 
-SOLOIST_DIR="${HOME}/src/pub/soloist/"
+SOLOIST_DIR="${HOME}/src/pub/soloist"
 XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 
 pushd `pwd`
@@ -20,14 +20,17 @@ pushd `pwd`
 # Bootstrap XCode from dmg
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
-  [ -e "$XCODE_DMG" ] || curl -L -O "http://gloo.ops.s3.amazonaws.com/${XCODE_DMG}"
+  if [ ! -e "$XCODE_DMG" ]; then
+    curl -L -O "http://bro-fs-01.bro.gloostate.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://gloo.ops.s3.amazonaws.com/${XCODE_DMG}"
+  fi
+    
   hdiutil attach "$XCODE_DMG"
   export __CFPREFERENCES_AVOID_DAEMON=1
   sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
   hdiutil detach '/Volumes/XCode'
 fi
 
-mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR"
+mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
 
 echo "INFO: Checking out sprout-wrap..."
 if [ -d sprout-wrap ]; then
