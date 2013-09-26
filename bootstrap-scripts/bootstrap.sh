@@ -53,11 +53,13 @@ else
   exit 1
 fi
 
-rvm --version 2>/dev/null
-if [ ! -x "$(which gem)" -a "$?" -eq 0 ]; then
-  gem install bundler
-else
-  sudo gem install bundler
+if [ ! -x "$(which bundle)" ]; then
+  rvm --version 2>/dev/null
+  if [ ! -x "$(which gem)" -a "$?" -eq 0 ]; then
+    gem install bundler
+  else
+    sudo gem install bundler
+  fi
 fi
 
 if bundle check; then bundle install --without development ; fi
