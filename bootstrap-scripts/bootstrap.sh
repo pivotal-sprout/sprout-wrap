@@ -69,6 +69,10 @@ rvm --version 2>/dev/null
 $USE_SUDO gem install bundler
 if ! bundle check 2>&1 >/dev/null; then $USE_SUDO bundle install --without development ; fi
 
+export rvm_user_install_flag=1
+export rvm_prefix="$HOME"
+export rvm_path="${rvm_prefix}/.rvm"
+
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
 soloist || errorout "Soloist provisioning failed!"
