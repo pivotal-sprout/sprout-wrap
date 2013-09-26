@@ -15,6 +15,10 @@
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 
+errorout() {
+  echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
+}
+
 pushd `pwd`
 
 # Bootstrap XCode from dmg
@@ -40,6 +44,11 @@ else
   pushd sprout-wrap
 fi
 
+# Hack to make sure sudo caches sudo password correctly...
+# (for some reason expect spawn jacks up readline input)
+echo "Please enter your sudo password to make changes to your machine"
+sudo echo ''
+
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
 if [ -x "$(which expect)" ]; then
@@ -55,18 +64,14 @@ fi
 
 
 rvm --version 2>/dev/null
-if [ ! -x "$(which gem)" -a "$?" -eq 0 ]; then
-  gem install bundler
-else
-  sudo gem install bundler
-fi
+[ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
+$USE_SUDO gem install bundler
+if ! bundle check 1&>2 2>/dev/null; then $USE_SUDO bundle install --without development ; fi
 
-if bundle check; then bundle install --without development ; fi
-
-soloist
-
-
+# Now we provision with chef, et voilá!
+# Node, it's time you grew up to who you want to be
+soloist || errorout "Soloist provisioning failed!"
 
 popd
 
