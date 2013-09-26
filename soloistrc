@@ -93,6 +93,11 @@ node_attributes:
      - git@github.com:TangoGroup/program_creator.git
      - gloo
   vim_alias_vi_to_minimal_vim: false
+  rvm:
+    default_ruby: ruby-1.9.3-p392
+    rubies:
+      ruby-1.9.3-p392:
+        :command_line_options: --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr
   sprout:
     vagrant:
       dmg:
