@@ -67,7 +67,7 @@ rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
 $USE_SUDO gem install bundler
-if ! bundle check 1&>2 2>/dev/null; then $USE_SUDO bundle install --without development ; fi
+if ! bundle check 2>&1 >/dev/null; then $USE_SUDO bundle install --without development ; fi
 
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
