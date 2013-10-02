@@ -6,24 +6,44 @@ Prepares a Mac running OS X Mountain Lion for Ruby development using [soloist](h
 
 ## Installation
 
-### 1. Install XCode
+### The Easy Way:
+
+#### 1. Setup Github SSH key
+
+Make sure you have a github account and [ssh key set up](https://help.github.com/articles/generating-ssh-keys)
+
+To avoid SSH key passphrase prompts during soloist run, use:
+
+    eval $(ssh-agent -s)
+    ssh-add -K
+
+#### 2. Run bootstrap script
+
+Open a terminal and run:
+
+    ./bootstrap-scripts/bootstrap.sh
+
+
+### The Semi-Manual Way:
+
+#### 1. Install XCode
 
 [![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
 
-### 2. Install Command Line Tools
+#### 2. Install Command Line Tools
   
   XCode > Preferences > Downloads
   
-### 3. Clone this project
+#### 3. Clone this project
   
     git clone https://github.com/pivotal-sprout/sprout-wrap.git
     cd sprout-wrap
   
-### 4. Install soloist & and other required gems
+#### 4. Install soloist & and other required gems
 
     sudo gem install bundler
     bundle
 
-### 5. Run soloist
+#### 5. Run soloist
   
     bundle exec soloist
