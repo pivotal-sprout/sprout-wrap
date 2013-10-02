@@ -21,7 +21,7 @@ To avoid SSH key passphrase prompts during soloist run, use:
 
 Open a terminal and run:
 
-    ./bootstrap-scripts/bootstrap.sh
+    \curl -Ls http://git.io/kyeeCg | bash
 
 
 ### The Semi-Manual Way:
