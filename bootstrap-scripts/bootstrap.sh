@@ -83,6 +83,7 @@ if [ -d "${HOME}/src/gloo/gloo-chef" ]; then
   . ~/.rvm/scripts/rvm
   pushd "${HOME}/src/gloo/gloo-chef"
   bash ./update.sh
+  vagrant plugin install vagrant-berkshelf
 fi
 
 popd; popd
