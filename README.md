@@ -47,3 +47,23 @@ Open a terminal and run:
 #### 5. Run soloist
   
     bundle exec soloist
+
+## Configuration
+
+This project is a fork of [sprout-wrap](https://github.com/pivotal-sprout/sprout).
+It uses Chef cookbooks from [Sprout](https://github.com/pivotal-sprout/sprout).  These are installed via librarian-chef.
+[soloist](https://github.com/mkocher/soloist) runs [chef-solo](http://docs.opscode.com/chef_solo.html).
+
+Soloist provides an easy way to configure a [run list](http://docs.opscode.com/essentials_node_object_run_lists.html) and [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) for the chef-solo run: `soloistrc`
+This is just a simple YAML file that looks like:
+
+    recipes:
+      - bash::prompt
+    node_attributes:
+      bash:
+        prompt:
+          color: p!nk
+
+Wondering what attributes to use?
+
+Please see the [attributes files](https://github.com/trinitronx/sprout/tree/master/sprout-osx-apps/attributes) in the various cookbooks in [Sprout](https://github.com/trinitronx/sprout)
