@@ -4,7 +4,9 @@ cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
 cookbook 'sprout-osx-base',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+#  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :github => 'trinitronx/sprout',
+  :ref => 'develop',
   :path => 'sprout-osx-base'
 
 # Testing recursive repo_dir fix for pivotal_workstation::git_projects
