@@ -12,7 +12,7 @@ cookbook 'sprout-osx-base',
 # Testing recursive repo_dir fix for pivotal_workstation::git_projects
 cookbook 'pivotal_workstation',
   :github => 'trinitronx/sprout',
-  :ref => 'fix-recursive-git-repo-dirs',
+  :ref => 'develop',
   :path => 'pivotal_workstation'
 
 cookbook 'gloo-workstation',

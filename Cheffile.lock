@@ -2,23 +2,15 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
-  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
+  sha: 53623596e5aee0617684e0f0048e3016c615d498
   specs:
     osx (0.1.0)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-base
-  ref: master
-  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
-  specs:
-    sprout-osx-base (0.1.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: master
-  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
+  sha: 53623596e5aee0617684e0f0048e3016c615d498
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
@@ -40,20 +32,9 @@ GIT
 
 GIT
   remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-apps
-  ref: develop
-  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
   path: pivotal_workstation
-  ref: fix-recursive-git-repo-dirs
-  sha: b4f23b97a70ca9c02715c9d58de5c0f76b8207ca
+  ref: develop
+  sha: d6bb5af2b5eda903487c7902f8cd4fd2433d567f
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -62,6 +43,25 @@ GIT
       sprout-osx-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-apps
+  ref: develop
+  sha: d6bb5af2b5eda903487c7902f8cd4fd2433d567f
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-base
+  ref: develop
+  sha: d6bb5af2b5eda903487c7902f8cd4fd2433d567f
+  specs:
+    sprout-osx-base (0.1.0)
 
 GIT
   remote: https://github.com/trinitronx/sprout
