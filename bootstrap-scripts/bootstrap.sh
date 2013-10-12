@@ -4,16 +4,18 @@
 #
 # Usage:
 #   Running the script remotely:
-#     bash < <(curl -s https://raw.github.com/TangoGroup/sprout-wrap/gloo-develop/bootstrap-scripts/bootstrap.sh )
+#     bash < <(curl -s https://raw.github.com/trinitronx/sprout-wrap/spica-local-devbox/bootstrap-scripts/bootstrap.sh )
 #   Running the script if you have downloaded it:
 #     ./bootstrap.sh
 #
-# http://github.com/TangoGroup/sprout-wrap
-# (c) 2012, Tom Hallett
+# http://github.com/trinitronx/sprout-wrap
+# (c) 2013, James Cuzella
 # This script may be freely distributed under the MIT license.
 
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 XCODE_DMG='XCode-4.6.3-4H1503.dmg'
+SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
+SPROUT_WRAP_BRANCH='spica-local-devbox'
 
 errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
@@ -40,8 +42,9 @@ echo "INFO: Checking out sprout-wrap..."
 if [ -d sprout-wrap ]; then
   pushd sprout-wrap && git pull
 else
-  git clone https://github.com/TangoGroup/sprout-wrap.git
+  git clone $SPROUT_WRAP_URL
   pushd sprout-wrap
+  git checkout $SPROUT_WRAP_BRANCH
 fi
 
 # Hack to make sure sudo caches sudo password correctly...
