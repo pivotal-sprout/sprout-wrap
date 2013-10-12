@@ -1,9 +1,7 @@
-GIT
-  remote: /Users/jcuzella/src/pub/cookbooks/dmg
-  ref: fix-dmg-detach
-  sha: 82634ce1ea012270b07bedf7dc653c4ac51e686f
+SITE
+  remote: http://community.opscode.com/api/v1
   specs:
-    dmg (1.1.0)
+    dmg (2.0.4)
 
 GIT
   remote: /Users/jcuzella/src/pub/soloist/lyraphase_workstation
@@ -13,53 +11,10 @@ GIT
     lyraphase_workstation (0.1.0)
 
 GIT
-  remote: /Users/jcuzella/src/pub/soloist/sprout
-  path: sprout-osx-apps
-  ref: develop
-  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: /Users/jcuzella/src/pub/soloist/sprout
-  path: sprout-osx-base
-  ref: develop
-  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
-  specs:
-    sprout-osx-base (0.1.0)
-
-GIT
-  remote: /Users/jcuzella/src/pub/soloist/sprout
-  path: sprout-osx-settings
-  ref: develop
-  sha: 85796ca7f06937d98f8f7490d18b0dd6dbd0220e
-  specs:
-    sprout-osx-settings (0.1.0)
-      dmg (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: /Users/jcuzella/src/pub/soloist/sprout
-  path: pivotal_workstation
-  ref: fix-postgres-error-handling
-  sha: c75db04f189d151339eeffbd2e6c04c47dbe6714
-  specs:
-    pivotal_workstation (1.0.0)
-      dmg (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
-  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
+  sha: de9460e16ef104987d5ec7e4c5a6e6a2ef69b814
   specs:
     osx (0.1.0)
 
@@ -67,10 +22,60 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: master
-  sha: 22ac56193469b213eaec6ee57d47ee087ce57a76
+  sha: de9460e16ef104987d5ec7e4c5a6e6a2ef69b814
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/TangoGroup/gloo-workstation.git
+  ref: master
+  sha: ce914ac18cd8f9faa5790d5183548b36774dfe32
+  specs:
+    gloo-workstation (0.1.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: pivotal_workstation
+  ref: develop
+  sha: 922563db4124b20984367e5cb5aa32d990916b8f
+  specs:
+    pivotal_workstation (1.0.0)
+      dmg (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+      sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-apps
+  ref: develop
+  sha: 922563db4124b20984367e5cb5aa32d990916b8f
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-base
+  ref: develop
+  sha: 922563db4124b20984367e5cb5aa32d990916b8f
+  specs:
+    sprout-osx-base (0.1.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-settings
+  ref: idempotent-expose-keyboard-shortcut-recipe
+  sha: daad2e7e23f110ebc8120791129761fed896f547
+  specs:
+    sprout-osx-settings (0.1.0)
+      osx (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
 PATH
@@ -82,7 +87,7 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
-  dmg (>= 0)
+  gloo-workstation (>= 0)
   lyraphase_workstation (>= 0)
   meta (>= 0)
   osx (>= 0)

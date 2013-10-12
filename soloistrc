@@ -7,12 +7,14 @@ recipes:
 # - meta::ruby_development # Removed b/c it installs postgres + mysql. We'll list these here (rvm, rubymine, etc...)
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - sprout-osx-settings::enable_assistive_devices
+- sprout-osx-settings::global_environment_variables
 - sprout-osx-settings::remove_expose_keyboard_shortcuts
 - pivotal_workstation::osx_updates
-- pivotal_workstation::bartender
 - pivotal_workstation::gem_setup
 - pivotal_workstation::git
 - pivotal_workstation::git_projects
+- pivotal_workstation::github_for_mac
+- pivotal_workstation::gitx
 - pivotal_workstation::iterm2
 #- pivotal_workstation::mysql
 - pivotal_workstation::rubymine_preferences_pivotal
@@ -34,6 +36,7 @@ recipes:
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
+- pivotal_workstation::locate_on
 - sprout-osx-apps::node_js
 - sprout-osx-apps::nosleep
 - sprout-osx-apps::onyx
@@ -61,21 +64,9 @@ node_attributes:
    - initials: al
      name: Alex Lauderdale
      shortname: alauderdale
-   - initials: bl
-     name: Brian Ledbetter
-     shortname: bledbetter
-   - initials: bc
-     name: Brian McKinney
-     shortname: bmckinney
    - initials: bh
      name: Brooks Hollar
      shortname: bhollar
-   - initials: ch
-     name: Caleb Hanson
-     shortname: chanson
-   - initials: cc
-     name: Chien Chi Stump
-     shortname: chienchi
    - initials: dl
      name: Dave Lange
      shortname: dlange
@@ -97,9 +88,6 @@ node_attributes:
    - initials: mg
      name: Matt Getty
      shortname: mgetty
-   - initials: pk
-     name: Peter Klipfel
-     shortname: pklipfel
    - initials: rs
      name: Rolland Suh
      shortname: rsuh
@@ -110,25 +98,33 @@ node_attributes:
    - 
      - sprout-wrap
      - https://github.com/TangoGroup/sprout-wrap.git
-     - src/pub/soloist
+     - pub/soloist
    - 
-     - gloo-vagrant
-     - git@github.com:TangoGroup/gloo-vagrant.git
-     - src/gloo
+     - gloo-chef
+     - git@github.com:TangoGroup/gloo-chef.git
+     - gloo
    - 
      - program_creator
      - git@github.com:TangoGroup/program_creator.git
-     - src/gloo
+     - gloo
   vim_config_git: git@github.com:trinitronx/dot-vimrc.git
   vim_hash: HEAD
   vim_alias_vi_to_minimal_vim: false
   vlc_version: 2.0.7
   vlc_checksum: 53b5b4786c435e0dd06597139a767cf140f0ef2b54676c8eb5ae62e0f31b3497
+  versions:
+    rvm: 4b1065b4f94e7c7e90bd31da3f666a4ec81e7888
+  rvm:
+    multithread_build: true
+    default_ruby: ruby-1.9.3-p392
+    rubies:
+      ruby-1.9.3-p392:
+        :command_line_options: --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
   sprout:
     vagrant:
       dmg:
-        source: http://files.vagrantup.com/packages/0224c6232394680971a69d94dd55a7436888c4cb/Vagrant-1.3.0.dmg
-        checksum: f98078158a0815919adc6cb4508b2b725c1af06cae8fec26c782baf35ddb071c
+        source: http://files.vagrantup.com/packages/0ac2a87388419b989c3c0d0318cc97df3b0ed27d/Vagrant-1.3.4.dmg
+        checksum: faa4107d661f8ab77e8d8154b0b0b0873a42977e1381a497823297074c0ebaff
 # TODO: Dynamically get AWS user & key?
 #  s3cfg:
 #    access_key: 
