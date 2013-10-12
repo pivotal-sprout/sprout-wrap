@@ -5,30 +5,27 @@ cookbook 'meta',
 
 cookbook 'sprout-osx-base',
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :github => 'trinitronx/sprout',
-  :ref => 'develop',
-  :path => 'sprout-osx-base'
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
+  :path => 'sprout-osx-base',
+  :ref => 'develop'
 
-# Testing recursive repo_dir fix for pivotal_workstation::git_projects
 cookbook 'pivotal_workstation',
-  :github => 'trinitronx/sprout',
-  :ref => 'develop',
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
+  :ref => 'fix-postgres-error-handling',
+#  :ref => 'use-emacs-word-move-readline-mappings',
   :path => 'pivotal_workstation'
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 
-cookbook 'gloo-workstation',
-  :git => 'https://github.com/TangoGroup/gloo-workstation.git'
-
-# Both switched from pivotal-sprout/sprout due to many pending PRs
-#  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
-  :github => 'trinitronx/sprout',
+#  :git => 'git://github.com/pivotal-sprout/sprout.git',
+#  :git => 'git@github.com:trinitronx/sprout.git',
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
   :ref => 'develop',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :github => 'trinitronx/sprout',
-  :ref => 'idempotent-expose-keyboard-shortcut-recipe',
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
+  :ref => 'develop',
   :path => 'sprout-osx-settings'
 
 cookbook 'sprout-pivotal',
@@ -40,5 +37,10 @@ cookbook 'osx',
   :path => 'osx'
 
 cookbook 'lyraphase_workstation',
-  :github => 'trinitronx/lyraphase_workstation',
+  :git => '/Users/jcuzella/src/pub/soloist/lyraphase_workstation',
   :ref => 'develop'
+
+# For debugging only
+cookbook 'dmg', 
+  :git => '/Users/jcuzella/src/pub/cookbooks/dmg',
+  :ref => 'fix-dmg-detach'
