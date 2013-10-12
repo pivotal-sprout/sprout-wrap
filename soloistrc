@@ -3,7 +3,7 @@ recipes:
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
 - meta::osx_base
-- meta::osx_development
+#- meta::osx_development
 # - meta::ruby_development # Removed b/c it installs postgres + mysql. We'll list these here (rvm, rubymine, etc...)
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - sprout-osx-settings::enable_assistive_devices
@@ -11,6 +11,8 @@ recipes:
 - sprout-osx-settings::remove_expose_keyboard_shortcuts
 - pivotal_workstation::osx_updates
 - pivotal_workstation::gem_setup
+- pivotal_workstation::git_config_global_defaults
+- pivotal_workstation::git_scripts
 - pivotal_workstation::git
 - pivotal_workstation::git_projects
 - pivotal_workstation::github_for_mac
@@ -20,10 +22,12 @@ recipes:
 - pivotal_workstation::rubymine_preferences_pivotal
 - pivotal_workstation::rvm
 - pivotal_workstation::sublime_text
+- pivotal_workstation::unix_essentials
 - pivotal_workstation::vim
 - pivotal_workstation::vim_config
+- pivotal_workstation::workspace_directory
 - sprout-osx-apps::adium
-- sprout-osx-apps::daisydisk
+#- sprout-osx-apps::daisydisk
 - sprout-osx-apps::chrome
 - sprout-osx-apps::cyberduck
 - sprout-osx-apps::firefox
@@ -33,6 +37,7 @@ recipes:
 - sprout-osx-apps::handbrake
 - sprout-osx-apps::hiss
 - sprout-osx-apps::imagemagick
+- sprout-osx-apps::iterm2
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
@@ -50,6 +55,7 @@ recipes:
 - sprout-osx-apps::vlc
 - sprout-osx-apps::wemux
 - sprout-osx-base::homebrew
+- sprout-osx-base::bash_it
 
 node_attributes:
   workspace_directory: src
@@ -113,7 +119,7 @@ node_attributes:
   vlc_version: 2.0.7
   vlc_checksum: 53b5b4786c435e0dd06597139a767cf140f0ef2b54676c8eb5ae62e0f31b3497
   versions:
-    rvm: 4b1065b4f94e7c7e90bd31da3f666a4ec81e7888
+    rvm: 1.21.20
   rvm:
     multithread_build: true
     default_ruby: ruby-1.9.3-p392
