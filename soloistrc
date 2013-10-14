@@ -8,9 +8,9 @@ recipes:
 - pivotal_workstation::gem_setup
 - pivotal_workstation::git
 - pivotal_workstation::git_config_global_defaults
+- pivotal_workstation::github_ssh_keys
 - pivotal_workstation::git_projects
 - pivotal_workstation::github_for_mac
-- pivotal_workstation::github_ssh_keys
 - pivotal_workstation::gitx
 - pivotal_workstation::locate_on
 - pivotal_workstation::osx_updates
