@@ -1,112 +1,121 @@
-recipes:
+--- 
+recipes: 
 - pivotal_workstation::create_var_chef_cache
-- pivotal_workstation::sshd_on
-- pivotal_workstation::screen_sharing_app
-# - meta::osx_base
-# - meta::osx_development
-# - meta::ruby_development
-# - sprout-osx-apps::xcode
 - gloo-workstation::xcode
+- sprout-osx-base::bash_it
+- sprout-osx-base::homebrew
+- sprout-osx-base::workspace_directory
+- pivotal_workstation::gem_setup
+- pivotal_workstation::git
+- pivotal_workstation::git_config_global_defaults
+- pivotal_workstation::git_projects
+- pivotal_workstation::github_for_mac
+- pivotal_workstation::github_ssh_keys
+- pivotal_workstation::gitx
+- pivotal_workstation::iterm2
+- pivotal_workstation::locate_on
+- pivotal_workstation::osx_updates
+- pivotal_workstation::rvm
+- pivotal_workstation::screen_sharing_app
+- pivotal_workstation::sshd_on
+- pivotal_workstation::sublime_text
+- pivotal_workstation::unix_essentials
+- pivotal_workstation::vim
 - sprout-osx-apps::chrome
 - sprout-osx-apps::cyberduck
-- sprout-osx-settings::enable_assistive_devices
-- sprout-osx-settings::defaults_fast_key_repeat_rate
 - sprout-osx-apps::dropbox
 - sprout-osx-apps::firefox
 - sprout-osx-apps::gist
-- pivotal_workstation::git
-- pivotal_workstation::git_projects
-- pivotal_workstation::github_for_mac
-- pivotal_workstation::gitx
-- sprout-osx-settings::global_environment_variables
 - sprout-osx-apps::gpg
-- sprout-osx-base::homebrew
-- pivotal_workstation::iterm2
+- sprout-osx-apps::gpgsuite
+- sprout-osx-apps::imagemagick
+- sprout-osx-apps::iterm2
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
-- pivotal_workstation::locate_on
 - sprout-osx-apps::node_js
-- sprout-osx-apps::p7zip
-- pivotal_workstation::rvm
 - sprout-osx-apps::s3cmd
-- pivotal_workstation::sublime_text
-- pivotal_workstation::unix_essentials
+- sprout-osx-apps::truecrypt
 - sprout-osx-apps::vagrant
-- pivotal_workstation::vim
 - sprout-osx-apps::virtualbox
-
-node_attributes:
+- sprout-osx-apps::vlc
+- sprout-osx-apps::wemux
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-settings::enable_assistive_devices
+- sprout-osx-settings::global_environment_variables
+node_attributes: 
   workspace_directory: src
+  git_pairs_authors: 
+  - shortname: abourg
+    name: Adam Bourg
+    initials: ab
+  - shortname: alauderdale
+    name: Alex Lauderdale
+    initials: al
+  - shortname: anichols
+    name: Aaron Nichols
+    initials: an
+  - shortname: bhollar
+    name: Brooks Hollar
+    initials: bh
+  - shortname: dlange
+    name: Dave Lange
+    initials: dl
+  - shortname: eklein
+    name: Eli Klein
+    initials: ek
+  - shortname: jcuzella
+    name: James Cuzella
+    initials: jc
+  - shortname: jgarner
+    name: Josh Garner
+    initials: jg
+  - shortname: jvaneaton
+    name: Justin Van Eaton
+    initials: jve
+  - shortname: mfarrar
+    name: Matt Farrar
+    initials: mf
+  - shortname: mgetty
+    name: Matt Getty
+    initials: mg
+  - shortname: rsuh
+    name: Rolland Suh
+    initials: rs
+  - shortname: ssteward
+    name: Sam Steward
+    initials: ss
+  sprout: 
+    vagrant: 
+      dmg: 
+        source: http://files.vagrantup.com/packages/0ac2a87388419b989c3c0d0318cc97df3b0ed27d/Vagrant-1.3.4.dmg
+        checksum: faa4107d661f8ab77e8d8154b0b0b0873a42977e1381a497823297074c0ebaff
+  vim_alias_vi_to_minimal_vim: false
+  vlc_version: 2.0.7
+  vlc_checksum: 53b5b4786c435e0dd06597139a767cf140f0ef2b54676c8eb5ae62e0f31b3497
   git_pairs_domain: tangogroup.com
-  git_pairs_authors:
-   - initials: an
-     name: Aaron Nichols
-     shortname: anichols
-   - initials: ab
-     name: Adam Bourg
-     shortname: abourg
-   - initials: al
-     name: Alex Lauderdale
-     shortname: alauderdale
-   - initials: bh
-     name: Brooks Hollar
-     shortname: bhollar
-   - initials: dl
-     name: Dave Lange
-     shortname: dlange
-   - initials: ek
-     name: Eli Klein
-     shortname: eklein
-   - initials: jc
-     name: James Cuzella
-     shortname: jcuzella
-   - initials: jg
-     name: Josh Garner
-     shortname: jgarner
-   - initials: jve
-     name: Justin Van Eaton
-     shortname: jvaneaton
-   - initials: mf
-     name: Matt Farrar
-     shortname: mfarrar
-   - initials: mg
-     name: Matt Getty
-     shortname: mgetty
-   - initials: rs
-     name: Rolland Suh
-     shortname: rsuh
-   - initials: ss
-     name: Sam Steward
-     shortname: ssteward
-  git_projects:
-   - 
+  git_projects: 
+   -
      - sprout-wrap
      - https://github.com/TangoGroup/sprout-wrap.git
      - pub/soloist
-   - 
+   -
      - gloo-chef
      - git@github.com:TangoGroup/gloo-chef.git
      - gloo
-   - 
+   -
      - program_creator
      - git@github.com:TangoGroup/program_creator.git
      - gloo
-  vim_alias_vi_to_minimal_vim: false
-  versions:
-    rvm: 4b1065b4f94e7c7e90bd31da3f666a4ec81e7888
-  rvm:
-    multithread_build: true
+  versions: 
+    rvm: 1.21.20
+  rvm: 
     default_ruby: ruby-1.9.3-p392
-    rubies:
-      ruby-1.9.3-p392:
+    rubies: 
+      ruby-1.9.3-p392: 
         :command_line_options: --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
-  sprout:
-    vagrant:
-      dmg:
-        source: http://files.vagrantup.com/packages/0ac2a87388419b989c3c0d0318cc97df3b0ed27d/Vagrant-1.3.4.dmg
-        checksum: faa4107d661f8ab77e8d8154b0b0b0873a42977e1381a497823297074c0ebaff
+    multithread_build: true
 # TODO: Dynamically get AWS user & key?
 #  s3cfg:
-#    access_key: 
-#    secret_key: 
+#    access_key:
+#    secret_key:
