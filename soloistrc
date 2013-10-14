@@ -12,7 +12,6 @@ recipes:
 - pivotal_workstation::github_for_mac
 - pivotal_workstation::github_ssh_keys
 - pivotal_workstation::gitx
-- pivotal_workstation::iterm2
 - pivotal_workstation::locate_on
 - pivotal_workstation::osx_updates
 - pivotal_workstation::rvm
