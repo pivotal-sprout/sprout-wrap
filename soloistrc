@@ -12,6 +12,7 @@ recipes:
 - pivotal_workstation::osx_updates
 - pivotal_workstation::gem_setup
 - pivotal_workstation::git_config_global_defaults
+- pivotal_workstation::github_ssh_key
 - pivotal_workstation::git_scripts
 - pivotal_workstation::git
 - pivotal_workstation::git_projects
