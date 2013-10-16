@@ -1,8 +1,63 @@
 recipes:
-- meta::osx_base
-- meta::osx_development
-- meta::ruby_development
+
+# base (required by sprout)
+- sprout-osx-base::bash_it
+- pivotal_workstation::create_var_chef_cache
+- sprout-osx-base::homebrew
+
+# settings
+- pivotal_workstation::sshd_on
+- pivotal_workstation::inputrc
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- pivotal_workstation::locate_on
+- sprout-osx-settings::global_environment_variables
+
+# development (general)
+- pivotal_workstation::workspace_directory
+- pivotal_workstation::unix_essentials
 - pivotal_workstation::git_projects
+- pivotal_workstation::git_config_global_defaults
+- pivotal_workstation::git_scripts
+
+# development (rails)
+#(not working in mavericks)- pivotal_workstation::rvm
+- pivotal_workstation::gem_setup
+- pivotal_workstation::mysql
+#(not working in mavericks)- pivotal_workstation::postgres
+- sprout-osx-apps::imagemagick
+- sprout-osx-apps::node_js
+#(not working in mavericks)- pivotal_workstation::qt
+
+# apps
+- pivotal_workstation::screen_sharing_app
+- sprout-osx-apps::skype
+- pivotal_workstation::shiftit
+- sprout-osx-apps::firefox
+- sprout-osx-apps::dropbox
+- sprout-osx-apps::chrome
+- pivotal_workstation::mouse_locator
+- pivotal_workstation::menumeters
+- pivotal_workstation::bettertouchtool
+- pivotal_workstation::ccmenu
+- pivotal_workstation::github_for_mac
+- pivotal_workstation::gitx
+- sprout-osx-apps::iterm2
+- pivotal_workstation::keycastr
+- sprout-osx-apps::virtualbox
+- sprout-osx-apps::vagrant
+
+# apps (editors)
+- pivotal_workstation::textmate
+- pivotal_workstation::textmate_bundles
+- pivotal_workstation::textmate_preferences
+
+- pivotal_workstation::vim
+#(not working in mavericks)- pivotal_workstation::vim_config
+- sprout-osx-apps::ctags_exuberant
+
+- pivotal_workstation::rubymine
+- pivotal_workstation::rubymine_preferences_pivotal
+
 node_attributes:
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:
@@ -12,6 +67,8 @@ node_attributes:
     - initials: bc
       name: Brian Cunnie
       shortname: cunnie
+    - initials: jrhb
+      name: Jonathan Barnes
   git_projects:
     -
       - sprout-wrap
