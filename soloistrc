@@ -25,53 +25,69 @@ recipes:
 - pivotal_workstation::rvm
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
-- pivotal_workstation::postgres
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
-- pivotal_workstation::qt
+#- pivotal_workstation::postgres
+#- pivotal_workstation::qt
 
 # apps
-- pivotal_workstation::screen_sharing_app
-- sprout-osx-apps::skype
-- pivotal_workstation::shiftit
-- sprout-osx-apps::firefox
-- sprout-osx-apps::dropbox
-- sprout-osx-apps::chrome
-- pivotal_workstation::mouse_locator
-- pivotal_workstation::menumeters
-- pivotal_workstation::bettertouchtool
-- pivotal_workstation::ccmenu
-- pivotal_workstation::github_for_mac
-- pivotal_workstation::gitx
-- sprout-osx-apps::iterm2
-- pivotal_workstation::keycastr
-- sprout-osx-apps::virtualbox
-- sprout-osx-apps::vagrant
+#- pivotal_workstation::screen_sharing_app
+#- sprout-osx-apps::skype
+#- pivotal_workstation::shiftit
+#- sprout-osx-apps::firefox
+#- sprout-osx-apps::dropbox
+#- sprout-osx-apps::chrome
+#- pivotal_workstation::mouse_locator
+#- pivotal_workstation::menumeters
+#- pivotal_workstation::bettertouchtool
+#- pivotal_workstation::ccmenu
+#- pivotal_workstation::github_for_mac
+#- pivotal_workstation::gitx
+#- sprout-osx-apps::iterm2
+#- pivotal_workstation::keycastr
+#- sprout-osx-apps::virtualbox
+#- sprout-osx-apps::vagrant
 
 # apps (editors)
-- pivotal_workstation::textmate
-- pivotal_workstation::textmate_bundles
-- pivotal_workstation::textmate_preferences
+#- pivotal_workstation::textmate
+#- pivotal_workstation::textmate_bundles
+#- pivotal_workstation::textmate_preferences
 
-- pivotal_workstation::vim
-- pivotal_workstation::vim_config
-- sprout-osx-apps::ctags_exuberant
+#- pivotal_workstation::vim
+#- pivotal_workstation::vim_config
+#- sprout-osx-apps::ctags_exuberant
 
-- pivotal_workstation::rubymine
-- pivotal_workstation::rubymine_preferences_pivotal
+#- pivotal_workstation::rubymine
+#- pivotal_workstation::rubymine_preferences_pivotal
 
 node_attributes:
-  git_pairs_domain: pivotallabs.com
-  git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
-    - initials: jrhb
-      name: Jonathan Barnes
+  bash_it:
+    theme: minimal
+  rvm:
+    default_ruby: ruby-1.9.3-p448
+    rubies:
+      ruby-1.9.3-p448:
+        env:
+        command_line_options: --verify-downloads 1 --with-openssl-dir=/usr/bin
   git_projects:
     -
       - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
+      - https://github.com/mavenlink-cookbooks/sprout-wrap.git
+    -
+      - mavenlink
+      - git@github.com:mavenlink/mavenlink.git
+    -
+      - mobile
+      - git@github.com:mavenlink/mobile.git
+    -
+      - marketing
+      - git@github.com:mavenlink/marketing.git
+    -
+      - mavenlink-js
+      - git@github.com:mavenlink/mavenlink-js.git
+    -
+      - brainstem-js
+      - git@github.com:mavenlink/brainstem-js.git
+    -
+      - brainstem
+      - git@github.com:mavenlink/brainstem.git
