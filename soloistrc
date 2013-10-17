@@ -65,6 +65,7 @@ recipes:
 - ml-workstation::phantomjs
 - ml-workstation::elasticsearch
 - ml-workstation::etc_hosts
+- ml-workstation::hipchat
 
 node_attributes:
   bash_it:
