@@ -60,6 +60,9 @@ recipes:
 #- pivotal_workstation::rubymine
 #- pivotal_workstation::rubymine_preferences_pivotal
 
+# mavenlink specific
+- ml-workstation::phantomjs
+
 node_attributes:
   bash_it:
     theme: minimal
