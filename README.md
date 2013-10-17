@@ -1,3 +1,35 @@
+# Mavenlink Workstation Setup
+
+[![Build Status](https://travis-ci.org/mavenlink-cookbooks/sprout-wrap.png?branch=master)](https://travis-ci.org/mavenlink-cookbooks/sprout-wrap)
+
+This project is a fork of [pivotal-sprout/sprout-wrap](https://github.com/pivotal-sprout/sprout-wrap/)
+
+Follow the these instructions to bootstrap a blank OSX installation into a functional mavenlink development environment.
+
+### 1. Install XCode
+
+[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
+
+### 2. Install Command Line Tools
+  
+  XCode > Preferences > Downloads
+  
+### 3. Clone this project
+  
+    git clone https://github.com/mavenlink-cookbooks/sprout-wrap.git
+    cd sprout-wrap
+  
+### 4. Install soloist & and other required gems
+
+    sudo gem install bundler
+    bundle
+
+### 5. Run soloist
+  
+    bundle exec soloist
+
+*note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*
+
 # sprout-wrap
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
