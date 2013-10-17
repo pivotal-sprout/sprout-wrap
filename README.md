@@ -6,27 +6,35 @@ This project is a fork of [pivotal-sprout/sprout-wrap](https://github.com/pivota
 
 Follow the these instructions to bootstrap a blank OSX installation into a functional mavenlink development environment.
 
-### 1. Install XCode
+1. **Create SSH Key**
 
-[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
+	See [generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for more information. Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
+	
+	    ssh-keygen -t rsa -C "youremail@mavenlink.com"
 
-### 2. Install Command Line Tools
-  
-  XCode > Preferences > Downloads
-  
-### 3. Clone this project
-  
-    git clone https://github.com/mavenlink-cookbooks/sprout-wrap.git
-    cd sprout-wrap
-  
-### 4. Install soloist & and other required gems
+1. **Install XCode**
 
-    sudo gem install bundler
-    bundle
+	[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
 
-### 5. Run soloist
+1. **Install Command Line Tools**
+
+	    XCode.app > Preferences > Downloads
   
-    bundle exec soloist
+1. **Clone this project**
+  
+	    git clone git@github.com:mavenlink-cookbooks/sprout-wrap.git
+	    cd sprout-wrap
+  
+1. **Install soloist & and other required gems**
+
+	    sudo gem install bundler
+	    bundle
+
+1. **Run soloist**
+  
+	    bundle exec soloist
+
+
 
 *note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*
 
