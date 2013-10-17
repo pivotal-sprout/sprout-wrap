@@ -13,6 +13,7 @@ recipes:
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - pivotal_workstation::locate_on
 - sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::enable_assistive_devices
 
 # development (general)
 - pivotal_workstation::workspace_directory
@@ -63,7 +64,7 @@ recipes:
 # mavenlink specific
 - ml-workstation::phantomjs
 - ml-workstation::elasticsearch
-- sprout-osx-settings::enable_assistive_devices
+- ml-workstation::etc_hosts
 
 node_attributes:
   bash_it:
