@@ -63,7 +63,7 @@ recipes:
 # mavenlink specific
 - ml-workstation::phantomjs
 - ml-workstation::elasticsearch
-- sprout-osx-settings::enable_assistive_devices.rb
+- sprout-osx-settings::enable_assistive_devices
 
 node_attributes:
   bash_it:
