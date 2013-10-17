@@ -62,6 +62,8 @@ recipes:
 
 # mavenlink specific
 - ml-workstation::phantomjs
+- ml-workstation::elasticsearch
+- sprout-osx-settings::enable_assistive_devices.rb
 
 node_attributes:
   bash_it:
@@ -88,9 +90,12 @@ node_attributes:
     -
       - mavenlink-js
       - git@github.com:mavenlink/mavenlink-js.git
+
     -
       - brainstem-js
       - git@github.com:mavenlink/brainstem-js.git
     -
       - brainstem
       - git@github.com:mavenlink/brainstem.git
+  hipchat_download_uri: http://downloads.hipchat.com.s3.amazonaws.com/mac-beta/HipChat-0.29-01uennzomg01wmg.zip
+  hipchat_app_path: /Applications/HipChat.app
