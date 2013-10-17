@@ -69,6 +69,9 @@ recipes:
 node_attributes:
   bash_it:
     theme: minimal
+    custom_plugins:
+      ml-workstation:
+        - bash_profile-mavenlink.bash
   rvm:
     default_ruby: ruby-1.9.3-p448
     rubies:
