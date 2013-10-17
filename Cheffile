@@ -28,4 +28,4 @@ cookbook 'osx',
   :path => 'osx'
 
 cookbook 'ml-workstation',
-  :git => 'git://github.com/mavenlink/cookbook-ml-workstation.git'
+  :git => 'git@github.com:mavenlink/cookbook-ml-workstation.git'
