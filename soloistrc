@@ -66,6 +66,7 @@ recipes:
 - ml-workstation::elasticsearch
 - ml-workstation::etc_hosts
 - ml-workstation::hipchat
+- ml-workstation::imageoptim
 
 node_attributes:
   bash_it:
@@ -104,3 +105,5 @@ node_attributes:
       - git@github.com:mavenlink/brainstem.git
   hipchat_download_uri: http://downloads.hipchat.com.s3.amazonaws.com/mac-beta/HipChat-0.29-01uennzomg01wmg.zip
   hipchat_app_path: /Applications/HipChat.app
+  imageoptim_download_uri: http://imageoptim.com/ImageOptim.tbz2
+  imageoptim_app_path: /Applications/ImageOptim.app
