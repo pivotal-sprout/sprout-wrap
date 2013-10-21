@@ -113,3 +113,20 @@ node_attributes:
   hipchat_app_path: /Applications/HipChat.app
   imageoptim_download_uri: http://imageoptim.com/ImageOptim.tbz2
   imageoptim_app_path: /Applications/ImageOptim.app
+  nginx_settings:
+    servers:
+      -
+        server_name: m.mavenlink.local
+        server_document_root: mobile/public
+        server_proxy_name: mobile
+        server_proxy_port: 4001
+      -
+        server_name: www.mavenlink.local
+        server_document_root: marketing/public
+        server_proxy_name: marketing
+        server_proxy_port: 4000
+      -
+        server_name: "app.mavenlink.local *.mavenlink.local mavenlink.local"
+        server_document_root: mavenlink/public
+        server_proxy_name: mavenlink
+        server_proxy_port: 3000
