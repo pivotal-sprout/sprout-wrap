@@ -1,7 +1,9 @@
-SITE
-  remote: http://community.opscode.com/api/v1
+GIT
+  remote: git://github.com/opscode-cookbooks/dmg.git
+  ref: master
+  sha: 8f0718fe0f757abbab30690969d1118b5dd68d82
   specs:
-    dmg (2.0.4)
+    dmg (2.0.5)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
@@ -81,6 +83,7 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
+  dmg (>= 0)
   meta (>= 0)
   ml-workstation (>= 0)
   osx (>= 0)
