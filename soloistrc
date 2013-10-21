@@ -36,10 +36,10 @@ recipes:
 # apps
 #- pivotal_workstation::screen_sharing_app
 #- sprout-osx-apps::skype
-#- pivotal_workstation::shiftit
-#- sprout-osx-apps::firefox
-#- sprout-osx-apps::dropbox
-#- sprout-osx-apps::chrome
+- pivotal_workstation::shiftit
+- sprout-osx-apps::firefox
+- sprout-osx-apps::dropbox
+- sprout-osx-apps::chrome
 #- pivotal_workstation::mouse_locator
 #- pivotal_workstation::menumeters
 #- pivotal_workstation::bettertouchtool
@@ -48,8 +48,8 @@ recipes:
 #- pivotal_workstation::gitx
 #- sprout-osx-apps::iterm2
 #- pivotal_workstation::keycastr
-#- sprout-osx-apps::virtualbox
-#- sprout-osx-apps::vagrant
+- sprout-osx-apps::virtualbox
+- sprout-osx-apps::vagrant
 - sprout-osx-apps::sequelpro
 - sprout-osx-apps::caffeine
 
