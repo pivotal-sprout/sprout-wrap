@@ -30,8 +30,8 @@ recipes:
 - pivotal_workstation::nginx
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
+- sprout-osx-apps::qt
 #- pivotal_workstation::postgres
-#- pivotal_workstation::qt
 
 # apps
 #- pivotal_workstation::screen_sharing_app
