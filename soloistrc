@@ -67,6 +67,7 @@ recipes:
 - ml-workstation::etc_hosts
 - ml-workstation::hipchat
 - ml-workstation::imageoptim
+- ml-workstation::ssh_config
 
 node_attributes:
   bash_it:

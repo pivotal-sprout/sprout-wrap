@@ -67,7 +67,7 @@ GIT
 GIT
   remote: git@github.com:mavenlink/cookbook-ml-workstation.git
   ref: master
-  sha: c784a86eeb4f99081de209e6350549a5df209ac7
+  sha: 0375de8747565ba32ec7fbca93935db33b489810
   specs:
     ml-workstation (2.0.0)
       sprout-pivotal (>= 0.0.0)
