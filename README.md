@@ -1,10 +1,10 @@
-# Mavenlink Workstation Setup
+# [Mavenlink](http://www.mavenlink.com) Workstation Setup
 
 [![Build Status](https://travis-ci.org/mavenlink-cookbooks/sprout-wrap.png?branch=master)](https://travis-ci.org/mavenlink-cookbooks/sprout-wrap)
 
 This project is a fork of [pivotal-sprout/sprout-wrap](https://github.com/pivotal-sprout/sprout-wrap/)
 
-Follow the these instructions to bootstrap a blank OSX installation into a functional mavenlink development environment.
+Follow the these instructions to bootstrap a blank OSX installation into a functional [Mavenlink](http://www.mavenlink.com) development environment.
 
 1. **Create SSH Key**
 
