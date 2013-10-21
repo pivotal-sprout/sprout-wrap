@@ -27,6 +27,7 @@ recipes:
 - pivotal_workstation::rvm
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
+- pivotal_workstation::nginx
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
 #- pivotal_workstation::postgres
@@ -69,6 +70,7 @@ recipes:
 - ml-workstation::hipchat
 - ml-workstation::imageoptim
 - ml-workstation::ssh_config
+- ml-workstation::nginx
 
 node_attributes:
   bash_it:
