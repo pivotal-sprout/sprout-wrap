@@ -62,8 +62,8 @@ recipes:
 #- pivotal_workstation::vim_config
 #- sprout-osx-apps::ctags_exuberant
 
-#- pivotal_workstation::rubymine
-#- pivotal_workstation::rubymine_preferences_pivotal
+- pivotal_workstation::rubymine
+- pivotal_workstation::rubymine_preferences_pivotal
 
 # mavenlink specific
 - ml-workstation::phantomjs
