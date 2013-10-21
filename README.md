@@ -8,32 +8,39 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
 1. **Create SSH Key**
 
-	See [generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for more information. Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
-	
-	    ssh-keygen -t rsa -C "youremail@mavenlink.com"
+    See [generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for more information. Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
+
+        ssh-keygen -t rsa -C "youremail@mavenlink.com"
 
 1. **Install XCode**
 
-	[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
+    [![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
 
 1. **Install Command Line Tools**
 
-	    XCode.app > Preferences > Downloads
-  
-1. **Clone this project**
-  
-	    git clone git@github.com:mavenlink-cookbooks/sprout-wrap.git
-	    cd sprout-wrap
-  
-1. **Install soloist & and other required gems**
+        XCode.app > Preferences > Downloads
 
-	    sudo gem install bundler
-	    bundle
+1. **Clone this project**
+
+        git clone git@github.com:mavenlink-cookbooks/sprout-wrap.git
+        cd sprout-wrap
+
+1. **Install soloist & and other required gems in sprout-wrap repo dir**
+
+        sudo gem install bundler
+        bundle
 
 1. **Run soloist**
-  
-	    bundle exec soloist
 
+        bundle exec soloist
+
+1. **Bootstrap mavenlink app**
+
+        mavenlink
+        bundle
+        bundle exec rake db:create
+        migrate
+        bundle exec rake db:seed
 
 
 *note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*
