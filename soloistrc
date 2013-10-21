@@ -14,6 +14,7 @@ recipes:
 - pivotal_workstation::locate_on
 - sprout-osx-settings::global_environment_variables
 - sprout-osx-settings::enable_assistive_devices
+- sprout-osx-settings::function_keys
 
 # development (general)
 - pivotal_workstation::workspace_directory
