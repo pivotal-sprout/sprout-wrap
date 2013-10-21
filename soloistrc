@@ -50,6 +50,8 @@ recipes:
 #- pivotal_workstation::keycastr
 #- sprout-osx-apps::virtualbox
 #- sprout-osx-apps::vagrant
+- sprout-osx-apps::sequelpro
+- sprout-osx-apps::caffeine
 
 # apps (editors)
 #- pivotal_workstation::textmate
