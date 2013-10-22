@@ -2,6 +2,9 @@
 
 recipes:
 
+# ensure FileVault is enabled first thing
+- ml-workstation::ensure_filevault
+
 # base (required by sprout)
 - sprout-osx-base::bash_it
 - pivotal_workstation::create_var_chef_cache
