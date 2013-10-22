@@ -20,7 +20,7 @@ recipes:
 - sprout-osx-settings::function_keys
 
 # development (general)
-- pivotal_workstation::workspace_directory
+- sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
 - pivotal_workstation::git_projects
 - pivotal_workstation::git_config_global_defaults
@@ -39,7 +39,7 @@ recipes:
 # apps
 #- pivotal_workstation::screen_sharing_app
 #- sprout-osx-apps::skype
-- pivotal_workstation::shiftit
+- sprout-osx-apps::shiftit
 - sprout-osx-apps::firefox
 - sprout-osx-apps::dropbox
 - sprout-osx-apps::chrome
@@ -65,8 +65,8 @@ recipes:
 #- pivotal_workstation::vim_config
 #- sprout-osx-apps::ctags_exuberant
 
-- pivotal_workstation::rubymine
-- pivotal_workstation::rubymine_preferences_pivotal
+- sprout-osx-apps::rubymine
+- sprout-osx-rubymine::preferences
 
 # mavenlink specific
 - ml-workstation::phantomjs
