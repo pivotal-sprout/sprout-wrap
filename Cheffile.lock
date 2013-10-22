@@ -48,6 +48,16 @@ GIT
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-rubymine
+  ref: master
+  sha: 30bcdc71d43e109b836bb8e47ae0076c5724fe95
+  specs:
+    sprout-osx-rubymine (0.1.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-settings
   ref: master
   sha: 30bcdc71d43e109b836bb8e47ae0076c5724fe95
@@ -90,6 +100,7 @@ DEPENDENCIES
   pivotal_workstation (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
+  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
 
