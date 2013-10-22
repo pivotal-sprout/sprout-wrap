@@ -6,6 +6,12 @@ This project is a fork of [pivotal-sprout/sprout-wrap](https://github.com/pivota
 
 Follow the these instructions to bootstrap a blank OSX installation into a functional [Mavenlink](http://www.mavenlink.com) development environment.
 
+1. **Enable FileVault in System Preferences**
+
+    FileVault is full disk encryption, enable in Security preference panel, DO NOT LOSE THE KEY
+
+        System Preferences > Security & Privacy > Turn ON FileVault
+
 1. **Create SSH Key**
 
     See [generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for more information. Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
