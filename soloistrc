@@ -75,7 +75,6 @@ recipes:
 - ml-workstation::imageoptim
 - ml-workstation::ssh_config
 - ml-workstation::nginx
-- ml-workstation::test_data_bag
 
 node_attributes:
   bash_it:
