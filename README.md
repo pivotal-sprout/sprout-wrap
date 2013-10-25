@@ -52,6 +52,9 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
         migrate
         bundle exec rake db:seed
 
+1. **Misc**
+
+    https://sites.google.com/a/mavenlink.com/wiki/rubymine-licenses
 
 *note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*
 
