@@ -40,6 +40,10 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
         bundle exec soloist
 
+    If you prefer you can overload some options, such as Terminal.app color scheme:
+
+        TERMINAL_SCHEME=Pro bundle exec soloist
+
 1. **Bootstrap mavenlink app**
 
         mavenlink
