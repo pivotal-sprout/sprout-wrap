@@ -78,17 +78,9 @@ recipes:
 - ml-workstation::nginx
 - ml-workstation::elasticbeanstalk
 
-env_variable_switches:
-  PROFILE:
-    bardin:
-      node_attributes:
-        terminal:
-          color_scheme: Pro
-
 node_attributes:
   terminal:
-    color_scheme: Basic
-
+    color_scheme: <%= ENV['TERMINAL_SCHEME'] || 'Basic' %>
   bash_it:
     theme: minimal
     custom_plugins:
