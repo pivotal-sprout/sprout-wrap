@@ -49,7 +49,7 @@ fi
 echo "Please enter your sudo password to make changes to your machine"
 sudo echo ''
 
-curl -Ls https://gist.github.com/trinitronx/6217746/raw/2c172e297fbafc3b8e0fcc6363df0b7b52e4ae6d/xcode-cli-tools.sh | sudo bash
+curl -Ls https://gist.github.com/trinitronx/6217746/raw/58456d6675e437cebbf771c60b6005b4491a0980/xcode-cli-tools.sh | sudo bash
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
