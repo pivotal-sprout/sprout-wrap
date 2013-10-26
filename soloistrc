@@ -35,7 +35,6 @@ recipes:
 - sprout-osx-apps::macvim
 - sprout-osx-apps::node_js
 - sprout-osx-apps::s3cmd
-- sprout-osx-apps::truecrypt
 - sprout-osx-apps::vagrant
 - sprout-osx-apps::virtualbox
 - sprout-osx-apps::vlc
