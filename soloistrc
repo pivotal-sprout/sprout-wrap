@@ -27,6 +27,7 @@ recipes:
 - sprout-osx-apps::gist
 - sprout-osx-apps::gpg
 - sprout-osx-apps::gpgsuite
+- sprout-osx-apps::hipchat
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::java
