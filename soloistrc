@@ -19,7 +19,6 @@ recipes:
 - pivotal_workstation::sshd_on
 - pivotal_workstation::sublime_text
 - pivotal_workstation::unix_essentials
-- pivotal_workstation::vim
 - sprout-osx-apps::chrome
 - sprout-osx-apps::cyberduck
 - sprout-osx-apps::dropbox
@@ -33,6 +32,7 @@ recipes:
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
+- sprout-osx-apps::macvim
 - sprout-osx-apps::node_js
 - sprout-osx-apps::s3cmd
 - sprout-osx-apps::truecrypt
