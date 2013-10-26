@@ -34,7 +34,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: pivotal_workstation
   ref: develop
-  sha: b937444533fcbf5eab6c802742c9ae30baf8b3ad
+  sha: 9f8085148b3ab38c1ba65d7ea8b091781693dd6d
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -48,7 +48,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-apps
   ref: develop
-  sha: b937444533fcbf5eab6c802742c9ae30baf8b3ad
+  sha: 9f8085148b3ab38c1ba65d7ea8b091781693dd6d
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -59,7 +59,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-base
   ref: develop
-  sha: b937444533fcbf5eab6c802742c9ae30baf8b3ad
+  sha: 9f8085148b3ab38c1ba65d7ea8b091781693dd6d
   specs:
     sprout-osx-base (0.1.0)
 
