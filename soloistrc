@@ -51,8 +51,7 @@ recipes:
 - pivotal_workstation::textmate_bundles
 - pivotal_workstation::textmate_preferences
 
-- pivotal_workstation::vim
-- pivotal_workstation::vim_config
+- sprout-osx-apps::macvim
 - sprout-osx-apps::ctags_exuberant
 
 - pivotal_workstation::rubymine
