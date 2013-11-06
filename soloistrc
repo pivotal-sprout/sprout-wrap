@@ -13,11 +13,11 @@ recipes:
 - sprout-osx-settings::global_environment_variables
 
 # development (general)
-- pivotal_workstation::workspace_directory
+- sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
-- pivotal_workstation::git_projects
+- sprout-osx-git::git_projects
 - pivotal_workstation::git_config_global_defaults
-- pivotal_workstation::git_scripts
+- sprout-osx-git::git_scripts
 
 # development (rails)
 #(not working in mavericks)- pivotal_workstation::rvm
@@ -31,12 +31,12 @@ recipes:
 # apps
 - pivotal_workstation::screen_sharing_app
 - sprout-osx-apps::skype
-- pivotal_workstation::shiftit
+- sprout-osx-apps::shiftit
 - sprout-osx-apps::firefox
 - sprout-osx-apps::dropbox
 - sprout-osx-apps::chrome
 - pivotal_workstation::mouse_locator
-- pivotal_workstation::menumeters
+- sprout-osx-apps::menumeters
 - pivotal_workstation::bettertouchtool
 - pivotal_workstation::ccmenu
 - pivotal_workstation::github_for_mac
