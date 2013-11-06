@@ -1,74 +1,60 @@
 recipes:
 
-# base (required by sprout)
+# base
 - sprout-osx-base::bash_it
 - pivotal_workstation::create_var_chef_cache
 - sprout-osx-base::homebrew
+- sprout-osx-apps::homebrew_cask
 
-# settings
-- pivotal_workstation::sshd_on
+# system settings
 - pivotal_workstation::inputrc
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - pivotal_workstation::locate_on
 - sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::finder_display_full_path
+- sprout-osx-settings::osx_disable_natural_scrolling
+- sprout-osx-settings::terminal_preferences
 
-# development (general)
+# general development
 - pivotal_workstation::workspace_directory
-- pivotal_workstation::unix_essentials
-- pivotal_workstation::git_projects
+- pivotal_workstation::git
 - pivotal_workstation::git_config_global_defaults
 - pivotal_workstation::git_scripts
+- pivotal_workstation::git_projects
 
-# development (rails)
-- pivotal_workstation::rvm
+# rails development stack
 - pivotal_workstation::gem_setup
-- pivotal_workstation::mysql
-- pivotal_workstation::postgres
-- sprout-osx-apps::imagemagick
+- pivotal_workstation::rbenv
 - sprout-osx-apps::node_js
-- pivotal_workstation::qt
-
-# apps
-- pivotal_workstation::screen_sharing_app
-- sprout-osx-apps::skype
-- pivotal_workstation::shiftit
-- sprout-osx-apps::firefox
-- sprout-osx-apps::dropbox
-- sprout-osx-apps::chrome
-- pivotal_workstation::mouse_locator
-- pivotal_workstation::menumeters
-- pivotal_workstation::bettertouchtool
-- pivotal_workstation::ccmenu
-- pivotal_workstation::github_for_mac
-- pivotal_workstation::gitx
-- sprout-osx-apps::iterm2
-- pivotal_workstation::keycastr
+- sprout-osx-apps::phantomjs
+- sprout-osx-apps::heroku_toolbelt
 - sprout-osx-apps::virtualbox
 - sprout-osx-apps::vagrant
+- sprout-osx-apps::vagrant_plugins
 
-# apps (editors)
-- pivotal_workstation::textmate
-- pivotal_workstation::textmate_bundles
-- pivotal_workstation::textmate_preferences
+# development tools
+- pivotal_workstation::sublime_text
+- sprout-osx-apps::chrome
+- sprout-osx-apps::firefox
+- pivotal_workstation::github_for_mac
+- sprout-osx-apps::iterm2
 
-- sprout-osx-apps::macvim
-- sprout-osx-apps::ctags_exuberant
-
-- pivotal_workstation::rubymine
-- pivotal_workstation::rubymine_preferences_pivotal
+# system utilities
+- sprout-osx-apps::sizeup
 
 node_attributes:
-  git_pairs_domain: pivotallabs.com
-  git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
-    - initials: jrhb
-      name: Jonathan Barnes
+  workspace_directory: Projects
   git_projects:
     -
-      - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
+      - thegarage-gitx
+      - https://github.com/thegarage/thegarage-gitx.git
+  rbenv:
+    default_ruby: "2.0.0-p247"
+    rubies:
+      2.0.0-p247: {}
+  vagrant:
+    plugins:
+      - vagrant-berkshelf
+      - vagrant-omnibus
+  terminal:
+    color_scheme: "Pro"

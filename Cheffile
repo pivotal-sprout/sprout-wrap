@@ -4,25 +4,25 @@ cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
 cookbook 'sprout-osx-base',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'sprout-osx-base'
 
 cookbook 'pivotal_workstation',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'pivotal_workstation'
 
 cookbook 'sprout-osx-apps',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'sprout-osx-settings'
 
 cookbook 'sprout-pivotal',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'sprout-pivotal'
 
 cookbook 'osx',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'osx'
