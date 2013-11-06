@@ -38,7 +38,7 @@ recipes:
 - pivotal_workstation::mouse_locator
 - sprout-osx-apps::menumeters
 - pivotal_workstation::bettertouchtool
-- pivotal_workstation::ccmenu
+- sprout-osx-apps::ccmenu
 - pivotal_workstation::github_for_mac
 - pivotal_workstation::gitx
 - sprout-osx-apps::iterm2
