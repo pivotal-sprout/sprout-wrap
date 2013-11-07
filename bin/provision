@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require "English"
+# execute a shell command and raise an error if non-zero exit code is returned
+# return the string output from the command
+def run_cmd(cmd, options = {})
+  puts "$ #{cmd}"
+  output = `#{cmd}`
+  puts output
+  success = !!$CHILD_STATUS.to_i
+  fail "#{cmd} failed" unless success || options[:allow_failure]
+  output
+end
+
+run_cmd 'xcode-select --install'
+run_cmd 'cd sprout-wrap'
+run_cmd 'sudo gem install bundler'
+run_cmd 'sudo bundle'
+run_cmd 'bundle exec soloist'
