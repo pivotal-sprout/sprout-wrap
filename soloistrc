@@ -40,7 +40,7 @@ recipes:
 - pivotal_workstation::bettertouchtool
 - sprout-osx-apps::ccmenu
 - pivotal_workstation::github_for_mac
-- pivotal_workstation::gitx
+- sprout-osx-apps::gitx
 - sprout-osx-apps::iterm2
 - pivotal_workstation::keycastr
 - sprout-osx-apps::virtualbox
