@@ -61,6 +61,7 @@ node_attributes:
   bash_it:
     theme: tylenol
     enabled_plugins:
-      - git
-      - rbenv
-      - vagrant
+      plugins:
+        - git
+        - rbenv
+        - vagrant
