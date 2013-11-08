@@ -1,33 +1,22 @@
 site 'http://community.opscode.com/api/v1'
 
-cookbook 'meta',
-  :path => 'site-cookbooks/meta'
+# pivotal-sprout cookbooks
+cookbook 'meta', :path => 'site-cookbooks/meta'
+cookbook 'sprout-osx-base', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-base'
+cookbook 'pivotal_workstation', :github => 'pivotal-sprout/sprout', :path => 'pivotal_workstation'
+cookbook 'sprout-osx-apps', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-apps'
+cookbook 'sprout-osx-settings', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-settings'
+cookbook 'sprout-pivotal', :github => 'pivotal-sprout/sprout', :path => 'sprout-pivotal'
+cookbook 'osx', :github => 'pivotal-sprout/sprout', :path => 'osx'
 
-cookbook 'sprout-osx-base',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'sprout-osx-base'
+# kitchenplan cookbooks
+cookbook 'rvm', :github => 'fnichol/chef-rvm'
+cookbook 'applications', :github => 'kitchenplan/chef-applications'
+cookbook 'osxdefaults', :github => 'kitchenplan/chef-osxdefaults'
+cookbook 'dotfiles', :github => 'kitchenplan/chef-dotfiles'
+cookbook 'drivers', :github => 'kitchenplan/chef-drivers'
+cookbook 'composer', :github => 'kitchenplan/chef-composer'
+cookbook 'pivotal-workstation', :github => 'pivotal/pivotal_workstation'
+cookbook 'root_ssh_agent', :github => 'dergachev/chef_root_ssh_agent'
 
-cookbook 'pivotal_workstation',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'pivotal_workstation'
-
-cookbook 'sprout-osx-apps',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'sprout-osx-apps'
-
-cookbook 'sprout-osx-settings',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'sprout-osx-settings'
-
-cookbook 'sprout-pivotal',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'sprout-pivotal'
-
-cookbook 'osx',
-  :git => 'https://github.com/pivotal-sprout/sprout',
-  :path => 'osx'
-
-cookbook "applications", :github => "kitchenplan/chef-applications"
-cookbook "osxdefaults", :github => "kitchenplan/chef-osxdefaults"
-cookbook "dotfiles", :github => "kitchenplan/chef-dotfiles"
-cookbook "homesick", :github => "fnichol/chef-homesick"
+# cookbook 'homesick', :github => 'fnichol/chef-homesick'

@@ -15,6 +15,7 @@ recipes:
 - sprout-osx-settings::osx_disable_natural_scrolling
 - sprout-osx-settings::terminal_preferences
 
+
 # general development
 - pivotal_workstation::workspace_directory
 - pivotal_workstation::git
@@ -25,19 +26,18 @@ recipes:
 # rails development stack
 - pivotal_workstation::gem_setup
 - pivotal_workstation::rbenv
-- sprout-osx-apps::node_js
+- applications::nodejs
 - sprout-osx-apps::phantomjs
-- sprout-osx-apps::heroku_toolbelt
-- sprout-osx-apps::virtualbox
-- sprout-osx-apps::vagrant
-- sprout-osx-apps::vagrant_plugins
+- applications::heroku
+- applications::virtualbox
+- applications::vagrant
 
 # development tools
-- pivotal_workstation::sublime_text
-- sprout-osx-apps::chrome
-- sprout-osx-apps::firefox
-- pivotal_workstation::github_for_mac
-- sprout-osx-apps::iterm2
+- applications::sublime_text_3
+- applications::google-chrome
+- applications::firefox
+- applications::github_for_mac
+- applications::iterm2
 
 # system utilities
 - sprout-osx-apps::sizeup
@@ -55,10 +55,9 @@ node_attributes:
     default_ruby: "2.0.0-p247"
     rubies:
       2.0.0-p247: {}
-  vagrant:
-    plugins:
-      - vagrant-berkshelf
-      - vagrant-omnibus
+  vagrant_plugins:
+    - vagrant-berkshelf
+    - vagrant-omnibus
   terminal:
     color_scheme: "Pro"
   bash_it:

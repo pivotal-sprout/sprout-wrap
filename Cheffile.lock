@@ -1,7 +1,79 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    apache2 (1.8.4)
+    apt (2.3.0)
+    chef_gem (0.1.0)
     dmg (2.0.4)
+    newrelic (0.5.5)
+    openssl (1.1.0)
+    percona (0.14.5)
+      apt (>= 1.4.4)
+      openssl (>= 0.0.0)
+      yum (>= 0.0.0)
+    yum (2.4.2)
+
+GIT
+  remote: https://github.com/dergachev/chef_root_ssh_agent
+  ref: master
+  sha: 25a316bed58adb3f4951a0f20ad3dfc3bc2af3df
+  specs:
+    root_ssh_agent (0.1.0)
+
+GIT
+  remote: https://github.com/fnichol/chef-rvm
+  ref: master
+  sha: 0cd320911c1e568cbf2eeac895a5ef06e5821589
+  specs:
+    rvm (0.9.1)
+      chef_gem (>= 0.0.0)
+
+GIT
+  remote: https://github.com/kitchenplan/chef-applications
+  ref: master
+  sha: c375e2b5fef795c2770c638e4bbff00b30d623ab
+  specs:
+    applications (0.0.1)
+      apache2 (>= 0.0.0)
+      apt (>= 0.0.0)
+      composer (>= 0.0.0)
+      dmg (>= 0.0.0)
+      newrelic (>= 0.0.0)
+      osxdefaults (>= 0.0.0)
+      percona (>= 0.0.0)
+      root_ssh_agent (>= 0.0.0)
+      rvm (>= 0.0.0)
+
+GIT
+  remote: https://github.com/kitchenplan/chef-composer
+  ref: master
+  sha: 4c7f567672b52cd0af85343343d5065d8c1318ea
+  specs:
+    composer (0.1.0)
+
+GIT
+  remote: https://github.com/kitchenplan/chef-dotfiles
+  ref: master
+  sha: c4ad3d4e782c9fa795714c3f9667278a667bc2fe
+  specs:
+    dotfiles (0.0.1)
+      applications (>= 0.0.0)
+      osxdefaults (>= 0.0.0)
+      root_ssh_agent (>= 0.0.0)
+
+GIT
+  remote: https://github.com/kitchenplan/chef-drivers
+  ref: master
+  sha: 92d835e16328874da157e8e8d01d86b03015192e
+  specs:
+    drivers (0.0.1)
+
+GIT
+  remote: https://github.com/kitchenplan/chef-osxdefaults
+  ref: master
+  sha: c434086c27931a6b4ef4220c453b60162ff5cdd5
+  specs:
+    osxdefaults (0.0.1)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout
@@ -64,6 +136,14 @@ GIT
       dmg (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
+GIT
+  remote: https://github.com/pivotal/pivotal_workstation
+  ref: master
+  sha: 6a620830aa82a2ceb3b335f3301c057f772480b0
+  specs:
+    pivotal-workstation (1.0.0)
+      dmg (>= 0.0.0)
+
 PATH
   remote: site-cookbooks/meta
   specs:
@@ -73,9 +153,17 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
+  applications (>= 0)
+  composer (>= 0)
+  dotfiles (>= 0)
+  drivers (>= 0)
   meta (>= 0)
   osx (>= 0)
+  osxdefaults (>= 0)
+  pivotal-workstation (>= 0)
   pivotal_workstation (>= 0)
+  root_ssh_agent (>= 0)
+  rvm (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
   sprout-osx-settings (>= 0)
