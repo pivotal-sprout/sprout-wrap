@@ -26,3 +26,8 @@ cookbook 'sprout-pivotal',
 cookbook 'osx',
   :git => 'https://github.com/pivotal-sprout/sprout',
   :path => 'osx'
+
+cookbook "applications", :github => "kitchenplan/chef-applications"
+cookbook "osxdefaults", :github => "kitchenplan/chef-osxdefaults"
+cookbook "dotfiles", :github => "kitchenplan/chef-dotfiles"
+cookbook "homesick", :github => "fnichol/chef-homesick"
