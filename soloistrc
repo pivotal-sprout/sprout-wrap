@@ -48,6 +48,9 @@ node_attributes:
     -
       - thegarage-gitx
       - https://github.com/thegarage/thegarage-gitx.git
+    -
+      - sprout-wrap
+      - https://github.com/wireframe/sprout-wrap.git
   rbenv:
     default_ruby: "2.0.0-p247"
     rubies:
