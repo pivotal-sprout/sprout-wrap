@@ -14,6 +14,7 @@ recipes:
 - sprout-osx-settings::finder_display_full_path
 - sprout-osx-settings::osx_disable_natural_scrolling
 - sprout-osx-settings::terminal_preferences
+- homesick::data_bag
 
 
 # general development

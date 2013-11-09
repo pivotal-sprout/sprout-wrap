@@ -20,3 +20,4 @@ cookbook 'pivotal-workstation', :github => 'pivotal/pivotal_workstation'
 cookbook 'root_ssh_agent', :github => 'dergachev/chef_root_ssh_agent'
 
 # cookbook 'homesick', :github => 'fnichol/chef-homesick'
+cookbook 'homesick', :path => 'site-cookbooks/homesick'
