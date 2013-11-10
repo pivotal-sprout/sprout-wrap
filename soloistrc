@@ -7,7 +7,6 @@ recipes:
 - osxdefaults::add_note_to_loginscreen
 - dotfiles::inputrc
 - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
-- osxdefaults::finder_display_full_path
 - osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
 - osxdefaults::check_for_software_updates_daily
 - sprout-osx-settings::osx_disable_natural_scrolling
@@ -17,9 +16,12 @@ recipes:
 - osxdefaults::dock_set_the_icon_size_of_dock_items_to_36_pixels
 - osxdefaults::dock_do_not_animate_opening_applications_from_the_dock
 - osxdefaults::enable_safari_debug_menu
+- osxdefaults::finder_display_full_path
 - osxdefaults::finder_use_column_view_in_all_finder_windows_by_default
+- osxdefaults::finder_disable_the_warning_when_changing_a_file_extension
 - osxdefaults::save_to_disk_not_to_iCloud_by_default
 - osxdefaults::menu_show_clock_with_date
+
 
 # general development
 - dotfiles::bash_it
