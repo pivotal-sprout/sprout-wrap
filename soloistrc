@@ -4,6 +4,7 @@ recipes:
 - applications::create_var_chef_cache
 
 # osx system settings
+- osxdefaults::add_note_to_loginscreen
 - dotfiles::inputrc
 - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
 - osxdefaults::finder_display_full_path
@@ -46,6 +47,7 @@ recipes:
 - sprout-osx-apps::sizeup
 
 node_attributes:
+  loginmessage: Property of The Garage @ UHG
   workspace_directory: Projects
   git_projects:
     -
