@@ -149,27 +149,11 @@ GIT
       dmg (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
-GIT
-  remote: https://github.com/pivotal/pivotal_workstation
-  ref: master
-  sha: 6a620830aa82a2ceb3b335f3301c057f772480b0
-  specs:
-    pivotal-workstation (1.0.0)
-      dmg (>= 0.0.0)
-
 PATH
   remote: site-cookbooks/homesick
   specs:
     homesick (0.4.1)
       git (>= 0.0.0)
-
-PATH
-  remote: site-cookbooks/meta
-  specs:
-    meta (0.1.0)
-      pivotal_workstation (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
   applications (>= 0)
@@ -177,10 +161,8 @@ DEPENDENCIES
   dotfiles (>= 0)
   drivers (>= 0)
   homesick (>= 0)
-  meta (>= 0)
   osx (>= 0)
   osxdefaults (>= 0)
-  pivotal-workstation (>= 0)
   pivotal_workstation (>= 0)
   root_ssh_agent (>= 0)
   rvm (>= 0)

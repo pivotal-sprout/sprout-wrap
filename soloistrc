@@ -1,27 +1,29 @@
 recipes:
 
-# base
-- sprout-osx-base::bash_it
-- pivotal_workstation::create_var_chef_cache
-- sprout-osx-base::homebrew
-- sprout-osx-apps::homebrew_cask
+# chef setup
+- applications::create_var_chef_cache
 
-# system settings
-- pivotal_workstation::inputrc
-- sprout-osx-settings::defaults_fast_key_repeat_rate
-- pivotal_workstation::locate_on
-- sprout-osx-settings::global_environment_variables
-- sprout-osx-settings::finder_display_full_path
+# osx system settings
+- dotfiles::inputrc
+- osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
+- osxdefaults::finder_display_full_path
+- osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
+- osxdefaults::check_for_software_updates_daily
 - sprout-osx-settings::osx_disable_natural_scrolling
+- osxdefaults::disable_press-and-hold_for_keys_in_favor_of_key_repeat
 - sprout-osx-settings::terminal_preferences
-- homesick::data_bag
-
+- osxdefaults::dock_set_magnification_on
+- osxdefaults::dock_set_the_icon_size_of_dock_items_to_36_pixels
+- osxdefaults::dock_do_not_animate_opening_applications_from_the_dock
+- osxdefaults::enable_safari_debug_menu
+- osxdefaults::finder_use_column_view_in_all_finder_windows_by_default
+- osxdefaults::save_to_disk_not_to_iCloud_by_default
 
 # general development
-- pivotal_workstation::workspace_directory
-- pivotal_workstation::git
-- pivotal_workstation::git_config_global_defaults
-- pivotal_workstation::git_scripts
+- dotfiles::bash_it
+- homesick::data_bag
+- applications::git
+- dotfiles::gitconfig
 - pivotal_workstation::git_projects
 
 # rails development stack
@@ -38,9 +40,9 @@ recipes:
 - applications::google-chrome
 - applications::firefox
 - applications::github_for_mac
-- applications::iterm2
 
 # system utilities
+- osxdefaults::enable_assistive_devices
 - sprout-osx-apps::sizeup
 
 node_attributes:
@@ -66,5 +68,6 @@ node_attributes:
     enabled_plugins:
       plugins:
         - git
+        - ruby
         - rbenv
         - vagrant
