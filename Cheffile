@@ -1,18 +1,6 @@
 site 'http://community.opscode.com/api/v1'
 
-# pivotal-sprout cookbooks
-cookbook 'pivotal_workstation', :github => 'pivotal-sprout/sprout', :path => 'pivotal_workstation'
-cookbook 'sprout-osx-base', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-base'
-cookbook 'sprout-osx-apps', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-apps'
-cookbook 'sprout-osx-settings', :github => 'pivotal-sprout/sprout', :path => 'sprout-osx-settings'
-cookbook 'sprout-pivotal', :github => 'pivotal-sprout/sprout', :path => 'sprout-pivotal'
-cookbook 'osx', :github => 'pivotal-sprout/sprout', :path => 'osx'
-
-# kitchenplan cookbooks
-cookbook 'rvm', :github => 'fnichol/chef-rvm'
-cookbook 'applications', :github => 'kitchenplan/chef-applications'
-cookbook 'osxdefaults', :github => 'kitchenplan/chef-osxdefaults'
-cookbook 'dotfiles', :github => 'kitchenplan/chef-dotfiles'
-cookbook 'drivers', :github => 'kitchenplan/chef-drivers'
-cookbook 'composer', :github => 'kitchenplan/chef-composer'
-cookbook 'root_ssh_agent', :github => 'dergachev/chef_root_ssh_agent'
+# kitchenplan cookbooks v2
+cookbook 'applications', :github => 'wireframe/chef-applications'
+cookbook 'osxdefaults', :github => 'wireframe/chef-osxdefaults'
+cookbook 'dotfiles', :github => 'wireframe/chef-dotfiles'

@@ -3,35 +3,34 @@ SITE
   specs:
     apache2 (1.8.4)
     apt (2.3.0)
-    chef_gem (0.1.0)
-    dmg (2.0.4)
+    build-essential (1.4.2)
+    composer (0.0.5)
+      php (>= 0.0.0)
+    dmg (2.0.8)
+    mysql (4.0.4)
+      build-essential (~> 1.4)
+      openssl (~> 1.1)
     newrelic (0.5.5)
     openssl (1.1.0)
     percona (0.14.5)
       apt (>= 1.4.4)
       openssl (>= 0.0.0)
       yum (>= 0.0.0)
+    php (1.2.6)
+      build-essential (>= 0.0.0)
+      mysql (>= 0.0.0)
+      xml (>= 0.0.0)
+    rvm (0.0.4)
+      apt (>= 0)
+      build-essential (>= 0)
+    xml (1.2.0)
+      build-essential (>= 0.0.0)
     yum (2.4.2)
 
 GIT
-  remote: https://github.com/dergachev/chef_root_ssh_agent
+  remote: https://github.com/wireframe/chef-applications
   ref: master
-  sha: 25a316bed58adb3f4951a0f20ad3dfc3bc2af3df
-  specs:
-    root_ssh_agent (0.1.0)
-
-GIT
-  remote: https://github.com/fnichol/chef-rvm
-  ref: master
-  sha: 0cd320911c1e568cbf2eeac895a5ef06e5821589
-  specs:
-    rvm (0.9.1)
-      chef_gem (>= 0.0.0)
-
-GIT
-  remote: https://github.com/kitchenplan/chef-applications
-  ref: master
-  sha: c375e2b5fef795c2770c638e4bbff00b30d623ab
+  sha: cd49b039dca4ab8b5229795c8a35abc10c362770
   specs:
     applications (0.0.1)
       apache2 (>= 0.0.0)
@@ -41,113 +40,26 @@ GIT
       newrelic (>= 0.0.0)
       osxdefaults (>= 0.0.0)
       percona (>= 0.0.0)
-      root_ssh_agent (>= 0.0.0)
       rvm (>= 0.0.0)
 
 GIT
-  remote: https://github.com/kitchenplan/chef-composer
+  remote: https://github.com/wireframe/chef-dotfiles
   ref: master
-  sha: 4c7f567672b52cd0af85343343d5065d8c1318ea
-  specs:
-    composer (0.1.0)
-
-GIT
-  remote: https://github.com/kitchenplan/chef-dotfiles
-  ref: master
-  sha: c4ad3d4e782c9fa795714c3f9667278a667bc2fe
+  sha: 6609fefa8b9d3a90c7749e19e5980d12a9db922c
   specs:
     dotfiles (0.0.1)
       applications (>= 0.0.0)
       osxdefaults (>= 0.0.0)
-      root_ssh_agent (>= 0.0.0)
 
 GIT
-  remote: https://github.com/kitchenplan/chef-drivers
+  remote: https://github.com/wireframe/chef-osxdefaults
   ref: master
-  sha: 92d835e16328874da157e8e8d01d86b03015192e
-  specs:
-    drivers (0.0.1)
-
-GIT
-  remote: https://github.com/kitchenplan/chef-osxdefaults
-  ref: master
-  sha: c434086c27931a6b4ef4220c453b60162ff5cdd5
+  sha: 4b3f7e2ba40a64030e47c0aebdaf70818aa70f5e
   specs:
     osxdefaults (0.0.1)
 
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: osx
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    osx (0.1.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: pivotal_workstation
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    pivotal_workstation (1.0.0)
-      dmg (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-      sprout-pivotal (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-apps
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-base
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    sprout-osx-base (0.1.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-settings
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    sprout-osx-settings (0.1.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-pivotal
-  ref: master
-  sha: 9670da5855a2400268319af73aba8bb1cbc4454e
-  specs:
-    sprout-pivotal (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
 DEPENDENCIES
   applications (>= 0)
-  composer (>= 0)
   dotfiles (>= 0)
-  drivers (>= 0)
-  osx (>= 0)
   osxdefaults (>= 0)
-  pivotal_workstation (>= 0)
-  root_ssh_agent (>= 0)
-  rvm (>= 0)
-  sprout-osx-apps (>= 0)
-  sprout-osx-base (>= 0)
-  sprout-osx-settings (>= 0)
-  sprout-pivotal (>= 0)
 

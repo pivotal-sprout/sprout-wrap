@@ -4,15 +4,15 @@ recipes:
 - applications::create_var_chef_cache
 
 # osx system settings
-- osxdefaults::add_note_to_loginscreen
 - dotfiles::inputrc
-- pivotal_workstation::set_screensaver_preferences
-- sprout-osx-settings::osx_disable_natural_scrolling
+- osxdefaults::add_note_to_loginscreen
+- osxdefaults::set_screensaver_preferences
+- osxdefaults::disable_natural_scrolling
 - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
 - osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
 - osxdefaults::check_for_software_updates_daily
 - osxdefaults::disable_press-and-hold_for_keys_in_favor_of_key_repeat
-- sprout-osx-settings::terminal_preferences
+- osxdefaults::terminal_preferences
 - osxdefaults::dock_set_magnification_on
 - osxdefaults::dock_set_the_icon_size_of_dock_items_to_36_pixels
 - osxdefaults::dock_do_not_animate_opening_applications_from_the_dock
@@ -26,16 +26,17 @@ recipes:
 
 # general development
 - dotfiles::bash_it
-# temporarily disabled for bash-completion server outage (brew install bash-completion)
+# FIXME: temporarily disabled for bash-completion server outage
+# test using `brew install bash-completion`
 # - applications::git
 - dotfiles::gitconfig
-- pivotal_workstation::git_projects
+- dotfiles::projects
 
 # rails development stack
-- pivotal_workstation::gem_setup
-- pivotal_workstation::rbenv
+- dotfiles::gem_setup
+- applications::rbenv
 - applications::nodejs
-- sprout-osx-apps::phantomjs
+- applications::phantomjs
 - applications::heroku
 - applications::virtualbox
 - applications::vagrant
@@ -45,21 +46,24 @@ recipes:
 - applications::google-chrome
 - applications::firefox
 - applications::github_for_mac
+- applications::mou
 
 # system utilities
 - osxdefaults::enable_assistive_devices
-- sprout-osx-apps::sizeup
+- applications::sizeup
 
 node_attributes:
   loginmessage: Property of The Garage @ UHG
   workspace_directory: Projects
-  git_projects:
-    -
-      - thegarage-gitx
-      - https://github.com/thegarage/thegarage-gitx.git
-    -
-      - sprout-wrap
-      - https://github.com/wireframe/sprout-wrap.git
+  dotfiles:
+    project_dir: Projects
+    projects:
+      -
+        - thegarage-gitx
+        - https://github.com/thegarage/thegarage-gitx.git
+      -
+        - sprout-wrap
+        - https://github.com/wireframe/sprout-wrap.git
   rbenv:
     default_ruby: "2.0.0-p247"
     rubies:
