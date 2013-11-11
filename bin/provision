@@ -8,7 +8,10 @@ def run_cmd(cmd, options = {})
   output
 end
 
-# TODO: check if xcode command line is already installed
-# run_cmd 'xcode-select --install'
+xcode_path = `xcode-select -p`
+xcode_cli_installed = $?.to_i == 0
+if !xcode_cli_installed
+  run_cmd 'xcode-select --install'
+end
 run_cmd 'sudo gem install soloist'
 run_cmd 'soloist'
