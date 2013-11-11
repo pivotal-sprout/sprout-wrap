@@ -5,7 +5,6 @@ def run_cmd(cmd, options = {})
   puts "$ #{cmd}"
   success = system(cmd)
   fail "#{cmd} failed" unless success || options[:allow_failure]
-  output
 end
 
 xcode_path = `xcode-select -p`
