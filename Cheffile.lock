@@ -45,7 +45,7 @@ GIT
 GIT
   remote: https://github.com/wireframe/chef-dotfiles
   ref: master
-  sha: 6609fefa8b9d3a90c7749e19e5980d12a9db922c
+  sha: 11c826caaf96966ead6eb4c043332c20f0c55e78
   specs:
     dotfiles (0.0.1)
       applications (>= 0.0.0)
