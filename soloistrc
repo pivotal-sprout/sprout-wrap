@@ -68,6 +68,9 @@ node_attributes:
       shortname: cunnie
     - initials: jrhb
       name: Jonathan Barnes
+    - initials: lw
+      name: Luke Winikates
+      shortname: lwinikates
   git_projects:
     -
       - sprout-wrap
