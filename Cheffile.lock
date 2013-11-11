@@ -1,83 +1,65 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    dmg (2.0.4)
+    apache2 (1.8.4)
+    apt (2.3.0)
+    build-essential (1.4.2)
+    composer (0.0.5)
+      php (>= 0.0.0)
+    dmg (2.0.8)
+    mysql (4.0.4)
+      build-essential (~> 1.4)
+      openssl (~> 1.1)
+    newrelic (0.5.5)
+    openssl (1.1.0)
+    percona (0.14.5)
+      apt (>= 1.4.4)
+      openssl (>= 0.0.0)
+      yum (>= 0.0.0)
+    php (1.2.6)
+      build-essential (>= 0.0.0)
+      mysql (>= 0.0.0)
+      xml (>= 0.0.0)
+    rvm (0.0.4)
+      apt (>= 0)
+      build-essential (>= 0)
+    xml (1.2.0)
+      build-essential (>= 0.0.0)
+    yum (2.4.2)
 
 GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: osx
+  remote: https://github.com/wireframe/chef-applications
   ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
+  sha: cd49b039dca4ab8b5229795c8a35abc10c362770
   specs:
-    osx (0.1.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: pivotal_workstation
-  ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
-  specs:
-    pivotal_workstation (1.0.0)
+    applications (0.0.1)
+      apache2 (>= 0.0.0)
+      apt (>= 0.0.0)
+      composer (>= 0.0.0)
       dmg (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-      sprout-pivotal (>= 0.0.0)
+      newrelic (>= 0.0.0)
+      osxdefaults (>= 0.0.0)
+      percona (>= 0.0.0)
+      rvm (>= 0.0.0)
 
 GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-apps
+  remote: https://github.com/wireframe/chef-dotfiles
   ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
+  sha: 11c826caaf96966ead6eb4c043332c20f0c55e78
   specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
+    dotfiles (0.0.1)
+      applications (>= 0.0.0)
+      osxdefaults (>= 0.0.0)
 
 GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-base
+  remote: https://github.com/wireframe/chef-osxdefaults
   ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
+  sha: 4b3f7e2ba40a64030e47c0aebdaf70818aa70f5e
   specs:
-    sprout-osx-base (0.1.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-settings
-  ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
-  specs:
-    sprout-osx-settings (0.1.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-pivotal
-  ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
-  specs:
-    sprout-pivotal (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-PATH
-  remote: site-cookbooks/meta
-  specs:
-    meta (0.1.0)
-      pivotal_workstation (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
+    osxdefaults (0.0.1)
 
 DEPENDENCIES
-  meta (>= 0)
-  osx (>= 0)
-  pivotal_workstation (>= 0)
-  sprout-osx-apps (>= 0)
-  sprout-osx-base (>= 0)
-  sprout-osx-settings (>= 0)
-  sprout-pivotal (>= 0)
+  applications (>= 0)
+  dotfiles (>= 0)
+  osxdefaults (>= 0)
 

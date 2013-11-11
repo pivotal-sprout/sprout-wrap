@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+# execute a shell command and raise an error if non-zero exit code is returned
+def run_cmd(cmd, options = {})
+  puts "$ #{cmd}"
+  success = system(cmd)
+  fail "#{cmd} failed" unless success || options[:allow_failure]
+end
+
+# check if xcode command line tools are installed
+def xcode_cli_installed?
+  xcode_path = `xcode-select -p`
+  xcode_cli_installed = $?.to_i == 0
+end
+
+def soloist_installed?
+  soloist_path = `which soloist`
+  soloist_path.to_s.chomp.length > 0
+end
+
+run_cmd 'xcode-select --install' unless xcode_cli_installed?
+run_cmd 'sudo gem install soloist' unless soloist_installed?
+run_cmd 'git pull'
+run_cmd 'soloist'
