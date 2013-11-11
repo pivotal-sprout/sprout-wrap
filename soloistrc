@@ -62,8 +62,18 @@ node_attributes:
         - thegarage-gitx
         - https://github.com/thegarage/thegarage-gitx.git
       -
+        - chef-osxdefaults
+        - https://github.com/wireframe/chef-osxdefaults.git
+      -
+        - chef-applications
+        - https://github.com/wireframe/chef-applications.git
+      -
+        - chef-dotfiles
+        - https://github.com/wireframe/chef-dotfiles.git
+      -
         - sprout-wrap
         - https://github.com/wireframe/sprout-wrap.git
+
   rbenv:
     default_ruby: "2.0.0-p247"
     rubies:
