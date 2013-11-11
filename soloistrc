@@ -6,6 +6,8 @@ recipes:
 # osx system settings
 - osxdefaults::add_note_to_loginscreen
 - dotfiles::inputrc
+- pivotal_workstation::set_screensaver_preferences
+- sprout-osx-settings::osx_disable_natural_scrolling
 - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
 - osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
 - osxdefaults::check_for_software_updates_daily
@@ -70,6 +72,14 @@ node_attributes:
   bash_it:
     theme: tylenol
     enabled_plugins:
+      completion:
+        - defaults
+        - bash-it
+        - git
+        - brew
+        - gem
+        - rake
+        - ssh
       plugins:
         - git
         - ssh
