@@ -26,9 +26,7 @@ recipes:
 
 # general development
 - dotfiles::bash_it
-# FIXME: temporarily disabled for bash-completion server outage
-# test using `brew install bash-completion`
-# - applications::git
+- applications::git
 - dotfiles::gitconfig
 - dotfiles::projects
 
