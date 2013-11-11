@@ -3,27 +3,14 @@ SITE
   specs:
     apache2 (1.8.4)
     apt (2.3.0)
-    build-essential (1.4.2)
     chef_gem (0.1.0)
-    chef_handler (1.1.4)
     dmg (2.0.4)
-    git (2.7.0)
-      build-essential (>= 0.0.0)
-      dmg (>= 0.0.0)
-      runit (>= 1.0.0)
-      windows (>= 0.0.0)
-      yum (>= 0.0.0)
     newrelic (0.5.5)
     openssl (1.1.0)
     percona (0.14.5)
       apt (>= 1.4.4)
       openssl (>= 0.0.0)
       yum (>= 0.0.0)
-    runit (1.4.0)
-      build-essential (>= 0.0.0)
-      yum (>= 0.0.0)
-    windows (1.11.0)
-      chef_handler (>= 0.0.0)
     yum (2.4.2)
 
 GIT
@@ -149,18 +136,11 @@ GIT
       dmg (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
-PATH
-  remote: site-cookbooks/homesick
-  specs:
-    homesick (0.4.1)
-      git (>= 0.0.0)
-
 DEPENDENCIES
   applications (>= 0)
   composer (>= 0)
   dotfiles (>= 0)
   drivers (>= 0)
-  homesick (>= 0)
   osx (>= 0)
   osxdefaults (>= 0)
   pivotal_workstation (>= 0)

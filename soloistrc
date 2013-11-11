@@ -9,7 +9,6 @@ recipes:
 - osxdefaults::set_a_blazingly_fast_keyboard_repeat_rate
 - osxdefaults::automatically_quit_printer_app_once_the_print_jobs_complete
 - osxdefaults::check_for_software_updates_daily
-- sprout-osx-settings::osx_disable_natural_scrolling
 - osxdefaults::disable_press-and-hold_for_keys_in_favor_of_key_repeat
 - sprout-osx-settings::terminal_preferences
 - osxdefaults::dock_set_magnification_on
@@ -25,8 +24,8 @@ recipes:
 
 # general development
 - dotfiles::bash_it
-- homesick::data_bag
-- applications::git
+# temporarily disabled for bash-completion server outage (brew install bash-completion)
+# - applications::git
 - dotfiles::gitconfig
 - pivotal_workstation::git_projects
 
@@ -73,6 +72,7 @@ node_attributes:
     enabled_plugins:
       plugins:
         - git
+        - ssh
         - ruby
         - rbenv
         - vagrant
