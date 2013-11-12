@@ -42,21 +42,21 @@ recipes:
 - pivotal_workstation::github_for_mac
 - sprout-osx-apps::gitx
 - sprout-osx-apps::iterm2
-- pivotal_workstation::keycastr
+- sprout-osx-apps::keycastr
 - sprout-osx-apps::virtualbox
 - sprout-osx-apps::vagrant
 
 # apps (editors)
-- pivotal_workstation::textmate
-- pivotal_workstation::textmate_bundles
-- pivotal_workstation::textmate_preferences
+- sprout-osx-apps::textmate
+- sprout-osx-apps::textmate_bundles
+- sprout-osx-apps::textmate_preferences
 
 - pivotal_workstation::vim
 #(not working in mavericks)- pivotal_workstation::vim_config
 - sprout-osx-apps::ctags_exuberant
 
-- pivotal_workstation::rubymine
-- pivotal_workstation::rubymine_preferences_pivotal
+- sprout-osx-apps::rubymine
+- sprout-osx-apps::rubymine_preferences_pivotal
 
 node_attributes:
   git_pairs_domain: pivotallabs.com
