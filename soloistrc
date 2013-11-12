@@ -56,7 +56,7 @@ recipes:
 - sprout-osx-apps::ctags_exuberant
 
 - sprout-osx-apps::rubymine
-- sprout-osx-apps::rubymine_preferences_pivotal
+- sprout-osx-rubymine::preferences
 
 node_attributes:
   git_pairs_domain: pivotallabs.com

@@ -7,7 +7,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     osx (0.1.0)
 
@@ -15,7 +15,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: pivotal_workstation
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -29,7 +29,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-apps
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -40,7 +40,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-base
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     sprout-osx-base (0.1.0)
 
@@ -48,16 +48,26 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-git
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     sprout-osx-git (0.1.0)
       sprout-osx-base (>= 0.0.0)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-rubymine
+  ref: mavericks
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
+  specs:
+    sprout-osx-rubymine (0.1.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-settings
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     sprout-osx-settings (0.1.0)
       osx (>= 0.0.0)
@@ -67,7 +77,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: mavericks
-  sha: a7794d8eb0a94fbdf21230503da37918bc6d4892
+  sha: bd93d9fe0f94aa5bcd9893557292b1b5199275f5
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
@@ -88,6 +98,7 @@ DEPENDENCIES
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
   sprout-osx-git (>= 0)
+  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
 
