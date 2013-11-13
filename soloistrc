@@ -57,6 +57,9 @@ recipes:
 - pivotal_workstation::rubymine
 - pivotal_workstation::rubymine_preferences_pivotal
 
+# custom
+- sprout-terminal
+
 node_attributes:
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:

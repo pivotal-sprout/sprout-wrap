@@ -4,6 +4,15 @@ SITE
     dmg (2.0.4)
 
 GIT
+  remote: git://github.com/codeword/sprout-terminal.git
+  path: .
+  ref: master
+  sha: 2767f86028376cc4cadd93b56bdc25b2c37fba8b
+  specs:
+    sprout-terminal (0.2.0)
+      osx (>= 0.0.0)
+
+GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: master
@@ -81,4 +90,5 @@ DEPENDENCIES
   sprout-osx-base (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
+  sprout-terminal (>= 0.2.0)
 
