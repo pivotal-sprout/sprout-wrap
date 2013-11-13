@@ -1,4 +1,5 @@
 site 'http://community.opscode.com/api/v1'
+cookbook 'dmg', '2.0.4'
 
 cookbook 'meta',
   :path => 'site-cookbooks/meta'
@@ -22,6 +23,10 @@ cookbook 'sprout-osx-settings',
 cookbook 'sprout-pivotal',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'sprout-pivotal'
+
+cookbook 'sprout-terminal', '>=0.2.0',
+  :git => 'git://github.com/codeword/sprout-terminal.git',
+  :path => '.'
 
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
