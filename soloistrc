@@ -58,6 +58,9 @@ recipes:
 - sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
 
+# custom
+- sprout-terminal
+
 node_attributes:
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:

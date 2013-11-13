@@ -33,6 +33,10 @@ cookbook 'sprout-pivotal',
   :ref => 'mavericks',
   :path => 'sprout-pivotal'
 
+cookbook 'sprout-terminal', '>=0.2.0',
+  :git => 'git://github.com/codeword/sprout-terminal.git',
+  :path => '.'
+
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :ref => 'mavericks',
