@@ -80,7 +80,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-apps
   ref: mavericks
-  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  sha: 9758bc4809cc431bc033c10c44c3e2dd423b3a7c
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
