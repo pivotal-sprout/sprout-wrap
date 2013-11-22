@@ -12,14 +12,29 @@
 # (c) 2012, Tom Hallett
 # This script may be freely distributed under the MIT license.
 
-SOLOIST_DIR="${HOME}/src/pub/soloist"
-BRANCH="${1:-master}"
+## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
+function detect_platform_version() {
+  # Matching the tab-space with sed is error-prone
+  platform_version=$(sw_vers | awk '/^ProductVersion:/ { print $2 }')
 
-if [[ "$BRANCH" == mavericks* ]]; then
-  XCODE_DMG='XCode-5.0.1-5A2053.dmg'
-else
-  XCODE_DMG='XCode-4.6.3-4H1503.dmg'
-fi
+  major_version=$(echo $platform_version | cut -d. -f1,2)
+  
+  # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
+  x86_64=$(sysctl -n hw.optional.x86_64)
+  if [ $x86_64 -eq 1 ]; then
+    machine="x86_64"
+  fi
+}
+
+SOLOIST_DIR="${HOME}/src/pub/soloist"
+
+detect_platform_version
+
+# Determine which XCode version to use based on platform version
+case $platform_version in
+  "10.9") XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
+  *)      XCODE_DMG='XCode-4.6.3-4H1503.dmg' ;;
+esac
 
 errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
@@ -48,7 +63,6 @@ if [ -d sprout-wrap ]; then
 else
   git clone https://github.com/TangoGroup/sprout-wrap.git
   pushd sprout-wrap
-  [ -n "$BRANCH" ] && git checkout $BRANCH && git pull
 fi
 
 # Hack to make sure sudo caches sudo password correctly...
