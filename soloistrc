@@ -59,21 +59,21 @@ recipes:
 #(not working in mavericks)- pivotal_workstation::vim_config
 - sprout-osx-apps::ctags_exuberant
 
-- sprout-osx-apps::rubymine
-- sprout-osx-rubymine::preferences
+# - sprout-osx-apps::rubymine
+# - sprout-osx-rubymine::preferences
 
 # apps (added for gloo)
 - sprout-osx-apps::cyberduck
 - sprout-osx-apps::gist
 - sprout-osx-apps::gpg
-- sprout-osx-apps::gpgsuite
+- sprout-osx-apps::gpgtools
 - sprout-osx-apps::hipchat
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
 - sprout-osx-apps::macvim
 - sprout-osx-apps::s3cmd
-- pivotal_workstation::sublime_text
+- sprout-osx-apps::sublime_text
 - sprout-osx-apps::vlc
 - sprout-osx-apps::wemux
 
