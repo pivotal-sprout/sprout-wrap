@@ -14,6 +14,7 @@
 
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 XCODE_DMG='XCode-4.6.3-4H1503.dmg'
+BRANCH="${1:-master}"
 
 errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
@@ -42,6 +43,7 @@ if [ -d sprout-wrap ]; then
 else
   git clone https://github.com/TangoGroup/sprout-wrap.git
   pushd sprout-wrap
+  [ -n "$BRANCH" ] && git checkout $BRANCH && git pull
 fi
 
 # Hack to make sure sudo caches sudo password correctly...
