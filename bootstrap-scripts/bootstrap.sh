@@ -13,8 +13,13 @@
 # This script may be freely distributed under the MIT license.
 
 SOLOIST_DIR="${HOME}/src/pub/soloist"
-XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 BRANCH="${1:-master}"
+
+if [[ "$BRANCH" == mavericks* ]]; then
+  XCODE_DMG='XCode-5.0.1-5A2053.dmg'
+else
+  XCODE_DMG='XCode-4.6.3-4H1503.dmg'
+fi
 
 errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
