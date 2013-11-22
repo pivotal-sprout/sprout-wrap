@@ -5,22 +5,10 @@ SITE
     homebrew (1.5.2)
 
 GIT
-  remote: /Users/jcuzella/src/pub/soloist/sprout
-  path: sprout-osx-apps
-  ref: mavericks-develop
-  sha: 0fab831cf716b8ac521a46e3c45b6f754da666d6
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
   ref: mavericks
-  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     osx (0.1.0)
 
@@ -28,7 +16,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-git
   ref: mavericks
-  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     sprout-osx-git (0.1.0)
       homebrew (>= 0.0.0)
@@ -38,7 +26,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-osx-rubymine
   ref: mavericks
-  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     sprout-osx-rubymine (0.1.0)
       homebrew (>= 0.0.0)
@@ -49,7 +37,7 @@ GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
   ref: mavericks
-  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
@@ -87,6 +75,18 @@ GIT
       sprout-osx-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-apps
+  ref: mavericks-develop
+  sha: 0fab831cf716b8ac521a46e3c45b6f754da666d6
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
 
 GIT
   remote: https://github.com/trinitronx/sprout

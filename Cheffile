@@ -26,8 +26,7 @@ cookbook 'gloo-workstation',
 # Both switched from pivotal-sprout/sprout due to many pending PRs
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
-  :git => '/Users/jcuzella/src/pub/soloist/sprout',
-#  :github => 'trinitronx/sprout',
+  :github => 'trinitronx/sprout',
   :ref => 'mavericks-develop',
   :path => 'sprout-osx-apps'
 
