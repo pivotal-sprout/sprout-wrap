@@ -1,47 +1,82 @@
---- 
-recipes: 
-- pivotal_workstation::create_var_chef_cache
-- gloo-workstation::xcode
+recipes:
+
+# base (required by sprout)
 - sprout-osx-base::bash_it
+- pivotal_workstation::create_var_chef_cache
+# (added for gloo)
+- gloo-workstation::xcode
 - sprout-osx-base::homebrew
-- sprout-osx-base::workspace_directory
-- pivotal_workstation::gem_setup
-- pivotal_workstation::git
-- pivotal_workstation::git_config_global_defaults
-- pivotal_workstation::github_ssh_keys
-- pivotal_workstation::git_projects
-- pivotal_workstation::github_for_mac
-- pivotal_workstation::gitx
-- pivotal_workstation::locate_on
-- pivotal_workstation::osx_updates
-- pivotal_workstation::rvm
-- pivotal_workstation::screen_sharing_app
+
+# settings
 - pivotal_workstation::sshd_on
-- pivotal_workstation::sublime_text
+- pivotal_workstation::inputrc
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- pivotal_workstation::locate_on
+- sprout-osx-settings::global_environment_variables
+
+# development (general)
+- sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
-- sprout-osx-apps::chrome
-- sprout-osx-apps::cyberduck
-- sprout-osx-apps::dropbox
+- sprout-osx-git::git_projects
+- pivotal_workstation::git_config_global_defaults
+- sprout-osx-git::git_scripts
+# (added by gloo)
+- pivotal_workstation::github_ssh_keys
+
+# development (rails)
+#(not working in mavericks)- pivotal_workstation::rvm
+- pivotal_workstation::gem_setup
+# - pivotal_workstation::mysql
+#(not working in mavericks)- pivotal_workstation::postgres
+- sprout-osx-apps::imagemagick
+- sprout-osx-apps::node_js
+#(not working in mavericks)- pivotal_workstation::qt
+
+# apps
+- pivotal_workstation::screen_sharing_app
+# - sprout-osx-apps::skype
+# - sprout-osx-apps::shiftit
 - sprout-osx-apps::firefox
+- sprout-osx-apps::dropbox
+- sprout-osx-apps::chrome
+# - pivotal_workstation::mouse_locator
+# - sprout-osx-apps::menumeters
+# - pivotal_workstation::bettertouchtool
+# - sprout-osx-apps::ccmenu
+- pivotal_workstation::github_for_mac
+- sprout-osx-apps::gitx
+- sprout-osx-apps::iterm2
+# - sprout-osx-apps::keycastr
+- sprout-osx-apps::virtualbox
+- sprout-osx-apps::vagrant
+
+# apps (editors)
+# - sprout-osx-apps::textmate
+# - sprout-osx-apps::textmate_bundles
+# - sprout-osx-apps::textmate_preferences
+
+- pivotal_workstation::vim
+#(not working in mavericks)- pivotal_workstation::vim_config
+- sprout-osx-apps::ctags_exuberant
+
+- sprout-osx-apps::rubymine
+- sprout-osx-rubymine::preferences
+
+# apps (added for gloo)
+- sprout-osx-apps::cyberduck
 - sprout-osx-apps::gist
 - sprout-osx-apps::gpg
 - sprout-osx-apps::gpgsuite
 - sprout-osx-apps::hipchat
-- sprout-osx-apps::imagemagick
-- sprout-osx-apps::iterm2
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
 - sprout-osx-apps::libreoffice
 - sprout-osx-apps::macvim
-- sprout-osx-apps::node_js
 - sprout-osx-apps::s3cmd
-- sprout-osx-apps::vagrant
-- sprout-osx-apps::virtualbox
+- pivotal_workstation::sublime_text
 - sprout-osx-apps::vlc
 - sprout-osx-apps::wemux
-- sprout-osx-settings::defaults_fast_key_repeat_rate
-- sprout-osx-settings::enable_assistive_devices
-- sprout-osx-settings::global_environment_variables
+
 node_attributes: 
   workspace_directory: src
   git_pairs_authors: 

@@ -1,67 +1,55 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    dmg (2.0.8)
+    homebrew (1.5.2)
+
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
-  ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
   specs:
     osx (0.1.0)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-git
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  specs:
+    sprout-osx-git (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-rubymine
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  specs:
+    sprout-osx-rubymine (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
-  ref: master
-  sha: 8a384b6520e1dbc00a734bf581934fbb4cece23a
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/TangoGroup/gloo-workstation.git
   ref: master
-  sha: ce914ac18cd8f9faa5790d5183548b36774dfe32
+  sha: f9692b946d25e343a407b692105bec77641d7426
   specs:
-    gloo-workstation (0.1.0)
-
-GIT
-  remote: https://github.com/trinitronx/dmg
-  ref: develop
-  sha: 82634ce1ea012270b07bedf7dc653c4ac51e686f
-  specs:
-    dmg (1.1.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: pivotal_workstation
-  ref: develop
-  sha: 51907c1fe772e13786f05f612f72d407e0d78f46
-  specs:
-    pivotal_workstation (1.0.0)
-      dmg (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-      sprout-pivotal (>= 0.0.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-apps
-  ref: develop
-  sha: 51907c1fe772e13786f05f612f72d407e0d78f46
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-base
-  ref: develop
-  sha: 51907c1fe772e13786f05f612f72d407e0d78f46
-  specs:
-    sprout-osx-base (0.1.0)
+    gloo-workstation (0.1.3)
 
 GIT
   remote: https://github.com/trinitronx/sprout
@@ -73,6 +61,41 @@ GIT
       osx (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: pivotal_workstation
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  specs:
+    pivotal_workstation (1.0.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+      sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-apps
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-base
+  ref: mavericks
+  sha: f82f9465ee4648c4ba9de8aacab271e147acdc9c
+  specs:
+    sprout-osx-base (0.1.0)
+
 PATH
   remote: site-cookbooks/meta
   specs:
@@ -82,13 +105,14 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
-  dmg (>= 0)
   gloo-workstation (>= 0)
   meta (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
+  sprout-osx-git (>= 0)
+  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
 
