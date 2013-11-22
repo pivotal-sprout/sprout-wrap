@@ -11,14 +11,13 @@ cookbook 'sprout-osx-git',
 cookbook 'sprout-osx-base',
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
   :github => 'trinitronx/sprout',
-  :ref => 'mavericks',
+  :ref => 'mavericks-develop',
   :path => 'sprout-osx-base'
 
 # Testing recursive repo_dir fix for pivotal_workstation::git_projects
 cookbook 'pivotal_workstation',
   :github => 'trinitronx/sprout',
-  :ref => 'develop',
-  :ref => 'mavericks',
+  :ref => 'mavericks-develop',
   :path => 'pivotal_workstation'
 
 cookbook 'gloo-workstation',
@@ -27,8 +26,9 @@ cookbook 'gloo-workstation',
 # Both switched from pivotal-sprout/sprout due to many pending PRs
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
-  :github => 'trinitronx/sprout',
-  :ref => 'mavericks',
+  :git => '/Users/jcuzella/src/pub/soloist/sprout',
+#  :github => 'trinitronx/sprout',
+  :ref => 'mavericks-develop',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
