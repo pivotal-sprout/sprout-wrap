@@ -21,11 +21,14 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 Don't forget to start up Xcode once it's installed so that you can agree to the terms&mdash;many commands won't work until the terms have been agreed to.
 
-### 2. Clone this project
+### 2. Install Command Line Tools
+  
+    xcode-select --install
+  
+### 3. Clone this project
 
     git clone https://github.com/pivotal-sprout/sprout-wrap.git
     cd sprout-wrap
-    git checkout mavericks
 
 ### 4. Install soloist & and other required gems
 
@@ -40,26 +43,3 @@ If you're running under rvm or rbenv, you shouldn't preface the following comman
 
     bundle exec soloist
 
-## Installation under Mountain Lion (OS X 10.8)
-
-### 1. Install XCode
-
-[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
-
-### 2. Install Command Line Tools
-  
-  XCode > Preferences > Downloads
-  
-### 3. Clone this project
-  
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
-    cd sprout-wrap
-  
-### 4. Install soloist & and other required gems
-
-    sudo gem install bundler
-    bundle
-
-### 5. Run soloist
-  
-    bundle exec soloist
