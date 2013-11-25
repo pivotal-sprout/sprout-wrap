@@ -20,13 +20,13 @@ recipes:
 - sprout-osx-git::git_scripts
 
 # development (rails)
-#(not working in mavericks)- pivotal_workstation::rvm
+- sprout-osx-rbenv
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
-#(not working in mavericks)- pivotal_workstation::postgres
+- pivotal_workstation::postgres
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
-#(not working in mavericks)- pivotal_workstation::qt
+- pivotal_workstation::qt
 
 # apps
 - pivotal_workstation::screen_sharing_app
