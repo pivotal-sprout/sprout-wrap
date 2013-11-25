@@ -3,42 +3,38 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
+cookbook 'sprout-osx-rbenv',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-osx-rbenv'
+
 cookbook 'sprout-osx-git',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-osx-git'
 
 cookbook 'sprout-osx-base',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-osx-base'
 
 cookbook 'pivotal_workstation',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'pivotal_workstation'
 
 cookbook 'sprout-osx-apps',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-osx-settings'
 
 cookbook 'sprout-pivotal',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-pivotal'
 
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'osx'
 
 cookbook 'sprout-osx-rubymine',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
   :path => 'sprout-osx-rubymine'
