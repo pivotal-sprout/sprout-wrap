@@ -23,7 +23,7 @@ recipes:
 - sprout-osx-rbenv
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
-- sprout-osx-apps::postgres
+- pivotal_workstation::postgres
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
 - sprout-osx-apps::qt
