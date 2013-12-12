@@ -17,6 +17,7 @@ recipes:
 - sprout-osx-settings::global_environment_variables
 - sprout-osx-settings::enable_assistive_devices
 - sprout-osx-settings::function_keys
+- sprout-osx-settings::terminal_preferences
 
 # development (general)
 - sprout-osx-base::workspace_directory
@@ -79,6 +80,8 @@ recipes:
 - ml-workstation::elasticbeanstalk
 
 node_attributes:
+  terminal:
+    color_scheme: <%= ENV['TERMINAL_SCHEME'] || 'Basic' %>
   bash_it:
     theme: minimal
     custom_plugins:
