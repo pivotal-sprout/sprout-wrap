@@ -69,6 +69,7 @@ recipes:
 
 # mavenlink specific
 - ml-workstation::phantomjs
+- ml-workstation::icu4c
 - ml-workstation::elasticsearch
 - ml-workstation::etc_hosts
 - ml-workstation::hipchat
