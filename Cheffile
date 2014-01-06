@@ -6,6 +6,14 @@ cookbook 'meta',
 cookbook 'dmg',
   :git => 'git://github.com/opscode-cookbooks/dmg.git'
 
+cookbook 'sprout-osx-rbenv',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-osx-rbenv'
+
+cookbook 'sprout-osx-git',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'sprout-osx-git'
+
 cookbook 'sprout-osx-base',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
   :path => 'sprout-osx-base'
