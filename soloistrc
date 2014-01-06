@@ -29,7 +29,6 @@ recipes:
 # development (rails)
 - sprout-osx-rbenv
 - pivotal_workstation::gem_setup
-- pivotal_workstation::mysql
 - pivotal_workstation::nginx
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
@@ -65,6 +64,7 @@ recipes:
 - ml-workstation::ssh_config
 - ml-workstation::nginx
 - ml-workstation::elasticbeanstalk
+- ml-workstation::mysql
 
 node_attributes:
   terminal:
