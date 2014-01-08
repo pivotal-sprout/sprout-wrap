@@ -4,7 +4,9 @@ cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
 cookbook 'dmg',
-  :git => 'git://github.com/opscode-cookbooks/dmg.git'
+  # :git => 'git://github.com/opscode-cookbooks/dmg.git'
+  :git => 'git://github.com/juliandunn/dmg.git',
+  :ref => 'COOK-4065'
 
 cookbook 'sprout-osx-rbenv',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
