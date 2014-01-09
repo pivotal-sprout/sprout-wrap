@@ -14,7 +14,8 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
 1. **Create SSH Key**
 
-    See [generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys) for more information. Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
+    See [generating-ssh-keys] with no paraphrase. (https://help.github.com/articles/generating-ssh-keys) for more information. 
+Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up a workstation.
 
         ssh-keygen -t rsa -C "youremail@mavenlink.com"
 
@@ -24,7 +25,7 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
 1. **Install Command Line Tools**
 
-        XCode.app > Preferences > Downloads
+        xcode-select --install
 
 1. **Clone this project**
 
@@ -34,7 +35,7 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 1. **Install soloist & and other required gems in sprout-wrap repo dir**
 
         sudo gem install bundler
-        bundle
+        sudo bundle
 
 1. **Run soloist**
 
@@ -54,10 +55,11 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
 1. **Misc**
 
-    https://sites.google.com/a/mavenlink.com/wiki/rubymine-licenses
-
-*note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*
-
+    https://sites.google.com/a/mavenlink.com/wiki/rubymine-licenses  
+ 
+***
+*note: DO NOT EDIT below this line so we can continue to merge upstream changes to the README.md into our fork*  
+   
 # sprout-wrap
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
