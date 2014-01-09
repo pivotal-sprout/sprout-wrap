@@ -8,7 +8,7 @@ Follow the these instructions to bootstrap a blank OSX installation into a funct
 
 1. **Enable FileVault in System Preferences**
 
-    FileVault is full disk encryption, enable in Security preference panel, DO NOT LOSE THE KEY
+    FileVault is full disk encryption, enable in Security preference panel, DO NOT LOSE THE KEY (or/and send them to your supervisors)
 
         System Preferences > Security & Privacy > Turn ON FileVault
 
