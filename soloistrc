@@ -22,48 +22,34 @@ recipes:
 # development (general)
 - sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
-- pivotal_workstation::git_projects
+- sprout-osx-git::git_projects
 - pivotal_workstation::git_config_global_defaults
-- pivotal_workstation::git_scripts
+- sprout-osx-git::git_scripts
 
 # development (rails)
-- pivotal_workstation::rvm
+- rvm::rvm
 - pivotal_workstation::gem_setup
-- pivotal_workstation::mysql
 - pivotal_workstation::nginx
 - sprout-osx-apps::imagemagick
 - sprout-osx-apps::node_js
 - sprout-osx-apps::qt
-#- pivotal_workstation::postgres
 
-# apps
-#- pivotal_workstation::screen_sharing_app
-#- sprout-osx-apps::skype
 - sprout-osx-apps::shiftit
 - sprout-osx-apps::firefox
 - sprout-osx-apps::dropbox
 - sprout-osx-apps::chrome
-#- pivotal_workstation::mouse_locator
-#- pivotal_workstation::menumeters
-#- pivotal_workstation::bettertouchtool
-#- pivotal_workstation::ccmenu
-#- pivotal_workstation::github_for_mac
-#- pivotal_workstation::gitx
-#- sprout-osx-apps::iterm2
-#- pivotal_workstation::keycastr
+- pivotal_workstation::mouse_locator
+- sprout-osx-apps::menumeters
+- pivotal_workstation::bettertouchtool
+- sprout-osx-apps::ccmenu
+- pivotal_workstation::github_for_mac
+- sprout-osx-apps::gitx
+- sprout-osx-apps::iterm2
+- sprout-osx-apps::keycastr
 - sprout-osx-apps::virtualbox
 - sprout-osx-apps::vagrant
 - sprout-osx-apps::sequelpro
 - sprout-osx-apps::caffeine
-
-# apps (editors)
-#- pivotal_workstation::textmate
-#- pivotal_workstation::textmate_bundles
-#- pivotal_workstation::textmate_preferences
-
-#- pivotal_workstation::vim
-#- pivotal_workstation::vim_config
-#- sprout-osx-apps::ctags_exuberant
 
 - sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
@@ -78,6 +64,7 @@ recipes:
 - ml-workstation::ssh_config
 - ml-workstation::nginx
 - ml-workstation::elasticbeanstalk
+- ml-workstation::mysql
 
 node_attributes:
   terminal:
@@ -89,12 +76,6 @@ node_attributes:
         - bash_profile-mavenlink.bash
   function_keys:
     use_function_keys_as_function_keys: 1
-  rvm:
-    default_ruby: ruby-1.9.3-p448
-    rubies:
-      ruby-1.9.3-p448:
-        env:
-        command_line_options: --verify-downloads 1 --with-openssl-dir=/usr/bin
   git_projects:
     -
       - sprout-wrap
