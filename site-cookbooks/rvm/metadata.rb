@@ -1,0 +1,11 @@
+maintainer        'MavenLink'
+maintainer_email  'accounts@mavenlink.com'
+license           'MIT'
+description       'Variant of pivotal_workstation RVM recipe to configure an OSX workstation for ruby development'
+long_description  'Fixing RVM recipe, based on pivotal_workstation RVM recipe'
+version           '0.1.0'
+supports          'mac_os_x'
+
+depends           'pivotal_workstation'
+depends           'sprout-osx-settings'
+depends           'sprout-osx-apps'

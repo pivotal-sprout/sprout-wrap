@@ -27,7 +27,7 @@ recipes:
 - sprout-osx-git::git_scripts
 
 # development (rails)
-- sprout-osx-rbenv
+- rvm::rvm
 - pivotal_workstation::gem_setup
 - pivotal_workstation::nginx
 - sprout-osx-apps::imagemagick

@@ -3,14 +3,13 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
+cookbook 'rvm',
+  :path => 'site-cookbooks/rvm'
+  
 cookbook 'dmg',
   # :git => 'git://github.com/opscode-cookbooks/dmg.git'
   :git => 'git://github.com/juliandunn/dmg.git',
   :ref => 'COOK-4065'
-
-cookbook 'sprout-osx-rbenv',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :path => 'sprout-osx-rbenv'
 
 cookbook 'sprout-osx-git',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
