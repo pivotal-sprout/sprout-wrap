@@ -83,7 +83,7 @@ node_attributes:
   git_projects:
     -
       - sprout-wrap
-      - https://github.com/mavenlink-cookbooks/sprout-wrap.git
+      - git@github.com:mavenlink-cookbooks/sprout-wrap.git
     -
       - mavenlink
       - git@github.com:mavenlink/mavenlink.git
@@ -96,7 +96,6 @@ node_attributes:
     -
       - mavenlink-js
       - git@github.com:mavenlink/mavenlink-js.git
-
     -
       - brainstem-js
       - git@github.com:mavenlink/brainstem-js.git
