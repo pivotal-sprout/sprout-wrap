@@ -70,7 +70,7 @@ node_attributes:
   sprout:
     rubymine:
       preferences:
-        dir: "#{node['sprout']['home']}/Library/Preferences/RubyMine60"
+        dir: <%= "#{ENV['HOME']}/Library/Preferences/RubyMine60" %>
   terminal:
     color_scheme: <%= ENV['TERMINAL_SCHEME'] || 'Basic' %>
   bash_it:
