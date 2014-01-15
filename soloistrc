@@ -30,21 +30,13 @@ recipes:
 
 # apps
 - pivotal_workstation::screen_sharing_app
-- sprout-osx-apps::skype
 - sprout-osx-apps::shiftit
-- sprout-osx-apps::firefox
-- sprout-osx-apps::dropbox
-- sprout-osx-apps::chrome
 - pivotal_workstation::mouse_locator
 - sprout-osx-apps::menumeters
-- pivotal_workstation::bettertouchtool
 - sprout-osx-apps::ccmenu
 - pivotal_workstation::github_for_mac
-- sprout-osx-apps::gitx
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::keycastr
-- sprout-osx-apps::virtualbox
-- sprout-osx-apps::vagrant
 
 # apps (editors)
 - sprout-osx-apps::textmate
@@ -56,6 +48,8 @@ recipes:
 
 - sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
+
+- sprout-homebrew
 
 node_attributes:
   git_pairs_domain: pivotallabs.com
@@ -75,3 +69,14 @@ node_attributes:
     -
       - sprout-wrap
       - https://github.com/pivotal-sprout/sprout-wrap.git
+  sprout:
+    homebrew:
+      casks:
+        - bettertouchtool
+        - dropbox
+        - firefox
+        - gitx-rowanj
+        - google-chrome
+        - skype
+        - vagrant
+        - virtualbox
