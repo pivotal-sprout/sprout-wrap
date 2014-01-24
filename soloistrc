@@ -17,9 +17,9 @@ recipes:
 # development (general)
 - sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
-- sprout-osx-git::git_projects
+# - sprout-osx-git::git_projects
 - pivotal_workstation::git_config_global_defaults
-- sprout-osx-git::git_scripts
+# - sprout-osx-git::git_scripts
 # (added by gloo)
 - pivotal_workstation::github_ssh_keys
 
@@ -34,10 +34,10 @@ recipes:
 
 # apps
 - pivotal_workstation::screen_sharing_app
-# - sprout-osx-apps::skype
+- sprout-osx-apps::skype
 # - sprout-osx-apps::shiftit
 - sprout-osx-apps::firefox
-- sprout-osx-apps::dropbox
+# - sprout-osx-apps::dropbox
 - sprout-osx-apps::chrome
 # - pivotal_workstation::mouse_locator
 # - sprout-osx-apps::menumeters
@@ -70,55 +70,15 @@ recipes:
 - sprout-osx-apps::hipchat
 - sprout-osx-apps::java
 - sprout-osx-apps::lastpass
-- sprout-osx-apps::libreoffice
+# - sprout-osx-apps::libreoffice
 - sprout-osx-apps::macvim
 - sprout-osx-apps::s3cmd
 - sprout-osx-apps::sublime_text
-- sprout-osx-apps::vlc
-- sprout-osx-apps::wemux
+# - sprout-osx-apps::vlc
+# - sprout-osx-apps::wemux
 
 node_attributes: 
   workspace_directory: src
-  git_pairs_authors: 
-  - shortname: abourg
-    name: Adam Bourg
-    initials: ab
-  - shortname: alauderdale
-    name: Alex Lauderdale
-    initials: al
-  - shortname: anichols
-    name: Aaron Nichols
-    initials: an
-  - shortname: bhollar
-    name: Brooks Hollar
-    initials: bh
-  - shortname: dlange
-    name: Dave Lange
-    initials: dl
-  - shortname: eklein
-    name: Eli Klein
-    initials: ek
-  - shortname: jcuzella
-    name: James Cuzella
-    initials: jc
-  - shortname: jgarner
-    name: Josh Garner
-    initials: jg
-  - shortname: jvaneaton
-    name: Justin Van Eaton
-    initials: jve
-  - shortname: mfarrar
-    name: Matt Farrar
-    initials: mf
-  - shortname: mgetty
-    name: Matt Getty
-    initials: mg
-  - shortname: rsuh
-    name: Rolland Suh
-    initials: rs
-  - shortname: ssteward
-    name: Sam Steward
-    initials: ss
   sprout: 
     vagrant: 
       dmg: 
@@ -129,22 +89,6 @@ node_attributes:
         source: http://download.virtualbox.org/virtualbox/4.3.2/VirtualBox-4.3.2-90405-OSX.dmg
         checksum: de6d2c433b259162ba68156531954cf4c7fd192e8b47e72ea486988e4fe5939e
   vim_alias_vi_to_minimal_vim: false
-  vlc_version: 2.0.7
-  vlc_checksum: 53b5b4786c435e0dd06597139a767cf140f0ef2b54676c8eb5ae62e0f31b3497
-  git_pairs_domain: tangogroup.com
-  git_projects: 
-   -
-     - sprout-wrap
-     - https://github.com/TangoGroup/sprout-wrap.git
-     - pub/soloist
-   -
-     - gloo-chef
-     - git@github.com:TangoGroup/gloo-chef.git
-     - gloo
-   -
-     - program_creator
-     - git@github.com:TangoGroup/program_creator.git
-     - gloo
   versions: 
     rvm: 1.21.20
   rvm: 
