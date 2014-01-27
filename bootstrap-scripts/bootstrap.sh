@@ -32,8 +32,8 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
-  "10.9") XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
-  *)      XCODE_DMG='XCode-4.6.3-4H1503.dmg' ;;
+  "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
+  *)      XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
 esac
 
 errorout() {
