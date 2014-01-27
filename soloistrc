@@ -79,6 +79,11 @@ recipes:
 
 node_attributes: 
   workspace_directory: src
+  :gloo-workstation:
+    :xcode:
+      :dmg:
+        source: http://bro-fs-01.bro.gloostate.com/installers/mac/XCode-5.0.2-5A3005.dmg
+        checksum: 530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457
   sprout: 
     vagrant: 
       dmg: 
