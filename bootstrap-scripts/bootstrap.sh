@@ -63,6 +63,7 @@ if [ -d sprout-wrap ]; then
 else
   git clone https://github.com/TangoGroup/sprout-wrap.git
   pushd sprout-wrap
+  git checkout gloo-develop
 fi
 
 # Hack to make sure sudo caches sudo password correctly...
