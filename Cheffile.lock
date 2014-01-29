@@ -1,8 +1,8 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    dmg (2.0.8)
-    homebrew (1.5.2)
+    dmg (2.1.4)
+    homebrew (1.5.4)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
@@ -47,9 +47,10 @@ GIT
 GIT
   remote: https://github.com/TangoGroup/gloo-workstation.git
   ref: master
-  sha: f9692b946d25e343a407b692105bec77641d7426
+  sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
   specs:
-    gloo-workstation (0.1.3)
+    gloo-workstation (0.1.5)
+      dmg (>= 0.0.0)
 
 GIT
   remote: https://github.com/trinitronx/sprout
@@ -65,7 +66,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: pivotal_workstation
   ref: mavericks-develop
-  sha: 0fab831cf716b8ac521a46e3c45b6f754da666d6
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
@@ -80,7 +81,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-apps
   ref: mavericks-develop
-  sha: 0fab831cf716b8ac521a46e3c45b6f754da666d6
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -92,7 +93,7 @@ GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-base
   ref: mavericks-develop
-  sha: 0fab831cf716b8ac521a46e3c45b6f754da666d6
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     sprout-osx-base (0.1.0)
 
