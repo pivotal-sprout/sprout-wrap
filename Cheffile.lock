@@ -1,14 +1,8 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    dmg (2.2.0)
     homebrew (1.5.4)
-
-GIT
-  remote: git://github.com/juliandunn/dmg.git
-  ref: COOK-4065
-  sha: fb2be08cf9ace9e6d1bd15c185a591cfa4b08237
-  specs:
-    dmg (2.1.3)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
@@ -98,10 +92,11 @@ GIT
 
 GIT
   remote: git@github.com:mavenlink/cookbook-ml-workstation.git
-  ref: master
-  sha: d27518efcac17c5adb8560f5c0a65ef00cd15655
+  ref: imageoptim_homebrew_cask
+  sha: 2acf9cf650f513144dfbf6944365f5152d7131da
   specs:
-    ml-workstation (2.0.0)
+    ml-workstation (2.1.0)
+      sprout-osx-apps (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
 
 PATH
@@ -121,7 +116,6 @@ PATH
       sprout-osx-settings (>= 0.0.0)
 
 DEPENDENCIES
-  dmg (>= 0)
   meta (>= 0)
   ml-workstation (>= 0)
   osx (>= 0)

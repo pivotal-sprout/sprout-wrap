@@ -5,11 +5,11 @@ cookbook 'meta',
 
 cookbook 'rvm',
   :path => 'site-cookbooks/rvm'
-  
-cookbook 'dmg',
-  # :git => 'git://github.com/opscode-cookbooks/dmg.git'
-  :git => 'git://github.com/juliandunn/dmg.git',
-  :ref => 'COOK-4065'
+
+#cookbook 'dmg',
+#  # :git => 'git://github.com/opscode-cookbooks/dmg.git'
+#  :git => 'git://github.com/juliandunn/dmg.git',
+#  :ref => 'COOK-4065'
 
 cookbook 'sprout-osx-git',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
@@ -44,4 +44,5 @@ cookbook 'sprout-osx-rubymine',
   :path => 'sprout-osx-rubymine'
 
 cookbook 'ml-workstation',
-  :git => 'git@github.com:mavenlink/cookbook-ml-workstation.git'
+  :git => 'git@github.com:mavenlink/cookbook-ml-workstation.git',
+  :ref => 'imageoptim_homebrew_cask'

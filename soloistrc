@@ -1,76 +1,80 @@
 # vim: set filetype=yml : #
 
 recipes:
+  # ensure FileVault is enabled first thing
+  - ml-workstation::ensure_filevault
 
-# ensure FileVault is enabled first thing
-- ml-workstation::ensure_filevault
+  # base (required by sprout)
+  - sprout-osx-base::bash_it
+  - sprout-osx-base::homebrew
 
-# base (required by sprout)
-- sprout-osx-base::bash_it
-- sprout-osx-base::homebrew
+  # settings
+  - pivotal_workstation::sshd_on
+  - sprout-osx-settings::defaults_fast_key_repeat_rate
+  - pivotal_workstation::locate_on
+  - sprout-osx-settings::global_environment_variables
+  - sprout-osx-settings::enable_assistive_devices
+  - sprout-osx-settings::function_keys
+  - sprout-osx-settings::terminal_preferences
 
-# settings
-- pivotal_workstation::sshd_on
-- pivotal_workstation::inputrc
-- sprout-osx-settings::defaults_fast_key_repeat_rate
-- pivotal_workstation::locate_on
-- sprout-osx-settings::global_environment_variables
-- sprout-osx-settings::enable_assistive_devices
-- sprout-osx-settings::function_keys
-- sprout-osx-settings::terminal_preferences
+  # development (general)
+  - sprout-osx-base::workspace_directory
+  - pivotal_workstation::unix_essentials
+  - sprout-osx-git::git_projects
+  - pivotal_workstation::git_config_global_defaults
+  - sprout-osx-git::git_scripts
 
-# development (general)
-- sprout-osx-base::workspace_directory
-- pivotal_workstation::unix_essentials
-- sprout-osx-git::git_projects
-- pivotal_workstation::git_config_global_defaults
-- sprout-osx-git::git_scripts
+  # development (rails)
+  - pivotal_workstation::rvm
+  - pivotal_workstation::gem_setup
+  - pivotal_workstation::nginx
+  - sprout-osx-apps::imagemagick
+  - sprout-osx-apps::node_js
+  - sprout-osx-apps::qt
 
-# development (rails)
-- rvm::rvm
-- pivotal_workstation::gem_setup
-- pivotal_workstation::nginx
-- sprout-osx-apps::imagemagick
-- sprout-osx-apps::node_js
-- sprout-osx-apps::qt
+  # mavenlink specific
+  - ml-workstation::imageoptim
+  - ml-workstation::phantomjs
+  - ml-workstation::icu4c
+  - ml-workstation::elasticsearch
+  - ml-workstation::etc_hosts
+  - ml-workstation::imageoptim
+  - ml-workstation::ssh_config
+  - ml-workstation::nginx
+  - ml-workstation::elasticbeanstalk
+  - ml-workstation::mysql
 
-- sprout-osx-apps::shiftit
-- sprout-osx-apps::firefox
-- sprout-osx-apps::dropbox
-- sprout-osx-apps::chrome
-- pivotal_workstation::mouse_locator
-- sprout-osx-apps::menumeters
-- pivotal_workstation::bettertouchtool
-- sprout-osx-apps::ccmenu
-- pivotal_workstation::github_for_mac
-- sprout-osx-apps::gitx
-- sprout-osx-apps::iterm2
-- sprout-osx-apps::keycastr
-- sprout-osx-apps::virtualbox
-- sprout-osx-apps::vagrant
-- sprout-osx-apps::sequelpro
-- sprout-osx-apps::caffeine
-
-- sprout-osx-apps::rubymine
-- sprout-osx-rubymine::preferences
-
-# mavenlink specific
-- ml-workstation::phantomjs
-- ml-workstation::icu4c
-- ml-workstation::elasticsearch
-- ml-workstation::etc_hosts
-- ml-workstation::hipchat
-- ml-workstation::imageoptim
-- ml-workstation::ssh_config
-- ml-workstation::nginx
-- ml-workstation::elasticbeanstalk
-- ml-workstation::mysql
+env_variable_switches:
+  TYPE_INSTALL:
+    full:
+      recipes:
+        - sprout-osx-apps::shiftit
+        - sprout-osx-apps::firefox
+        - sprout-osx-apps::dropbox
+        - sprout-osx-apps::chrome
+        - pivotal_workstation::mouse_locator
+        - sprout-osx-apps::menumeters
+        - pivotal_workstation::bettertouchtool
+        - sprout-osx-apps::ccmenu
+        - pivotal_workstation::github_for_mac
+        - sprout-osx-apps::gitx
+        - sprout-osx-apps::iterm2
+        - sprout-osx-apps::keycastr
+        - sprout-osx-apps::virtualbox
+        - sprout-osx-apps::vagrant
+        - sprout-osx-apps::sequelpro
+        - sprout-osx-apps::caffeine
+        - sprout-osx-apps::alfred
+        - sprout-osx-apps::hipchat
+        - sprout-osx-apps::sublime_text
+        - sprout-osx-apps::truecrypt
+        - sprout-osx-rubymine::default
 
 node_attributes:
-  sprout:
-    rubymine:
-      preferences:
-        dir: <%= "#{ENV['HOME']}/Library/Preferences/RubyMine60" %>
+#  sprout:
+#    rubymine:
+#      preferences:
+#        dir: <%= "#{ENV['HOME']}/Library/Preferences/RubyMine60" %>
   terminal:
     color_scheme: <%= ENV['TERMINAL_SCHEME'] || 'Basic' %>
   bash_it:
@@ -102,10 +106,6 @@ node_attributes:
     -
       - brainstem
       - git@github.com:mavenlink/brainstem.git
-  hipchat_download_uri: http://downloads.hipchat.com.s3.amazonaws.com/mac-beta/HipChat-0.29-01uennzomg01wmg.zip
-  hipchat_app_path: /Applications/HipChat.app
-  imageoptim_download_uri: http://imageoptim.com/ImageOptim.tbz2
-  imageoptim_app_path: /Applications/ImageOptim.app
   nginx_settings:
     servers:
       -
