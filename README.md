@@ -34,6 +34,7 @@ Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up 
 
 1. **Install soloist & and other required gems in sprout-wrap repo dir**
 
+	./pre_setup.sh
         sudo gem install bundler
         sudo bundle
 
