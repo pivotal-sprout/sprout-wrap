@@ -11,6 +11,7 @@ recipes:
 - sprout-osx-settings::defaults_fast_key_repeat_rate
 - pivotal_workstation::locate_on
 - sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::set_menubar_clock_format
 
 # development (general)
 - sprout-osx-base::workspace_directory
@@ -70,6 +71,8 @@ node_attributes:
       - sprout-wrap
       - https://github.com/pivotal-sprout/sprout-wrap.git
   sprout:
+    settings:
+      clock_format: EEE MMM d  h:mm:ss a
     homebrew:
       casks:
         - bettertouchtool
