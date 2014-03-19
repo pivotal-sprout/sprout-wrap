@@ -75,7 +75,6 @@ node_attributes:
       clock_format: EEE MMM d  h:mm:ss a
     homebrew:
       casks:
-        - bettertouchtool
         - dropbox
         - firefox
         - gitx-rowanj
