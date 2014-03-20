@@ -1,5 +1,73 @@
 # vim: set filetype=yml : #
 
+recipes:
+  # ensure FileVault is enabled first thing
+  - ml-workstation::ensure_filevault
+
+  # base (required by sprout)
+  - sprout-osx-base::bash_it
+  - sprout-osx-base::homebrew
+
+  # settings
+  - pivotal_workstation::sshd_on
+  - sprout-osx-settings::defaults_fast_key_repeat_rate
+  - pivotal_workstation::locate_on
+  - sprout-osx-settings::global_environment_variables
+  - sprout-osx-settings::enable_assistive_devices
+  - sprout-osx-settings::function_keys
+  - sprout-osx-settings::terminal_preferences
+
+  # development (general)
+  - sprout-osx-base::workspace_directory
+  - pivotal_workstation::unix_essentials
+  - sprout-osx-git::git_projects
+  - pivotal_workstation::git_config_global_defaults
+  - sprout-osx-git::git_scripts
+
+  # development (rails)
+  - rvm::rvm
+  - pivotal_workstation::gem_setup
+  - pivotal_workstation::nginx
+  - sprout-osx-apps::imagemagick
+  - sprout-osx-apps::node_js
+  - sprout-osx-apps::qt
+
+  # mavenlink specific
+  - ml-workstation::imageoptim
+  - ml-workstation::phantomjs
+  - ml-workstation::icu4c
+  - sprout-osx-apps::java
+  - ml-workstation::elasticsearch
+  - ml-workstation::etc_hosts
+  - ml-workstation::imageoptim
+  - ml-workstation::ssh_config
+  - ml-workstation::nginx
+  - ml-workstation::elasticbeanstalk
+  - ml-workstation::mysql
+
+  # mavenlink apps
+  - sprout-osx-apps::shiftit
+  - sprout-osx-apps::firefox
+  - sprout-osx-apps::dropbox
+  - sprout-osx-apps::chrome
+  - pivotal_workstation::mouse_locator
+  - sprout-osx-apps::menumeters
+  - pivotal_workstation::bettertouchtool
+  - sprout-osx-apps::ccmenu
+  - pivotal_workstation::github_for_mac
+  - sprout-osx-apps::gitx
+  - sprout-osx-apps::iterm2
+  - sprout-osx-apps::keycastr
+  - sprout-osx-apps::virtualbox
+  - sprout-osx-apps::vagrant
+  - sprout-osx-apps::sequelpro
+  - sprout-osx-apps::caffeine
+  - sprout-osx-apps::alfred
+  - sprout-osx-apps::hipchat
+  - sprout-osx-apps::sublime_text
+  - sprout-osx-apps::truecrypt
+  - sprout-osx-rubymine::default
+        
 env_variable_switches:
   TYPE_INSTALL:
     light:
@@ -47,75 +115,6 @@ env_variable_switches:
         - ml-workstation::nginx
         - ml-workstation::elasticbeanstalk
         - ml-workstation::mysql
-
-    full:
-      recipes:
-        # ensure FileVault is enabled first thing
-        - ml-workstation::ensure_filevault
-
-        # base (required by sprout)
-        - sprout-osx-base::bash_it
-        - sprout-osx-base::homebrew
-
-        # settings
-        - pivotal_workstation::sshd_on
-        - sprout-osx-settings::defaults_fast_key_repeat_rate
-        - pivotal_workstation::locate_on
-        - sprout-osx-settings::global_environment_variables
-        - sprout-osx-settings::enable_assistive_devices
-        - sprout-osx-settings::function_keys
-        - sprout-osx-settings::terminal_preferences
-
-        # development (general)
-        - sprout-osx-base::workspace_directory
-        - pivotal_workstation::unix_essentials
-        - sprout-osx-git::git_projects
-        - pivotal_workstation::git_config_global_defaults
-        - sprout-osx-git::git_scripts
-
-        # development (rails)
-        - rvm::rvm
-        - pivotal_workstation::gem_setup
-        - pivotal_workstation::nginx
-        - sprout-osx-apps::imagemagick
-        - sprout-osx-apps::node_js
-        - sprout-osx-apps::qt
-
-        # mavenlink specific
-        - ml-workstation::imageoptim
-        - ml-workstation::phantomjs
-        - ml-workstation::icu4c
-        - sprout-osx-apps::java
-        - ml-workstation::elasticsearch
-        - ml-workstation::etc_hosts
-        - ml-workstation::imageoptim
-        - ml-workstation::ssh_config
-        - ml-workstation::nginx
-        - ml-workstation::elasticbeanstalk
-        - ml-workstation::mysql
-
-        # mavenlink apps
-        - sprout-osx-apps::shiftit
-        - sprout-osx-apps::firefox
-        - sprout-osx-apps::dropbox
-        - sprout-osx-apps::chrome
-        - pivotal_workstation::mouse_locator
-        - sprout-osx-apps::menumeters
-        - pivotal_workstation::bettertouchtool
-        - sprout-osx-apps::ccmenu
-        - pivotal_workstation::github_for_mac
-        - sprout-osx-apps::gitx
-        - sprout-osx-apps::iterm2
-        - sprout-osx-apps::keycastr
-        - sprout-osx-apps::virtualbox
-        - sprout-osx-apps::vagrant
-        - sprout-osx-apps::sequelpro
-        - sprout-osx-apps::caffeine
-        - sprout-osx-apps::alfred
-        - sprout-osx-apps::hipchat
-        - sprout-osx-apps::sublime_text
-        - sprout-osx-apps::truecrypt
-        - sprout-osx-rubymine::default
 
 node_attributes:
 #  sprout:
