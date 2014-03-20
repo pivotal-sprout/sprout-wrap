@@ -34,7 +34,7 @@ Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up 
 
 1. **Install soloist & and other required gems in sprout-wrap repo dir**
 
-	./pre_setup.sh
+        ./pre_setup.sh
         sudo gem install bundler
         sudo bundle
 
@@ -45,6 +45,10 @@ Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up 
     If you prefer you can overload some options, such as Terminal.app color scheme:
 
         TERMINAL_SCHEME=Pro bundle exec soloist
+        
+    If you do not want OSX applications to be installed:
+    
+    	TYPE_INSTALL=light
 
 1. **Bootstrap mavenlink app**
 
