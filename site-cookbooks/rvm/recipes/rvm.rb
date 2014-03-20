@@ -14,9 +14,7 @@ run_unless_marker_file_exists(marker_version_string_for("rvm")) do
   end
 
   [
-    "curl -Lsf http://github.com/wayneeseguin/rvm/tarball/master | tar xvz -C#{RVM_HOME}/src/rvm --strip 1",
-    "cd #{RVM_HOME}/src/rvm; ./install",
-    "#{RVM_COMMAND} --version | grep Wayne"
+    "curl -sSL https://get.rvm.io | bash -s stable --autolibs=homebrew"
   ].each do |rvm_cmd|
     execute rvm_cmd do
       user node['current_user']
