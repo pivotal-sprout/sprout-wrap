@@ -36,6 +36,7 @@ recipes:
   - ml-workstation::imageoptim
   - ml-workstation::phantomjs
   - ml-workstation::icu4c
+  - sprout-osx-apps::java
   - ml-workstation::elasticsearch
   - ml-workstation::etc_hosts
   - ml-workstation::imageoptim
