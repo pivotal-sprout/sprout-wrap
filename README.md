@@ -42,6 +42,8 @@ Use `services+WORKSTATION_NAME@mavenlink.com` as the email if you're setting up 
 
         bundle exec soloist
 
+    Soloist will return an error after installing RVM. Just type the command again!
+
     If you prefer you can overload some options, such as Terminal.app color scheme:
 
         TERMINAL_SCHEME=Pro bundle exec soloist
