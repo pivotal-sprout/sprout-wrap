@@ -108,6 +108,14 @@ GIT
     sprout-homebrew (0.1.0)
       homebrew (>= 0.0.0)
 
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-terminal
+  ref: master
+  sha: d238fd546063112c9536317f1912a649af6b16f1
+  specs:
+    sprout-terminal (0.2.0)
+      osx (>= 0.0.0)
+
 PATH
   remote: site-cookbooks/meta
   specs:
@@ -129,4 +137,5 @@ DEPENDENCIES
   sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
+  sprout-terminal (>= 0)
 
