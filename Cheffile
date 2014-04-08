@@ -46,3 +46,27 @@ cookbook 'sprout-homebrew',
 
 cookbook 'sprout-terminal',
   :github => 'pivotal-sprout/sprout-terminal'
+
+cookbook 'banno-sprout-osx-base-homebrew',
+  :path   => '../banno-sprout-osx-apps-homebrew'
+
+cookbook 'banno-sprout-homebrew',
+  :git => 'git@git.banno.com:cookbooks/banno-sprout-homebrew.git'
+
+cookbook 'banno-sprout-osx-apps-ack',
+  :git => 'git@git.banno.com:cookbooks/banno-sprout-osx-apps-ack.git'
+
+cookbook 'banno-pivotal-workstation-git',
+  :git => 'git@git.banno.com:cookbooks/banno-pivotal-workstation-git.git'
+
+cookbook 'banno-pivotal-workstation-tmux',
+  :git => 'git@git.banno.com:cookbooks/banno-pivotal-workstation-tmux.git'
+
+cookbook 'banno-sprout-osx-apps-homebrew-cask',
+  :git => 'git@git.banno.com:cookbooks/banno-sprout-osx-apps-homebrew-cask.git'
+
+cookbook 'banno-pivotal-workstation-unix-essentials',
+  :git => 'git@git.banno.com:cookbooks/banno-pivotal-workstation-unix-essentials.git'
+
+cookbook 'banno-sprout-osx-apps-xquartz',
+  :git => 'git@git.banno.com:cookbooks/banno-sprout-osx-apps-xquartz.git'

@@ -1,3 +1,5 @@
 tmp/
 cookbooks/
 .bundle/
+vendor/bundle/
+vendor/ruby/

@@ -17,6 +17,7 @@ GEM
       ohai (>= 0.6.0)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
+    chef-rewind (0.0.8)
     erubis (2.7.0)
     hashie (1.2.0)
     highline (1.6.21)
@@ -68,5 +69,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  chef-rewind
   plist
   soloist
