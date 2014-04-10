@@ -58,7 +58,7 @@ recipes:
 - sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
 
-- sprout-homebrew
+- banno-sprout-homebrew::default
 
 node_attributes:
   current_user: 'jackcviers'

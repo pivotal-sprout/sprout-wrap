@@ -50,7 +50,7 @@ GIT
 GIT
   remote: git@git.banno.com:cookbooks/banno-sprout-homebrew.git
   ref: master
-  sha: 52940982a056c97f8d34c356bf4a77b3a2cf80fb
+  sha: fab7f581fd8a35a66cd5f80cb6695ab186c0692c
   specs:
     banno-sprout-homebrew (0.1.0)
       homebrew (~> 1.5.4)
