@@ -3,7 +3,13 @@ recipes:
 # base (required by sprout)
 - sprout-osx-base::bash_it
 - pivotal_workstation::create_var_chef_cache
-- sprout-osx-base::homebrew
+- banno-sprout-osx-base-homebrew
+- banno-sprout-osx-apps-ack
+- banno-pivotal-workstation-git
+- banno-pivotal-workstation-tmux
+- banno-sprout-osx-apps-homebrew-cask
+- banno-sprout-osx-apps-xquartz
+
 
 # settings
 - pivotal_workstation::sshd_on
@@ -16,6 +22,7 @@ recipes:
 
 # development (general)
 - sprout-osx-base::workspace_directory
+- banno-pivotal-workstation-unix-essentials
 - pivotal_workstation::unix_essentials
 - sprout-osx-git::git_projects
 - pivotal_workstation::git_config_global_defaults
@@ -51,9 +58,10 @@ recipes:
 - sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
 
-- sprout-homebrew
+- banno-sprout-homebrew::default
 
 node_attributes:
+  current_user: 'jackcviers'
   git_pairs_domain: pivotallabs.com
   git_pairs_authors:
     - initials: ah

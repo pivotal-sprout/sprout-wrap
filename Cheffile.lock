@@ -5,6 +5,94 @@ SITE
     homebrew (1.5.4)
 
 GIT
+  remote: git@git.banno.com:cookbooks/banno-pivotal-workstation-git.git
+  ref: master
+  sha: 95fff9963f653dd420b01c6caffa9dc4ddf44556
+  specs:
+    banno-pivotal-workstation-git (0.1.0)
+      banno-sprout-homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      pivotal_workstation (>= 0.0.0)
+      sprout-homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+      sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-pivotal-workstation-tmux.git
+  ref: master
+  sha: 925143d6bb025706dcb3e40f095b4ed4507e89f2
+  specs:
+    banno-pivotal-workstation-tmux (0.1.0)
+      banno-sprout-homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      pivotal_workstation (>= 0.0.0)
+      sprout-homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+      sprout-pivotal (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-pivotal-workstation-unix-essentials.git
+  ref: master
+  sha: 0c09f78f8e7eece45dc16d1957940ad58fc3d178
+  specs:
+    banno-pivotal-workstation-unix-essentials (0.1.0)
+      banno-sprout-homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      pivotal_workstation (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-sprout-homebrew.git
+  ref: master
+  sha: fab7f581fd8a35a66cd5f80cb6695ab186c0692c
+  specs:
+    banno-sprout-homebrew (0.1.0)
+      homebrew (~> 1.5.4)
+      sprout-homebrew (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-sprout-osx-apps-ack.git
+  ref: master
+  sha: 2961df63a16ef03b953dc43082bbd71b47b1835d
+  specs:
+    banno-sprout-osx-apps-ack (0.1.0)
+      banno-sprout-homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-sprout-osx-apps-homebrew-cask.git
+  ref: master
+  sha: 9756abf7431eb84fd08287762b9fe3fa639ed5d3
+  specs:
+    banno-sprout-osx-apps-homebrew-cask (0.1.0)
+      banno-sprout-homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: git@git.banno.com:cookbooks/banno-sprout-osx-apps-xquartz.git
+  ref: master
+  sha: bcf10525761932d55cce6ab50571725e011e518e
+  specs:
+    banno-sprout-osx-apps-xquartz (0.1.0)
+      homebrew (~> 1.5.4)
+      sprout-homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: osx
   ref: master
@@ -103,10 +191,10 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-homebrew
   ref: master
-  sha: 25251cec3bc0325fcc2f3b6ebb5ce3d135414cca
+  sha: 2d6b811408e7232af009b703935f95c87b2478be
   specs:
     sprout-homebrew (0.1.0)
-      homebrew (>= 0.0.0)
+      homebrew (~> 1.5.4)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
@@ -117,15 +205,33 @@ GIT
       osx (>= 0.0.0)
 
 PATH
+  remote: ../banno-sprout-osx-apps-homebrew
+  specs:
+    banno-sprout-osx-base-homebrew (0.1.0)
+      homebrew (~> 1.5.4)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+PATH
   remote: site-cookbooks/meta
   specs:
     meta (0.1.1)
+      banno-sprout-osx-base-homebrew (>= 0.0.0)
       pivotal_workstation (>= 0.0.0)
       sprout-osx-apps (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
 
 DEPENDENCIES
+  banno-pivotal-workstation-git (>= 0)
+  banno-pivotal-workstation-tmux (>= 0)
+  banno-pivotal-workstation-unix-essentials (>= 0)
+  banno-sprout-homebrew (>= 0)
+  banno-sprout-osx-apps-ack (>= 0)
+  banno-sprout-osx-apps-homebrew-cask (>= 0)
+  banno-sprout-osx-apps-xquartz (>= 0)
+  banno-sprout-osx-base-homebrew (>= 0)
   meta (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
