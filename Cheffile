@@ -46,3 +46,6 @@ cookbook 'sprout-homebrew',
 
 cookbook 'sprout-terminal',
   :github => 'pivotal-sprout/sprout-terminal'
+
+cookbook 'sprout-postgresql',
+  :github => 'pivotal-sprout/sprout-postgresql'
