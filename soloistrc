@@ -26,31 +26,19 @@ recipes:
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
 - sprout-postgresql
-- sprout-osx-apps::imagemagick
-- sprout-osx-apps::node_js
-- sprout-osx-apps::qt
 
 # apps
 - pivotal_workstation::screen_sharing_app
-- sprout-osx-apps::shiftit
 - pivotal_workstation::mouse_locator
-- sprout-osx-apps::menumeters
-- sprout-osx-apps::ccmenu
 - pivotal_workstation::github_for_mac
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::keycastr
 
 # apps (editors)
-- sprout-osx-apps::textmate
 - sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
-
 - sprout-osx-apps::macvim
-- sprout-osx-apps::ctags_exuberant
-
-- sprout-osx-apps::rubymine
 - sprout-osx-rubymine::preferences
-
 - sprout-homebrew
 
 node_attributes:
@@ -78,11 +66,22 @@ node_attributes:
     settings:
       clock_format: EEE MMM d  h:mm:ss a
     homebrew:
+      formulae:
+        - ctags-exuberant
+        - imagemagick
+        - node
+        - qt
       casks:
+        - ccmenu
         - dropbox
         - firefox
         - gitx-rowanj
         - google-chrome
+        - menumeters
+        - rubymine
+        - shiftit
         - skype
+        - textmate
         - vagrant
         - virtualbox
+        - xquartz
