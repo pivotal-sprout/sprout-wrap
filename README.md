@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
 
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
-to run a subset of the recipes in sprout's [cookbooks]((https://github.com/pivotal-sprout/sprout).
+to run a subset of the recipes in sprout's cookbooks.
 
 [Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
 customize its [attributes](http://docs.opscode.com/chef_overview_attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
