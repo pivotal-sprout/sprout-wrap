@@ -38,8 +38,7 @@ cookbook 'osx',
   :path => 'osx'
 
 cookbook 'sprout-osx-rubymine',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-rubymine'
+  :github => 'pivotal-sprout/sprout-osx-rubymine'
 
 cookbook 'sprout-homebrew',
   :github => 'pivotal-sprout/sprout-homebrew'
