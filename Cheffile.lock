@@ -101,7 +101,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-rubymine
   ref: master
-  sha: 483e49c5b1247970282938e8dafe3b13eb09e202
+  sha: b239732944b1873adced86b1d680ddb63c400e75
   specs:
     sprout-osx-rubymine (0.1.0)
       homebrew (>= 0.0.0)
