@@ -38,7 +38,7 @@ recipes:
 - sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
 - sprout-osx-apps::macvim
-- sprout-osx-rubymine::preferences
+- sprout-osx-rubymine
 - sprout-homebrew
 
 node_attributes:
@@ -78,7 +78,6 @@ node_attributes:
         - gitx-rowanj
         - google-chrome
         - menumeters
-        - rubymine
         - shiftit
         - skype
         - textmate
