@@ -16,7 +16,6 @@ recipes:
 
 # development (general)
 - sprout-base::workspace_directory
-- pivotal_workstation::unix_essentials
 - sprout-git::config
 - sprout-git::git_projects
 - sprout-git::git_scripts
@@ -66,10 +65,17 @@ node_attributes:
       clock_format: EEE MMM d  h:mm:ss a
     homebrew:
       formulae:
+        - ack
         - ctags-exuberant
         - imagemagick
         - node
+        - pstree
         - qt
+        - ssh-copy-id
+        - tmux
+        - tree
+        - watch
+        - wget
       casks:
         - ccmenu
         - dropbox
