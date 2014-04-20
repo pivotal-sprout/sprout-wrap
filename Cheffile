@@ -11,9 +11,8 @@ cookbook 'sprout-rbenv',
 cookbook 'sprout-git',
   :github => 'pivotal-sprout/sprout-git'
 
-cookbook 'sprout-osx-base',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-base'
+cookbook 'sprout-base',
+  :github => 'pivotal-sprout/sprout-base'
 
 cookbook 'pivotal_workstation',
   :github => 'pivotal-sprout/sprout',
@@ -24,8 +23,7 @@ cookbook 'sprout-osx-apps',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-settings'
+  :github => 'pivotal-sprout/sprout-osx-settings'
 
 cookbook 'sprout-pivotal',
   :github => 'pivotal-sprout/sprout',

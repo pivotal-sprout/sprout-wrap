@@ -1,9 +1,9 @@
 recipes:
 
 # base (required by sprout)
-- sprout-osx-base::bash_it
+- sprout-base::bash_it
 - pivotal_workstation::create_var_chef_cache
-- sprout-osx-base::homebrew
+- sprout-base::homebrew
 
 # settings
 - pivotal_workstation::sshd_on
@@ -15,7 +15,7 @@ recipes:
 - sprout-terminal
 
 # development (general)
-- sprout-osx-base::workspace_directory
+- sprout-base::workspace_directory
 - pivotal_workstation::unix_essentials
 - sprout-git::config
 - sprout-git::git_projects

@@ -8,7 +8,7 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: osx
   ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
+  sha: 975d09718b0f0420979a62104021d2d9c66c0f55
   specs:
     osx (0.1.0)
 
@@ -16,14 +16,14 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: pivotal_workstation
   ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
+  sha: 975d09718b0f0420979a62104021d2d9c66c0f55
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
       sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
       sprout-pivotal (>= 0.0.0)
       sprout-postgresql (>= 0.0.0)
@@ -32,57 +32,45 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: sprout-osx-apps
   ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
+  sha: 975d09718b0f0420979a62104021d2d9c66c0f55
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-base
-  ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
-  specs:
-    sprout-osx-base (0.1.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-settings
-  ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
-  specs:
-    sprout-osx-settings (0.1.0)
-      homebrew (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: sprout-pivotal
   ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
+  sha: 975d09718b0f0420979a62104021d2d9c66c0f55
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-base
+  ref: master
+  sha: 1b46050d7134de4cec3d2125e74db92d468f360c
+  specs:
+    sprout-base (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: 5cff81e892dcc9a272ea0339c1d95f69ba6156e4
+  sha: 7d2085438c7e5d0febeddacc46665f346b3c8cae
   specs:
     sprout-git (0.1.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-homebrew
   ref: master
-  sha: a81248e43b2161bbab5f45444468f19b512b1d87
+  sha: 4541f754bd55f8b830edee524b3c98efc3760314
   specs:
     sprout-homebrew (0.1.0)
       homebrew (~> 1.5.4)
@@ -90,34 +78,44 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-rubymine
   ref: master
-  sha: e404cde1bb86e59520042e86e85cc72c9f386274
+  sha: cdb3928ae9fac626fcd0a96a3d35ee521847fded
   specs:
     sprout-osx-rubymine (0.1.0)
+      sprout-base (>= 0.0.0)
       sprout-homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-osx-settings
+  ref: master
+  sha: cda4f30c9f0c463d94bac17b84e76e1a527999de
+  specs:
+    sprout-osx-settings (0.1.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
-  sha: c083300c8220e749be08ad0f85d0bf6e39e97d76
+  sha: 9abc130c573fd41bb51ec7959fc89678b2c8da46
   specs:
     sprout-postgresql (0.1.0)
       homebrew (~> 1.5.4)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-rbenv
   ref: master
-  sha: c371aba459d5521acde17a24fef39408a6845675
+  sha: 2bfacd220448ac5f7a60f9092cae0c7365c157f3
   specs:
     sprout-rbenv (0.1.0)
       homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
   ref: master
-  sha: d238fd546063112c9536317f1912a649af6b16f1
+  sha: 816fd4b61bd37c84ad228968194d5bce93709759
   specs:
     sprout-terminal (0.2.0)
       osx (>= 0.0.0)
@@ -135,10 +133,10 @@ DEPENDENCIES
   meta (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
+  sprout-base (>= 0)
   sprout-git (>= 0)
   sprout-homebrew (>= 0)
   sprout-osx-apps (>= 0)
-  sprout-osx-base (>= 0)
   sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
