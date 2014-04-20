@@ -54,14 +54,14 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 1b46050d7134de4cec3d2125e74db92d468f360c
+  sha: 75a80d6e087698047a6a159de528e3e148b055f7
   specs:
     sprout-base (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: 7d2085438c7e5d0febeddacc46665f346b3c8cae
+  sha: 6bb0e06fa3951cd29fd8c8b499c787771c61546c
   specs:
     sprout-git (0.1.0)
       homebrew (>= 0.0.0)
@@ -74,15 +74,6 @@ GIT
   specs:
     sprout-homebrew (0.1.0)
       homebrew (~> 1.5.4)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout-rubymine
-  ref: master
-  sha: cdb3928ae9fac626fcd0a96a3d35ee521847fded
-  specs:
-    sprout-rubymine (0.1.0)
-      sprout-base (>= 0.0.0)
-      sprout-homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
@@ -106,11 +97,20 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-rbenv
   ref: master
-  sha: 2bfacd220448ac5f7a60f9092cae0c7365c157f3
+  sha: 1e2e99e9642762c9c5e7e99a0fecabeba655c8ef
   specs:
     sprout-rbenv (0.1.0)
       homebrew (>= 0.0.0)
       sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-rubymine
+  ref: master
+  sha: 4db34901eb9358a80bfc05e3c9d9baf8525a0b40
+  specs:
+    sprout-rubymine (0.1.0)
+      sprout-base (>= 0.0.0)
+      sprout-homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
@@ -137,10 +137,10 @@ DEPENDENCIES
   sprout-git (>= 0)
   sprout-homebrew (>= 0)
   sprout-osx-apps (>= 0)
-  sprout-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)
   sprout-rbenv (>= 0)
+  sprout-rubymine (>= 0)
   sprout-terminal (>= 0)
 
