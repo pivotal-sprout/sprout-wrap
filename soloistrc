@@ -1,36 +1,31 @@
 recipes:
 
 # base (required by sprout)
+- sprout-base
 - sprout-base::bash_it
-- pivotal_workstation::create_var_chef_cache
 - sprout-base::homebrew
 
 # settings
-- pivotal_workstation::sshd_on
-- pivotal_workstation::inputrc
-- sprout-osx-settings::defaults_fast_key_repeat_rate
-- pivotal_workstation::locate_on
-- sprout-osx-settings::global_environment_variables
-- sprout-osx-settings::set_menubar_clock_format
+- sprout-osx-settings
 - sprout-terminal
 
 # development (general)
 - sprout-base::workspace_directory
+- sprout-ssh
 - sprout-git::config
 - sprout-git::git_projects
 - sprout-git::git_scripts
 
 # development (rails)
 - sprout-rbenv
-- pivotal_workstation::gem_setup
-- pivotal_workstation::mysql
+- sprout-ruby
+- sprout-mysql
 - sprout-postgresql
 
 # apps
-- pivotal_workstation::screen_sharing_app
-- pivotal_workstation::mouse_locator
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::keycastr
+- sprout-osx-apps::flycut
 
 # apps (editors)
 - sprout-osx-apps::textmate_bundles
@@ -83,6 +78,7 @@ node_attributes:
         - gitx-rowanj
         - github
         - google-chrome
+        - libreoffice
         - menumeters
         - shiftit
         - skype

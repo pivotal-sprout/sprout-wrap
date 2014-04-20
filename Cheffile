@@ -8,15 +8,17 @@ cookbook 'meta',
 cookbook 'sprout-rbenv',
   :github => 'pivotal-sprout/sprout-rbenv'
 
+cookbook 'sprout-ruby',
+  :github => 'pivotal-sprout/sprout-ruby'
+
+cookbook 'sprout-mysql',
+  :github => 'pivotal-sprout/sprout-mysql'
+
 cookbook 'sprout-git',
   :github => 'pivotal-sprout/sprout-git'
 
 cookbook 'sprout-base',
   :github => 'pivotal-sprout/sprout-base'
-
-cookbook 'pivotal_workstation',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'pivotal_workstation'
 
 cookbook 'sprout-osx-apps',
   :github => 'pivotal-sprout/sprout',
@@ -44,3 +46,6 @@ cookbook 'sprout-terminal',
 
 cookbook 'sprout-postgresql',
   :github => 'pivotal-sprout/sprout-postgresql'
+
+cookbook 'sprout-ssh',
+  :github => 'pivotal-sprout/sprout-ssh'
