@@ -30,7 +30,6 @@ recipes:
 # apps
 - pivotal_workstation::screen_sharing_app
 - pivotal_workstation::mouse_locator
-- pivotal_workstation::github_for_mac
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::keycastr
 
@@ -76,6 +75,7 @@ node_attributes:
         - dropbox
         - firefox
         - gitx-rowanj
+        - github
         - google-chrome
         - menumeters
         - shiftit
