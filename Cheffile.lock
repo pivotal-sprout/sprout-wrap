@@ -50,26 +50,6 @@ GIT
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-git
-  ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
-  specs:
-    sprout-osx-git (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-rbenv
-  ref: master
-  sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
-  specs:
-    sprout-osx-rbenv (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout
   path: sprout-osx-settings
   ref: master
   sha: 476207aa37f700280af890d77ec77cdbf1eb39e4
@@ -87,6 +67,15 @@ GIT
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-git
+  ref: master
+  sha: 5cff81e892dcc9a272ea0339c1d95f69ba6156e4
+  specs:
+    sprout-git (0.1.0)
       homebrew (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
@@ -117,6 +106,15 @@ GIT
       sprout-osx-base (>= 0.0.0)
 
 GIT
+  remote: https://github.com/pivotal-sprout/sprout-rbenv
+  ref: master
+  sha: c371aba459d5521acde17a24fef39408a6845675
+  specs:
+    sprout-rbenv (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
   ref: master
   sha: d238fd546063112c9536317f1912a649af6b16f1
@@ -137,14 +135,14 @@ DEPENDENCIES
   meta (>= 0)
   osx (>= 0)
   pivotal_workstation (>= 0)
+  sprout-git (>= 0)
   sprout-homebrew (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
-  sprout-osx-git (>= 0)
-  sprout-osx-rbenv (>= 0)
   sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)
+  sprout-rbenv (>= 0)
   sprout-terminal (>= 0)
 

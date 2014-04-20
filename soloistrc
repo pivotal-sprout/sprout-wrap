@@ -17,12 +17,12 @@ recipes:
 # development (general)
 - sprout-osx-base::workspace_directory
 - pivotal_workstation::unix_essentials
-- sprout-osx-git::git_projects
-- pivotal_workstation::git_config_global_defaults
-- sprout-osx-git::git_scripts
+- sprout-git::config
+- sprout-git::git_projects
+- sprout-git::git_scripts
 
 # development (rails)
-- sprout-osx-rbenv
+- sprout-rbenv
 - pivotal_workstation::gem_setup
 - pivotal_workstation::mysql
 - sprout-postgresql

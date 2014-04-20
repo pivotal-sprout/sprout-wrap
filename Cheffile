@@ -5,13 +5,11 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
-cookbook 'sprout-osx-rbenv',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-rbenv'
+cookbook 'sprout-rbenv',
+  :github => 'pivotal-sprout/sprout-rbenv'
 
-cookbook 'sprout-osx-git',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-git'
+cookbook 'sprout-git',
+  :github => 'pivotal-sprout/sprout-git'
 
 cookbook 'sprout-osx-base',
   :github => 'pivotal-sprout/sprout',
