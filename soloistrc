@@ -8,6 +8,7 @@ recipes:
 # settings
 - sprout-osx-settings
 - sprout-terminal
+- sprout-terminal::update_font
 
 # development (general)
 - sprout-base::workspace_directory
@@ -55,7 +56,6 @@ node_attributes:
   sprout:
     terminal:
       default_profile: 'Pro'
-      update_font: true
     settings:
       clock_format: EEE MMM d  h:mm:ss a
     homebrew:
