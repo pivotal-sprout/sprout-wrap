@@ -93,6 +93,7 @@ node_attributes:
         - wget
         - chromedriver
         - rbenv-binstubs
+        - rbenv-gem-rehash
       casks:
         - ccmenu
         - appcode
