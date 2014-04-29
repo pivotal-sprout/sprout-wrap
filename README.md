@@ -34,18 +34,15 @@ If you receive a message about the update server being unavailable and are on Ma
 
 ### 4. Install soloist & and other required gems
 
+#### 4.a install bundler
 If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
 
-    sudo gem install bundler
-    sudo bundle
+`sudo gem install bundler`
 
-If you receive errors like this:
+#### 4.b install gems
+***note:*** If you receive errors like this: `clang: error: unknown argument: '-multiply_definedsuppress'`, then try downgrading those errors like this: `sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle`
 
-    clang: error: unknown argument: '-multiply_definedsuppress'
-
-then try downgrading those errors like this:
-
-    sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
+`sudo bundle`
 
 ### 5. Run soloist
 
