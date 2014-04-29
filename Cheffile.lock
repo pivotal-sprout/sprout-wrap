@@ -97,6 +97,15 @@ GIT
       sprout-base (>= 0.0.0)
 
 GIT
+  remote: https://github.com/pivotal-sprout/sprout-redis
+  ref: master
+  sha: abf6ae6f0bd1ae74159b68bff2a07bf923309467
+  specs:
+    sprout-redis (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
   remote: https://github.com/pivotal-sprout/sprout-ruby
   ref: master
   sha: dfc96330f8dee89f96c0f2e14dce87c7e03a2359
@@ -148,6 +157,7 @@ DEPENDENCIES
   sprout-pivotal (>= 0)
   sprout-postgresql (>= 0)
   sprout-rbenv (>= 0)
+  sprout-redis (>= 0)
   sprout-ruby (>= 0)
   sprout-rubymine (>= 0)
   sprout-ssh (>= 0)

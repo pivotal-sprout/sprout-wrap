@@ -7,63 +7,83 @@ recipes:
 
 # settings
 - sprout-osx-settings
+- sprout-osx-settings::dock_preferences
 - sprout-terminal
 - sprout-terminal::update_font
 
 # development (general)
 - sprout-base::workspace_directory
-- sprout-ssh
 - sprout-git::config
 - sprout-git::git_projects
 - sprout-git::git_scripts
+- sprout-redis
 
 # development (rails)
 - sprout-rbenv
 - sprout-ruby
-- sprout-mysql
 - sprout-postgresql
 
 # apps
 - sprout-osx-apps::iterm2
-- sprout-osx-apps::keycastr
 - sprout-osx-apps::flycut
+- sprout-osx-apps::shiftit
+- sprout-osx-apps::menumeters
 
 # apps (editors)
 - sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::macvim
 - sprout-rubymine
 - sprout-homebrew
 
 node_attributes:
-  git_pairs_domain: pivotallabs.com
+  git_pairs_domain: AwesomenessTV.com
   git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
-    - initials: jrhb
-      name: Jonathan Barnes
-    - initials: lw
-      name: Luke Winikates
-      shortname: lwinikates
+    - initials: at
+      name: Alex Tamoykin
+      shortname: alext
+    - initials: ba
+      name: Bardia Afshin
+      shortname: bardia
+    - initials: mc
+      name: Meagan Cooney
+      shortname: meagan
+    - initials: mc
+      name: Meagan Cooney
+      shortname: meagan
+    - initials: jb
+      name: Joshua Book
+      shortname: joshb
+    - initials: df
+      name: Dave Ferris
+      shortname: davef
   git_projects:
     -
       - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
+      - git@github.com:pivotalshiny/sprout-wrap.git
+    -
+      - AwesomenessTV
+      - git@github.com:awesomenesstv/server.git
+    -
+      - IOS-AwesomenessTV
+      - git@github.com:awesomenesstv/devour.git
+    -
+      - AppCodePreferences
+      - git@github.com:pivotalshiny/AppCodePreferences.git
   sprout:
     terminal:
       default_profile: 'Pro'
     settings:
       clock_format: EEE MMM d  h:mm:ss a
+    dock_preferences:
+      orientation: 'left'
+      auto_hide: true
+      clear_apps: true
+      tile_size: 35
+      magnification': false
     homebrew:
       formulae:
         - ack
-        - ctags-exuberant
         - imagemagick
-        - node
         - pstree
         - qt
         - ssh-copy-id
@@ -71,18 +91,22 @@ node_attributes:
         - tree
         - watch
         - wget
+        - chromedriver
+        - rbenv-binstubs
       casks:
         - ccmenu
-        - dropbox
+        - appcode
+        - charles
         - firefox
         - gitx-rowanj
-        - github
         - google-chrome
-        - libreoffice
-        - menumeters
-        - shiftit
+        - google-drive
+        - google-hangouts
+        - mou
         - skype
-        - textmate
-        - vagrant
-        - virtualbox
         - xquartz
+        - xscope
+    rbenv:
+      rubies:
+        2.0.0-p353: {}
+      default_ruby: 2.0.0-p353
