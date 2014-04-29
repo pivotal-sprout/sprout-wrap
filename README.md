@@ -29,7 +29,7 @@ If you receive a message about the update server being unavailable and are on Ma
 
 ### 3. Clone this project
 
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
+    git clone https://github.com/awesomenesstv/sprout-wrap.git
     cd sprout-wrap
 
 ### 4. Install soloist & and other required gems
