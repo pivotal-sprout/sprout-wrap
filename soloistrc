@@ -68,7 +68,7 @@ node_attributes:
       - git@github.com:awesomenesstv/devour.git
     -
       - AppCodePreferences
-      - git@github.com:pivotalshiny/AppCodePreferences.git
+      - https://github.com/akitchen/AppCodePreferences.git
   sprout:
     terminal:
       default_profile: 'Pro'
