@@ -10,6 +10,7 @@ recipes:
 - sprout-osx-settings::dock_preferences
 - sprout-terminal
 - sprout-terminal::update_font
+- sprout-ssh::known_hosts_github
 
 # development (general)
 - sprout-base::workspace_directory
