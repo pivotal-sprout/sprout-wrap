@@ -44,9 +44,14 @@ If you're running under rvm or rbenv, you shouldn't preface the following comman
 
 `sudo bundle`
 
-### 5. Run soloist
+### 5. Install private credentials
+
+
+### 6. Run soloist
 
 [You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**) because soloist usually takes 2-3 hours to complete.]
 
-    bundle exec soloist
+`soloist`
+
+***note:*** the chef recipes rely on sudo access.  You should watch the output of soloist as it will prompt for the password to get sudo access.  It also has a lot of external network dependencies that sometimes fail. If the a recipe fails the entire soloist run is stopped.  The recipes are all [idempotent](http://en.wikipedia.org/wiki/Idempotence) and if you encounter a failure you should just re-run it.  If the failure continues you will need to look over the failure and see what the problem is.  Worst case you can edit the `soloistrc` file and comment out the offending recipe allowing you to build the rest of the system, and manually attempt to install the piece that is failing.
 
