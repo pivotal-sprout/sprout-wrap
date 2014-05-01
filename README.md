@@ -51,15 +51,19 @@ There is a thumb drive that has 2 important sets of credentials
 
 The code signing certificates are required to build and deploy the app to the simulator/local IOS device/Testflight/App Store. There are 4 certificates located in a `ATVCerts.p12` file on the thumb drive.  You will need to open the file
 
-`open /Volumes/ATVSecrets/ATVCerts.p12`
+`open /Volumes/OPTIMISTS/ATVCerts.p12`
 
 you will be prompted multiple times for passwords, both system and certificate pws they are all the current shared project password.  Once complete there should be 4 certificates with corresponding private keys installed in the users keychain.
 
-1. install Github ssh key
+#### 5.b Install Github ssh key
 
 This is the ssh key you will use to clone/pull/push code to github with.
 
-`cp /Volumes/ATVSecrets/.ssh/* ~/.ssh/`
+`cp /Volumes/OPTIMISTS/.ssh/* ~/.ssh/`
+
+#### 5.c Eject thumbdrive
+
+`diskutil umount force /Volumes/OPTIMISTS`
 
 ### 6. Run soloist
 
