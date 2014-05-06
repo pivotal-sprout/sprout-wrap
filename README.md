@@ -59,7 +59,7 @@ you will be prompted multiple times for passwords, both system and certificate p
 
 This is the ssh key you will use to clone/pull/push code to github with.
 
-`cp /Volumes/ATVSecrets/.ssh/* ~/.ssh/`
+`mkdir ~/.ssh && cp /Volumes/ATVSecrets/.ssh/* ~/.ssh/`
 
 #### 5.c Eject thumbdrive
 
