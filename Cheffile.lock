@@ -8,7 +8,7 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: osx
   ref: master
-  sha: 35a8fa518adda87a90725f83aedecf8d874fd241
+  sha: 41dd47dc3bb4007bf5ad5a63c2897ec41cf89dd5
   specs:
     osx (0.1.0)
 
@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: sprout-osx-apps
   ref: master
-  sha: 35a8fa518adda87a90725f83aedecf8d874fd241
+  sha: 41dd47dc3bb4007bf5ad5a63c2897ec41cf89dd5
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -28,7 +28,7 @@ GIT
   remote: https://github.com/pivotal-sprout/sprout
   path: sprout-pivotal
   ref: master
-  sha: 35a8fa518adda87a90725f83aedecf8d874fd241
+  sha: 41dd47dc3bb4007bf5ad5a63c2897ec41cf89dd5
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
@@ -54,7 +54,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-homebrew
   ref: master
-  sha: 4541f754bd55f8b830edee524b3c98efc3760314
+  sha: ea72d3c204040c6ac652f76a71ec689717c49ae9
   specs:
     sprout-homebrew (0.1.0)
       homebrew (~> 1.5.4)
@@ -125,10 +125,11 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
   ref: master
-  sha: 816fd4b61bd37c84ad228968194d5bce93709759
+  sha: c0d4b4311d405d7391ebb5ec30221d8dbedf0682
   specs:
-    sprout-terminal (0.2.0)
+    sprout-terminal (0.1.0)
       osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 PATH
   remote: site-cookbooks/meta
