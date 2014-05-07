@@ -14,8 +14,9 @@ recipes:
 
 # development (general)
 - sprout-base::workspace_directory
-- sprout-git::config
-- sprout-git::git_projects
+- sprout-git
+- sprout-git::default_editor
+- sprout-git::projects
 - sprout-git::git_scripts
 
 # development (rails)
@@ -38,24 +39,25 @@ recipes:
 - sprout-homebrew
 
 node_attributes:
-  git_pairs_domain: pivotallabs.com
-  git_pairs_authors:
-    - initials: ah
-      name: Abhijit Hiremagalur
-      shortname: abhi
-    - initials: bc
-      name: Brian Cunnie
-      shortname: cunnie
-    - initials: jrhb
-      name: Jonathan Barnes
-    - initials: lw
-      name: Luke Winikates
-      shortname: lwinikates
-  git_projects:
-    -
-      - sprout-wrap
-      - https://github.com/pivotal-sprout/sprout-wrap.git
   sprout:
+    git:
+      domain: pivotallabs.com
+      authors:
+        - initials: ah
+          name: Abhijit Hiremagalur
+          shortname: abhi
+        - initials: bc
+          name: Brian Cunnie
+          shortname: cunnie
+        - initials: jrhb
+          name: Jonathan Barnes
+        - initials: lw
+          name: Luke Winikates
+          shortname: lwinikates
+      projects:
+        -
+          - sprout-wrap
+          - https://github.com/pivotal-sprout/sprout-wrap.git
     terminal:
       default_profile: 'Pro'
     settings:
