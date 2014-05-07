@@ -71,7 +71,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
   ref: master
-  sha: e281317036dbaf11c067ee327d413f4b6b0b6b23
+  sha: 342fa674efa39034d37e9ada83d9c18b46a772e8
   specs:
     sprout-osx-settings (0.1.0)
       homebrew (>= 0.0.0)
