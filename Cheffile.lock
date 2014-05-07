@@ -45,7 +45,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: 3502fbe280d15adf0d3d6b0c77a8fd568363a332
+  sha: fdf225bf9e6fd03d8b983c3925f095a139a8d918
   specs:
     sprout-git (0.1.0)
       homebrew (>= 0.0.0)
