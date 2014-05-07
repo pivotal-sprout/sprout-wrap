@@ -7,12 +7,13 @@ recipes:
 
 # settings
 - sprout-osx-settings
+- sprout-osx-settings::dock_preferences
 - sprout-terminal
 - sprout-terminal::update_font
+- sprout-ssh::known_hosts_github
 
 # development (general)
 - sprout-base::workspace_directory
-- sprout-ssh
 - sprout-git::config
 - sprout-git::git_projects
 - sprout-git::git_scripts
@@ -27,6 +28,7 @@ recipes:
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::keycastr
 - sprout-osx-apps::flycut
+- sprout-osx-apps::shiftit
 
 # apps (editors)
 - sprout-osx-apps::textmate_bundles
@@ -58,10 +60,17 @@ node_attributes:
       default_profile: 'Pro'
     settings:
       clock_format: EEE MMM d  h:mm:ss a
+    dock_preferences:
+      orientation: 'left'
+      auto_hide: true
+      clear_apps: true
+      tile_size: 35
+      magnification': false
     homebrew:
       formulae:
-        - ack
         - ctags-exuberant
+        - ag
+        - chromedriver
         - imagemagick
         - node
         - pstree
@@ -71,18 +80,19 @@ node_attributes:
         - tree
         - watch
         - wget
+        - rbenv-binstubs
+        - rbenv-gem-rehash
       casks:
         - ccmenu
-        - dropbox
         - firefox
         - gitx-rowanj
         - github
         - google-chrome
-        - libreoffice
-        - menumeters
-        - shiftit
+        - google-drive
+        - google-hangouts
         - skype
         - textmate
         - vagrant
         - virtualbox
         - xquartz
+        - xscope
