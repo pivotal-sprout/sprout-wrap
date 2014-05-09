@@ -28,7 +28,6 @@ recipes:
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
-- sprout-osx-apps::menumeters
 
 # apps (editors)
 - sprout-osx-apps::textmate_bundles
