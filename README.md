@@ -19,35 +19,39 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 [![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
 
-Don't forget to start up Xcode once it's installed so that you can agree to the terms&mdash;many commands won't work until the terms have been agreed to.
+### 2. Agree to Terms
 
-### 2. Install Command Line Tools
+    xcodebuild -license
+    
+Or Fire up xcode and agree to terms from the GUI
+
+### 3. Install Command Line Tools
   
     xcode-select --install
 
 If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
 
-### 3. Clone this project
+### 4. Clone this project
 
     git clone https://github.com/awesomenesstv/sprout-wrap.git
     cd sprout-wrap
 
-### 4. Install soloist & and other required gems
+### 5. Install soloist & and other required gems
 
-#### 4.a install bundler
+#### 5.a install bundler
 If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
 
 `sudo gem install bundler`
 
-#### 4.b install gems
+#### 5.b install gems
 ***note:*** If you receive errors like this: `clang: error: unknown argument: '-multiply_definedsuppress'`, then try downgrading those errors like this: `sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle`
 
 `sudo bundle`
 
-### 5. Install private credentials
+### 6. Install private credentials
 There is a thumb drive that has 2 important sets of credentials
 
-#### 5.a IOS Code sigining certificates
+#### 6.a IOS Code sigining certificates
 
 The code signing certificates are required to build and deploy the app to the simulator/local IOS device/Testflight/App Store. There are 4 certificates located in a `Certificates.p12` file on the thumb drive.  You will need to open the file
 
@@ -55,13 +59,13 @@ The code signing certificates are required to build and deploy the app to the si
 
 you will be prompted multiple times for passwords, both system and certificate pws they are all the current shared project password.  Once complete there should be 4 certificates with corresponding private keys installed in the users keychain.
 
-#### 5.b Install Github ssh key
+#### 6.b Install Github ssh key
 
 This is the ssh key you will use to clone/pull/push code to github with.
 
 `mkdir ~/.ssh && cp /Volumes/ATVSecrets/.ssh/* ~/.ssh/`
 
-#### 5.c Eject thumbdrive
+#### 6.c Eject thumbdrive
 
 `diskutil umount force /Volumes/ATVSecrets`
 
