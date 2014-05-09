@@ -60,7 +60,7 @@ node_attributes:
   git_projects:
     -
       - sprout-wrap
-      - git@github.com:pivotalshiny/sprout-wrap.git
+      - git@github.com:awesomenesstv/sprout-wrap.git
     -
       - AwesomenessTV
       - git@github.com:awesomenesstv/server.git
