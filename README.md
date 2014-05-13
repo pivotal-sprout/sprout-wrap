@@ -21,7 +21,7 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 ### 2. Agree to Terms
 
-    xcodebuild -license
+    sudo xcodebuild -license
     
 Or Fire up xcode and agree to terms from the GUI
 
