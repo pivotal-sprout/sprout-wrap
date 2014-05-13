@@ -61,6 +61,15 @@ node_attributes:
       - sprout-wrap
       - git@github.com:awesomenesstv/sprout-wrap.git
     -
+      - collab
+      - git@github.com:awesomenesstv/collab.git
+    -
+      - ATV_API
+      - git@github.com:awesomenesstv/ATV_API.git
+    -
+      - linker
+      - git@github.com:awesomenesstv/linker.git      
+    -
       - AwesomenessTV
       - git@github.com:awesomenesstv/server.git
     -
