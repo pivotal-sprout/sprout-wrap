@@ -103,6 +103,7 @@ node_attributes:
         - chromedriver
         - rbenv-binstubs
         - rbenv-gem-rehash
+        - heroku-toolbelt
       casks:
         - ccmenu
         - appcode
