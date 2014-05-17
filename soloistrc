@@ -104,6 +104,8 @@ node_attributes:
         - rbenv-binstubs
         - rbenv-gem-rehash
         - heroku-toolbelt
+        - vim
+        - emacs
       casks:
         - ccmenu
         - appcode
