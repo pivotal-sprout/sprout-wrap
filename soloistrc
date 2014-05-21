@@ -45,15 +45,15 @@ node_attributes:
       authors:
         - initials: ah
           name: Abhijit Hiremagalur
-          shortname: abhi
+          username: abhi
         - initials: bc
           name: Brian Cunnie
-          shortname: cunnie
+          username: cunnie
         - initials: jrhb
           name: Jonathan Barnes
         - initials: lw
           name: Luke Winikates
-          shortname: lwinikates
+          username: lwinikates
       projects:
         -
           - sprout-wrap
