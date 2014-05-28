@@ -52,3 +52,6 @@ cookbook 'sprout-ssh',
 
 cookbook 'sprout-redis',
   :github => 'pivotal-sprout/sprout-redis'
+
+cookbook 'sprout-mysql',
+  :github => 'pivotal-sprout/sprout-mysql'

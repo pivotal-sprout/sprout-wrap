@@ -23,6 +23,7 @@ recipes:
 - sprout-rbenv
 - sprout-ruby
 - sprout-postgresql
+- sprout-mysql
 
 # apps
 - sprout-osx-apps::iterm2
@@ -119,6 +120,7 @@ node_attributes:
         - skype
         - xquartz
         - xscope
+        - sequel-pro
     rbenv:
       rubies:
         2.0.0-p353: {}
