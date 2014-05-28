@@ -90,6 +90,8 @@ node_attributes:
       clear_apps: true
       tile_size: 35
       magnification': false
+    mysql:
+      root_password: ''
     homebrew:
       formulae:
         - ack
