@@ -4,6 +4,7 @@ recipes:
 - sprout-base
 - sprout-base::bash_it
 - sprout-base::homebrew
+- sprout-homebrew
 
 # settings
 - sprout-osx-settings
@@ -36,7 +37,6 @@ recipes:
 - sprout-osx-apps::textmate_preferences
 - sprout-osx-apps::macvim
 - sprout-rubymine
-- sprout-homebrew
 
 node_attributes:
   sprout:
