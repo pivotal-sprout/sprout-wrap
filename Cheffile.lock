@@ -12,18 +12,6 @@ GIT
     osx (0.1.0)
 
 GIT
-  remote: https://github.com/pivotal-sprout/sprout
-  path: sprout-osx-apps
-  ref: master
-  sha: d264e5646caff5dd7e9c2c39b927c183cef223b4
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      homebrew (>= 1.6.6)
-      sprout-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
   sha: e2649562c9ca53944d80380b1d95beb9c61df60e
@@ -55,6 +43,17 @@ GIT
     sprout-mysql (0.1.0)
       homebrew (>= 0.0.0)
       sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-osx-apps
+  ref: master
+  sha: 5f2bd7d64639b6affecd5951fd0b475387e6464f
+  specs:
+    sprout-osx-apps (0.1.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 1.6.6)
+      sprout-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings

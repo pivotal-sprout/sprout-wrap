@@ -18,8 +18,7 @@ cookbook 'sprout-base',
   :github => 'pivotal-sprout/sprout-base'
 
 cookbook 'sprout-osx-apps',
-  :github => 'pivotal-sprout/sprout',
-  :path => 'sprout-osx-apps'
+  :github => 'pivotal-sprout/sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
   :github => 'pivotal-sprout/sprout-osx-settings'
