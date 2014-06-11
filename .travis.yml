@@ -1,7 +1,7 @@
 language: objective-c
 rvm: system
 install:
-  - sudo travis_wait softwareupdate -i -a
+  - travis_wait 'sudo softwareupdate -i -a'
   - sudo gem install bundler --no-ri --no-rdoc
   - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
 script:
