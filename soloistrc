@@ -28,7 +28,6 @@ recipes:
 
 # apps
 - sprout-osx-apps::iterm2
-- sprout-osx-apps::keycastr
 - sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
 
