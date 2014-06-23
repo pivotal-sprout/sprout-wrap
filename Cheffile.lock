@@ -153,7 +153,6 @@ DEPENDENCIES
   sprout-git (>= 0)
   sprout-homebrew (>= 0)
   sprout-mysql (>= 0)
-  sprout-mysql (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
