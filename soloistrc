@@ -55,8 +55,8 @@ node_attributes:
           username: lwinikates
       projects:
         -
-          - sprout-wrap
-          - https://github.com/pivotal-sprout/sprout-wrap.git
+          name: sprout-wrap
+          url: https://github.com/pivotal-sprout/sprout-wrap.git
     terminal:
       default_profile: 'Pro'
     settings:
