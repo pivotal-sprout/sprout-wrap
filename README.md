@@ -15,29 +15,23 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 ## Installation under Mavericks (OS X 10.9)
 
-### 1. Install XCode
-
-[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
-
-Don't forget to start up Xcode once it's installed so that you can agree to the terms&mdash;many commands won't work until the terms have been agreed to.
-
-### 2. Install Command Line Tools
+### 1. Install Command Line Tools
   
     xcode-select --install
 
 If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
 
-### 3. Clone this project
+### 2. Clone this project
 
     git clone https://github.com/pivotal-sprout/sprout-wrap.git
     cd sprout-wrap
 
-### 4. Install soloist & and other required gems
+### 3. Install soloist & and other required gems
 
 If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
 
     sudo gem install bundler
-    bundle
+    sudo bundle
 
 If you receive errors like this:
 
@@ -47,9 +41,9 @@ then try downgrading those errors like this:
 
     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
 
-### 5. Run soloist
+### 4. Run soloist
 
-[You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**) because soloist usually takes 2-3 hours to complete.]
+[You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**); depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
 
     bundle exec soloist
 
