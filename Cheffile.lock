@@ -2,7 +2,7 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     dmg (2.2.0)
-    homebrew (1.6.6)
+    homebrew (1.7.2)
 
 GIT
   remote: https://github.com/pivotal-sprout/osx
@@ -21,7 +21,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: b2bfc3a7c5e98d3ac8d35f956017e658f3741192
+  sha: f073a2b45739055fa3ba305f925cad6628db67ec
   specs:
     sprout-git (0.1.0)
       homebrew (>= 0.0.0)
