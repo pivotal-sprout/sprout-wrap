@@ -23,8 +23,6 @@ recipes:
 # development (rails)
 - sprout-rbenv
 - sprout-ruby
-- sprout-mysql
-- sprout-postgresql
 
 # apps
 - sprout-osx-apps::iterm2
@@ -34,12 +32,13 @@ recipes:
 # apps (editors)
 - sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::macvim
 - sprout-rubymine
 
 node_attributes:
   sprout:
     git:
+      aliases:
+        - ci pair-commit -v
       domain: pivotallabs.com
       authors:
         - initials: ah
@@ -54,9 +53,15 @@ node_attributes:
           name: Luke Winikates
           username: lwinikates
       projects:
-        -
-          name: sprout-wrap
-          url: https://github.com/pivotal-sprout/sprout-wrap.git
+        - name: wrap
+          url: git@github.com:pivotal-sprout/sprout-wrap.git
+          workspace_path: '~/workspace/sprout/'
+        - name: git
+          url: git@github.com:pivotal-sprout/sprout-git.git
+          workspace_path: '~/workspace/sprout/'
+        - name: homebrew
+          url: git@github.com:pivotal-sprout/sprout-homebrew.git
+          workspace_path: '~/workspace/sprout/'
     terminal:
       default_profile: 'Pro'
     settings:
@@ -69,13 +74,9 @@ node_attributes:
       magnification': false
     homebrew:
       formulae:
-        - ctags-exuberant
         - ag
         - chromedriver
-        - imagemagick
-        - node
         - pstree
-        - qt
         - ssh-copy-id
         - tmux
         - tree
@@ -86,14 +87,11 @@ node_attributes:
       casks:
         - ccmenu
         - firefox
-        - gitx-rowanj
         - github
         - google-chrome
         - google-drive
         - google-hangouts
-        - skype
+        - sourcetree
         - textmate
-        - vagrant
-        - virtualbox
-        - xquartz
+        - vmware-fusion
         - xscope
