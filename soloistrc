@@ -91,6 +91,7 @@ node_attributes:
         - google-chrome
         - google-drive
         - google-hangouts
+        - mou
         - sourcetree
         - textmate
         - vmware-fusion
