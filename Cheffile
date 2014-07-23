@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-site 'http://community.opscode.com/api/v1'
+site 'https://supermarket.getchef.com/api/v1'
 
 cookbook 'sprout-rbenv',
   :github => 'pivotal-sprout/sprout-rbenv'
