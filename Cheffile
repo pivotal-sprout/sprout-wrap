@@ -1,51 +1,45 @@
-site 'http://community.opscode.com/api/v1'
+#!/usr/bin/env ruby
 
-cookbook 'meta',
-  :path => 'site-cookbooks/meta'
+site 'https://supermarket.getchef.com/api/v1'
 
-cookbook 'sprout-osx-git',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
-  :path => 'sprout-osx-git'
+cookbook 'sprout-rbenv',
+  :github => 'pivotal-sprout/sprout-rbenv'
 
-cookbook 'sprout-osx-base',
-#  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :github => 'trinitronx/sprout',
-  :ref => 'mavericks-develop',
-  :path => 'sprout-osx-base'
+cookbook 'sprout-ruby',
+  :github => 'pivotal-sprout/sprout-ruby'
 
-# Testing recursive repo_dir fix for pivotal_workstation::git_projects
-cookbook 'pivotal_workstation',
-  :github => 'trinitronx/sprout',
-  :ref => 'mavericks-develop',
-  :path => 'pivotal_workstation'
+cookbook 'sprout-mysql',
+  :github => 'pivotal-sprout/sprout-mysql'
+
+cookbook 'sprout-git',
+  :github => 'pivotal-sprout/sprout-git'
+
+cookbook 'sprout-base',
+  :github => 'pivotal-sprout/sprout-base'
 
 cookbook 'gloo-workstation',
   :git => 'https://github.com/TangoGroup/gloo-workstation.git'
 
-# Both switched from pivotal-sprout/sprout due to many pending PRs
-#  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
-  :github => 'trinitronx/sprout',
-  :ref => 'mavericks-develop',
-  :path => 'sprout-osx-apps'
+  :github => 'pivotal-sprout/sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :github => 'trinitronx/sprout',
-  :ref => 'idempotent-expose-keyboard-shortcut-recipe',
-  :path => 'sprout-osx-settings'
-
-cookbook 'sprout-pivotal',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
-  :path => 'sprout-pivotal'
+  :github => 'pivotal-sprout/sprout-osx-settings'
 
 cookbook 'osx',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
-  :path => 'osx'
+  :github => 'pivotal-sprout/osx'
 
-cookbook 'sprout-osx-rubymine',
-  :git => 'git://github.com/pivotal-sprout/sprout.git',
-  :ref => 'mavericks',
-  :path => 'sprout-osx-rubymine'
+cookbook 'sprout-rubymine',
+  :github => 'pivotal-sprout/sprout-rubymine'
+
+cookbook 'sprout-homebrew',
+  :github => 'pivotal-sprout/sprout-homebrew'
+
+cookbook 'sprout-terminal',
+  :github => 'pivotal-sprout/sprout-terminal'
+
+cookbook 'sprout-postgresql',
+  :github => 'pivotal-sprout/sprout-postgresql'
+
+cookbook 'sprout-ssh',
+  :github => 'pivotal-sprout/sprout-ssh'

@@ -3,17 +3,17 @@
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
 
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
-to run a subset of the recipes in sprout's [cookbooks]((https://github.com/pivotal-sprout/sprout).
+to run a subset of the recipes in sprout's cookbooks.
 
 [Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
 customize its [attributes](http://docs.opscode.com/chef_overview_attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
 you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
 of the many [community cookbooks](http://community.opscode.com/cookbooks). By default it configures an OS X 
-Mountain Lion workstation for Ruby development.
+Mavericks workstation for Ruby development.
 
 Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
 
-## Installation under Mountain Lion (OS X 10.8) and Mavericks (OS X 10.9)
+## Installation under Mavericks (OS X 10.9)
 
 ### The Easy Way:
 
@@ -23,63 +23,49 @@ Open a terminal and run:
 
     \curl -Ls http://git.io/kyeeCg | bash
 
-
 ### The Semi-Manual Way:
 
-#### 1. Install XCode
+### 1. Install Command Line Tools
+  
+    xcode-select --install
 
-[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
+If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
 
-#### 2. Install Command Line Tools
-  
-  XCode > Preferences > Downloads
-  
-#### 3. Clone this project
-  
+### 2. Clone this project
+
     git clone https://github.com/pivotal-sprout/sprout-wrap.git
     cd sprout-wrap
-  
-#### 4. Install soloist & and other required gems
+
+### 3. Install soloist & and other required gems
+
+If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
 
     sudo gem install bundler
-    bundle
+    sudo bundle
 
-#### 5. Run soloist
-  
+If you receive errors like this:
+
+    clang: error: unknown argument: '-multiply_definedsuppress'
+
+then try downgrading those errors like this:
+
+    sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
+
+### 4. Run soloist
+
+[You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**); depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
+
     bundle exec soloist
 
-## Configuration
+## Roadmap
 
-This project is a fork of [sprout-wrap](https://github.com/pivotal-sprout/sprout).
-It uses Chef cookbooks from [Sprout](https://github.com/pivotal-sprout/sprout).  These are installed via librarian-chef.
-[soloist](https://github.com/mkocher/soloist) runs [chef-solo](http://docs.opscode.com/chef_solo.html).
+See Pivotal Tracker: https://www.pivotaltracker.com/s/projects/884116
 
-Soloist provides an easy way to configure a [run list](http://docs.opscode.com/essentials_node_object_run_lists.html) and [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) for the chef-solo run: `soloistrc`
-This is just a simple YAML file that looks like:
+## Discussion List
 
-    recipes:
-      - bash::prompt
-    node_attributes:
-      bash:
-        prompt:
-          color: p!nk
+  Join [sprout-users@googlegroups.com](https://groups.google.com/forum/#!forum/sprout-users) if you use Sprout.
 
-Wondering what attributes to use?
+## References
 
-Please see the [attributes files](https://github.com/trinitronx/sprout/tree/master/sprout-osx-apps/attributes) in the various cookbooks in [Sprout](https://github.com/trinitronx/sprout)
-
-## Troubleshooting
-
-There is one prerequisite to watch out for if you are using the `pivotal_workstation::git_projects` to auto-checkout our private repos.
-You will need to setup an ssh key to use in order for chef-solo to checkout the private repos.
-For this reason we have chosen to add this to our default [COE](http://en.wikipedia.org/wiki/Common_Operating_Environment))
-
-#### 1. Setup Github SSH key
-
-Make sure you have a github account and [ssh key set up](https://help.github.com/articles/generating-ssh-keys)
-
-To avoid SSH key passphrase prompts during soloist run, use:
-
-    eval $(ssh-agent -s)
-    ssh-add -K
-
+* Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
+* [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
