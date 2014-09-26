@@ -1,32 +1,56 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    dmg (2.0.4)
+    dmg (2.1.4)
+    homebrew (1.5.4)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
   path: osx
-  ref: master
-  sha: de9460e16ef104987d5ec7e4c5a6e6a2ef69b814
+  ref: mavericks
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     osx (0.1.0)
 
 GIT
   remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-git
+  ref: mavericks
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
+  specs:
+    sprout-osx-git (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
+  path: sprout-osx-rubymine
+  ref: mavericks
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
+  specs:
+    sprout-osx-rubymine (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-osx-apps (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: git://github.com/pivotal-sprout/sprout.git
   path: sprout-pivotal
-  ref: master
-  sha: de9460e16ef104987d5ec7e4c5a6e6a2ef69b814
+  ref: mavericks
+  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
   specs:
     sprout-pivotal (0.1.0)
       dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/TangoGroup/gloo-workstation.git
   ref: master
-  sha: ce914ac18cd8f9faa5790d5183548b36774dfe32
+  sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
   specs:
-    gloo-workstation (0.1.0)
+    gloo-workstation (0.1.5)
+      dmg (>= 0.0.0)
 
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
@@ -37,12 +61,23 @@ GIT
 
 GIT
   remote: https://github.com/trinitronx/sprout
+  path: sprout-osx-settings
+  ref: idempotent-expose-keyboard-shortcut-recipe
+  sha: daad2e7e23f110ebc8120791129761fed896f547
+  specs:
+    sprout-osx-settings (0.1.0)
+      osx (>= 0.0.0)
+      sprout-osx-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout
   path: pivotal_workstation
-  ref: develop
-  sha: 2c53949b0638f18e640ebbce8f621f3ba1ff92e1
+  ref: mavericks-develop
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     pivotal_workstation (1.0.0)
       dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
       osx (>= 0.0.0)
       sprout-osx-apps (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
@@ -52,31 +87,22 @@ GIT
 GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-apps
-  ref: develop
-  sha: 2c53949b0638f18e640ebbce8f621f3ba1ff92e1
+  ref: mavericks-develop
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
       sprout-osx-base (>= 0.0.0)
       sprout-osx-settings (>= 0.0.0)
 
 GIT
   remote: https://github.com/trinitronx/sprout
   path: sprout-osx-base
-  ref: develop
-  sha: 2c53949b0638f18e640ebbce8f621f3ba1ff92e1
+  ref: mavericks-develop
+  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
   specs:
     sprout-osx-base (0.1.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-settings
-  ref: idempotent-expose-keyboard-shortcut-recipe
-  sha: daad2e7e23f110ebc8120791129761fed896f547
-  specs:
-    sprout-osx-settings (0.1.0)
-      osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
 
 PATH
   remote: site-cookbooks/meta
@@ -94,6 +120,8 @@ DEPENDENCIES
   pivotal_workstation (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-base (>= 0)
+  sprout-osx-git (>= 0)
+  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
   sprout-pivotal (>= 0)
 

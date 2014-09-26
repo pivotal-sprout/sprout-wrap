@@ -40,7 +40,7 @@ GEM
     highline (1.6.19)
     ipaddress (0.8.0)
     json (1.7.7)
-    librarian (0.1.1)
+    librarian (0.1.0)
       highline
       thor (~> 0.15)
     librarian-chef (0.0.1)

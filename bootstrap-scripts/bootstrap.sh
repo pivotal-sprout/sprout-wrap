@@ -12,10 +12,32 @@
 # (c) 2013, James Cuzella
 # This script may be freely distributed under the MIT license.
 
+## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
+function detect_platform_version() {
+  # Matching the tab-space with sed is error-prone
+  platform_version=$(sw_vers | awk '/^ProductVersion:/ { print $2 }')
+
+  major_version=$(echo $platform_version | cut -d. -f1,2)
+  
+  # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
+  x86_64=$(sysctl -n hw.optional.x86_64)
+  if [ $x86_64 -eq 1 ]; then
+    machine="x86_64"
+  fi
+}
+
 SOLOIST_DIR="${HOME}/src/pub/soloist"
-XCODE_DMG='XCode-4.6.3-4H1503.dmg'
+#XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
 SPROUT_WRAP_BRANCH='spica-local-devbox'
+
+detect_platform_version
+
+# Determine which XCode version to use based on platform version
+case $platform_version in
+  "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
+  *)      XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
+esac
 
 errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
@@ -51,6 +73,8 @@ fi
 # (for some reason expect spawn jacks up readline input)
 echo "Please enter your sudo password to make changes to your machine"
 sudo echo ''
+
+curl -Ls https://gist.github.com/trinitronx/6217746/raw/58456d6675e437cebbf771c60b6005b4491a0980/xcode-cli-tools.sh | sudo bash
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...

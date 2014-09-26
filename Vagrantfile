@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 require 'yaml'
+require 'uri'
+require 'net/http'
 
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -12,9 +14,24 @@ Vagrant.configure("2") do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "/Users/jcuzella/src/pub/veewee/OSX-10.8.4-Mountain_Lion-x64.box"
-  # config.vm.box_url = "https://s3.amazonaws.com/gloo.development/OSX-10.8.4-Mountain_Lion-x64.box"
-  config.vm.box_url = 'http://bro-fs-01.bro.gloostate.com/boxes/OSX-10.8.4-Mountain_Lion-x64.box'
+  local_box = "#{ENV['HOME']}/src/pub/veewee/OSX-10.8.4-Mountain_Lion-x64.box"
+  if File.exists? local_box
+    url = local_box 
+  else
+    url = 'http://bro-fs-01.bro.gloostate.com/boxes/OSX-10.8.4-Mountain_Lion-x64.box'
+    # Check if bro-fs-01 is accessible, else use aws mirror
+    uri = URI(url)
+    request = Net::HTTP.new uri.host
+    begin
+      response = request.request_head uri.path
+      raise response.code_type.to_s unless response.code.to_i == 200
+    rescue
+      url = 'https://s3.amazonaws.com/gloo.development/OSX-10.8.4-Mountain_Lion-x64.box';
+    end
+  end
+  puts "Using Vagrant box from: #{url}"
+
+  config.vm.box_url = url
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

@@ -3,16 +3,21 @@ site 'http://community.opscode.com/api/v1'
 cookbook 'meta',
   :path => 'site-cookbooks/meta'
 
+cookbook 'sprout-osx-git',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :ref => 'mavericks',
+  :path => 'sprout-osx-git'
+
 cookbook 'sprout-osx-base',
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
   :github => 'trinitronx/sprout',
-  :ref => 'develop',
+  :ref => 'mavericks-develop',
   :path => 'sprout-osx-base'
 
 # Testing recursive repo_dir fix for pivotal_workstation::git_projects
 cookbook 'pivotal_workstation',
   :github => 'trinitronx/sprout',
-  :ref => 'develop',
+  :ref => 'mavericks-develop',
   :path => 'pivotal_workstation'
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 
@@ -23,7 +28,7 @@ cookbook 'gloo-workstation',
 #  :git => 'git://github.com/pivotal-sprout/sprout.git',
 cookbook 'sprout-osx-apps',
   :github => 'trinitronx/sprout',
-  :ref => 'develop',
+  :ref => 'mavericks-develop',
   :path => 'sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
@@ -33,12 +38,19 @@ cookbook 'sprout-osx-settings',
 
 cookbook 'sprout-pivotal',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :ref => 'mavericks',
   :path => 'sprout-pivotal'
 
 cookbook 'osx',
   :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :ref => 'mavericks',
   :path => 'osx'
 
 cookbook 'lyraphase_workstation',
   :github => 'trinitronx/lyraphase_workstation',
   :ref => 'develop'
+
+cookbook 'sprout-osx-rubymine',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :ref => 'mavericks',
+  :path => 'sprout-osx-rubymine'
