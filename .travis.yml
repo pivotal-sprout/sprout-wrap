@@ -1,5 +1,8 @@
 language: objective-c
-before_script:
-  - cd foodcritic
-  - bundle install
-script: "bundle exec foodcritic -f any -f ~FC004 -f ~FC005 -f ~FC015 -f ~FC017 .."
+rvm: system
+install:
+  - travis_wait 'sudo softwareupdate -i -a'
+  - sudo gem install bundler --no-ri --no-rdoc
+  - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
+script:
+  - soloist
