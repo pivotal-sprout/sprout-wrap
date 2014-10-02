@@ -64,16 +64,6 @@ GIT
       sprout-osx-settings (>= 0.0.0)
 
 GIT
-  remote: https://github.com/pivotal-sprout/sprout-osx-settings
-  ref: master
-  sha: 6083f771f4f80b25dae9fd40784599ee5c578a09
-  specs:
-    sprout-osx-settings (0.1.0)
-      homebrew (>= 0.0.0)
-      osx (>= 0.0.0)
-      sprout-base (>= 0.0.0)
-
-GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
   sha: 0a1d648f76a94719e09c9a9f9742d12f4da95b5f
@@ -123,6 +113,16 @@ GIT
   sha: 7ffaecfb03720a55b72a08eeb3ae7f3d4e708b59
   specs:
     sprout-terminal (0.1.0)
+      osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/sprout-osx-settings
+  ref: develop
+  sha: 1a6376210a366eaa383aa5b3aec7b3a5f46d4406
+  specs:
+    sprout-osx-settings (0.1.0)
+      homebrew (>= 0.0.0)
       osx (>= 0.0.0)
       sprout-base (>= 0.0.0)
 

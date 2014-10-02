@@ -24,7 +24,9 @@ cookbook 'sprout-osx-apps',
   :github => 'pivotal-sprout/sprout-osx-apps'
 
 cookbook 'sprout-osx-settings',
-  :github => 'pivotal-sprout/sprout-osx-settings'
+  :github => 'trinitronx/sprout-osx-settings',
+  :ref => 'develop'
+#  :github => 'pivotal-sprout/sprout-osx-settings'
 
 cookbook 'osx',
   :github => 'pivotal-sprout/osx'
