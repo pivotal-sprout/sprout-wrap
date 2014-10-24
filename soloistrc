@@ -47,7 +47,8 @@ recipes:
 #- sprout-osx-apps::vagrant
 
 # apps (added for gloo)
-- sprout-osx-apps::sublime_text
+## Commented out until they update to Sublime Text 3
+#- sprout-osx-apps::sublime_text
 
 node_attributes:
   sprout:
@@ -118,6 +119,9 @@ node_attributes:
         - java
         - cyberduck
         - dropbox
+        - hex-fiend
+## Commented out until they update to Sublime Text 3
+#        - sublime-text
   workspace_directory: src
   :gloo-workstation:
     :xcode:
