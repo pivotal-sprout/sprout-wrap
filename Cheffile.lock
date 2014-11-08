@@ -5,6 +5,13 @@ SITE
     homebrew (1.9.0)
 
 GIT
+  remote: /Users/jcuzella/src/pub/cookbooks/lyraphase_workstation
+  ref: develop
+  sha: 8c4443d481e9ea8a7be7430c6e9465970fd0ee54
+  specs:
+    lyraphase_workstation (0.1.0)
+
+GIT
   remote: https://github.com/TangoGroup/gloo-workstation.git
   ref: master
   sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
@@ -128,6 +135,7 @@ GIT
 
 DEPENDENCIES
   gloo-workstation (>= 0)
+  lyraphase_workstation (>= 0)
   osx (>= 0)
   sprout-base (>= 0)
   sprout-git (>= 0)

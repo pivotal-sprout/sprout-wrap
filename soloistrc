@@ -50,6 +50,10 @@ recipes:
 ## Commented out until they update to Sublime Text 3
 #- sprout-osx-apps::sublime_text
 
+### Lyraphase Workstation & Custom
+- lyraphase_workstation::traktor
+- lyraphase_workstation::traktor_audio_2
+
 node_attributes:
   sprout:
     terminal:
@@ -99,6 +103,7 @@ node_attributes:
         - ack
         - meld
         - mtr
+        - expect
 
       casks:
         - ccmenu
@@ -120,6 +125,7 @@ node_attributes:
         - cyberduck
         - dropbox
         - hex-fiend
+        - beyond-compare
 ## Commented out until they update to Sublime Text 3
 #        - sublime-text
   workspace_directory: src
