@@ -108,6 +108,7 @@ node_attributes:
 
       casks:
         - ccmenu
+        - cord
         - firefox
         - gitx-rowanj
         - github
@@ -118,6 +119,7 @@ node_attributes:
         - textmate
         - vagrant
         - virtualbox
+        - vmware-fusion
         - xquartz
         - xscope
         - gpgtools
