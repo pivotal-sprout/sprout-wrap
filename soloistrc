@@ -110,6 +110,7 @@ node_attributes:
         - ccmenu
         - cord
         - firefox
+        - freefilesync
         - gitx-rowanj
         - github
         - google-chrome
