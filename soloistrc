@@ -87,6 +87,7 @@ node_attributes:
         - imagemagick
         - node
         - pstree
+        - iperf3
         - qt
         - ssh-copy-id
         - tmux
