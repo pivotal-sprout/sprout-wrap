@@ -103,6 +103,7 @@ node_attributes:
         - wemux
         - s3cmd
         - ack
+        - mediainfo
         - meld
         - mtr
         - expect
