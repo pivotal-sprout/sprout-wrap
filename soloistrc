@@ -123,6 +123,7 @@ node_attributes:
         - vagrant
         - virtualbox
         - vmware-fusion
+        - wireshark
         - xquartz
         - xscope
         - gpgtools
