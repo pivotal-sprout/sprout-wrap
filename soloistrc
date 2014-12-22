@@ -74,7 +74,7 @@ node_attributes:
         - chromedriver
         - imagemagick
         - node
-        - pstree
+        # - pstree # Skip until download url is fixed: https://github.com/Homebrew/homebrew/pull/35135
         - qt
         - ssh-copy-id
         - tmux
