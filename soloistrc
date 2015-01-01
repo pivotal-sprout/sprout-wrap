@@ -35,7 +35,7 @@ recipes:
 - sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
 - sprout-osx-apps::macvim
-- sprout-rubymine
+- sprout-jetbrains-editors::rubymine
 
 node_attributes:
   sprout:
