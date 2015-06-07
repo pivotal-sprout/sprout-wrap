@@ -35,8 +35,10 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
   "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
   *)      XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
+
 esac
 
 errorout() {
@@ -49,7 +51,7 @@ pushd `pwd`
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
-    curl -L -O "http://bro-fs-01.bro.gloostate.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://gloo.ops.s3.amazonaws.com/${XCODE_DMG}"
+    curl -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://adcdownload.apple.com/Developer_Tools/Xcode_6.3.2/${XCODE_DMG}"
   fi
     
   hdiutil attach "$XCODE_DMG"
@@ -74,7 +76,7 @@ fi
 echo "Please enter your sudo password to make changes to your machine"
 sudo echo ''
 
-curl -Ls https://gist.github.com/trinitronx/6217746/raw/58456d6675e437cebbf771c60b6005b4491a0980/xcode-cli-tools.sh | sudo bash
+curl -Ls https://gist.github.com/trinitronx/6217746/raw/dc456e5c316c716f4685de20471ae8301a87c434/xcode-cli-tools.sh | sudo bash
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
@@ -103,14 +105,5 @@ export rvm_path="${rvm_prefix}/.rvm"
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
 soloist || errorout "Soloist provisioning failed!"
-
-popd
-
-if [ -d "${HOME}/src/gloo/gloo-chef" ]; then
-  . ~/.rvm/scripts/rvm
-  pushd "${HOME}/src/gloo/gloo-chef"
-  bash ./update.sh
-  vagrant plugin install vagrant-berkshelf
-fi
 
 popd; popd
