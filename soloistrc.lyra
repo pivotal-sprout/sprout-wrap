@@ -67,6 +67,30 @@ recipes:
 - lyraphase_workstation::daisydisk
 
 node_attributes:
+  bash_it:
+    enabled_plugins:
+      plugins:
+        - base
+        - osx
+        - rvm
+        - ssh
+        - vagrant
+      aliases:
+        - ag
+        - bundler
+        - general
+        - vagrant
+      completions:
+        - awscli
+        - bash-it
+        - brew
+        - defaults
+        - dockerterm
+        - gem
+        - git
+        - rake
+        - ssh
+        - tmux
   sprout:
     terminal:
       default_profile: 'Pro'
