@@ -1,7 +1,7 @@
 recipes:
 
 # base (required by sprout)
-- sprout-osx-base::bash_it
+- sprout-base::bash_it
 - pivotal_workstation::create_var_chef_cache
 # (added for gloo)
 #- gloo-workstation::xcode
