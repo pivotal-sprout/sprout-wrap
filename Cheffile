@@ -47,5 +47,5 @@ cookbook 'sprout-ssh',
   :github => 'pivotal-sprout/sprout-ssh'
 
 cookbook 'lyraphase_workstation',
-  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
-  :ref => 'develop'
+  :github => 'trinitronx/lyraphase_workstation',
+  :ref => 'master'
