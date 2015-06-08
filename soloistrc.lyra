@@ -2,7 +2,7 @@ recipes:
 
 # base (required by sprout)
 - sprout-base::bash_it
-- pivotal_workstation::create_var_chef_cache
+- sprout-base::var_chef_cache
 # (added for gloo)
 #- gloo-workstation::xcode
 - sprout-base::homebrew
@@ -12,18 +12,18 @@ recipes:
 - sprout-osx-settings::sshd_on
 - sprout-osx-settings::inputrc
 - sprout-osx-settings::defaults_fast_key_repeat_rate
-- sprout-osx-settings::locate_on
+- sprout-osx-settings::locate
 - sprout-osx-settings::machine_name
 - sprout-osx-settings::global_environment_variables
 - sprout-terminal
 
 # development (general)
-- sprout-osx-base::workspace_directory
-# - sprout-osx-git::git_projects
-#- pivotal_workstation::git_config_global_defaults
-# - sprout-osx-git::git_scripts
+- sprout-base::workspace_directory
+# - sprout-git::projects
+#- sprout-git::global_config
+# - sprout-git::git_scripts
 # (added by gloo)
-#- pivotal_workstation::github_ssh_keys
+#- sprout-ssh
 
 # development (rails)
 #- sprout-rbenv
