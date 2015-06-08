@@ -37,7 +37,6 @@ recipes:
 # - sprout-osx-apps::shiftit
 # - sprout-osx-apps::keycastr
 - sprout-osx-settings::screen_sharing_app
-# - pivotal_workstation::mouse_locator
 # - sprout-osx-apps::menumeters
 
 # apps (editors)

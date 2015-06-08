@@ -38,9 +38,6 @@ recipes:
 - sprout-rubymine
 
 # (added by jcuzella)
-# development (rails)
-#(deprecated by rbenv)
-#(not working in mavericks)- pivotal_workstation::rvm
 # apps
 # - sprout-osx-apps::menumeters
 #- sprout-osx-apps::virtualbox
