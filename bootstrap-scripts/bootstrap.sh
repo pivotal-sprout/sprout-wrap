@@ -26,6 +26,25 @@ function detect_platform_version() {
   fi
 }
 
+## Spawn sudo in background subshell to refresh the sudo timestamp
+prevent_sudo_timeout() {
+  # Note: Don't use GNU expect... just a subshell (for some reason expect spawn jacks up readline input)
+  echo "Please enter your sudo password to make changes to your machine"
+  sudo -v # Asks for passwords
+  ( while true; do sudo -v; sleep 40; done ) &   # update the user's timestamp
+  export sudo_loop_PID=$!
+}
+
+# Kill sudo timestamp refresh PID and invalidate sudo timestamp
+kill_sudo_loop() {
+  echo "Killing $sudo_loop_PID due to trap"
+  kill -TERM $sudo_loop_PID
+  sudo -K
+}
+trap kill_sudo_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common terminate signals
+trap "exit" INT # Run exit when this script receives Ctrl-C
+
+
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 
 detect_platform_version
@@ -69,9 +88,10 @@ else
 fi
 
 # Hack to make sure sudo caches sudo password correctly...
-# (for some reason expect spawn jacks up readline input)
-echo "Please enter your sudo password to make changes to your machine"
-sudo echo ''
+# And so it stays available for the duration of the Chef run
+prevent_sudo_timeout
+readonly sudo_loop_PID  # Make PID readonly for security ;-)
+
 
 curl -Ls https://gist.github.com/trinitronx/6217746/raw/dc456e5c316c716f4685de20471ae8301a87c434/xcode-cli-tools.sh | sudo bash
 
@@ -104,3 +124,5 @@ export rvm_path="${rvm_prefix}/.rvm"
 soloist || errorout "Soloist provisioning failed!"
 
 popd; popd
+
+exit
