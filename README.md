@@ -43,9 +43,9 @@ then try downgrading those errors like this:
 
 ### 4. Run soloist
 
-[You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**); depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
+[The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
 
-    bundle exec soloist
+    caffeinate bundle exec soloist
 
 ## Roadmap
 
