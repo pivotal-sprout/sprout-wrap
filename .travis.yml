@@ -1,5 +1,6 @@
 language: objective-c
 rvm: system
+osx_image: xcode7
 install:
   - travis_wait 'sudo softwareupdate -i -a'
   - sudo gem install bundler --no-ri --no-rdoc
