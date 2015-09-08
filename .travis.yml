@@ -3,6 +3,6 @@ rvm: system
 osx_image: xcode7
 install:
   - sudo gem install bundler --no-ri --no-rdoc
-  - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
+  - sudo bundle install
 script:
   - soloist
