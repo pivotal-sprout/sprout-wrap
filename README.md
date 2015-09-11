@@ -6,7 +6,7 @@ This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-c
 to run a subset of the recipes in sprout's cookbooks.
 
 [Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
-customize its [attributes](http://docs.opscode.com/chef_overview_attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
+customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
 you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
 of the many [community cookbooks](http://community.opscode.com/cookbooks). By default it configures an OS X 
 Mavericks workstation for Ruby development.
