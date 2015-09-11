@@ -1,8 +1,8 @@
 language: objective-c
 rvm: system
+osx_image: xcode7
 install:
-  - travis_wait 'sudo softwareupdate -i -a'
   - sudo gem install bundler --no-ri --no-rdoc
-  - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
+  - sudo bundle install
 script:
   - soloist

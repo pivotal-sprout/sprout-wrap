@@ -3,7 +3,7 @@ SITE
   specs:
     build-essential (2.2.3)
     dmg (2.2.2)
-    homebrew (1.12.0)
+    homebrew (1.13.0)
       build-essential (>= 2.1.2)
 
 GIT
@@ -32,10 +32,11 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-homebrew
   ref: master
-  sha: 67a6a6ba55d9d8e933645ae7fd1331b85b05d1d0
+  sha: bfcc9b809638bb5cb3d6260aef61ed4de82c2445
   specs:
-    sprout-homebrew (0.1.0)
+    sprout-homebrew (0.2.0)
       homebrew (>= 1.5.4)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-jetbrains-editors
