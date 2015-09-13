@@ -27,12 +27,10 @@ recipes:
 
 # apps
 - sprout-osx-apps::iterm2
-- sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
 
 # apps (editors)
 - sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::macvim
 - sprout-jetbrains-editors::rubymine
 
 node_attributes:
@@ -84,11 +82,13 @@ node_attributes:
       casks:
         - ccmenu
         - firefox
+        - flycut
         - gitx-rowanj
         - github
         - google-chrome
         - google-drive
         - google-hangouts
+        - macvim
         - skype
         - textmate
         - vagrant
