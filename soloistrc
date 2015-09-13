@@ -6,6 +6,10 @@ recipes:
 - sprout-base::homebrew
 - sprout-homebrew
 
+# apps
+- sprout-osx-apps::iterm2
+- sprout-osx-apps::shiftit
+
 # settings
 - sprout-osx-settings
 - sprout-osx-settings::dock_preferences
@@ -24,10 +28,6 @@ recipes:
 - sprout-ruby
 - sprout-mysql
 - sprout-postgresql
-
-# apps
-- sprout-osx-apps::iterm2
-- sprout-osx-apps::shiftit
 
 # apps (editors)
 - sprout-osx-apps::textmate_preferences
