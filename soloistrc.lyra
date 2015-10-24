@@ -39,7 +39,7 @@ recipes:
 # apps
 - sprout-osx-apps::iterm2
 #- sprout-osx-apps::flycut
-# - sprout-osx-apps::shiftit
+- sprout-osx-apps::shiftit
 # - sprout-osx-apps::keycastr
 - sprout-osx-settings::screen_sharing_app
 # - sprout-osx-apps::menumeters
@@ -61,7 +61,7 @@ recipes:
 #- sprout-osx-apps::lastpass
 # - sprout-osx-apps::libreoffice
 - sprout-osx-apps::s3cmd
-- sprout-osx-apps::sublime_text
+#- sprout-osx-apps::sublime_text
 # - sprout-osx-apps::vlc
 # - sprout-osx-apps::wemux
 
