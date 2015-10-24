@@ -5,8 +5,13 @@ recipes:
 - sprout-base::var_chef_cache
 # (added for gloo)
 #- gloo-workstation::xcode
-- sprout-base::homebrew
-- sprout-homebrew
+#- sprout-base::homebrew ## Deprecated by new homebrew cookbook
+#- sprout-homebrew       ## Deprecated by new homebrew cookbook
+- homebrew
+- homebrew::install_taps
+- homebrew::install_casks
+- homebrew::install_formulas
+- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
 
 # settings
 - sprout-osx-settings::sshd_on
@@ -114,67 +119,77 @@ node_attributes:
       clear_apps: false
       tile_size: 35
       magnification': false
-    homebrew:
-      formulae:
-#        - ctags-exuberant
-        - ag
-#        - chromedriver
-#        - imagemagick
-        - node
-        - pstree
-#        - iperf3
-#        - qt
-        - ssh-copy-id
-        - tmux
-        - tree
-        - watch
-        - wget
-#        - rbenv-binstubs
-#        - rbenv-gem-rehash
-        - gist
-        - hub
-        - mosh
-#        - parallel
-        - wemux
-        - s3cmd
-        - ack
-        - mediainfo
-        - meld
-        - mtr
-        - expect
-        - rename
-        - pwgen
+  homebrew:
+    taps:
+      - caskroom/versions
+      - homebrew/x11
+      - trinitronx/truecrypt
+    formulas:
+#      - ctags-exuberant
+      - ag
+      - boot2docker
+#      - chromedriver
+#      - imagemagick
+      - node
+      - pstree
+      - htop-osx
+#      - iperf3
+#      - qt
+      - ssh-copy-id
+      - tmux
+      - tree
+      - watch
+      - wget
+#      - rbenv-binstubs
+#      - rbenv-gem-rehash
+      - gist
+      - hub
+      - mosh
+#      - parallel
+      - wemux
+      - s3cmd
+      - ack
+      - mediainfo
+      - meld
+      - mtr
+      - expect
+      - rename
+      - pwgen
 
-      casks:
-#        - ccmenu
-#        - cord
-        - firefox
-        - freefilesync
-#        - gitx-rowanj
-        - github
-        - google-chrome
-        - google-drive
-#        - google-hangouts
-        - skype
-        - textmate
-        - vagrant
-        - virtualbox
-        - vmware-fusion
-#        - wireshark
-        - xquartz
-        - xscope
-        - gpgtools
-        - lastpass-universal
-        - java
-#        - cyberduck
-        - dropbox
-#        - hex-fiend
-#        - beyond-compare
-#        - mumble
-#        - teamspeak
-        - caskroom/versions/sublime-text3
+    casks:
+      - keyfinder
+      - soundflower
+      - audacity
+#      - ccmenu
+#      - cord
+      - firefox
+#      - freefilesync
+#      - gitx-rowanj
+      - github
+      - google-chrome
+      - google-drive
+#      - google-hangouts
+      - skype
+      - textmate
+      - vagrant
+      - virtualbox
+      - vmware-fusion
+#      - wireshark
+      - xquartz
+      - xscope
+      - gpgtools
+      - truecrypt
+      - lastpass
+      - java
+#      - cyberduck
+      - dropbox
+#      - hex-fiend
+#      - beyond-compare
+#      - mumble
+#      - teamspeak
+      - sublime-text3
 ## Commented out until they update to Sublime Text 3
-#        - sublime-text
+#      - sublime-text
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
