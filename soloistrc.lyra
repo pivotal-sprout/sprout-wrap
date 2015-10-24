@@ -24,6 +24,7 @@ recipes:
 
 # development (general)
 - sprout-base::workspace_directory
+- sprout-git::default_editor
 - sprout-git::projects
 #- sprout-git::global_config
 # - sprout-git::git_scripts
@@ -105,6 +106,10 @@ node_attributes:
         - rake
         - ssh
         - tmux
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
   sprout:
     terminal:
       default_profile: 'Pro'
