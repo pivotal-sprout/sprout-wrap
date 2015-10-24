@@ -66,9 +66,18 @@ recipes:
 # - sprout-osx-apps::wemux
 
 ### Lyraphase Workstation & Custom
+- lyraphase_workstation::ableton_live
+- lyraphase_workstation::max_for_live
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
 - lyraphase_workstation::daisydisk
+- lyraphase_workstation::oxium
+- lyraphase_workstation::mixed_in_key
+- lyraphase_workstation::korg_kontrol_editor
+- lyraphase_workstation::sublime_text_settings
+- lyraphase_workstation::nfs_mounts
+- lyraphase_workstation::dmgaudio_dualism
+- lyraphase_workstation::drobo_dashboard
 
 node_attributes:
   current_user: jcuzella
