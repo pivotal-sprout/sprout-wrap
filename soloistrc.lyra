@@ -24,7 +24,7 @@ recipes:
 
 # development (general)
 - sprout-base::workspace_directory
-# - sprout-git::projects
+- sprout-git::projects
 #- sprout-git::global_config
 # - sprout-git::git_scripts
 # (added by gloo)
@@ -71,6 +71,7 @@ recipes:
 - lyraphase_workstation::daisydisk
 
 node_attributes:
+  current_user: jcuzella
   bash_it:
     enabled_plugins:
       plugins:
@@ -119,6 +120,14 @@ node_attributes:
       clear_apps: false
       tile_size: 35
       magnification': false
+    git:
+      projects:
+        - url: https://gist.github.com/f59a8308d42d71fdba41.git
+          name: iterm_open_with
+          workspace_path: ~/src/pub
+          post_clone_commands:
+            - "[ ! -d ~/bin ] && mkdir ~/bin"
+            - ln -sf ~/src/pub/iterm_open_with/iterm_open_with ~/bin/iterm_open_with
   homebrew:
     taps:
       - caskroom/versions
