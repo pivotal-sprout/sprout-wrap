@@ -80,8 +80,9 @@ node_attributes:
         - wget
         - rbenv-binstubs
         - rbenv-gem-rehash
-        - cloudfoundry-cli   
+ 
       casks:
+        - cloudfoundry-cli  
         - ccmenu
         - firefox
         - flycut
