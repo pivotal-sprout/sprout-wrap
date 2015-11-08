@@ -31,3 +31,27 @@ There are primarily 2 reasons that we install XCode in sprout-wrap:
     
 1. System Ruby on OS X Mountain Lion uses `xcrun` to detect `cc`. `xcrun` is [not designed](http://stackoverflow.com/questions/13041525/osx-10-8-xcrun-no-such-file-or-directory) to work with the standalone Command Line Tools.
 2. sprout-wrap is used to build workstations for iOS development. Having XCode available is handy in this situation.
+
+#### What are some other common chef recipes worth adding
+
+- sprout-jetbrains-editors::intellij
+- sprout-jetbrains-editors::webstorm
+- sprout-git::git_duet (worth reading the docs, useful for pairing)
+- sprout-git::authors 
+
+homebrew:
+  taps:
+    - caskroom/versions # (if you're not familiar with homebrew -- this tap lets you grab other versions of common casks)
+
+#### Soloist doesn't complete the install process
+
+1. Make sure you have followed the instructions in the readme
+2. Look at the actual command that failed, and re-run it from the command line (e.g. /usr/local/bin/rbenv install 2.1.5)
+
+### My application dock has disappered after running this!
+
+1. It's on the left hand side, change "dock::orientation: 'left' to 'bottom' if you want to adjust this
+
+
+
+
