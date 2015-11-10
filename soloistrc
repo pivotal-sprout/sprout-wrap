@@ -4,6 +4,7 @@ recipes:
 - sprout-base
 - sprout-base::bash_it
 - sprout-base::homebrew
+- homebrew::install_taps
 - sprout-homebrew
 
 # apps
@@ -79,6 +80,7 @@ node_attributes:
         - wget
         - rbenv-binstubs
         - rbenv-gem-rehash
+        - cloudfoundry-cli
       casks:
         - ccmenu
         - firefox
@@ -95,3 +97,6 @@ node_attributes:
         - virtualbox
         - xquartz
         - xscope
+    homebrew:
+          taps:
+            - pivotal/tap
