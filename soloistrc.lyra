@@ -71,13 +71,14 @@ recipes:
 - lyraphase_workstation::max_for_live
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
-- lyraphase_workstation::daisydisk
+- lyraphase_workstation::dmgaudio_dualism
 - lyraphase_workstation::oxium
 - lyraphase_workstation::mixed_in_key
 - lyraphase_workstation::korg_kontrol_editor
 - lyraphase_workstation::sublime_text_settings
 - lyraphase_workstation::nfs_mounts
-- lyraphase_workstation::dmgaudio_dualism
+- lyraphase_workstation::bash_it_custom_plugins
+- lyraphase_workstation::daisydisk
 - lyraphase_workstation::drobo_dashboard
 
 node_attributes:
@@ -191,6 +192,7 @@ node_attributes:
       - github
       - google-chrome
       - google-drive
+      - chefdk
 #      - google-hangouts
       - skype
       - textmate
@@ -230,3 +232,7 @@ node_attributes:
 #      license:
 #        customer_name:
 #        registration_key:
+  lyraphase_workstation:
+    nfs_mounts:
+      - "#/../Volumes/saturn    -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export"
+      - "/../Volumes/terabyte    -fstype=nfs,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
