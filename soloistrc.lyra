@@ -73,6 +73,7 @@ recipes:
 - lyraphase_workstation::traktor_audio_2
 - lyraphase_workstation::dmgaudio_dualism
 - lyraphase_workstation::oxium
+- lyraphase_workstation::polyverse_infected_mushroom_i_wish
 - lyraphase_workstation::mixed_in_key
 - lyraphase_workstation::korg_kontrol_editor
 - lyraphase_workstation::sublime_text_settings
