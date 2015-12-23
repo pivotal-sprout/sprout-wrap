@@ -116,6 +116,8 @@ node_attributes:
         - qt
         - ssh-copy-id
         - tmux
+# For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+        - reattach-to-user-namespace
         - tree
         - watch
         - wget
@@ -134,6 +136,7 @@ node_attributes:
         - expect
         - rename
         - pwgen
+        - terminal-notifier
 
       casks:
         - ccmenu
@@ -156,6 +159,8 @@ node_attributes:
         - gpgtools
         - lastpass-universal
         - java
+        - sqlworkbenchj
+        - mysqlworkbench
         - cyberduck
         - dropbox
         - hex-fiend
