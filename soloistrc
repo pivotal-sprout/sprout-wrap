@@ -88,7 +88,6 @@ node_attributes:
       - google-drive
       - google-hangouts
       - macvim
-      - skype
       - textmate
       - vagrant
       - virtualbox
