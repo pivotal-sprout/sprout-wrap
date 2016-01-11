@@ -81,6 +81,7 @@ node_attributes:
       - watch
       - wget
       - rbenv-binstubs
+      - golang
     casks:
       - firefox
       - flycut
