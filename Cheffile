@@ -27,7 +27,7 @@ cookbook 'osx',
   :github => 'pivotal-sprout/osx'
 
 cookbook 'sprout-homebrew',
-  :github => 'pivotal-sprout/sprout-homebrew'
+  :github => 'mikfreedman/sprout-homebrew'
 
 cookbook 'sprout-terminal',
   :github => 'pivotal-sprout/sprout-terminal'
