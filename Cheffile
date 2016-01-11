@@ -2,6 +2,9 @@
 
 site 'https://supermarket.getchef.com/api/v1'
 
+cookbook 'sprout-vim',
+  :github => 'pivotal-sprout/sprout-vim'
+
 cookbook 'sprout-rbenv',
   :github => 'pivotal-sprout/sprout-rbenv'
 

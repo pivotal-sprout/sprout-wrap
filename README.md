@@ -15,6 +15,10 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 ## Installation under Mavericks (OS X 10.9)
 
+### 0. Install XCode
+
+## [[ Note: This version of sprout wrap REQUIRES XCode, someone in the office should have an offline version of XCode to save you waiting for the download ]]
+
 ### 1. Install Command Line Tools
   
     xcode-select --install
