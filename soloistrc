@@ -11,6 +11,7 @@ recipes:
 # apps
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::shiftit
+- sprout-osx-apps::tunnelblick
 
 # settings
 - sprout-osx-settings
