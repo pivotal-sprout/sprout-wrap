@@ -27,7 +27,7 @@ If you receive a message about the update server being unavailable and are on Ma
 
 ### 2. Clone this project
 
-    git clone https://github.com/pivotal/sprout-wrap-sydney.git
+    git clone https://github.com/pivotal/sprout-wrap-sydney.git sprout-wrap
     cd sprout-wrap
 
 ### 3. Install soloist & and other required gems
