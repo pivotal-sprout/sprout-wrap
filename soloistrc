@@ -78,7 +78,6 @@ node_attributes:
         - watch
         - wget
         - rbenv-binstubs
-        - rbenv-gem-rehash
       casks:
         - ccmenu
         - firefox
