@@ -39,6 +39,8 @@ recipes:
 - sprout-jetbrains-editors::intellij
 
 node_attributes:
+  homebrew:
+    version: "7fca726d2728f624e372be269d0065205cb642c8"
   sprout:
     git:
       domain: pivotallabs.com
