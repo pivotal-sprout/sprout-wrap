@@ -3,8 +3,9 @@ recipes:
 # base (required by sprout)
 - sprout-base
 - sprout-base::bash_it
-- sprout-base::homebrew
-- sprout-homebrew
+- homebrew
+- homebrew::install_formulas
+- homebrew::install_casks
 
 # apps
 - sprout-osx-apps::iterm2
@@ -63,33 +64,33 @@ node_attributes:
       clear_apps: true
       tile_size: 35
       magnification: false
-    homebrew:
-      formulae:
-        - ctags-exuberant
-        - ag
-        - chromedriver
-        - imagemagick
-        - node
-        - pstree
-        - qt
-        - ssh-copy-id
-        - tmux
-        - tree
-        - watch
-        - wget
-        - rbenv-binstubs
-      casks:
-        - firefox
-        - flycut
-        - rowanj-gitx
-        - github-desktop
-        - google-chrome
-        - google-drive
-        - google-hangouts
-        - macvim
-        - skype
-        - textmate
-        - vagrant
-        - virtualbox
-        - xquartz
-        - xscope
+  homebrew:
+    formulas:
+      - ctags-exuberant
+      - ag
+      - chromedriver
+      - imagemagick
+      - node
+      - pstree
+      - qt
+      - ssh-copy-id
+      - tmux
+      - tree
+      - watch
+      - wget
+      - rbenv-binstubs
+    casks:
+      - firefox
+      - flycut
+      - rowanj-gitx
+      - github-desktop
+      - google-chrome
+      - google-drive
+      - google-hangouts
+      - macvim
+      - skype
+      - textmate
+      - vagrant
+      - virtualbox
+      - xquartz
+      - xscope
