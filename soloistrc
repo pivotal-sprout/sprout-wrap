@@ -79,11 +79,10 @@ node_attributes:
         - wget
         - rbenv-binstubs
       casks:
-        - ccmenu
         - firefox
         - flycut
         - rowanj-gitx
-        - github
+        - github-desktop
         - google-chrome
         - google-drive
         - google-hangouts
