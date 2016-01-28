@@ -156,6 +156,7 @@ node_attributes:
 #      - chromedriver
 #      - imagemagick
       - node
+      - p7zip
       - pstree
       - htop-osx
 #      - iperf3
@@ -163,6 +164,7 @@ node_attributes:
       - ssh-copy-id
       - tmux
       - tree
+      - socat
       - watch
       - wget
 #      - rbenv-binstubs
