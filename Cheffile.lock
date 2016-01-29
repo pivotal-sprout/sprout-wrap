@@ -16,9 +16,10 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 1d8fc220053a45748d94cffa5397d717812c18b7
+  sha: 217fdf913f8f11dcf99d03ab490b19ef62d56b55
   specs:
-    sprout-base (0.2.0)
+    sprout-base (0.3.0)
+      homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
@@ -41,16 +42,16 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-jetbrains-editors
   ref: master
-  sha: f76ff8a7d94ba237bc9517cbec3021ba51281f5b
+  sha: 342225624e5c64adde7457bee502b8dbace51c3d
   specs:
     sprout-jetbrains-editors (0.1.0)
+      homebrew (>= 0.0.0)
       sprout-base (>= 0.0.0)
-      sprout-homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-mysql
   ref: master
-  sha: 96a6085921937d4cad19137744b696b5a66c521d
+  sha: 12a264fe5418ae9fc6f5300fe56abec058f4a743
   specs:
     sprout-mysql (0.1.0)
       homebrew (>= 0.0.0)
@@ -59,7 +60,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-apps
   ref: master
-  sha: d65b1d519fedf1972fb21214bfcd9420c69f58db
+  sha: c86e31c859db6101a6e9e8af46041203b8db14f0
   specs:
     sprout-osx-apps (0.1.0)
       dmg (>= 0.0.0)
@@ -70,7 +71,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
   ref: master
-  sha: 05edfc63aab190aa130e37b2ce26adfa29caf51e
+  sha: d6e5123dba44c9c5435022821a46ae75faffe979
   specs:
     sprout-osx-settings (0.1.0)
       homebrew (>= 0.0.0)
