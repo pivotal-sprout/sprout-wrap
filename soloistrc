@@ -94,7 +94,6 @@ node_attributes:
       - google-chrome
       - google-drive
       - google-hangouts
-      - macvim
       - textmate
       - vagrant
       - virtualbox
