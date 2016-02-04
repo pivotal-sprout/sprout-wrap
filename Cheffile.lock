@@ -16,7 +16,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 217fdf913f8f11dcf99d03ab490b19ef62d56b55
+  sha: f5e3bc64f09303a1f6d6a8e34eee73617fd94a63
   specs:
     sprout-base (0.3.0)
       homebrew (>= 0.0.0)
@@ -42,7 +42,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-jetbrains-editors
   ref: master
-  sha: 342225624e5c64adde7457bee502b8dbace51c3d
+  sha: 7811eb38c3327f1e2d80335f724536ce5ebb54e4
   specs:
     sprout-jetbrains-editors (0.1.0)
       homebrew (>= 0.0.0)
