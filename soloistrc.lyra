@@ -153,6 +153,7 @@ node_attributes:
     formulas:
 #      - ctags-exuberant
       - ag
+      - grc
       - boot2docker
 #      - chromedriver
 #      - imagemagick
