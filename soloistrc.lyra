@@ -149,6 +149,7 @@ node_attributes:
       - caskroom/versions
       - homebrew/gui
       - trinitronx/truecrypt
+      - jlhonora/lsusb
     formulas:
 #      - ctags-exuberant
       - ag
@@ -182,7 +183,10 @@ node_attributes:
       - expect
       - rename
       - pwgen
-
+# Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
     casks:
       - keyfinder
       - soundflower
