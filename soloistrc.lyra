@@ -147,7 +147,7 @@ node_attributes:
   homebrew:
     taps:
       - caskroom/versions
-      - homebrew/x11
+      - homebrew/gui
       - trinitronx/truecrypt
     formulas:
 #      - ctags-exuberant
@@ -177,7 +177,7 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - meld
+      - homebrew/gui/meld
       - mtr
       - expect
       - rename
