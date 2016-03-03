@@ -39,23 +39,24 @@ recipes:
 node_attributes:
   sprout:
     git:
-      domain: pivotallabs.com
+      domain: pivotal.io
       authors:
         - initials: ah
           name: Abhijit Hiremagalur
-          username: abhi
-        - initials: bc
-          name: Brian Cunnie
-          username: cunnie
-        - initials: jrhb
-          name: Jonathan Barnes
-        - initials: lw
-          name: Luke Winikates
-          username: lwinikates
+        - initials: dg
+          name: Dylan Griffith
+        - initials: al
+          name: Andrew Leung
+        - initials: jf
+          name: Joel Freedman
+        - initials: dl
+          name: Dariusz Lorenc
+        - initials: sb
+          name: Stuart Bargon
       projects:
         -
           name: sprout-wrap
-          url: https://github.com/pivotal-sprout/sprout-wrap.git
+          url: https://github.com/pivotal/sprout-wrap-sydney.git
     terminal:
       default_profile: 'Pro'
     settings:
