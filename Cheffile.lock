@@ -7,6 +7,15 @@ SITE
       build-essential (>= 2.1.2)
 
 GIT
+  remote: https://github.com/mikfreedman/sprout-homebrew
+  ref: master
+  sha: bdfa2e0761ff5e959934ef325a4729de326ff7b0
+  specs:
+    sprout-homebrew (0.2.0)
+      homebrew (>= 1.5.4)
+      sprout-base (>= 0.0.0)
+
+GIT
   remote: https://github.com/pivotal-sprout/osx
   ref: master
   sha: 57820f0c0f4b08e9cff82a57a7489f9dcc9345f7
@@ -28,15 +37,6 @@ GIT
   specs:
     sprout-git (0.2.0)
       homebrew (>= 0.0.0)
-      sprout-base (>= 0.0.0)
-
-GIT
-  remote: https://github.com/pivotal-sprout/sprout-homebrew
-  ref: master
-  sha: 68274f5f450a1cf1b0ae6748e4c4606d1ce47e87
-  specs:
-    sprout-homebrew (0.2.0)
-      homebrew (>= 1.5.4)
       sprout-base (>= 0.0.0)
 
 GIT
