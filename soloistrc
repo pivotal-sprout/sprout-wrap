@@ -3,7 +3,6 @@ recipes:
 # base (required by sprout)
 - sprout-base
 - sprout-base::bash_it
-- sprout-vim
 - homebrew
 - homebrew::install_formulas
 - homebrew::install_casks
@@ -11,7 +10,6 @@ recipes:
 # apps
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::shiftit
-- sprout-osx-apps::tunnelblick
 
 # settings
 - sprout-osx-settings
@@ -84,6 +82,7 @@ node_attributes:
       - wget
       - rbenv-binstubs
       - golang
+      - macvim
     casks:
       - firefox
       - flycut
