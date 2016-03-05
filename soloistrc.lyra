@@ -147,9 +147,11 @@ node_attributes:
   homebrew:
     taps:
       - caskroom/versions
+      - homebrew/completions
       - homebrew/x11
       - trinitronx/truecrypt
     formulas:
+      - bash-completion
 #      - ctags-exuberant
       - ag
       - boot2docker
