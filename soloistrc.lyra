@@ -148,12 +148,14 @@ node_attributes:
     taps:
       - caskroom/versions
       - homebrew/completions
-      - homebrew/x11
+      - homebrew/gui
       - trinitronx/truecrypt
+      - jlhonora/lsusb
     formulas:
       - bash-completion
 #      - ctags-exuberant
       - ag
+      - grc
       - boot2docker
 #      - chromedriver
 #      - imagemagick
@@ -179,12 +181,15 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - meld
+      - homebrew/gui/meld
       - mtr
       - expect
       - rename
       - pwgen
-
+# Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
     casks:
       - keyfinder
       - soundflower
