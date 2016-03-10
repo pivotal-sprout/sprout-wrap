@@ -189,6 +189,7 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
+      - airfoil
       - keyfinder
       - soundflower
       - audacity
