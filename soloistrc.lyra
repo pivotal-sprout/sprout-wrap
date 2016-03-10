@@ -243,11 +243,12 @@ node_attributes:
   lyraphase_workstation:
     ableton_live:
       dmg:
-        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_951b6_64.dmg
-        checksum: ec95f7f5d8165f783ce5e25087201594d31d5245737a5574c0dec7d9ea4c7217
-        volumes_dir: Ableton Live 9.5 Beta Installer
-        dmg_name: ableton_live_beta_951b6_64
-        app: Ableton Live 9.5 Beta
+#        source: http://cdn2-downloads.ableton.com/channels/9.6.1b5/ableton_live_beta_961b5_64.dmg
+        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_961b5_64.dmg
+        checksum: 5d807535e1e4330e6882193df197d8d59753f55a658bf42a031c0363c943d921
+        volumes_dir: Ableton Live 9.6 Beta Installer
+        dmg_name: ableton_live_beta_961b5_64
+        app: Ableton Live 9.6 Beta
     nfs_mounts:
       - "#/../Volumes/saturn    -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export"
       - "/../Volumes/terabyte    -fstype=nfs,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
