@@ -157,6 +157,8 @@ node_attributes:
       - boot2docker
 #      - chromedriver
 #      - imagemagick
+      - openssl
+      - xz
       - node
       - p7zip
       - pstree
