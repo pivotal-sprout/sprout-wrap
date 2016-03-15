@@ -67,6 +67,7 @@ recipes:
 # - sprout-osx-apps::wemux
 
 ### Lyraphase Workstation & Custom
+- lyraphase_workstation::airfoil
 - lyraphase_workstation::ableton_live
 - lyraphase_workstation::max_for_live
 - lyraphase_workstation::traktor
@@ -191,7 +192,8 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
-      - airfoil
+# Let the lyraphase_workstation::airfoil recipe do this instead
+#      - airfoil
       - keyfinder
       - soundflower
       - audacity
@@ -243,6 +245,10 @@ node_attributes:
 #      license:
 #        customer_name:
 #        registration_key:
+#    airfoil:
+#      license:
+#        code: 
+#        name: 
   lyraphase_workstation:
     ableton_live:
       dmg:
