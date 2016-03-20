@@ -208,6 +208,7 @@ node_attributes:
       - chefdk
 #      - google-hangouts
       - skype
+      - steam
       - textmate
       - vagrant
       - virtualbox
