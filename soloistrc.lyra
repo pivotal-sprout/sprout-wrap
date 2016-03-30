@@ -148,10 +148,12 @@ node_attributes:
   homebrew:
     taps:
       - caskroom/versions
+      - homebrew/completions
       - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
     formulas:
+      - bash-completion
 #      - ctags-exuberant
       - ag
       - grc
@@ -168,6 +170,9 @@ node_attributes:
 #      - qt
       - ssh-copy-id
       - tmux
+# For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+# Also fixes Sublime Text "subl" command not working
+      - reattach-to-user-namespace
       - tree
       - socat
       - watch
@@ -183,6 +188,7 @@ node_attributes:
       - ack
       - mediainfo
       - homebrew/gui/meld
+      - keybase
       - mtr
       - expect
       - rename
@@ -200,6 +206,7 @@ node_attributes:
 #      - ccmenu
 #      - cord
       - firefox
+      - flux
 #      - freefilesync
 #      - gitx-rowanj
       - github

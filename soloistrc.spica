@@ -50,6 +50,7 @@ recipes:
 ### Lyraphase Workstation & Custom
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
+- lyraphase_workstation::airfoil
 
 node_attributes:
   bash_it:
@@ -117,6 +118,7 @@ node_attributes:
         - ssh-copy-id
         - tmux
 # For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+# Also fixes Sublime Text "subl" command not working
         - reattach-to-user-namespace
         - tree
         - watch
