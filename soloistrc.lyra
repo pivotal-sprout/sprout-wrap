@@ -188,6 +188,7 @@ node_attributes:
       - ack
       - mediainfo
       - homebrew/gui/meld
+      - keybase
       - mtr
       - expect
       - rename
