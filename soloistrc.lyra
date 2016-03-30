@@ -206,6 +206,7 @@ node_attributes:
 #      - ccmenu
 #      - cord
       - firefox
+      - flux
 #      - freefilesync
 #      - gitx-rowanj
       - github
