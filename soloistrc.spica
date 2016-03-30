@@ -50,6 +50,7 @@ recipes:
 ### Lyraphase Workstation & Custom
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
+- lyraphase_workstation::airfoil
 
 node_attributes:
   bash_it:
