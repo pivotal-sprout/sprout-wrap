@@ -2,6 +2,44 @@
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
 
+## Prerequisites
+
+Download and install [XCode 7 from the App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+
+## Installation
+
+To provision your machine, open up Terminal and enter the following:
+
+```sh
+sudo xcodebuild -license
+xcode-select --install
+git clone https://github.com/pivotal-sprout/sprout-wrap.git
+cd sprout-wrap
+sudo gem install bundler
+bundle install --path vendor/bundle
+caffeinate bundle exec soloist
+```
+
+The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.
+
+## Problems?
+
+### clang error
+
+If you receive errors like this:
+
+    clang: error: unknown argument: '-multiply_definedsuppress'
+
+then try downgrading those errors like this:
+
+    sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
+
+### Command Line Tool Update Server
+
+If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
+
+## Customization
+
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
 to run a subset of the recipes in sprout's cookbooks.
 
@@ -12,40 +50,6 @@ of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By def
 Mavericks workstation for Ruby development.
 
 Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
-
-## Installation under Mavericks (OS X 10.9)
-
-### 1. Install Command Line Tools
-  
-    xcode-select --install
-
-If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
-
-### 2. Clone this project
-
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
-    cd sprout-wrap
-
-### 3. Install soloist & and other required gems
-
-If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
-
-    sudo gem install bundler
-    bundle
-
-If you receive errors like this:
-
-    clang: error: unknown argument: '-multiply_definedsuppress'
-
-then try downgrading those errors like this:
-
-    sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
-
-### 4. Run soloist
-
-[The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
-
-    caffeinate bundle exec soloist
 
 ## Caveats
 
@@ -59,7 +63,7 @@ then try downgrading those errors like this:
 
 ## Roadmap
 
-See Pivotal Tracker: https://www.pivotaltracker.com/s/projects/884116
+See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
 
 ## Discussion List
 
