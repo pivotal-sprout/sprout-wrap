@@ -1,59 +1,53 @@
 recipes:
-
-# base (required by sprout)
 - sprout-base
 - sprout-base::bash_it
 - homebrew
+- homebrew::install_taps
 - homebrew::install_formulas
 - homebrew::install_casks
 
-# apps
-- sprout-osx-apps::iterm2
-- sprout-osx-apps::shiftit
-- sprout-osx-apps::ccmenu
-
-# settings
 - sprout-osx-settings
 - sprout-osx-settings::dock_preferences
-- sprout-terminal
+
 - sprout-ssh::known_hosts_github
+- sprout-terminal
+- sprout-osx-apps::iterm2
 
-# development (general)
 - sprout-base::workspace_directory
+
 - sprout-git
-- sprout-git::default_editor
 - sprout-git::projects
-- sprout-git::git_scripts
+- sprout-git::git_duet
 
-# development (rails)
-- sprout-rbenv
-- sprout-ruby
-- sprout-mysql
 - sprout-postgresql
-
-# apps (editors)
-- sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::sublime_text
-- sprout-jetbrains-editors::rubymine
 - sprout-jetbrains-editors::intellij
 
 node_attributes:
+  bash_it:
+    enabled_plugins:
+      plugins:
+          - ssh
+          - node
   sprout:
     git:
       domain: pivotal.io
       authors:
         - initials: ah
           name: Abhijit Hiremagalur
-        - initials: dg
-          name: Dylan Griffith
         - initials: al
           name: Andrew Leung
-        - initials: jf
-          name: Joel Freedman
         - initials: dl
           name: Dariusz Lorenc
+        - initials: dg
+          name: Dylan Griffith
+        - initials: jf
+          name: Joel Freedman
+        - initials: gb
+          name: Gabriel Bieules
+          email: gabriel.bieules@team.telstra.com
         - initials: sb
           name: Stuart Bargon
+          email: stuart.bargon@team.telstra.com
       projects:
         -
           name: sprout-wrap
@@ -69,35 +63,28 @@ node_attributes:
       tile_size: 35
       magnification: false
   homebrew:
+    taps:
+      - pivotal/tap
+      - cloudfoundry/tap
     formulas:
-      - ctags-exuberant
-      - ag
+      - cf-cli
       - chromedriver
-      - imagemagick
+      - lastpass-cli
       - node
       - pstree
       - qt
+      - springboot
       - ssh-copy-id
+      - the_platinum_searcher
       - tmux
       - tree
       - watch
       - wget
-      - rbenv-binstubs
-      - golang
-      - macvim
     casks:
-      - firefox
+      - ccmenu
       - flycut
-      - rowanj-gitx
-      - github-desktop
       - google-chrome
-      - google-drive
       - google-hangouts
+      - spectacle
       - textmate
-      - vagrant
-      - virtualbox
-      - xquartz
-      - xscope
-      - screenhero
-      - slack
       - tunnelblick
