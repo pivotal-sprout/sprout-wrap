@@ -37,7 +37,7 @@ recipes:
 node_attributes:
   sprout:
     git:
-      domain: pivotallabs.com
+      domain: pivotal.io
       authors:
         - initials: ah
           name: Abhijit Hiremagalur
