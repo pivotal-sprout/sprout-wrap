@@ -213,6 +213,7 @@ node_attributes:
       - google-chrome
       - google-drive
       - chefdk
+      - near-lock
 #      - google-hangouts
       - skype
       - steam
@@ -226,6 +227,7 @@ node_attributes:
       - gpgtools
       - truecrypt
       - lastpass
+      - yubico-authenticator
       - java
 #      - cyberduck
       - dropbox

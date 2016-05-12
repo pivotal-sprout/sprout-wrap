@@ -159,7 +159,8 @@ node_attributes:
         - xquartz
         - xscope
         - gpgtools
-        - lastpass-universal
+        - lastpass
+        - yubico-authenticator
         - java
         - sqlworkbenchj
         - mysqlworkbench
