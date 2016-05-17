@@ -29,9 +29,6 @@ cookbook 'sprout-osx-settings',
 cookbook 'osx',
   :github => 'pivotal-sprout/osx'
 
-cookbook 'sprout-rubymine',
-  :github => 'pivotal-sprout/sprout-rubymine'
-
 cookbook 'sprout-homebrew',
   :github => 'pivotal-sprout/sprout-homebrew'
 
@@ -45,9 +42,10 @@ cookbook 'sprout-ssh',
   :github => 'pivotal-sprout/sprout-ssh'
 
 cookbook 'lyraphase_workstation', '~> 0.8',
-  :github => 'trinitronx/lyraphase_workstation',
-  :ref => 'develop'
-#  :path => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation'
+  :github => 'trinitronx/lyraphase_workstation'
+
+cookbook 'sprout-rubymine',
+  :github => 'trinitronx/sprout-rubymine'
 
 cookbook 'homebrew',
     '>= 1.13.0'
