@@ -139,6 +139,7 @@ node_attributes:
         - rename
         - pwgen
         - terminal-notifier
+        - yubikey-personalization
 
       casks:
         - ccmenu

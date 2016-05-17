@@ -193,6 +193,7 @@ node_attributes:
       - expect
       - rename
       - pwgen
+      - yubikey-personalization
 # Intel Edison / IoT tools
       - dfu-util
       - coreutils
