@@ -167,6 +167,7 @@ node_attributes:
       - homebrew/gui/meld
       - keybase
       - mtr
+      - jq
       - expect
       - rename
       - pwgen
