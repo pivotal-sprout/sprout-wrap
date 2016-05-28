@@ -6,4 +6,4 @@ install:
   - sudo bundle install
   - brew uninstall --force brew-cask
 script:
-  - soloist
+  - travis_wait soloist
