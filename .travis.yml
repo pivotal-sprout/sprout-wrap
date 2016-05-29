@@ -6,6 +6,7 @@ install:
   - sudo gem install bundler --no-document -n/usr/local/bin
   - bundle install --binstubs=$HOME/bin
   - brew uninstall --force brew-cask
-  - function softwareupdate () { echo "Actual software update is overridden to allow Travis build to succeed. This can be removed when Travis OS X machine has been updated."; }
 script:
-  - soloist
+  - |
+    function softwareupdate () { echo "Actual software update is overridden to allow Travis build to succeed. This can be removed when Travis OS X machine has been updated."; } && \
+    soloist

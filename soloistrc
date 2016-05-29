@@ -1,38 +1,40 @@
 recipes:
 
-# base (required by sprout)
-- sprout-base
-- sprout-base::bash_it
-- homebrew
-- homebrew::install_formulas
-- homebrew::install_casks
+- sprout-osx-settings::updates
 
-# apps
-- sprout-osx-apps::iterm2
-- sprout-osx-apps::shiftit
+# # base (required by sprout)
+# - sprout-base
+# - sprout-base::bash_it
+# - homebrew
+# - homebrew::install_formulas
+# - homebrew::install_casks
 
-# settings
-- sprout-osx-settings
-- sprout-osx-settings::dock_preferences
-- sprout-terminal
-- sprout-ssh::known_hosts_github
+# # apps
+# - sprout-osx-apps::iterm2
+# - sprout-osx-apps::shiftit
 
-# development (general)
-- sprout-base::workspace_directory
-- sprout-git
-- sprout-git::default_editor
-- sprout-git::projects
-- sprout-git::git_scripts
+# # settings
+# - sprout-osx-settings
+# - sprout-osx-settings::dock_preferences
+# - sprout-terminal
+# - sprout-ssh::known_hosts_github
 
-# development (rails)
-- sprout-rbenv
-- sprout-ruby
-- sprout-mysql
-- sprout-postgresql
+# # development (general)
+# - sprout-base::workspace_directory
+# - sprout-git
+# - sprout-git::default_editor
+# - sprout-git::projects
+# - sprout-git::git_scripts
 
-# apps (editors)
-- sprout-osx-apps::textmate_preferences
-- sprout-jetbrains-editors::rubymine
+# # development (rails)
+# - sprout-rbenv
+# - sprout-ruby
+# - sprout-mysql
+# - sprout-postgresql
+
+# # apps (editors)
+# - sprout-osx-apps::textmate_preferences
+# - sprout-jetbrains-editors::rubymine
 
 node_attributes:
   sprout:
