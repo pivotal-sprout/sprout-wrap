@@ -2,11 +2,9 @@ language: objective-c
 rvm: system
 osx_image: xcode7.3
 install:
+  - travis_wait sudo softwareupdate -a -i
   - sudo gem install bundler --no-ri --no-rdoc
   - sudo bundle install
   - brew uninstall --force brew-cask
-  - mkdir $HOME/bin
-  - printf '#!'"/usr/bin/env bash\necho 'Actual software update is overridden to allow Travis build to succeed. This can be removed when Travis OS X machine has been updated.'" > $HOME/bin/softwareupdate
-  - chmod +x $HOME/bin/softwareupdate
 script:
   - soloist
