@@ -2,8 +2,10 @@ language: objective-c
 rvm: system
 osx_image: xcode7.3
 install:
-  - sudo gem install bundler --no-ri --no-rdoc
-  - sudo bundle install
+  - sudo gem update --system --no-document
+  - sudo gem install bundler --no-document -n/usr/local/bin
+  - bundle install --binstubs=$HOME/bin
   - brew uninstall --force brew-cask
+  - function softwareupdate () { echo "Actual software update is overridden to allow Travis build to succeed. This can be removed when Travis OS X machine has been updated."; }
 script:
-  - travis_wait soloist
+  - soloist
