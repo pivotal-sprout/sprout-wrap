@@ -21,4 +21,4 @@ install:
   # We are testing installation of Rubies, so should uninstall everything
   - rvm implode --force
 script:
-  - soloist
+  - ./sprout
