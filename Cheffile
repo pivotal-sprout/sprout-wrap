@@ -40,3 +40,9 @@ cookbook 'sprout-ssh',
 
 cookbook 'sprout-jetbrains-editors',
   :github => 'pivotal-sprout/sprout-jetbrains-editors'
+
+# mingw 1.0 and build-essential 4.0 add a dependency to compat_resource,
+# which does not load correctly with Rubygems 2.0.14, the Rubygems version
+# bundled with OS X 10.11.4.
+cookbook 'mingw', '= 0.1.1'
+cookbook 'build-essential', '= 3.2.0'
