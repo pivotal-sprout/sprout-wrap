@@ -4,6 +4,7 @@ recipes:
 - sprout-base
 - sprout-base::bash_it
 - homebrew
+- homebrew::install_taps
 - homebrew::install_formulas
 - homebrew::install_casks
 
@@ -65,8 +66,10 @@ node_attributes:
       tile_size: 35
       magnification: false
   homebrew:
+    taps:
+      - universal-ctags/universal-ctags
     formulas:
-      - name: universal-ctags/universal-ctags/universal-ctags
+      - name: universal-ctags
         head: true
       - ag
       - chromedriver
