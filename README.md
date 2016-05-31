@@ -15,9 +15,7 @@ sudo xcodebuild -license
 xcode-select --install
 git clone https://github.com/pivotal-sprout/sprout-wrap.git
 cd sprout-wrap
-sudo gem install bundler
-bundle install --path vendor/bundle
-caffeinate bundle exec soloist
+caffeinate ./sprout
 ```
 
 The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.
