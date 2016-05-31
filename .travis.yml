@@ -2,9 +2,23 @@ language: objective-c
 rvm: system
 osx_image: xcode7.3
 install:
-  - travis_wait sudo softwareupdate -a -i
-  - sudo gem install bundler --no-ri --no-rdoc
-  - sudo bundle install
-  - brew uninstall --force brew-cask
+  # Travis comes with Postgres 9.4 data, so we much clear it out
+  - rm -rf /usr/local/var/postgres
+  # We must uninstall postgres for the install to reinitialize data
+  - brew uninstall --force postgres
+
+  # Travis is behind on updates, so we must pre-install for the build to finish
+  # quickly enough
+  - travis_wait 30 sudo softwareupdate -a -i
+
+  # We are testing installation of homebrew, so should uninstall everything
+  - brew cask list
+  - brew cask zap $(brew cask list)
+  - brew list
+  - brew uninstall --force $(brew list)
+  - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+
+  # We are testing installation of Rubies, so should uninstall everything
+  - rvm implode --force
 script:
   - soloist
