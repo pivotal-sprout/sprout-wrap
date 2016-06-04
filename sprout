@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+function clear_chruby() {
+  if [ -f /usr/local/share/chruby/chruby.sh ]; then
+    # shellcheck disable=SC1091
+    source /usr/local/share/chruby/chruby.sh
+    chruby system
+  fi
+}
+
 function use_local_gems() {
   export GEM_HOME=tmp/ruby/2.0.0
   export GEM_PATH=tmp/ruby/2.0.0
@@ -12,6 +20,7 @@ function get_dependencies() {
 }
 
 function main() {
+  clear_chruby
   use_local_gems
   get_dependencies
 
