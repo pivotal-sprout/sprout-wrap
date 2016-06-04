@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
-export GEM_HOME=tmp/ruby/2.0.0
-export GEM_PATH=tmp/ruby/2.0.0
-export PATH=${GEM_HOME}/bin:${PATH}
+function use_local_gems() {
+  export GEM_HOME=tmp/ruby/2.0.0
+  export GEM_PATH=tmp/ruby/2.0.0
+  export PATH=${GEM_HOME}/bin:${PATH}
+}
 
-gem install bundler --no-document
-bundle install
+function get_dependencies() {
+  gem install bundler --no-document
+  bundle install
+}
 
-bundle exec soloist
+function main() {
+  use_local_gems
+  get_dependencies
+
+  bundle exec soloist
+}
+
+main
