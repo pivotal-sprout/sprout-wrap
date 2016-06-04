@@ -24,7 +24,18 @@ function main() {
   use_local_gems
   get_dependencies
 
-  bundle exec soloist
+  case "$1" in
+    update)
+      bundle exec librarian-chef update
+      ;;
+    run)
+      shift
+      bundle exec soloist run_recipe "$1"
+      ;;
+    *)
+      bundle exec soloist
+      ;;
+  esac
 }
 
-main
+main "$@"
