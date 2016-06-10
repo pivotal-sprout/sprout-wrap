@@ -2,10 +2,7 @@ language: objective-c
 rvm: system
 osx_image: xcode7.3
 install:
-  # Travis comes with Postgres 9.4 data, so we much clear it out
-  - rm -rf /usr/local/var/postgres
-  # We must uninstall postgres for the install to reinitialize data
-  - brew uninstall --force postgres
+  - rm -rf /usr/local/var/postgres # clear out Travis installed Postgres 9.4 data
 
   # Travis is very behind on updates, so we must replace the softwareupdate
   # binary with a script that exits quickly, otherwise the Travis build will
