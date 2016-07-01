@@ -166,6 +166,7 @@ node_attributes:
       - mediainfo
       - homebrew/gui/meld
       - keybase
+      - sleepwatcher
       - mtr
       - expect
       - rename
@@ -200,6 +201,7 @@ node_attributes:
       - gpgtools
       - lastpass
       - yubico-authenticator
+      - yubikey-neo-manager
       - java
       - sqlworkbenchj
       - mysqlworkbench
