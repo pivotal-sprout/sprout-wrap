@@ -220,6 +220,7 @@ node_attributes:
       - google-drive
       - chefdk
       - near-lock
+      - netspot
 #      - google-hangouts
       - skype
       - steam
