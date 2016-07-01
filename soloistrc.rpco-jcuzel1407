@@ -3,14 +3,21 @@ recipes:
 # base (required by sprout)
 - sprout-base
 - sprout-base::bash_it
-- sprout-base::homebrew
-- sprout-homebrew
+- sprout-base::var_chef_cache
+# (added for gloo)
+#- gloo-workstation::xcode
+#- sprout-base::homebrew ## Deprecated by new homebrew cookbook
+#- sprout-homebrew       ## Deprecated by new homebrew cookbook
+- homebrew
+- homebrew::install_taps
+- homebrew::install_casks
+- homebrew::install_formulas
+- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
 
 # settings
 - sprout-osx-settings
 - sprout-osx-settings::dock_preferences
 - sprout-terminal
-- sprout-terminal::update_font
 - sprout-ssh::known_hosts_github
 
 # development (general)
@@ -21,21 +28,24 @@ recipes:
 #- sprout-git::git_scripts
 
 # development (rails)
-- sprout-rbenv
+#- sprout-rbenv
 - sprout-ruby
-#- sprout-mysql
-#- sprout-postgresql
+# - sprout-mysql
+# - sprout-postgresql
 
 # apps
 - sprout-osx-apps::iterm2
 #- sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
+# - sprout-osx-apps::keycastr
+## TODO: Follow up on https://github.com/pivotal-sprout/sprout-osx-settings/issues/24
+##- sprout-osx-settings::screen_sharing_app
+# - sprout-osx-apps::menumeters
 
 # apps (editors)
-- sprout-osx-apps::textmate_bundles
 - sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::macvim
-- sprout-rubymine
+#- sprout-osx-apps::macvim
+#- sprout-rubymine
 
 # (added by jcuzella)
 # apps
@@ -48,9 +58,9 @@ recipes:
 #- sprout-osx-apps::sublime_text
 
 ### Lyraphase Workstation & Custom
+- lyraphase_workstation::airfoil
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
-- lyraphase_workstation::airfoil
 
 node_attributes:
   bash_it:
@@ -77,6 +87,10 @@ node_attributes:
         - rake
         - ssh
         - tmux
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
   sprout:
     terminal:
       default_profile: 'Pro'
@@ -101,76 +115,104 @@ node_attributes:
       clear_apps: false
       tile_size: 35
       magnification': false
-    homebrew:
-      taps:
-        - caskroom/versions
-        - homebrew/x11
-      formulae:
-        - ctags-exuberant
-        - ag
-#        - chromedriver
-        - imagemagick
-        - node
-        - pstree
-        - htop-osx
-        - iperf3
-        - qt
-        - ssh-copy-id
-        - tmux
+    git:
+      projects:
+        - url: https://gist.github.com/f59a8308d42d71fdba41.git
+          name: iterm_open_with
+          workspace_path: ~/src/pub
+          post_clone_commands:
+            - "[ ! -d ~/bin ] && mkdir ~/bin"
+            - ln -sf ~/src/pub/iterm_open_with/iterm_open_with ~/bin/iterm_open_with
+  homebrew:
+    taps:
+      - caskroom/versions
+      - homebrew/completions
+      - homebrew/gui
+      - trinitronx/truecrypt
+      - jlhonora/lsusb
+    formulas:
+      - bash-completion
+      - ctags-exuberant
+      - ag
+      - grc
+      - boot2docker
+      - chromedriver
+      - imagemagick
+      - openssl
+      - xz
+      - node
+      - p7zip
+      - pstree
+      - htop-osx
+      - iperf3
+      - qt
+      - ssh-copy-id
+      - tmux
 # For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
 # Also fixes Sublime Text "subl" command not working
-        - reattach-to-user-namespace
-        - tree
-        - watch
-        - wget
-        - rbenv-binstubs
-        - rbenv-gem-rehash
-        - gist
-        - hub
-        - mosh
-        - parallel
-        - wemux
-        - s3cmd
-        - ack
-        - mediainfo
-        - meld
-        - mtr
-        - expect
-        - rename
-        - pwgen
-        - terminal-notifier
-        - yubikey-personalization
-
-      casks:
-        - ccmenu
-        - cord
-        - firefox
-        - freefilesync
-        - gitx-rowanj
-        - github
-        - google-chrome
-        - google-drive
-        - google-hangouts
-        - skype
-        - textmate
-        - vagrant
-        - virtualbox
-        - vmware-fusion
-        - wireshark
-        - xquartz
-        - xscope
-        - gpgtools
-        - lastpass
-        - yubico-authenticator
-        - java
-        - sqlworkbenchj
-        - mysqlworkbench
-        - cyberduck
-        - dropbox
-        - hex-fiend
-        - beyond-compare
+      - reattach-to-user-namespace
+      - tree
+      - socat
+      - watch
+      - wget
+      - gist
+      - hub
+      - mosh
+      - parallel
+      - macvim
+      - wemux
+      - s3cmd
+      - ack
+      - mediainfo
+      - homebrew/gui/meld
+      - keybase
+      - mtr
+      - expect
+      - rename
+      - pwgen
+      - terminal-notifier
+      - yubikey-personalization
+# Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
+    casks:
+      - ccmenu
+      - cord
+      - firefox
+#      - flux
+      - freefilesync
+      - gitx-rowanj
+      - github
+      - google-chrome
+      - google-drive
+      - chefdk
+#      - near-lock
+      - google-hangouts
+      - skype
+      - textmate
+      - vagrant
+      - virtualbox
+      - vmware-fusion
+      - wireshark
+      - xquartz
+      - xscope
+      - gpgtools
+      - lastpass
+      - yubico-authenticator
+      - java
+      - sqlworkbenchj
+      - mysqlworkbench
+      - cyberduck
+      - dropbox
+      - hex-fiend
+      - beyond-compare
+#      - mumble
+#      - teamspeak
+      - sublime-text3
 ## Commented out until they update to Sublime Text 3
-#        - sublime-text
+#      - sublime-text
+
   workspace_directory: src
   :gloo-workstation:
     :xcode:
@@ -187,9 +229,9 @@ node_attributes:
         checksum: de6d2c433b259162ba68156531954cf4c7fd192e8b47e72ea486988e4fe5939e
   vim_alias_vi_to_minimal_vim: false
   versions: 
-    rvm: 1.21.20
-  rvm: 
-    default_ruby: ruby-1.9.3-p392
+    rvm: 1.26.11
+  rvm:
+    default_ruby: ruby-2.2.2
     rubies: 
       ruby-1.9.3-p392: 
         :command_line_options: --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
