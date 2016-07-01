@@ -192,6 +192,7 @@ node_attributes:
       - mtr
       - expect
       - rename
+      - lastpass-cli
       - pwgen
       - yubikey-personalization
 # Intel Edison / IoT tools
@@ -229,6 +230,7 @@ node_attributes:
       - truecrypt
       - lastpass
       - yubico-authenticator
+      - yubikey-neo-manager
       - java
 #      - cyberduck
       - dropbox
