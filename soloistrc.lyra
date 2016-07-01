@@ -193,6 +193,7 @@ node_attributes:
       - mediainfo
       - homebrew/gui/meld
       - keybase
+      - sleepwatcher
       - mtr
       - expect
       - rename
