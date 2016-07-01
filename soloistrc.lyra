@@ -83,6 +83,10 @@ recipes:
 - lyraphase_workstation::daisydisk
 - lyraphase_workstation::drobo_dashboard
 
+### Hardware Hacking
+# Driver for USB -> Serial RS232 Adapter
+- lyraphase_workstation::prolific_pl2303_driver
+
 node_attributes:
   current_user: jcuzella
   bash_it:
@@ -189,9 +193,11 @@ node_attributes:
       - mediainfo
       - homebrew/gui/meld
       - keybase
+      - sleepwatcher
       - mtr
       - expect
       - rename
+      - lastpass-cli
       - pwgen
       - yubikey-personalization
 # Intel Edison / IoT tools
@@ -215,6 +221,7 @@ node_attributes:
       - google-drive
       - chefdk
       - near-lock
+      - netspot
 #      - google-hangouts
       - skype
       - steam
@@ -229,6 +236,7 @@ node_attributes:
       - truecrypt
       - lastpass
       - yubico-authenticator
+      - yubikey-neo-manager
       - java
 #      - cyberduck
       - dropbox
