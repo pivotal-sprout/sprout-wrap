@@ -195,6 +195,7 @@ node_attributes:
       - keybase
       - sleepwatcher
       - mtr
+      - jq
       - expect
       - rename
       - lastpass-cli
