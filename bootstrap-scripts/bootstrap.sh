@@ -76,20 +76,15 @@ if [ ! -d "/Applications/Xcode.app" ]; then
     
   hdiutil attach "$XCODE_DMG"
   export __CFPREFERENCES_AVOID_DAEMON=1
-  sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
+  if [ -e '/Volumes/XCode/XCode.pkg' ]; then
+    sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
+  elif [ -e '/Volumes/XCode.app' ]; then
+    sudo cp -r '/Volumes/XCode.app' '/Applications/'
+  fi
   hdiutil detach '/Volumes/XCode'
 fi
 
-mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
 
-echo "INFO: Checking out sprout-wrap..."
-if [ -d sprout-wrap ]; then
-  pushd sprout-wrap && git pull
-else
-  git clone $SPROUT_WRAP_URL
-  pushd sprout-wrap
-  git checkout $SPROUT_WRAP_BRANCH
-fi
 
 # Hack to make sure sudo caches sudo password correctly...
 # And so it stays available for the duration of the Chef run
@@ -103,7 +98,8 @@ curl -Ls https://gist.github.com/trinitronx/6217746/raw/dc456e5c316c716f4685de20
 # Evil Apple...
 if [ -x "$(which expect)" ]; then
   echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
-  expect ./bootstrap-scripts/accept-xcodebuild-license.exp
+  # Git.io short URL to: ./bootstrap-scripts/accept-xcodebuild-license.exp
+  curl -Ls 'https://git.io/viaLD' | expect -
 else
   echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
   echo -e "\x1b[31;1mWarning:\x1b[0m You have not agreed to the Xcode license.\nBuilds will fail! Agree to the license by opening Xcode.app or running:\n
@@ -112,6 +108,17 @@ else
   exit 1
 fi
 
+# Checkout sprout-wrap after XCode CLI tools, because we need it for git now
+mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
+
+echo "INFO: Checking out sprout-wrap..."
+if [ -d sprout-wrap ]; then
+  pushd sprout-wrap && git pull
+else
+  git clone $SPROUT_WRAP_URL
+  pushd sprout-wrap
+  git checkout $SPROUT_WRAP_BRANCH
+fi
 
 rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
