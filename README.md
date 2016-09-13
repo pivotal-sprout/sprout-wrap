@@ -21,7 +21,7 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 Open a terminal and run:
 
-    \curl -Ls http://git.io/kyeeCg | bash
+    \curl -Ls https://git.io/viaJe | bash
 
 ### The Semi-Manual Way:
 
