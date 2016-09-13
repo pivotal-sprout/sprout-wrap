@@ -71,7 +71,7 @@ pushd `pwd`
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
-    curl -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
+    curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
   fi
     
   hdiutil attach "$XCODE_DMG"
