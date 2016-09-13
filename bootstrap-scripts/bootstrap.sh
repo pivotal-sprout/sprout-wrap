@@ -54,6 +54,7 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
   "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
   *)      XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
@@ -70,7 +71,7 @@ pushd `pwd`
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
-    curl -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://adcdownload.apple.com/Developer_Tools/Xcode_6.3.2/${XCODE_DMG}"
+    curl -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
   fi
     
   hdiutil attach "$XCODE_DMG"
