@@ -17,6 +17,10 @@ recipes:
 # settings
 - sprout-osx-settings
 - sprout-osx-settings::dock_preferences
+- sprout-osx-settings::inputrc
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-settings::locate
+- sprout-osx-settings::machine_name
 - sprout-terminal
 - sprout-ssh::known_hosts_github
 
@@ -59,8 +63,8 @@ recipes:
 
 ### Lyraphase Workstation & Custom
 - lyraphase_workstation::airfoil
-- lyraphase_workstation::traktor
-- lyraphase_workstation::traktor_audio_2
+#- lyraphase_workstation::traktor
+#- lyraphase_workstation::traktor_audio_2
 
 node_attributes:
   bash_it:
@@ -130,6 +134,7 @@ node_attributes:
       - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
+      - homebrew/dupes
     formulas:
       - bash-completion
       - ctags-exuberant
@@ -137,6 +142,8 @@ node_attributes:
       - grc
       - boot2docker
       - chromedriver
+      - docker-machine
+      - docker-machine-nfs
       - imagemagick
       - openssl
       - xz
@@ -183,9 +190,9 @@ node_attributes:
       - cord
       - firefox
 #      - flux
-      - freefilesync
-      - gitx-rowanj
-      - github
+#      - freefilesync ### DOWNLOAD FAILED!  TODO
+#      - gitx-rowanj ### CASK DOES NOT EXIST TODO
+      - github-desktop
       - google-chrome
       - google-drive
       - chefdk
@@ -212,9 +219,8 @@ node_attributes:
       - beyond-compare
 #      - mumble
 #      - teamspeak
-      - sublime-text3
 ## Commented out until they update to Sublime Text 3
-#      - sublime-text
+      - sublime-text
 
   workspace_directory: src
   :gloo-workstation:
