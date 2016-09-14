@@ -124,6 +124,7 @@ rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
 $USE_SUDO gem install bundler
+$USE_SUDO gem update --system
 if ! bundle check 2>&1 >/dev/null; then $USE_SUDO bundle install --without development ; fi
 
 export rvm_user_install_flag=1
