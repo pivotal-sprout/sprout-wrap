@@ -1,0 +1,245 @@
+recipes:
+
+# base (required by sprout)
+- sprout-base
+- sprout-base::bash_it
+- sprout-base::var_chef_cache
+# (added for gloo)
+#- gloo-workstation::xcode
+#- sprout-base::homebrew ## Deprecated by new homebrew cookbook
+#- sprout-homebrew       ## Deprecated by new homebrew cookbook
+- homebrew
+- homebrew::install_taps
+- homebrew::install_casks
+- homebrew::install_formulas
+- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
+
+# settings
+- sprout-osx-settings
+- sprout-osx-settings::dock_preferences
+- sprout-terminal
+- sprout-ssh::known_hosts_github
+
+# development (general)
+- sprout-base::workspace_directory
+- sprout-git
+- sprout-git::default_editor
+- sprout-git::projects
+#- sprout-git::git_scripts
+
+# development (rails)
+#- sprout-rbenv
+- sprout-ruby
+# - sprout-mysql
+# - sprout-postgresql
+
+# apps
+- sprout-osx-apps::iterm2
+#- sprout-osx-apps::flycut
+- sprout-osx-apps::shiftit
+# - sprout-osx-apps::keycastr
+## TODO: Follow up on https://github.com/pivotal-sprout/sprout-osx-settings/issues/24
+##- sprout-osx-settings::screen_sharing_app
+# - sprout-osx-apps::menumeters
+
+# apps (editors)
+- sprout-osx-apps::textmate_preferences
+#- sprout-osx-apps::macvim
+#- sprout-rubymine
+
+# (added by jcuzella)
+# apps
+# - sprout-osx-apps::menumeters
+#- sprout-osx-apps::virtualbox
+#- sprout-osx-apps::vagrant
+
+# apps (added for gloo)
+## Commented out until they update to Sublime Text 3
+#- sprout-osx-apps::sublime_text
+
+### Lyraphase Workstation & Custom
+- lyraphase_workstation::airfoil
+- lyraphase_workstation::traktor
+- lyraphase_workstation::traktor_audio_2
+
+node_attributes:
+  bash_it:
+    enabled_plugins:
+      plugins:
+        - base
+        - osx
+        - rvm
+        - ssh
+        - vagrant
+      aliases:
+        - ag
+        - bundler
+        - general
+        - vagrant
+      completions:
+        - awscli
+        - bash-it
+        - brew
+        - defaults
+        - dockerterm
+        - gem
+        - git
+        - rake
+        - ssh
+        - tmux
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
+  sprout:
+    terminal:
+      default_profile: 'Pro'
+    settings:
+      clock_format: EEE MMM d  h:mm:ss a
+#EEE h:mm:ss a
+    screensaver:
+      ask_for_password: true
+      ask_for_password_delay: 0
+      timeout: 600
+      disksleep: 10
+      sleep: 1
+      displaysleep: 2
+    menubar:
+      transparency: true
+    shared_memory:
+      shmall: 1024
+      shmmax: 4194304
+    dock_preferences:
+      orientation: 'bottom'
+      auto_hide: false
+      clear_apps: false
+      tile_size: 35
+      magnification': false
+    git:
+      projects:
+        - url: https://gist.github.com/f59a8308d42d71fdba41.git
+          name: iterm_open_with
+          workspace_path: ~/src/pub
+          post_clone_commands:
+            - "[ ! -d ~/bin ] && mkdir ~/bin"
+            - ln -sf ~/src/pub/iterm_open_with/iterm_open_with ~/bin/iterm_open_with
+  homebrew:
+    taps:
+      - caskroom/versions
+      - homebrew/completions
+      - homebrew/gui
+      - trinitronx/truecrypt
+      - jlhonora/lsusb
+    formulas:
+      - bash-completion
+      - ctags-exuberant
+      - ag
+      - grc
+      - boot2docker
+      - chromedriver
+      - imagemagick
+      - openssl
+      - xz
+      - node
+      - p7zip
+      - pstree
+      - htop-osx
+      - iperf3
+      - qt
+      - ssh-copy-id
+      - tmux
+# For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+# Also fixes Sublime Text "subl" command not working
+      - reattach-to-user-namespace
+      - tree
+      - socat
+      - watch
+      - wget
+      - gist
+      - hub
+      - mosh
+      - parallel
+      - macvim
+      - wemux
+      - s3cmd
+      - ack
+      - mediainfo
+      - homebrew/gui/meld
+      - keybase
+      - sleepwatcher
+      - mtr
+      - jq
+      - expect
+      - rename
+      - pwgen
+      - terminal-notifier
+      - yubikey-personalization
+# Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
+    casks:
+      - ccmenu
+      - cord
+      - firefox
+#      - flux
+      - freefilesync
+      - gitx-rowanj
+      - github
+      - google-chrome
+      - google-drive
+      - chefdk
+#      - near-lock
+      - google-hangouts
+      - skype
+      - textmate
+      - vagrant
+      - virtualbox
+      - vmware-fusion
+      - wireshark
+      - xquartz
+      - xscope
+      - gpgtools
+      - lastpass
+      - yubico-authenticator
+      - yubikey-neo-manager
+      - java
+      - sqlworkbenchj
+      - mysqlworkbench
+      - cyberduck
+      - dropbox
+      - hex-fiend
+      - beyond-compare
+#      - mumble
+#      - teamspeak
+      - sublime-text3
+## Commented out until they update to Sublime Text 3
+#      - sublime-text
+
+  workspace_directory: src
+  :gloo-workstation:
+    :xcode:
+      :dmg:
+        source: http://bro-fs-01.bro.gloostate.com/installers/mac/XCode-5.0.2-5A3005.dmg
+        checksum: 530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457
+#    vagrant: 
+#      dmg: 
+#        source: http://files.vagrantup.com/packages/a40522f5fabccb9ddabad03d836e120ff5d14093/Vagrant-1.3.5.dmg
+#        checksum: a9486c60f0dd18c52e2c202b4a91a4024469cec6726abdf70438bcc1e79afbb4
+    virtualbox:
+      dmg:
+        source: http://download.virtualbox.org/virtualbox/4.3.2/VirtualBox-4.3.2-90405-OSX.dmg
+        checksum: de6d2c433b259162ba68156531954cf4c7fd192e8b47e72ea486988e4fe5939e
+  vim_alias_vi_to_minimal_vim: false
+  versions: 
+    rvm: 1.26.11
+  rvm:
+    default_ruby: ruby-2.2.2
+    rubies: 
+      ruby-1.9.3-p392: 
+        :command_line_options: --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
+    multithread_build: true
+# TODO: Dynamically get AWS user & key?
+#  s3cfg:
+#    access_key:
+#    secret_key:
