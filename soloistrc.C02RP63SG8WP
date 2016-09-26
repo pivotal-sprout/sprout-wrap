@@ -179,6 +179,7 @@ node_attributes:
       - node
       - p7zip
       - pstree
+      - unrar
       - htop-osx
       - iperf3
       - qt
@@ -205,6 +206,7 @@ node_attributes:
       - sleepwatcher
       - mtr
       - jq
+      - xmlstarlet
       - expect
       - rename
       - pwgen
