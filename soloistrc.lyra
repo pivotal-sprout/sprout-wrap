@@ -246,9 +246,9 @@ node_attributes:
 #      - beyond-compare
 #      - mumble
 #      - teamspeak
-      - sublime-text3
+#      - sublime-text3
 ## Commented out until they update to Sublime Text 3
-#      - sublime-text
+      - sublime-text
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
