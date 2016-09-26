@@ -54,6 +54,7 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
   "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
   *)      XCODE_DMG='XCode-5.0.1-5A2053.dmg' ;;
@@ -70,15 +71,44 @@ pushd `pwd`
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
-    curl -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl -L -O "http://adcdownload.apple.com/Developer_Tools/Xcode_6.3.2/${XCODE_DMG}"
+    curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
   fi
     
   hdiutil attach "$XCODE_DMG"
   export __CFPREFERENCES_AVOID_DAEMON=1
-  sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
+  if [ -e '/Volumes/XCode/XCode.pkg' ]; then
+    sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
+  elif [ -e '/Volumes/XCode.app' ]; then
+    sudo cp -r '/Volumes/XCode.app' '/Applications/'
+  fi
   hdiutil detach '/Volumes/XCode'
 fi
 
+
+
+# Hack to make sure sudo caches sudo password correctly...
+# And so it stays available for the duration of the Chef run
+prevent_sudo_timeout
+readonly sudo_loop_PID  # Make PID readonly for security ;-)
+
+
+curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/50286e488d6602e6f2a92a139c1bd62aefb79779/xcode-cli-tools.sh | sudo bash
+
+# We need to accept the xcodebuild license agreement before building anything works
+# Evil Apple...
+if [ -x "$(which expect)" ]; then
+  echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
+  # Git.io short URL to: ./bootstrap-scripts/accept-xcodebuild-license.exp
+  curl -Ls 'https://git.io/viaLD' | expect -
+else
+  echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
+  echo -e "\x1b[31;1mWarning:\x1b[0m You have not agreed to the Xcode license.\nBuilds will fail! Agree to the license by opening Xcode.app or running:\n
+    xcodebuild -license\n\nOR for system-wide acceptance\n
+    sudo xcodebuild -license"
+  exit 1
+fi
+
+# Checkout sprout-wrap after XCode CLI tools, because we need it for git now
 mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
 
 echo "INFO: Checking out sprout-wrap..."
@@ -90,32 +120,11 @@ else
   git checkout $SPROUT_WRAP_BRANCH
 fi
 
-# Hack to make sure sudo caches sudo password correctly...
-# And so it stays available for the duration of the Chef run
-prevent_sudo_timeout
-readonly sudo_loop_PID  # Make PID readonly for security ;-)
-
-
-curl -Ls https://gist.github.com/trinitronx/6217746/raw/dc456e5c316c716f4685de20471ae8301a87c434/xcode-cli-tools.sh | sudo bash
-
-# We need to accept the xcodebuild license agreement before building anything works
-# Evil Apple...
-if [ -x "$(which expect)" ]; then
-  echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
-  expect ./bootstrap-scripts/accept-xcodebuild-license.exp
-else
-  echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
-  echo -e "\x1b[31;1mWarning:\x1b[0m You have not agreed to the Xcode license.\nBuilds will fail! Agree to the license by opening Xcode.app or running:\n
-    xcodebuild -license\n\nOR for system-wide acceptance\n
-    sudo xcodebuild -license"
-  exit 1
-fi
-
-
 rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
 $USE_SUDO gem install bundler
+$USE_SUDO gem update --system
 if ! bundle check 2>&1 >/dev/null; then $USE_SUDO bundle install --without development ; fi
 
 export rvm_user_install_flag=1
