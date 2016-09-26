@@ -227,6 +227,7 @@ node_attributes:
 #      - google-hangouts
       - skype
       - steam
+      - tomtom-mysports-connect
       - textmate
       - vagrant
       - virtualbox
