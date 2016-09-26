@@ -16,6 +16,8 @@ cookbook 'sprout-git',
 
 cookbook 'sprout-base',
   :github => 'pivotal-sprout/sprout-base'
+#  :git => '/Users/jcuzella/src/pub/cookbooks/sprout-base',
+#  :ref => 'develop'
 
 cookbook 'gloo-workstation',
   :git => 'https://github.com/TangoGroup/gloo-workstation.git'
@@ -41,8 +43,14 @@ cookbook 'sprout-postgresql',
 cookbook 'sprout-ssh',
   :github => 'pivotal-sprout/sprout-ssh'
 
+cookbook 'sprout-vim',
+  :github => 'pivotal-sprout/sprout-vim'
+
 cookbook 'lyraphase_workstation', '~> 0.8',
   :github => 'trinitronx/lyraphase_workstation'
+#  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
+#  :github => 'trinitronx/lyraphase_workstation',
+#  :ref => 'add-prolific-pl2303-driver'
 
 cookbook 'sprout-rubymine',
   :github => 'trinitronx/sprout-rubymine'
