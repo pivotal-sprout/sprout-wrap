@@ -171,9 +171,11 @@ node_attributes:
       - chromedriver
       - docker-machine
       - docker-machine-nfs
+      - kubernetes-cli
       - imagemagick
       - openssl
       - xz
+      - go
       - node
       - p7zip
       - pstree
