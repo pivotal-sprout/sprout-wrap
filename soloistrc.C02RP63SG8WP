@@ -150,7 +150,7 @@ node_attributes:
         user.signingkey: 09F02FCD
         push.default: simple
         bash-it.hide-status: 1
-        url."git@github.com".insteadOf: https://github.com/
+        url."git@github.com:".insteadOf: https://github.com/
         commit.gpgsign: true
         gpg.program: gpg2
         merge.tool: meld
@@ -171,12 +171,15 @@ node_attributes:
       - chromedriver
       - docker-machine
       - docker-machine-nfs
+      - kubernetes-cli
       - imagemagick
       - openssl
       - xz
+      - go
       - node
       - p7zip
       - pstree
+      - unrar
       - htop-osx
       - iperf3
       - qt
@@ -203,6 +206,7 @@ node_attributes:
       - sleepwatcher
       - mtr
       - jq
+      - xmlstarlet
       - expect
       - rename
       - pwgen
