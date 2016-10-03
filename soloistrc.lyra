@@ -59,7 +59,7 @@ recipes:
 #- sprout-osx-apps::gpg
 #- sprout-osx-apps::gpgtools
 #- sprout-osx-apps::hipchat
-- sprout-osx-apps::java
+#- sprout-osx-apps::java
 #- sprout-osx-apps::lastpass
 # - sprout-osx-apps::libreoffice
 - sprout-osx-apps::s3cmd
