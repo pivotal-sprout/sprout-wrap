@@ -59,7 +59,7 @@ recipes:
 #- sprout-osx-apps::gpg
 #- sprout-osx-apps::gpgtools
 #- sprout-osx-apps::hipchat
-- sprout-osx-apps::java
+#- sprout-osx-apps::java
 #- sprout-osx-apps::lastpass
 # - sprout-osx-apps::libreoffice
 - sprout-osx-apps::s3cmd
@@ -148,8 +148,35 @@ node_attributes:
           name: iterm_open_with
           workspace_path: ~/src/pub
           post_clone_commands:
-            - "[ ! -d ~/bin ] && mkdir ~/bin"
-            - ln -sf ~/src/pub/iterm_open_with/iterm_open_with ~/bin/iterm_open_with
+            - "[ ! -d ~jcuzella/bin ] && mkdir ~jcuzella/bin || true"
+            - ln -sf ~jcuzella/src/pub/iterm_open_with/iterm_open_with ~jcuzella/bin/iterm_open_with
+      aliases:
+        - ci "commit -S"
+#        - oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1"'
+        - >
+          oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne '\''s/^ //p'\'' | head -1"'
+        - unstage-all "reset HEAD --"
+      global_config:
+        core.pager: '"less -FXRS -x2"'
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        apply.whitespace: nowarn
+        color.branch: auto
+        color.diff: auto
+        color.interactive: auto
+        color.status: auto
+        color.ui: auto
+        branch.autosetupmerge: 'true'
+        rebase.autosquash: 'true'
+        push.default: simple
+      # Custom git config settings
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.signingkey: 09F02FCD
+        push.default: simple
+        bash-it.hide-status: 1
+        url."git@github.com:".insteadOf: https://github.com/
+        commit.gpgsign: true
+        gpg.program: gpg2
+        merge.tool: meld
   homebrew:
     taps:
       - caskroom/versions
