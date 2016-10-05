@@ -189,8 +189,10 @@ node_attributes:
 #      - ctags-exuberant
       - ag
       - grc
-      - boot2docker
+#      - boot2docker
 #      - chromedriver
+      - docker-machine
+      - docker-machine-nfs
 #      - imagemagick
       - openssl
       - xz
@@ -228,6 +230,7 @@ node_attributes:
       - rename
       - lastpass-cli
       - pwgen
+      - terminal-notifier
       - yubikey-personalization
 # Intel Edison / IoT tools
       - dfu-util
@@ -245,7 +248,7 @@ node_attributes:
       - flux
 #      - freefilesync
 #      - gitx-rowanj
-      - github
+      - github-desktop
       - google-chrome
       - google-drive
       - chefdk

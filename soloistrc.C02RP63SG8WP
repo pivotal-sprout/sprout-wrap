@@ -209,6 +209,7 @@ node_attributes:
       - xmlstarlet
       - expect
       - rename
+      - lastpass-cli
       - pwgen
       - terminal-notifier
       - yubikey-personalization
@@ -228,16 +229,19 @@ node_attributes:
       - google-drive
       - chefdk
 #      - near-lock
+      - netspot
       - google-hangouts
       - skype
       - textmate
       - vagrant
       - virtualbox
       - vmware-fusion
+      - minikube
       - wireshark
       - xquartz
       - xscope
       - gpgtools
+      - truecrypt
       - lastpass
       - yubico-authenticator
       - yubikey-neo-manager
