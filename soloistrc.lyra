@@ -302,11 +302,11 @@ node_attributes:
     ableton_live:
       dmg:
 #        source: http://cdn2-downloads.ableton.com/channels/9.6.1b5/ableton_live_beta_961b5_64.dmg
-        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_961b5_64.dmg
-        checksum: 5d807535e1e4330e6882193df197d8d59753f55a658bf42a031c0363c943d921
-        volumes_dir: Ableton Live 9.6 Beta Installer
-        dmg_name: ableton_live_beta_961b5_64
-        app: Ableton Live 9.6 Beta
+        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_97b9_64.dmg
+        checksum: eb67ba3a96b415ac3c159d68ff8d7dbfcdecf6d0555739f3897fafa0e5232084
+        volumes_dir: Ableton Live 9.7 Beta Installer
+        dmg_name: ableton_live_beta_97b9_64
+        app: Ableton Live 9.7 Beta
     nfs_mounts:
       - "#/../Volumes/saturn    -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export"
       - "/../Volumes/terabyte    -fstype=nfs,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
