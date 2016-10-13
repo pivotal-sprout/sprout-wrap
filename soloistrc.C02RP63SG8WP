@@ -149,9 +149,9 @@ node_attributes:
         core.excludesfile: /Users/jcuzella/.gitignore_global
         user.signingkey: 09F02FCD
         push.default: simple
-        bash-it.hide-status: 1
+        bash-it.hide-status: '1'
         url."git@github.com:".insteadOf: https://github.com/
-        commit.gpgsign: true
+        commit.gpgsign: 'true'
         gpg.program: gpg2
         merge.tool: meld
   homebrew:
