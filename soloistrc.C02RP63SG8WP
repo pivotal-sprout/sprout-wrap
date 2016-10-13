@@ -169,6 +169,8 @@ node_attributes:
       - grc
       - boot2docker
       - chromedriver
+      - docker
+      - docker-compose
       - docker-machine
       - docker-machine-nfs
       - kubernetes-cli
