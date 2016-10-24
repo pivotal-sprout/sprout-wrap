@@ -173,6 +173,7 @@ node_attributes:
       - docker-compose
       - docker-machine
       - docker-machine-nfs
+      - terraform
       - kubernetes-cli
       - imagemagick
       - openssl
