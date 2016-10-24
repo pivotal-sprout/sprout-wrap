@@ -239,6 +239,7 @@ node_attributes:
       - virtualbox
       - vmware-fusion
       - minikube
+      - terraform
       - wireshark
       - xquartz
       - xscope
