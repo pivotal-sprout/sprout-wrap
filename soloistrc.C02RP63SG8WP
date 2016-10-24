@@ -201,6 +201,7 @@ node_attributes:
       - parallel
       - macvim
       - wemux
+      - awscli
       - s3cmd
       - ack
       - mediainfo
