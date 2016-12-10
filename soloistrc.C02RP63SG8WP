@@ -173,6 +173,7 @@ node_attributes:
       - docker-compose
       - docker-machine
       - docker-machine-nfs
+      - terraform
       - kubernetes-cli
       - imagemagick
       - openssl
@@ -200,6 +201,7 @@ node_attributes:
       - parallel
       - macvim
       - wemux
+      - awscli
       - s3cmd
       - ack
       - mediainfo
@@ -239,6 +241,7 @@ node_attributes:
       - virtualbox
       - vmware-fusion
       - minikube
+      - terraform
       - wireshark
       - xquartz
       - xscope
