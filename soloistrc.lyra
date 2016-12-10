@@ -270,6 +270,7 @@ node_attributes:
       - lastpass
       - yubico-authenticator
       - yubikey-neo-manager
+      - yubikey-piv-manager
       - java
 #      - cyberduck
       - dropbox
