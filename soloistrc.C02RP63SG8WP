@@ -180,6 +180,7 @@ node_attributes:
       - xz
       - go
       - node
+      - maven
       - p7zip
       - pstree
       - unrar
@@ -253,6 +254,7 @@ node_attributes:
       - java
       - sqlworkbenchj
       - mysqlworkbench
+      - intellij-idea-ce
       - cyberduck
       - dropbox
       - hex-fiend
