@@ -181,6 +181,7 @@ node_attributes:
       - go
       - node
       - maven
+      - thrift
       - p7zip
       - pstree
       - unrar
@@ -242,7 +243,6 @@ node_attributes:
       - virtualbox
       - vmware-fusion
       - minikube
-      - terraform
       - wireshark
       - xquartz
       - xscope
