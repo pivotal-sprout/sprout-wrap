@@ -180,6 +180,7 @@ node_attributes:
   homebrew:
     taps:
       - caskroom/versions
+      - homebrew/versions
       - homebrew/completions
       - homebrew/gui
       - trinitronx/truecrypt
@@ -223,6 +224,7 @@ node_attributes:
       - mediainfo
       - homebrew/gui/meld
       - keybase
+      - gnupg21
       - sleepwatcher
       - mtr
       - jq
