@@ -239,6 +239,7 @@ node_attributes:
       - textmate
       - vagrant
       - virtualbox
+      - virtualbox-extension-pack
       - vmware-fusion
       - minikube
       - terraform
