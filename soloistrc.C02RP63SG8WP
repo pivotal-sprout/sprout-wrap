@@ -175,6 +175,7 @@ node_attributes:
       - docker-machine-nfs
       - terraform
       - kubernetes-cli
+      - kops
       - imagemagick
       - openssl
       - xz
