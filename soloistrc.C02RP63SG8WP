@@ -175,11 +175,14 @@ node_attributes:
       - docker-machine-nfs
       - terraform
       - kubernetes-cli
+      - kops
       - imagemagick
       - openssl
       - xz
       - go
       - node
+      - maven
+      - thrift
       - p7zip
       - pstree
       - unrar
@@ -208,6 +211,7 @@ node_attributes:
       - homebrew/gui/meld
       - keybase
       - sleepwatcher
+      - wakeonlan
       - mtr
       - jq
       - xmlstarlet
@@ -242,7 +246,6 @@ node_attributes:
       - virtualbox-extension-pack
       - vmware-fusion
       - minikube
-      - terraform
       - wireshark
       - xquartz
       - xscope
@@ -254,6 +257,7 @@ node_attributes:
       - java
       - sqlworkbenchj
       - mysqlworkbench
+      - intellij-idea-ce
       - cyberduck
       - dropbox
       - hex-fiend

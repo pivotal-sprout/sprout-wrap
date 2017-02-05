@@ -226,6 +226,7 @@ node_attributes:
       - keybase
       - gnupg21
       - sleepwatcher
+      - wakeonlan
       - mtr
       - jq
       - expect
