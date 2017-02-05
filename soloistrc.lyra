@@ -239,6 +239,8 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
+# Resin.io mmc card img writer tool
+      - etcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
       - keyfinder
