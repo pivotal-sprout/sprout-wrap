@@ -182,7 +182,6 @@ node_attributes:
       - caskroom/versions
       - homebrew/versions
       - homebrew/completions
-      - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
     formulas:
@@ -222,7 +221,6 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - homebrew/gui/meld
       - keybase
       - gnupg21
       - sleepwatcher
@@ -287,6 +285,7 @@ node_attributes:
 #      - sublime-text3
 ## Commented out until they update to Sublime Text 3
       - sublime-text
+      - meld
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
