@@ -39,7 +39,7 @@ recipes:
 # - sprout-postgresql
 
 # apps
-- sprout-osx-apps::iterm2
+#- sprout-osx-apps::iterm2 ## Superceded by lyraphase_workstation::iterm2 for loading Prefs from Dropbox
 #- sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
 # - sprout-osx-apps::keycastr
@@ -69,6 +69,7 @@ recipes:
 # - sprout-osx-apps::wemux
 
 ### Lyraphase Workstation & Custom
+- lyraphase_workstation::iterm2
 - lyraphase_workstation::airfoil
 - lyraphase_workstation::ableton_live
 - lyraphase_workstation::max_for_live
