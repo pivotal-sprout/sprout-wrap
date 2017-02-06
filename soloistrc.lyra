@@ -7,6 +7,7 @@ recipes:
 #- gloo-workstation::xcode
 #- sprout-base::homebrew ## Deprecated by new homebrew cookbook
 #- sprout-homebrew       ## Deprecated by new homebrew cookbook
+- lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
 - homebrew
 - homebrew::install_taps
 - homebrew::install_casks
