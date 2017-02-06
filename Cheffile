@@ -46,11 +46,11 @@ cookbook 'sprout-ssh',
 cookbook 'sprout-vim',
   :github => 'pivotal-sprout/sprout-vim'
 
-cookbook 'lyraphase_workstation', '~> 1.0',
+cookbook 'lyraphase_workstation', '~> 1.2',
   :github => 'trinitronx/lyraphase_workstation'
+#  :ref => 'develop'
 #  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
-#  :github => 'trinitronx/lyraphase_workstation',
-#  :ref => 'add-prolific-pl2303-driver'
+#  :ref => 'develop'
 
 cookbook 'sprout-rubymine',
   :github => 'trinitronx/sprout-rubymine'
