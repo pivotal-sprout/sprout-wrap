@@ -73,6 +73,7 @@ recipes:
 - lyraphase_workstation::iterm2
 - lyraphase_workstation::airfoil
 - lyraphase_workstation::ableton_live
+- lyraphase_workstation::ableton_live_options
 - lyraphase_workstation::max_for_live
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
@@ -312,7 +313,10 @@ node_attributes:
 #        code: 
 #        name: 
   lyraphase_workstation:
-#    ableton_live:
+    ableton_live:
+      managed_versions: all
+      options:
+        - EnableMapToSiblings
 #      dmg:
 #        source: http://cdn2-downloads.ableton.com/channels/9.6.1b5/ableton_live_beta_961b5_64.dmg
 #        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_97b9_64.dmg
