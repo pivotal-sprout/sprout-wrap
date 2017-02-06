@@ -184,6 +184,7 @@ node_attributes:
       - homebrew/completions
       - trinitronx/truecrypt
       - jlhonora/lsusb
+      - caskroom/drivers
     formulas:
       - bash-completion
 #      - ctags-exuberant
