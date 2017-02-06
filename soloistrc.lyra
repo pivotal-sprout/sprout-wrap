@@ -83,6 +83,7 @@ recipes:
 - lyraphase_workstation::bash_it_custom_plugins
 - lyraphase_workstation::daisydisk
 - lyraphase_workstation::drobo_dashboard
+- lyraphase_workstation::gpg21
 
 ### Hardware Hacking
 # Driver for USB -> Serial RS232 Adapter
