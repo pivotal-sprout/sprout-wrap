@@ -1,21 +1,9 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    build-essential (7.0.1)
-      compat_resource (>= 12.14)
-      mingw (>= 1.1)
-      seven_zip (>= 0.0.0)
-    compat_resource (12.16.1)
-    dmg (3.0.0)
-    homebrew (2.1.2)
-      build-essential (>= 2.1.2)
-    mingw (1.2.4)
-      compat_resource (>= 0.0.0)
-      seven_zip (>= 0.0.0)
+    dmg (3.1.0)
+    homebrew (3.0.0)
     plist (0.9.3)
-    seven_zip (2.0.2)
-      windows (>= 1.2.2)
-    windows (2.0.2)
 
 GIT
   remote: https://github.com/TangoGroup/gloo-workstation.git
@@ -143,9 +131,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 05b962acacb5d2d7486e43eda77a5487ac937e1b
+  sha: 45b24de5613ae7e6c90171cbba5e9c841794d056
   specs:
-    lyraphase_workstation (1.0.1)
+    lyraphase_workstation (1.2.3)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
@@ -164,7 +152,7 @@ GIT
 DEPENDENCIES
   gloo-workstation (>= 0)
   homebrew (>= 1.13.0)
-  lyraphase_workstation (~> 1.0)
+  lyraphase_workstation (~> 1.2)
   osx (>= 0)
   sprout-base (>= 0)
   sprout-git (>= 0)

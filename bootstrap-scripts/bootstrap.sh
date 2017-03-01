@@ -9,7 +9,7 @@
 #     ./bootstrap.sh
 #
 # http://github.com/trinitronx/sprout-wrap
-# (c) 2013, James Cuzella
+# (c) 2013-2017, James Cuzella
 # This script may be freely distributed under the MIT license.
 
 ## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
@@ -54,6 +54,7 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
   10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
   "10.9") XCODE_DMG='XCode-5.0.2-5A3005.dmg' ;;
@@ -71,17 +72,36 @@ pushd `pwd`
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
-    curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
+    if [[ "$XCODE_DMG" =~ ^.*\.dmg$ ]]; then
+      curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.xip}/${XCODE_DMG}"
+    else
+      curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
+    fi
   fi
     
-  hdiutil attach "$XCODE_DMG"
-  export __CFPREFERENCES_AVOID_DAEMON=1
-  if [ -e '/Volumes/XCode/XCode.pkg' ]; then
-    sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
-  elif [ -e '/Volumes/XCode.app' ]; then
-    sudo cp -r '/Volumes/XCode.app' '/Applications/'
+  # Why does Apple have to make everything more difficult?
+  if [[ "$XCODE_DMG" =~ ^.*\.xip$ ]]; then
+    pkgutil --check-signature $XCODE_DMG
+    TMP_DIR=$(mktemp -d /tmp/xcode-installer.XXXXXXXXXX)
+    xar -C ${TMP_DIR}/ -xf $XCODE_DMG
+    pushd $TMP_DIR
+    curl -O https://gist.githubusercontent.com/pudquick/ff412bcb29c9c1fa4b8d/raw/24b25538ea8df8d0634a2a6189aa581ccc6a5b4b/parse_pbzx2.py
+    python parse_pbzx2.py Content
+    xz -d Content.part*.cpio.xz
+    sudo cpio -idm < ./Content.part*.cpio
+    sudo mv ./Xcode.app /Applications/
+    popd
+    [ -d "$TMP_DIR" ] && rm -rf "$TMP_DIR/"
+  else
+    hdiutil attach "$XCODE_DMG"
+    export __CFPREFERENCES_AVOID_DAEMON=1
+    if [ -e '/Volumes/XCode/XCode.pkg' ]; then
+      sudo installer -pkg '/Volumes/XCode/XCode.pkg' -target /
+    elif [ -e '/Volumes/XCode.app' ]; then
+      sudo cp -r '/Volumes/XCode.app' '/Applications/'
+    fi
+    hdiutil detach '/Volumes/XCode'
   fi
-  hdiutil detach '/Volumes/XCode'
 fi
 
 
@@ -92,7 +112,7 @@ prevent_sudo_timeout
 readonly sudo_loop_PID  # Make PID readonly for security ;-)
 
 
-curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/50286e488d6602e6f2a92a139c1bd62aefb79779/xcode-cli-tools.sh | sudo bash
+curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/d6dfe10a3fcf8397735d5421cc739affbe7d1e3c/xcode-cli-tools.sh | sudo bash
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...

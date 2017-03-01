@@ -209,7 +209,6 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - homebrew/gui/meld
       - keybase
       - sleepwatcher
       - wakeonlan
@@ -247,6 +246,7 @@ node_attributes:
       - textmate
       - vagrant
       - virtualbox
+      - virtualbox-extension-pack
       - vmware-fusion
       - minikube
       - wireshark
@@ -269,6 +269,7 @@ node_attributes:
 #      - teamspeak
 ## Commented out until they update to Sublime Text 3
       - sublime-text
+      - meld
 
   workspace_directory: src
   :gloo-workstation:

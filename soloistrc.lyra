@@ -7,9 +7,11 @@ recipes:
 #- gloo-workstation::xcode
 #- sprout-base::homebrew ## Deprecated by new homebrew cookbook
 #- sprout-homebrew       ## Deprecated by new homebrew cookbook
+- lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
 - homebrew
 - homebrew::install_taps
 - homebrew::install_casks
+- lyraphase_workstation::gpg21 ## Must be before homebrew::install_formulas to avoid symlink conflict error
 - homebrew::install_formulas
 - sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
 
@@ -38,7 +40,7 @@ recipes:
 # - sprout-postgresql
 
 # apps
-- sprout-osx-apps::iterm2
+#- sprout-osx-apps::iterm2 ## Superceded by lyraphase_workstation::iterm2 for loading Prefs from Dropbox
 #- sprout-osx-apps::flycut
 - sprout-osx-apps::shiftit
 # - sprout-osx-apps::keycastr
@@ -68,8 +70,11 @@ recipes:
 # - sprout-osx-apps::wemux
 
 ### Lyraphase Workstation & Custom
+- lyraphase_workstation::iterm2
+- lyraphase_workstation::iterm2_shell_integration
 - lyraphase_workstation::airfoil
 - lyraphase_workstation::ableton_live
+- lyraphase_workstation::ableton_live_options
 - lyraphase_workstation::max_for_live
 - lyraphase_workstation::traktor
 - lyraphase_workstation::traktor_audio_2
@@ -180,10 +185,11 @@ node_attributes:
   homebrew:
     taps:
       - caskroom/versions
+      - homebrew/versions
       - homebrew/completions
-      - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
+      - caskroom/drivers
     formulas:
       - bash-completion
 #      - ctags-exuberant
@@ -221,8 +227,8 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - homebrew/gui/meld
       - keybase
+      - gnupg21
       - sleepwatcher
       - wakeonlan
       - mtr
@@ -238,6 +244,8 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
+# Resin.io mmc card img writer tool
+      - etcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
       - keyfinder
@@ -263,6 +271,7 @@ node_attributes:
       - textmate
       - vagrant
       - virtualbox
+      - virtualbox-extension-pack
       - vmware-fusion
 #      - wireshark
       - xquartz
@@ -283,6 +292,7 @@ node_attributes:
 #      - sublime-text3
 ## Commented out until they update to Sublime Text 3
       - sublime-text
+      - meld
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
@@ -305,7 +315,10 @@ node_attributes:
 #        code: 
 #        name: 
   lyraphase_workstation:
-#    ableton_live:
+    ableton_live:
+      managed_versions: all
+      options:
+        - EnableMapToSiblings
 #      dmg:
 #        source: http://cdn2-downloads.ableton.com/channels/9.6.1b5/ableton_live_beta_961b5_64.dmg
 #        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_97b9_64.dmg
