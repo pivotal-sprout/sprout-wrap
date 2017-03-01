@@ -162,6 +162,7 @@ node_attributes:
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - homebrew/dupes
+      - homebrew/fuse
     formulas:
       - bash-completion
       - ctags-exuberant
@@ -225,6 +226,9 @@ node_attributes:
       - dfu-util
       - coreutils
       - lsusb
+# OSX Fuse FS drivers
+      - ext2fuse
+      - ext4fuse
     casks:
       - ccmenu
       - cord
