@@ -243,6 +243,7 @@ node_attributes:
       - keyfinder
       - soundflower
       - audacity
+      - ocenaudio
 #      - ccmenu
 #      - cord
       - firefox
