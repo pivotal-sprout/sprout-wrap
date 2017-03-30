@@ -269,6 +269,7 @@ node_attributes:
 ## Commented out until they update to Sublime Text 3
       - sublime-text
       - meld
+      - etcher
 
   workspace_directory: src
   :gloo-workstation:
