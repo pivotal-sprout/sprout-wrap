@@ -11,6 +11,7 @@ recipes:
 - homebrew
 - homebrew::install_taps
 - homebrew::install_casks
+- lyraphase_workstation::gpg21 ## Must be before homebrew::install_formulas to avoid symlink conflict error
 - homebrew::install_formulas
 - sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
 
