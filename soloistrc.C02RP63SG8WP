@@ -158,7 +158,6 @@ node_attributes:
     taps:
       - caskroom/versions
       - homebrew/completions
-      - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - homebrew/dupes
