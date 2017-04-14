@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-Download and install [XCode 7 from the App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+[Download](https://developer.apple.com/support/xcode/) and install XCode or the XCode command line tools.
 
 ## Installation
 
