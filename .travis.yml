@@ -1,24 +1,15 @@
 language: objective-c
+osx_image: xcode8.3
 rvm: system
-osx_image: xcode7.3
 install:
-  - rm -rf /usr/local/var/postgres # clear out Travis installed Postgres 9.4 data
+  # we expect sprout to provide homebrew so we should ensure it isn't present
+  - brew cask list && brew cask zap $(brew cask list)
+  - brew list && brew uninstall --force --ignore-dependencies $(brew list)
+  - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" -- --force
+  - rm -rf /usr/local/var/postgres # clear out Travis-installed Postgres 9.4 data
 
-  # Travis is very behind on updates, so we must replace the softwareupdate
-  # binary with a script that exits quickly, otherwise the Travis build will
-  # time out.
-  - mkdir $HOME/bin
-  - printf '#!'"/usr/bin/env bash\necho 'Actual software update is overridden to allow Travis build to succeed. This can be removed when Travis OS X machine has been updated.'" > $HOME/bin/softwareupdate
-  - chmod +x $HOME/bin/softwareupdate
-
-  # We are testing installation of homebrew, so should uninstall everything
-  - brew cask list
-  - brew cask zap $(brew cask list)
-  - brew list
-  - brew uninstall --force $(brew list)
-  - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-
-  # We are testing installation of Rubies, so should uninstall everything
-  - rvm implode --force
+  - for ruby in $(rvm list strings); do rvm uninstall "${ruby}"; done
+  - travis_wait rvm implode --force # We are testing installation of Rubies, so should uninstall everything
+  - ./sprout exec true # use `exec` to install dependencies
 script:
   - ./sprout
