@@ -11,6 +11,7 @@ recipes:
 - homebrew
 - homebrew::install_taps
 - homebrew::install_casks
+- lyraphase_workstation::gpg21 ## Must be before homebrew::install_formulas to avoid symlink conflict error
 - homebrew::install_formulas
 - sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
 
@@ -158,10 +159,10 @@ node_attributes:
     taps:
       - caskroom/versions
       - homebrew/completions
-      - homebrew/gui
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - homebrew/dupes
+      - homebrew/fuse
     formulas:
       - bash-completion
       - ctags-exuberant
@@ -224,6 +225,9 @@ node_attributes:
       - dfu-util
       - coreutils
       - lsusb
+# OSX Fuse FS drivers
+      - ext2fuse
+      - ext4fuse
     casks:
       - ccmenu
       - cord
@@ -266,6 +270,7 @@ node_attributes:
 ## Commented out until they update to Sublime Text 3
       - sublime-text
       - meld
+      - etcher
 
   workspace_directory: src
   :gloo-workstation:
