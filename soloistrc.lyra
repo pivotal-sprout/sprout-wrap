@@ -282,6 +282,7 @@ node_attributes:
       - yubikey-neo-manager
       - yubikey-piv-manager
       - java
+      - processing
 #      - cyberduck
       - dropbox
 #      - hex-fiend
