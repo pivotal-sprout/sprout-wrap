@@ -228,7 +228,6 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - keybase
       - gnupg21
       - sleepwatcher
       - wakeonlan
@@ -276,6 +275,7 @@ node_attributes:
 #      - wireshark
       - xquartz
       - xscope
+      - keybase
       - gpgtools
       - truecrypt
       - lastpass
