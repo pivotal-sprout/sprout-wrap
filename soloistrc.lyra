@@ -3,8 +3,6 @@ recipes:
 # base (required by sprout)
 - sprout-base::bash_it
 - sprout-base::var_chef_cache
-# (added for gloo)
-#- gloo-workstation::xcode
 #- sprout-base::homebrew ## Deprecated by new homebrew cookbook
 #- sprout-homebrew       ## Deprecated by new homebrew cookbook
 - lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
