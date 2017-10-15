@@ -1,17 +1,9 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    dmg (3.1.0)
-    homebrew (3.0.0)
+    dmg (4.0.0)
+    homebrew (4.2.0)
     plist (0.9.3)
-
-GIT
-  remote: https://github.com/TangoGroup/gloo-workstation.git
-  ref: master
-  sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
-  specs:
-    gloo-workstation (0.1.5)
-      dmg (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/osx
@@ -131,9 +123,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 45b24de5613ae7e6c90171cbba5e9c841794d056
+  sha: 5863e919a5c74603d01234c28df23a59edf415a5
   specs:
-    lyraphase_workstation (1.2.3)
+    lyraphase_workstation (1.5.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
@@ -150,7 +142,6 @@ GIT
       sprout-homebrew (>= 0.0.0)
 
 DEPENDENCIES
-  gloo-workstation (>= 0)
   homebrew (>= 1.13.0)
   lyraphase_workstation (~> 1.2)
   osx (>= 0)
