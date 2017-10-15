@@ -281,8 +281,10 @@ node_attributes:
       - truecrypt
       - lastpass
       - yubico-authenticator
-      - yubikey-neo-manager
+      - yubiswitch
+      - yubikey-manager
       - yubikey-piv-manager
+      - yubikey-personalization-gui
       - java
       - processing
 #      - cyberduck
