@@ -19,9 +19,6 @@ cookbook 'sprout-base',
 #  :git => '/Users/jcuzella/src/pub/cookbooks/sprout-base',
 #  :ref => 'develop'
 
-cookbook 'gloo-workstation',
-  :git => 'https://github.com/TangoGroup/gloo-workstation.git'
-
 cookbook 'sprout-osx-apps',
   :github => 'pivotal-sprout/sprout-osx-apps'
 
