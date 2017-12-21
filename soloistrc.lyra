@@ -249,7 +249,7 @@ node_attributes:
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
       - keyfinder
-      - soundflower
+      - soundflowerbed
       - audacity
       - ocenaudio
 #      - ccmenu
