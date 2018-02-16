@@ -66,11 +66,7 @@ node_attributes:
       tile_size: 35
       magnification: false
   homebrew:
-    taps:
-      - universal-ctags/universal-ctags
     formulas:
-      - name: universal-ctags
-        head: true
       - ag
       - chromedriver
       - imagemagick

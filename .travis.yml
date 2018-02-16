@@ -1,15 +1,15 @@
 language: objective-c
-osx_image: xcode8.3
+os: osx
+osx_image: xcode9.3beta
 rvm: system
 install:
   # we expect sprout to provide homebrew so we should ensure it isn't present
-  - brew cask list && brew cask zap $(brew cask list)
-  - brew list && brew uninstall --force --ignore-dependencies $(brew list)
+  - brew cask list && brew cask uninstall $(brew cask list)
+  - brew      list && brew      uninstall --force --ignore-dependencies $(brew list)
   - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" -- --force
   - rm -rf /usr/local/var/postgres # clear out Travis-installed Postgres 9.4 data
 
   - for ruby in $(rvm list strings); do rvm uninstall "${ruby}"; done
-  - travis_wait rvm implode --force # We are testing installation of Rubies, so should uninstall everything
-  - ./sprout exec true # use `exec` to install dependencies
+  - travis_wait sudo rvm implode --force # We are testing installation of Rubies, so should uninstall everything
 script:
   - ./sprout
