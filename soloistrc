@@ -85,7 +85,6 @@ node_attributes:
       - rowanj-gitx
       - github
       - google-chrome
-      - google-drive
       - google-hangouts
       - macvim
       - skype
