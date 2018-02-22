@@ -68,28 +68,17 @@ node_attributes:
   homebrew:
     formulas:
       - ag
-      - chromedriver
-      - imagemagick
       - node
       - pstree
-      - qt
-      - ssh-copy-id
+      - rbenv-binstubs
       - tmux
       - tree
+      - vim
       - watch
       - wget
-      - rbenv-binstubs
     casks:
       - firefox
       - flycut
-      - rowanj-gitx
-      - github
       - google-chrome
       - google-hangouts
-      - macvim
-      - skype
-      - textmate
       - vagrant
-      - virtualbox
-      - xquartz
-      - xscope
