@@ -248,6 +248,7 @@ node_attributes:
       - etcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
+      - audacity
       - keyfinder
       - soundflowerbed
       - audacity
@@ -255,6 +256,7 @@ node_attributes:
 #      - ccmenu
 #      - cord
       - firefox
+      - fitbit-connect
       - flux
 #      - freefilesync
 #      - gitx-rowanj
