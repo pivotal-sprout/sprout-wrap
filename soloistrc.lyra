@@ -249,10 +249,9 @@ node_attributes:
       - etcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
-      - audacity
+      - audacity-nightly
       - keyfinder
       - soundflowerbed
-      - audacity
       - ocenaudio
 #      - ccmenu
 #      - cord
