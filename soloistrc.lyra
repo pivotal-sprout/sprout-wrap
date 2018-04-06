@@ -189,6 +189,7 @@ node_attributes:
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - caskroom/drivers
+      - sscotth/audacity-nightly
     formulas:
       - bash-completion
 #      - ctags-exuberant
