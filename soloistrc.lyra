@@ -267,6 +267,7 @@ node_attributes:
       - near-lock
       - netspot
 #      - google-hangouts
+      - razer-synapse
       - skype
       - steam
       - tomtom-mysports-connect
