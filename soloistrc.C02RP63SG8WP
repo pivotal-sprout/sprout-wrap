@@ -62,8 +62,11 @@ recipes:
 
 ### Lyraphase Workstation & Custom
 - lyraphase_workstation::airfoil
-#- lyraphase_workstation::traktor
-#- lyraphase_workstation::traktor_audio_2
+- lyraphase_workstation::loopback_alias_ip
+#- lyraphase_workstation::bash4
+#- lyraphase_workstation::bash_it_custom_plugins
+#- lyraphase_workstation::iterm2
+#- lyraphase_workstation::iterm2_shell_integration
 
 node_attributes:
   bash_it:
