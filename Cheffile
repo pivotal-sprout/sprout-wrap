@@ -43,7 +43,7 @@ cookbook 'sprout-ssh',
 cookbook 'sprout-vim',
   :github => 'pivotal-sprout/sprout-vim'
 
-cookbook 'lyraphase_workstation', '~> 1.2',
+cookbook 'lyraphase_workstation', '~> 2.0',
   :github => 'trinitronx/lyraphase_workstation'
 #  :ref => 'develop'
 #  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
