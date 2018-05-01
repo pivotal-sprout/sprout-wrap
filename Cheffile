@@ -38,13 +38,20 @@ cookbook 'sprout-ssh',
   :github => 'pivotal-sprout/sprout-ssh'
 
 cookbook 'lyraphase_workstation', '~> 2.0',
-  :github => 'trinitronx/lyraphase_workstation'
-#  :ref => 'develop'
-#  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
-#  :ref => 'develop'
+ :github => 'trinitronx/lyraphase_workstation'
+# :ref => 'develop'
+# :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
+# :ref => 'develop'
 
-cookbook 'sprout-rubymine',
-  :github => 'trinitronx/sprout-rubymine'
+cookbook 'plist',
+ :github => 'carsomyr/chef-plist',
+ :ref => 'master',
+ :path => 'vendor/cookbooks/plist'
+
+## Broken dependency on sprout-homebrew
+## Deprecated by sprout-jetbrains-editors::rubymine 
+# cookbook 'sprout-rubymine',
+#   :github => 'trinitronx/sprout-rubymine'
 
 cookbook 'homebrew',
     '>= 1.13.0'
