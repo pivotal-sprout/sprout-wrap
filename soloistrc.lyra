@@ -1,57 +1,57 @@
 recipes:
 
 # base (required by sprout)
+- sprout-base
 - sprout-base::bash_it
-- sprout-base::var_chef_cache
-#- sprout-base::homebrew ## Deprecated by new homebrew cookbook
-#- sprout-homebrew       ## Deprecated by new homebrew cookbook
+
 - lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
 - homebrew
 - homebrew::install_taps
 - homebrew::install_casks
 - lyraphase_workstation::gpg21 ## Must be before homebrew::install_formulas to avoid symlink conflict error
 - homebrew::install_formulas
-- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
+#- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
+
+# apps
+#- sprout-osx-apps::iterm2 ## Superceded by lyraphase_workstation::iterm2 for loading Prefs from Dropbox
+- sprout-osx-apps::shiftit
+- sprout-osx-settings::screen_sharing_app
 
 # settings
 - sprout-osx-settings::sshd_on
+- sprout-osx-settings::tcp_keepalive
 - sprout-osx-settings::inputrc
 - sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-settings::function_keys
+- sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::input_on_login
+- sprout-osx-settings::inputrc
+- sprout-osx-settings::keyboard
 - sprout-osx-settings::locate
 - sprout-osx-settings::machine_name
-- sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::set_menubar_clock_format
+- sprout-osx-settings::shared_memory
 - sprout-terminal
+- sprout-ssh::known_hosts_github
 
 # development (general)
 - sprout-base::workspace_directory
+- sprout-git
 - sprout-git::default_editor
 - sprout-git::projects
-#- sprout-git::global_config
-# - sprout-git::git_scripts
+#- sprout-git::git_scripts
+
 # (added by gloo)
 #- sprout-ssh
 
 # development (rails)
 #- sprout-rbenv
 - sprout-ruby
-# - sprout-mysql
-# - sprout-postgresql
-
-# apps
-#- sprout-osx-apps::iterm2 ## Superceded by lyraphase_workstation::iterm2 for loading Prefs from Dropbox
-#- sprout-osx-apps::flycut
-- sprout-osx-apps::shiftit
-# - sprout-osx-apps::keycastr
-- sprout-osx-settings::screen_sharing_app
-# - sprout-osx-apps::menumeters
+#- sprout-mysql
+#- sprout-postgresql
 
 # apps (editors)
-# - sprout-osx-apps::textmate
-# - sprout-osx-apps::textmate_bundles
-# - sprout-osx-apps::textmate_preferences
-- sprout-vim::macvim
-# - sprout-osx-apps::macvim ## Deprecated by sprout-vim::macvim
-# - sprout-rubymine
+- sprout-jetbrains-editors::rubymine
 
 # apps (added for gloo)
 #- sprout-osx-apps::cyberduck
@@ -127,7 +127,6 @@ node_attributes:
       default_profile: 'Pro'
     settings:
       clock_format: EEE MMM d  h:mm:ss a
-#EEE h:mm:ss a
     screensaver:
       ask_for_password: true
       ask_for_password_delay: 0
@@ -142,7 +141,7 @@ node_attributes:
       shmmax: 4194304
     dock_preferences:
       orientation: 'bottom'
-      auto_hide: false
+      auto_hide: true
       clear_apps: false
       tile_size: 35
       magnification': false
