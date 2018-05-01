@@ -2,16 +2,15 @@
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
 
+# NOTE: This is a Fork!
+
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
-to run a subset of the recipes in sprout's cookbooks.
+to run a custom set of the recipes in sprout-wrap's cookbooks.
 
-[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
-customize its [attributes](http://docs.opscode.com/chef_overview_attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
-you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
-of the many [community cookbooks](http://community.opscode.com/cookbooks). By default it configures an OS X 
-Mavericks workstation for Ruby development.
+Additionally, it adds the [`lyraphase_workstation`](https://github.com/trinitronx/lyraphase_workstation) cookbook for installing a Digital Audio Workstation (DAW), and miscellaneous audio and development tools.
 
-Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+## Prerequisites
+
 
 ## Installation under Mavericks (OS X 10.9)
 
@@ -26,22 +25,28 @@ Open a terminal and run:
 ### The Semi-Manual Way:
 
 ### 1. Install Command Line Tools
+
+[Download](https://developer.apple.com/support/xcode/) and install XCode or the XCode command line tools.
   
     xcode-select --install
 
-If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
+## Installation
 
-### 2. Clone this project
+To provision your machine, open up Terminal and enter the following:
 
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
-    cd sprout-wrap
+```sh
+sudo xcodebuild -license
+xcode-select --install
+git clone https://github.com/pivotal-sprout/sprout-wrap.git
+cd sprout-wrap
+caffeinate ./sprout
+```
 
-### 3. Install soloist & and other required gems
+The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.
 
-If you're running under rvm or rbenv, you shouldn't preface the following commands with `sudo`.
+## Problems?
 
-    sudo gem install bundler
-    sudo bundle
+### clang error
 
 If you receive errors like this:
 
@@ -51,15 +56,36 @@ then try downgrading those errors like this:
 
     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
 
-### 4. Run soloist
+### Command Line Tool Update Server
 
-[You may want to modify your Energy Saver preferences (**System Preferences &rarr; Energy Saver &rarr; Computer Sleep &rarr; 3hrs**); depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.]
+If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
 
-    bundle exec soloist
+## Customization
+
+This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
+to run a subset of the recipes in sprout's cookbooks.
+
+[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
+customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
+you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
+of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an OS X 
+Mavericks workstation for Ruby development.
+
+Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+
+## Caveats
+
+### Homebrew
+
+- Homebrew cask has been [integrated](https://github.com/caskroom/homebrew-cask/pull/15381) with Homebrew proper. If you are experiencing problems installing casks and
+  have an older installation of Homebrew, running `brew uninstall --force brew-cask; brew update` should fix things.
+- If you are updating from an older version of sprout-wrap, your homebrew configuration in soloistrc might be under `node_attributes.sprout.homebrew.formulae`
+  and `node_attributes.sprout.homebrew.casks`. These will need to be updated to `node_attributes.homebrew.formulas` (note the change from formulae to formulas)
+  and `node_attributes.homebrew.casks`.
 
 ## Roadmap
 
-See Pivotal Tracker: https://www.pivotaltracker.com/s/projects/884116
+See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
 
 ## Discussion List
 
