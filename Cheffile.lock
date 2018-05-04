@@ -3,15 +3,13 @@ SITE
   specs:
     build-essential (3.2.0)
       seven_zip (>= 0.0.0)
-    dmg (4.1.0)
-    homebrew (4.3.0)
+    dmg (4.1.1)
+    homebrew (5.0.4)
     mingw (0.1.1)
       seven_zip (>= 0.0.0)
-    ohai (5.2.2)
     seven_zip (2.0.2)
       windows (>= 1.2.2)
-    windows (3.4.4)
-      ohai (>= 4.0.0)
+    windows (4.2.2)
 
 GIT
   remote: https://github.com/pivotal-sprout/osx
@@ -23,17 +21,17 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: fe8719337275808d2a6a33b2d60561f36c2272a5
+  sha: a7f515dd6ec08e682c9fb0637c8a153fa275e19f
   specs:
-    sprout-base (0.5.0)
+    sprout-base (0.7.0)
       homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: 90c32ad3e7b0d549716fd298475e8e0621dbc35c
+  sha: 4b9cbcad5cfc88b7324f00a78439117e8c7a7e77
   specs:
-    sprout-git (0.3.1)
+    sprout-git (0.4.0)
       homebrew (>= 0.0.0)
       sprout-base (>= 0.0.0)
 

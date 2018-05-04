@@ -3,15 +3,16 @@
 set -e
 
 function use_local_gems() {
+  local system_ruby_bin="/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/"
   SPROUT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
   export SPROUT_HOME
-  export GEM_HOME="${SPROUT_HOME}/tmp/ruby/2.0.0"
+  export GEM_HOME="${SPROUT_HOME}/tmp/ruby/2.3.0"
   export GEM_PATH="${GEM_HOME}"
-  export PATH="${GEM_HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+  export PATH="${GEM_HOME}/bin:${system_ruby_bin}:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
   current_ruby=$(which ruby)
-  if [ "${current_ruby}" != '/usr/bin/ruby' ]; then
-    echo -e "\033[31mWarning: sprout should be run with system ruby; using '${current_ruby}'\033[0m"
+  if [ "${current_ruby}" != "${system_ruby_bin}/ruby" ]; then
+    echo -e "\\033[31mWarning: sprout should be run with system ruby; using '${current_ruby}'\\033[0m"
   fi
   echo "# - Using $(${current_ruby} -v)"
 }
