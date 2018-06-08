@@ -32,7 +32,6 @@ recipes:
 - sprout-postgresql
 
 # apps (editors)
-- sprout-osx-apps::textmate_preferences
 - sprout-jetbrains-editors::rubymine
 
 node_attributes:
@@ -66,35 +65,19 @@ node_attributes:
       tile_size: 35
       magnification: false
   homebrew:
-    taps:
-      - universal-ctags/universal-ctags
     formulas:
-      - name: universal-ctags
-        head: true
       - ag
-      - chromedriver
-      - imagemagick
       - node
       - pstree
-      - qt
-      - ssh-copy-id
+      - rbenv-binstubs
       - tmux
       - tree
+      - vim
       - watch
       - wget
-      - rbenv-binstubs
     casks:
       - firefox
       - flycut
-      - rowanj-gitx
-      - github-desktop
       - google-chrome
-      - google-drive
       - google-hangouts
-      - macvim
-      - skype
-      - textmate
       - vagrant
-      - virtualbox
-      - xquartz
-      - xscope
