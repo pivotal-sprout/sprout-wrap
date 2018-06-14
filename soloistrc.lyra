@@ -32,6 +32,7 @@ recipes:
 - sprout-osx-settings::machine_name
 - sprout-osx-settings::set_menubar_clock_format
 - sprout-osx-settings::shared_memory
+- sprout-osx-settings::dock_preferences
 - sprout-terminal
 - sprout-ssh::known_hosts_github
 
