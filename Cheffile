@@ -28,9 +28,6 @@ cookbook 'sprout-osx-settings',
 cookbook 'osx',
   :github => 'pivotal-sprout/osx'
 
-cookbook 'sprout-homebrew',
-  :github => 'pivotal-sprout/sprout-homebrew'
-
 cookbook 'sprout-terminal',
   :github => 'pivotal-sprout/sprout-terminal'
 
@@ -40,19 +37,32 @@ cookbook 'sprout-postgresql',
 cookbook 'sprout-ssh',
   :github => 'pivotal-sprout/sprout-ssh'
 
-cookbook 'sprout-vim',
-  :github => 'pivotal-sprout/sprout-vim'
+cookbook 'lyraphase_workstation', '~> 2.0',
+ :github => 'trinitronx/lyraphase_workstation'
+# :ref => 'develop'
+# :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
+# :ref => 'develop'
 
-cookbook 'lyraphase_workstation', '~> 1.2',
-  :github => 'trinitronx/lyraphase_workstation'
-#  :ref => 'develop'
-#  :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
-#  :ref => 'develop'
+cookbook 'plist',
+ :github => 'carsomyr/chef-plist',
+ :ref => 'master',
+ :path => 'vendor/cookbooks/plist'
 
-cookbook 'sprout-rubymine',
-  :github => 'trinitronx/sprout-rubymine'
+## Broken dependency on sprout-homebrew
+## Deprecated by sprout-jetbrains-editors::rubymine 
+# cookbook 'sprout-rubymine',
+#   :github => 'trinitronx/sprout-rubymine'
 
 cookbook 'homebrew',
     '>= 1.13.0'
 #  :github => 'kbruner/homebrew',
 #  :ref => 'issue71'
+
+cookbook 'sprout-jetbrains-editors',
+  :github => 'pivotal-sprout/sprout-jetbrains-editors'
+
+# mingw 1.0 and build-essential 4.0 add a dependency to compat_resource,
+# which does not load correctly with Rubygems 2.0.14, the Rubygems version
+# bundled with OS X 10.11.4.
+cookbook 'mingw', '= 0.1.1'
+cookbook 'build-essential', '= 3.2.0'
