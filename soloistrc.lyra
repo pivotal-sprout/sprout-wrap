@@ -251,6 +251,7 @@ node_attributes:
       - keyfinder
       - soundflowerbed
       - ocenaudio
+      - obs
 #      - ccmenu
 #      - cord
       - firefox
