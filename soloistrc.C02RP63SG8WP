@@ -261,7 +261,9 @@ node_attributes:
       - truecrypt
       - lastpass
       - yubico-authenticator
-      - yubikey-neo-manager
+      - yubico-yubikey-manager
+      - yubico-yubikey-piv-manager
+      - yubico-yubikey-personalization-gui
       - java
       - sqlworkbenchj
       - mysqlworkbench
