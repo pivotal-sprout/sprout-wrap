@@ -14,7 +14,7 @@ recipes:
   - lyraphase_workstation::gpg21
   - homebrew::install_formulas
   ## Functionality not yet in homebrew cookbook
-  - sprout-homebrew::launchctl
+  ## - sprout-homebrew::launchctl
 
   # settings
   - sprout-osx-settings
