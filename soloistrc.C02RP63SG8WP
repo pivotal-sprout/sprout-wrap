@@ -162,6 +162,7 @@ node_attributes:
         merge.tool: meld
   homebrew:
     taps:
+      - chef/chef
       - caskroom/versions
       - homebrew/completions
       - trinitronx/truecrypt
