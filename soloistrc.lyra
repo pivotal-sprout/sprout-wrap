@@ -221,6 +221,7 @@ node_attributes:
 #      - rbenv-gem-rehash
       - gist
       - hub
+      - git-subrepo
       - mosh
 #      - parallel
       - wemux
