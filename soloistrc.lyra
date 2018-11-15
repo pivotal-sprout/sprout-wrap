@@ -229,6 +229,7 @@ node_attributes:
       - name: ffmpeg
         options: --with-fdk-aac --with-fontconfig --with-freetype --with-libass --with-libbluray --with-libsoxr --with-libssh --with-libvorbis --with-opencore-amr --with-openh264 --with-openjpeg --with-openssl --with-sdl2 --with-snappy --with-tools --with-webp --with-x265 --with-xz
       - mediainfo
+      - youtube-dl
       - sleepwatcher
       - wakeonlan
       - mtr
@@ -259,6 +260,7 @@ node_attributes:
       - flux
 #      - freefilesync
 #      - gitx-rowanj
+      - garmin-express
       - github-desktop
       - google-chrome
       - google-drive
