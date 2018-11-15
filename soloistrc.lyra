@@ -264,7 +264,9 @@ node_attributes:
       - github-desktop
       - google-chrome
       - google-drive
+      - kid3
       - chefdk
+      - musicbrainz-picard
       - near-lock
       - netspot
 #      - google-hangouts
