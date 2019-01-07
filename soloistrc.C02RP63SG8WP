@@ -258,6 +258,7 @@ node_attributes:
       - xquartz
       - xscope
       - gpgtools
+      - proxytunnel
       - truecrypt
       - lastpass
       - yubico-authenticator
