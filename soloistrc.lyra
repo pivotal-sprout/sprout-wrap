@@ -286,6 +286,7 @@ node_attributes:
       - keybase
       - gpg-suite
       - truecrypt
+      - veracrypt
       - lastpass
       - yubico-authenticator
       - yubico-yubikey-manager
