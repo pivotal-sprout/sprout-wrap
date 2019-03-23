@@ -264,7 +264,6 @@ node_attributes:
       - garmin-express
       - github-desktop
       - google-chrome
-      - google-drive
       - kid3
       - chefdk
       - musicbrainz-picard
