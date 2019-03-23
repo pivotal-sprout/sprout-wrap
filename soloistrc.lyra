@@ -186,7 +186,7 @@ node_attributes:
     taps:
       - caskroom/versions
       - homebrew/versions
-      - homebrew/completions
+      - homebrew/homebrew-core
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - caskroom/drivers
@@ -271,7 +271,7 @@ node_attributes:
       - near-lock
       - netspot
 #      - google-hangouts
-      - razer-synapse
+      - logitech-options
       - skype
       - steam
       - tomtom-mysports-connect
