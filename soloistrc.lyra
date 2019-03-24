@@ -190,6 +190,7 @@ node_attributes:
       - trinitronx/truecrypt
       - jlhonora/lsusb
       - caskroom/drivers
+      - chef/homebrew-chef
     formulas:
       - bash-completion
 #      - ctags-exuberant
