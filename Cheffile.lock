@@ -4,12 +4,12 @@ SITE
     build-essential (3.2.0)
       seven_zip (>= 0.0.0)
     dmg (4.1.1)
-    homebrew (5.0.4)
+    homebrew (5.0.8)
     mingw (0.1.1)
       seven_zip (>= 0.0.0)
-    seven_zip (2.0.2)
-      windows (>= 1.2.2)
-    windows (4.2.2)
+    seven_zip (3.1.0)
+      windows (>= 0.0.0)
+    windows (5.3.0)
 
 GIT
   remote: https://github.com/carsomyr/chef-plist
@@ -129,9 +129,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 7e6506cf7e84a0b027243d2450d01cb46694fbb9
+  sha: d45a622a2120054ceddf906cacec06f83ac8a2a3
   specs:
-    lyraphase_workstation (2.0.1)
+    lyraphase_workstation (2.1.1)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
