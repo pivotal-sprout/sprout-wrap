@@ -261,6 +261,8 @@ node_attributes:
       - gpgtools
       - proxytunnel
       - truecrypt
+      - veracrypt
+      - osxfuse
       - lastpass
       - yubico-authenticator
       - yubico-yubikey-manager
