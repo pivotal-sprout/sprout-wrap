@@ -50,7 +50,7 @@ recipes:
   # - sprout-osx-apps::menumeters
 
   # apps (editors)
-  - sprout-osx-apps::textmate_preferences
+  # - sprout-osx-apps::textmate_preferences
   # - sprout-osx-apps::macvim
   # - sprout-rubymine
 
