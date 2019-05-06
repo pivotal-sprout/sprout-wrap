@@ -269,6 +269,7 @@ node_attributes:
       - yubico-yubikey-piv-manager
       - yubico-yubikey-personalization-gui
       - java
+      - java6
       - sqlworkbenchj
       - mysqlworkbench
       - intellij-idea-ce
