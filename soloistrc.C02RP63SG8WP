@@ -168,7 +168,6 @@ node_attributes:
       - trinitronx/truecrypt
       - insomniacslk/dublin-traceroute
       - jlhonora/lsusb
-      - homebrew/dupes
       - homebrew/fuse
     formulas:
       - bash-completion
