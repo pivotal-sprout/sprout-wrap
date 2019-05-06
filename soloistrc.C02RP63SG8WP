@@ -165,8 +165,8 @@ node_attributes:
     taps:
       - chef/chef
       - caskroom/versions
-      - homebrew/completions
       - trinitronx/truecrypt
+      - insomniacslk/dublin-traceroute
       - jlhonora/lsusb
       - homebrew/dupes
       - homebrew/fuse
