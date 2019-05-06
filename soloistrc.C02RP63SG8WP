@@ -217,6 +217,7 @@ node_attributes:
       - sleepwatcher
       - wakeonlan
       - mtr
+      - proxytunnel
       - jq
       - xmlstarlet
       - expect
@@ -257,7 +258,6 @@ node_attributes:
       - xquartz
       - xscope
       - gpgtools
-      - proxytunnel
       - truecrypt
       - veracrypt
       - osxfuse
