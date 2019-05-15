@@ -97,6 +97,7 @@ recipes:
 node_attributes:
   current_user: jcuzella
   bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
     enabled_plugins:
       plugins:
         - base

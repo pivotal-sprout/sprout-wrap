@@ -50,7 +50,7 @@ recipes:
   # - sprout-osx-apps::menumeters
 
   # apps (editors)
-  - sprout-osx-apps::textmate_preferences
+  # - sprout-osx-apps::textmate_preferences
   # - sprout-osx-apps::macvim
   # - sprout-rubymine
 
@@ -75,6 +75,7 @@ recipes:
 
 node_attributes:
   bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
     enabled_plugins:
       plugins:
         - base
@@ -165,11 +166,9 @@ node_attributes:
     taps:
       - chef/chef
       - caskroom/versions
-      - homebrew/completions
       - trinitronx/truecrypt
+      - insomniacslk/dublin-traceroute
       - jlhonora/lsusb
-      - homebrew/dupes
-      - homebrew/fuse
     formulas:
       - bash-completion
       - ctags-exuberant
@@ -219,6 +218,7 @@ node_attributes:
       - sleepwatcher
       - wakeonlan
       - mtr
+      - proxytunnel
       - jq
       - xmlstarlet
       - expect
@@ -259,7 +259,6 @@ node_attributes:
       - xquartz
       - xscope
       - gpgtools
-      - proxytunnel
       - truecrypt
       - veracrypt
       - osxfuse
