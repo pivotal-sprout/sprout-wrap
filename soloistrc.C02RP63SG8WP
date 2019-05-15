@@ -75,6 +75,7 @@ recipes:
 
 node_attributes:
   bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
     enabled_plugins:
       plugins:
         - base
