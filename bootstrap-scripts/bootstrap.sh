@@ -121,7 +121,7 @@ prevent_sudo_timeout
 readonly sudo_loop_PID  # Make PID readonly for security ;-)
 
 
-curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/d6dfe10a3fcf8397735d5421cc739affbe7d1e3c/xcode-cli-tools.sh | sudo bash
+curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/37fd83386e7715aa6dca74f6bed220d3c9facea6/xcode-cli-tools.sh | sudo bash
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
