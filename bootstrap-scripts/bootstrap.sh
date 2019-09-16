@@ -89,9 +89,7 @@ if [ ! -d "/Applications/Xcode.app" ]; then
 
     if [[ -x "$(which xip)" ]]; then
       xip -x "${REPO_BASE}/${XCODE_DMG}"
-      pushd $TMP_DIR
       sudo mv ./Xcode.app /Applications/
-      popd
     else
       xar -C ${TMP_DIR}/ -xf $XCODE_DMG
       pushd $TMP_DIR
