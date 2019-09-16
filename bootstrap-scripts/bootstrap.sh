@@ -49,11 +49,13 @@ SOLOIST_DIR="${HOME}/src/pub/soloist"
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
 SPROUT_WRAP_BRANCH='spica-local-devbox'
+USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
 
 detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip' ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
   10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
@@ -73,9 +75,9 @@ if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
   if [ ! -e "$XCODE_DMG" ]; then
     if [[ "$XCODE_DMG" =~ ^.*\.dmg$ ]]; then
-      curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.xip}/${XCODE_DMG}"
+      curl --fail --user-agent "$USER_AGENT" -L -O "http://lyraphase.com/doc/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.xip}/${XCODE_DMG}"
     else
-      curl --fail -L -O "http://lyraphase.com/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
+      curl --fail --user-agent "$USER_AGENT" -L -O "http://lyraphase.com/doc/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
     fi
   fi
     
