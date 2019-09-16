@@ -50,6 +50,7 @@ SOLOIST_DIR="${HOME}/src/pub/soloist"
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
 SPROUT_WRAP_BRANCH='spica-local-devbox'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
+REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 
 detect_platform_version
 
@@ -87,8 +88,8 @@ if [ ! -d "/Applications/Xcode.app" ]; then
     TMP_DIR=$(mktemp -d /tmp/xcode-installer.XXXXXXXXXX)
 
     if [[ -x "$(which xip)" ]]; then
+      xip -x "${REPO_BASE}/${XCODE_DMG}"
       pushd $TMP_DIR
-      xip -x "$XCODE_DMG"
       sudo mv ./Xcode.app /Applications/
       popd
     else
