@@ -85,14 +85,22 @@ if [ ! -d "/Applications/Xcode.app" ]; then
   if [[ "$XCODE_DMG" =~ ^.*\.xip$ ]]; then
     pkgutil --check-signature $XCODE_DMG
     TMP_DIR=$(mktemp -d /tmp/xcode-installer.XXXXXXXXXX)
-    xar -C ${TMP_DIR}/ -xf $XCODE_DMG
-    pushd $TMP_DIR
-    curl -O https://gist.githubusercontent.com/pudquick/ff412bcb29c9c1fa4b8d/raw/24b25538ea8df8d0634a2a6189aa581ccc6a5b4b/parse_pbzx2.py
-    python parse_pbzx2.py Content
-    xz -d Content.part*.cpio.xz
-    sudo cpio -idm < ./Content.part*.cpio
-    sudo mv ./Xcode.app /Applications/
-    popd
+
+    if [[ -x "$(which xip)" ]]; then
+      pushd $TMP_DIR
+      xip -x "$XCODE_DMG"
+      sudo mv ./Xcode.app /Applications/
+      popd
+    else
+      xar -C ${TMP_DIR}/ -xf $XCODE_DMG
+      pushd $TMP_DIR
+      curl -O https://gist.githubusercontent.com/pudquick/ff412bcb29c9c1fa4b8d/raw/24b25538ea8df8d0634a2a6189aa581ccc6a5b4b/parse_pbzx2.py
+      python parse_pbzx2.py Content
+      xz -d Content.part*.cpio.xz
+      cat ./Content.part*.cpio | sudo cpio -idm
+      sudo mv ./Xcode.app /Applications/
+      popd
+    fi
     [ -d "$TMP_DIR" ] && rm -rf "$TMP_DIR/"
   else
     hdiutil attach "$XCODE_DMG"
