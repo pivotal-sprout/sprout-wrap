@@ -4,6 +4,12 @@ recipes:
 - sprout-base
 - sprout-base::bash_it
 
+# Need user git config for 1st time bootstrap
+### TODO: Fix known_hosts_github to use ssh-keyscan, or attributes
+### TODO: Install github known_hosts for root also! (bash-it fails b/c git ls-remote is run via root)
+- sprout-ssh::known_hosts_github
+- sprout-ssh::dot_ssh_config_github
+- sprout-git::global_config
 - lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
 - homebrew
 - homebrew::install_taps
@@ -249,7 +255,7 @@ node_attributes:
       - lsusb
     casks:
 # Resin.io mmc card img writer tool
-      - etcher
+      - balenaetcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
       - keyfinder
@@ -264,7 +270,7 @@ node_attributes:
 #      - freefilesync
 #      - gitx-rowanj
       - garmin-express
-      - github-desktop
+      - github
       - google-chrome
       - kid3
       - chefdk
