@@ -9,7 +9,7 @@
 #     ./bootstrap.sh
 #
 # http://github.com/trinitronx/sprout-wrap
-# (c) 2013-2017, James Cuzella
+# (c) 2013-2019, James Cuzella
 # This script may be freely distributed under the MIT license.
 
 ## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
@@ -56,7 +56,7 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
-  10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip' ;;
+  10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
   10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
@@ -128,13 +128,33 @@ curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/37fd83386e771
 if [ -x "$(which expect)" ]; then
   echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
   # Git.io short URL to: ./bootstrap-scripts/accept-xcodebuild-license.exp
-  curl -Ls 'https://git.io/viaLD' | expect -
+  #curl -Ls 'https://git.io/viaLD' | sudo expect -
+  sudo expect "${REPO_BASE}/bootstrap-scripts/accept-xcodebuild-license.exp"
 else
   echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
   echo -e "\x1b[31;1mWarning:\x1b[0m You have not agreed to the Xcode license.\nBuilds will fail! Agree to the license by opening Xcode.app or running:\n
     xcodebuild -license\n\nOR for system-wide acceptance\n
     sudo xcodebuild -license"
   exit 1
+fi
+
+
+if [ "$INSTALL_SDK_HEADERS" -eq 1 ]; then
+  # Reference: https://github.com/Homebrew/homebrew-core/issues/18533#issuecomment-332501316
+  if ruby_mkmf_output="$(ruby -r mkmf -e 'print $hdrdir + "\n"')" && [ -d "$ruby_mkmf_output" ];
+  then
+     echo "INFO: Ruby header files successfully found!"
+  else
+    # This requires user interaction... but Mojave XCode CLT is broken!
+    # Reference: https://donatstudios.com/MojaveMissingHeaderFiles
+    sudo rm -rf /Library/Developer/CommandLineTools
+    sudo xcode-select --install
+    xcode_clt_pid=$(ps auxww | grep -i 'Install Command Line Developer Tools' | grep -v grep | awk '{ print $2 }')
+    # wait for non-child PID of CLT installer dialog UI
+    while ps -p $xcode_clt_pid >/dev/null ; do sleep 1; done
+
+    sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg  -target /
+  fi
 fi
 
 # Checkout sprout-wrap after XCode CLI tools, because we need it for git now
@@ -152,9 +172,14 @@ fi
 rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
-$USE_SUDO gem install bundler
-$USE_SUDO gem update --system
-if ! bundle check 2>&1 >/dev/null; then $USE_SUDO bundle install --without development ; fi
+[ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
+$USE_SUDO gem update -n /usr/local/bin --system
+if ! bundle check 2>&1 >/dev/null; then bundle install --path vendor/bundle --without development ; fi
+# We need bundler in vendor path too
+[ -x "$(bundle exec which bundler)" ] || bundle exec gem install bundler
+
+# TODO: Fix last chicken-egg issues
+echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
 
 export rvm_user_install_flag=1
 export rvm_prefix="$HOME"
@@ -162,7 +187,7 @@ export rvm_path="${rvm_prefix}/.rvm"
 
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
-soloist || errorout "Soloist provisioning failed!"
+bundle exec soloist || errorout "Soloist provisioning failed!"
 
 popd; popd
 
