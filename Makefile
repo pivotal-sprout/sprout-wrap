@@ -8,8 +8,8 @@ REPO := $(REPO_NAME)
 
 include $(SELF_DIR)/main.mk
 
-#test: ## Run tests
-#	bundle exec .... validate yaml?
+test: soloistrc* ## Run test to validate soloistrc files
+	for f in $? ; do bundle exec ruby -r yaml -e 'YAML.load_file ARGV[0];printf(".")' "$$f" ; done
 
 
 $(SELF_DIR)/cookbooks Cheffile.lock: ## no-help
