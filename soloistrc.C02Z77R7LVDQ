@@ -7,11 +7,18 @@ recipes:
   - sprout-base::var_chef_cache
   # - sprout-base::homebrew ## Deprecated by new homebrew cookbook
   # - sprout-homebrew       ## Deprecated by new homebrew cookbook
+  # Need user git config for 1st time bootstrap
+  ### TODO: Fix known_hosts_github to use ssh-keyscan, or attributes
+  ### TODO: Install github known_hosts for root also! (bash-it fails b/c git ls-remote is run via root)
+  - sprout-ssh::known_hosts_github
+  - sprout-ssh::dot_ssh_config_github
+  - sprout-git::global_config
+  - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
   - homebrew
   - homebrew::install_taps
   - homebrew::install_casks
   ## Must be before homebrew::install_formulas to avoid symlink conflict error
-  - lyraphase_workstation::gpg21
+  # - lyraphase_workstation::gpg21
   - homebrew::install_formulas
   ## Functionality not yet in homebrew cookbook
   ## - sprout-homebrew::launchctl
@@ -24,7 +31,6 @@ recipes:
   - sprout-osx-settings::locate
   - sprout-osx-settings::machine_name
   - sprout-terminal
-  - sprout-ssh::known_hosts_github
 
   # development (general)
   - sprout-base::workspace_directory
@@ -68,10 +74,11 @@ recipes:
   - lyraphase_workstation::airfoil
   - lyraphase_workstation::loopback_alias_ip
   - lyraphase_workstation::ssh_tunnel_port_override
+  - lyraphase_workstation::sublime_text_settings
   # - lyraphase_workstation::bash4
-  # - lyraphase_workstation::bash_it_custom_plugins
-  # - lyraphase_workstation::iterm2
-  # - lyraphase_workstation::iterm2_shell_integration
+  - lyraphase_workstation::bash_it_custom_plugins
+  - lyraphase_workstation::iterm2
+  - lyraphase_workstation::iterm2_shell_integration
 
 node_attributes:
   bash_it:
@@ -155,19 +162,22 @@ node_attributes:
         rebase.autosquash: 'true'
         # Custom git config settings
         core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.name: '"James Cuzella"'
+        user.email: 'james.cuzella@lyraphase.com'
         user.signingkey: 09F02FCD
         push.default: simple
         bash-it.hide-status: '1'
         url."git@github.com:".insteadOf: https://github.com/
         commit.gpgsign: 'true'
-        gpg.program: gpg2
+        gpg.program: gpg
         merge.tool: meld
   homebrew:
     taps:
       - chef/chef
       - caskroom/versions
+      - homebrew/cask-drivers
       - trinitronx/truecrypt
-      - insomniacslk/dublin-traceroute
+      - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
       - jlhonora/lsusb
     formulas:
       - bash-completion
@@ -205,6 +215,7 @@ node_attributes:
       - wget
       - gist
       - hub
+      - travis
       - mosh
       - parallel
       - macvim
@@ -213,7 +224,6 @@ node_attributes:
       - s3cmd
       - ack
       - mediainfo
-      - keybase
       - sleepwatcher
       - wakeonlan
       - mtr
@@ -236,6 +246,7 @@ node_attributes:
     casks:
       - ccmenu
       - cord
+      - displaylink
       - firefox
       # - flux
       # - freefilesync ### DOWNLOAD FAILED!  TODO
@@ -246,7 +257,9 @@ node_attributes:
       - chefdk
       # - near-lock
       - netspot
+      - hammerspoon
       - google-hangouts
+      - microsoft-teams
       - skype
       - textmate
       - vagrant
@@ -262,6 +275,7 @@ node_attributes:
       - veracrypt
       - osxfuse
       - lastpass
+      - keybase
       - yubico-authenticator
       - yubico-yubikey-manager
       - yubico-yubikey-piv-manager
@@ -270,9 +284,11 @@ node_attributes:
       - java6
       - sqlworkbenchj
       - mysqlworkbench
+      - postico
       - intellij-idea-ce
       - cyberduck
       - dropbox
+      - google-drive-file-stream
       - hex-fiend
       - beyond-compare
       # - mumble
