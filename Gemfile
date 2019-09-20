@@ -6,6 +6,9 @@ gem 'plist', require: false
 
 gem 'librarian-chef', require: false
 
+# lyraphase-chef requires nokogiri gem
+gem 'nokogiri', require: false
+
 group :development do
   gem 'bundler', require: false
   gem 'guard', require: false
