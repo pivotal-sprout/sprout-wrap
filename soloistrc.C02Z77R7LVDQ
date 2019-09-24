@@ -184,6 +184,7 @@ node_attributes:
       - ctags-exuberant
       - ag
       - grc
+      - ansible
       - docker
       - docker-compose
       - docker-machine
