@@ -190,6 +190,7 @@ node_attributes:
       - docker-machine
       - docker-machine-nfs
       - terraform
+      - vault
       - kubernetes-cli
       - kops
       - imagemagick
