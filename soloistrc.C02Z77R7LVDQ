@@ -306,12 +306,20 @@ node_attributes:
   versions:
     rvm: 1.26.11
   rvm:
-    default_ruby: ruby-2.2.2
-    rubies:
-      ruby-1.9.3-p392:
-        :command_line_options: <
-          --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
-    multithread_build: true
+    user_installs:
+      - user: jcuzella
+        install_rubies: true
+        default_ruby: ruby-2.6.3
+        rubies:
+          ruby-2.6.3:
+            :command_line_options: <
+              --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
+        multithread_build: true
+    user_global_gems:
+      - bcat
+      - kramdown
+      - openssl
+      - wirble
 # TODO: Dynamically get AWS user & key?
 #  s3cfg:
 #    access_key:
