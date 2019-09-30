@@ -185,6 +185,7 @@ node_attributes:
       - ag
       - grc
       - ansible
+      - pyenv
       - docker
       - docker-compose
       - docker-machine
