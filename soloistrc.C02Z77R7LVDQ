@@ -196,6 +196,7 @@ node_attributes:
       - kops
       - imagemagick
       - openssl
+      - mitmproxy
       - xz
       - go
       - node
