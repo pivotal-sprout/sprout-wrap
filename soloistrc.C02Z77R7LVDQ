@@ -227,6 +227,7 @@ node_attributes:
       - awscli
       - s3cmd
       - ack
+      - gettext
       - mediainfo
       - sleepwatcher
       - wakeonlan
