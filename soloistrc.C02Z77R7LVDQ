@@ -215,6 +215,7 @@ node_attributes:
       - reattach-to-user-namespace
       - tree
       - socat
+      - nmap
       - watch
       - wget
       - gist
