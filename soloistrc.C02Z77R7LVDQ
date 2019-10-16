@@ -19,6 +19,7 @@ recipes:
   - homebrew::install_casks
   ## Must be before homebrew::install_formulas to avoid symlink conflict error
   # - lyraphase_workstation::gpg21
+  - lyraphase_workstation::hammerspoon_shiftit
   - homebrew::install_formulas
   ## Functionality not yet in homebrew cookbook
   ## - sprout-homebrew::launchctl
@@ -48,7 +49,7 @@ recipes:
   # apps
   - sprout-osx-apps::iterm2
   # - sprout-osx-apps::flycut
-  - sprout-osx-apps::shiftit
+  # - sprout-osx-apps::shiftit
   # - sprout-osx-apps::keycastr
   ## TODO:
   # Follow up on https://github.com/pivotal-sprout/sprout-osx-settings/issues/24
