@@ -237,6 +237,7 @@ node_attributes:
       - proxytunnel
       - jq
       - xmlstarlet
+      - pgcli
       - expect
       - rename
       - lastpass-cli
