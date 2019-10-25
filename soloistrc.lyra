@@ -194,7 +194,6 @@ node_attributes:
       - caskroom/versions
       - homebrew/versions
       - homebrew/homebrew-core
-      - trinitronx/truecrypt
       - jlhonora/lsusb
       - caskroom/drivers
       - chef/homebrew-chef
@@ -292,7 +291,6 @@ node_attributes:
       - xscope
       - keybase
       - gpg-suite
-      - truecrypt
       - veracrypt
       - osxfuse
       - lastpass
