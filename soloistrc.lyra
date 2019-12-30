@@ -59,7 +59,7 @@ recipes:
 #- sprout-postgresql
 
 # apps (editors)
-- sprout-jetbrains-editors::rubymine
+#- sprout-jetbrains-editors::rubymine
 
 # apps (added for gloo)
 #- sprout-osx-apps::cyberduck
