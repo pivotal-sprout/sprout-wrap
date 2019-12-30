@@ -264,8 +264,6 @@ node_attributes:
 #      - ccmenu
 #      - cord
       - firefox
-      - fitbit-connect
-      - flux
 #      - freefilesync
 #      - gitx-rowanj
       - garmin-express
@@ -274,13 +272,11 @@ node_attributes:
       - kid3
       - chefdk
       - musicbrainz-picard
-      - near-lock
       - netspot
 #      - google-hangouts
       - logitech-options
       - skype
       - steam
-      - tomtom-mysports-connect
       - textmate
       - vagrant
       - virtualbox
@@ -299,7 +295,6 @@ node_attributes:
       - yubico-yubikey-piv-manager
       - yubico-yubikey-personalization-gui
       - java
-      - processing
 #      - cyberduck
       - dropbox
 #      - hex-fiend
