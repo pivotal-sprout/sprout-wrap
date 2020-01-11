@@ -295,6 +295,7 @@ node_attributes:
       - mysqlworkbench
       - postico
       - intellij-idea-ce
+      - vienna
       - cyberduck
       - dropbox
       - google-drive-file-stream
