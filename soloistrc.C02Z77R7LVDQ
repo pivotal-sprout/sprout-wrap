@@ -90,11 +90,11 @@ node_attributes:
         - osx
         - rvm
         - ssh
-        - vagrant
       aliases:
         - ag
         - bundler
         - general
+        - kubectl
         - vagrant
       completions:
         - awscli
@@ -104,9 +104,14 @@ node_attributes:
         - dockerterm
         - gem
         - git
+        - kubectl
+        - minikube
         - rake
         - ssh
+        - terraform
         - tmux
+        - travis
+        - vault
     custom_plugins:
       sprout-base:
         - bash_it/custom/disable_ctrl-s_output_control.bash
