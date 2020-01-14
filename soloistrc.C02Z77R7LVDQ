@@ -215,6 +215,7 @@ node_attributes:
       - iperf3
       - qt
       - ssh-copy-id
+      - shellcheck
       - tmux
       # For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
       # Also fixes Sublime Text "subl" command not working
