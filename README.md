@@ -2,18 +2,17 @@
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-wrap.png?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-wrap)
 
+# NOTE: This is a Fork!
+
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
-to run a subset of the recipes in sprout's [cookbooks]((https://github.com/pivotal-sprout/sprout).
+to run a custom set of the recipes in sprout-wrap's cookbooks.
 
-[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
-customize its [attributes](http://docs.opscode.com/chef_overview_attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
-you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
-of the many [community cookbooks](http://community.opscode.com/cookbooks). By default it configures an OS X 
-Mountain Lion workstation for Ruby development.
+Additionally, it adds the [`lyraphase_workstation`](https://github.com/trinitronx/lyraphase_workstation) cookbook for installing a Digital Audio Workstation (DAW), and miscellaneous audio and development tools.
 
-Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+## Prerequisites
 
-## Installation under Mountain Lion (OS X 10.8) and Mavericks (OS X 10.9)
+
+## Installation under Mavericks (OS X 10.9)
 
 ### The Easy Way:
 
@@ -21,65 +20,78 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 Open a terminal and run:
 
-    \curl -Ls http://git.io/kyeeCg | bash
-
+    \curl -Ls https://git.io/viaJe | bash
 
 ### The Semi-Manual Way:
 
-#### 1. Install XCode
+### 1. Install Command Line Tools
 
-[![Xcode - Apple](http://r.mzstatic.com/images/web/linkmaker/badge_macappstore-lrg.gif)](https://itunes.apple.com/us/app/xcode/id497799835?mt=12&uo=4)
-
-#### 2. Install Command Line Tools
+[Download](https://developer.apple.com/support/xcode/) and install XCode or the XCode command line tools.
   
-  XCode > Preferences > Downloads
-  
-#### 3. Clone this project
-  
-    git clone https://github.com/pivotal-sprout/sprout-wrap.git
-    cd sprout-wrap
-  
-#### 4. Install soloist & and other required gems
+    xcode-select --install
 
-    sudo gem install bundler
-    bundle
+## Installation
 
-#### 5. Run soloist
-  
-    bundle exec soloist
+To provision your machine, open up Terminal and enter the following:
 
-## Configuration
+```sh
+sudo xcodebuild -license
+xcode-select --install
+git clone https://github.com/pivotal-sprout/sprout-wrap.git
+cd sprout-wrap
+caffeinate ./sprout
+```
 
-This project is a fork of [sprout-wrap](https://github.com/pivotal-sprout/sprout).
-It uses Chef cookbooks from [Sprout](https://github.com/pivotal-sprout/sprout).  These are installed via librarian-chef.
-[soloist](https://github.com/mkocher/soloist) runs [chef-solo](http://docs.opscode.com/chef_solo.html).
+The `caffeinate` command will keep your computer awake while installing; depending on your network connection, soloist can take from 10 minutes to 2 hours to complete.
 
-Soloist provides an easy way to configure a [run list](http://docs.opscode.com/essentials_node_object_run_lists.html) and [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) for the chef-solo run: `soloistrc`
-This is just a simple YAML file that looks like:
+## Problems?
 
-    recipes:
-      - bash::prompt
-    node_attributes:
-      bash:
-        prompt:
-          color: p!nk
+### clang error
 
-Wondering what attributes to use?
+If you receive errors like this:
 
-Please see the [attributes files](https://github.com/trinitronx/sprout/tree/master/sprout-osx-apps/attributes) in the various cookbooks in [Sprout](https://github.com/trinitronx/sprout)
+    clang: error: unknown argument: '-multiply_definedsuppress'
 
-## Troubleshooting
+then try downgrading those errors like this:
 
-There is one prerequisite to watch out for if you are using the `pivotal_workstation::git_projects` to auto-checkout our private repos.
-You will need to setup an ssh key to use in order for chef-solo to checkout the private repos.
-For this reason we have chosen to add this to our default [COE](http://en.wikipedia.org/wiki/Common_Operating_Environment))
+    sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle
 
-#### 1. Setup Github SSH key
+### Command Line Tool Update Server
 
-Make sure you have a github account and [ssh key set up](https://help.github.com/articles/generating-ssh-keys)
+If you receive a message about the update server being unavailable and are on Mavericks, then you already have the command line tools.
 
-To avoid SSH key passphrase prompts during soloist run, use:
+## Customization
 
-    eval $(ssh-agent -s)
-    ssh-add -K
+This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
+to run a subset of the recipes in sprout's cookbooks.
 
+[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
+customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
+you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
+of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an OS X 
+Mavericks workstation for Ruby development.
+
+Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+
+## Caveats
+
+### Homebrew
+
+- Homebrew cask has been [integrated](https://github.com/caskroom/homebrew-cask/pull/15381) with Homebrew proper. If you are experiencing problems installing casks and
+  have an older installation of Homebrew, running `brew uninstall --force brew-cask; brew update` should fix things.
+- If you are updating from an older version of sprout-wrap, your homebrew configuration in soloistrc might be under `node_attributes.sprout.homebrew.formulae`
+  and `node_attributes.sprout.homebrew.casks`. These will need to be updated to `node_attributes.homebrew.formulas` (note the change from formulae to formulas)
+  and `node_attributes.homebrew.casks`.
+
+## Roadmap
+
+See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
+
+## Discussion List
+
+  Join [sprout-users@googlegroups.com](https://groups.google.com/forum/#!forum/sprout-users) if you use Sprout.
+
+## References
+
+* Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
+* [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)

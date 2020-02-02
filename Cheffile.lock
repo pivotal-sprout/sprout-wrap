@@ -1,119 +1,159 @@
 SITE
-  remote: http://community.opscode.com/api/v1
+  remote: https://supermarket.getchef.com/api/v1
   specs:
-    dmg (2.1.4)
-    homebrew (1.5.4)
+    build-essential (3.2.0)
+      seven_zip (>= 0.0.0)
+    dmg (4.1.1)
+    homebrew (5.0.8)
+    mingw (0.1.1)
+      seven_zip (>= 0.0.0)
+    seven_zip (3.1.0)
+      windows (>= 0.0.0)
+    windows (5.3.0)
 
 GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: osx
-  ref: mavericks
-  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
+  remote: https://github.com/carsomyr/chef-plist
+  path: vendor/cookbooks/plist
+  ref: master
+  sha: b66cf5a243c26b33a8e822c69fd5beb20bf60836
+  specs:
+    plist (0.9.4)
+
+GIT
+  remote: https://github.com/pivotal-sprout/osx
+  ref: master
+  sha: 57820f0c0f4b08e9cff82a57a7489f9dcc9345f7
   specs:
     osx (0.1.0)
 
 GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-git
-  ref: mavericks
-  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
-  specs:
-    sprout-osx-git (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-osx-rubymine
-  ref: mavericks
-  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
-  specs:
-    sprout-osx-rubymine (0.1.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: git://github.com/pivotal-sprout/sprout.git
-  path: sprout-pivotal
-  ref: mavericks
-  sha: 5afa8716946376cb637fbe92d577c536cdfbc8be
-  specs:
-    sprout-pivotal (0.1.0)
-      dmg (>= 0.0.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-
-GIT
-  remote: https://github.com/TangoGroup/gloo-workstation.git
+  remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
+  sha: a7f515dd6ec08e682c9fb0637c8a153fa275e19f
   specs:
-    gloo-workstation (0.1.5)
-      dmg (>= 0.0.0)
+    sprout-base (0.7.0)
+      homebrew (>= 0.0.0)
 
 GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-settings
-  ref: idempotent-expose-keyboard-shortcut-recipe
-  sha: daad2e7e23f110ebc8120791129761fed896f547
+  remote: https://github.com/pivotal-sprout/sprout-git
+  ref: master
+  sha: 4b9cbcad5cfc88b7324f00a78439117e8c7a7e77
+  specs:
+    sprout-git (0.4.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-jetbrains-editors
+  ref: master
+  sha: bcfcb62c1095a9ef33477f896ebda47918ad7618
+  specs:
+    sprout-jetbrains-editors (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-mysql
+  ref: master
+  sha: 12a264fe5418ae9fc6f5300fe56abec058f4a743
+  specs:
+    sprout-mysql (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-osx-apps
+  ref: master
+  sha: abe74e25ac963746f6178cb8e371d51c8bbd9de0
+  specs:
+    sprout-osx-apps (0.2.0)
+      dmg (>= 0.0.0)
+      homebrew (>= 1.6.6)
+      sprout-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-osx-settings
+  ref: master
+  sha: 62630bea50cea7b24058854a5a216c3a4dbbe4ef
   specs:
     sprout-osx-settings (0.1.0)
+      homebrew (>= 0.0.0)
       osx (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
-  remote: https://github.com/trinitronx/sprout
-  path: pivotal_workstation
-  ref: mavericks-develop
-  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
+  remote: https://github.com/pivotal-sprout/sprout-postgresql
+  ref: master
+  sha: 97558d741bc7f0e1ea6c2f896dd2a3706b26c7ec
   specs:
-    pivotal_workstation (1.0.0)
+    sprout-postgresql (0.1.0)
+      homebrew (>= 1.5.4)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-rbenv
+  ref: master
+  sha: aacfd19f867511715e6070988013ed453d268efb
+  specs:
+    sprout-rbenv (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-ruby
+  ref: master
+  sha: 2fc7d5273fccd978321450b61088bbd608867dfc
+  specs:
+    sprout-ruby (0.1.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-ssh
+  ref: master
+  sha: b3ac3a04d9b9494b32514e69b33720fd51f46224
+  specs:
+    sprout-ssh (0.1.0)
+      sprout-base (>= 0.0.0)
+      sprout-osx-settings (>= 0.0.0)
+
+GIT
+  remote: https://github.com/pivotal-sprout/sprout-terminal
+  ref: master
+  sha: 6d9be928aa0041f455d3721b14c89c5e068f5e04
+  specs:
+    sprout-terminal (0.1.0)
+      osx (>= 0.0.0)
+      sprout-base (>= 0.0.0)
+
+GIT
+  remote: https://github.com/trinitronx/lyraphase_workstation
+  ref: master
+  sha: 6367d82e83a3e21c29d5feca7a5f2b2856f28195
+  specs:
+    lyraphase_workstation (2.3.1)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-      sprout-pivotal (>= 0.0.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-apps
-  ref: mavericks-develop
-  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
-  specs:
-    sprout-osx-apps (0.1.0)
-      dmg (>= 0.0.0)
-      homebrew (>= 0.0.0)
-      sprout-osx-base (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
-
-GIT
-  remote: https://github.com/trinitronx/sprout
-  path: sprout-osx-base
-  ref: mavericks-develop
-  sha: 29d514eeba3d4d2a36346c16ba838fe89fa39e9b
-  specs:
-    sprout-osx-base (0.1.0)
-
-PATH
-  remote: site-cookbooks/meta
-  specs:
-    meta (0.1.0)
-      pivotal_workstation (>= 0.0.0)
-      sprout-osx-apps (>= 0.0.0)
-      sprout-osx-settings (>= 0.0.0)
+      plist (~> 0.9)
+      sprout-base (>= 0.0.0)
 
 DEPENDENCIES
-  gloo-workstation (>= 0)
-  meta (>= 0)
+  build-essential (= 3.2.0)
+  homebrew (>= 1.13.0)
+  lyraphase_workstation (~> 2.0)
+  mingw (= 0.1.1)
   osx (>= 0)
-  pivotal_workstation (>= 0)
+  plist (>= 0)
+  sprout-base (>= 0)
+  sprout-git (>= 0)
+  sprout-jetbrains-editors (>= 0)
+  sprout-mysql (>= 0)
   sprout-osx-apps (>= 0)
-  sprout-osx-base (>= 0)
-  sprout-osx-git (>= 0)
-  sprout-osx-rubymine (>= 0)
   sprout-osx-settings (>= 0)
-  sprout-pivotal (>= 0)
+  sprout-postgresql (>= 0)
+  sprout-rbenv (>= 0)
+  sprout-ruby (>= 0)
+  sprout-ssh (>= 0)
+  sprout-terminal (>= 0)
 

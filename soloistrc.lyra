@@ -1,0 +1,345 @@
+recipes:
+
+# base (required by sprout)
+- sprout-base
+- sprout-base::bash_it
+
+# Need user git config for 1st time bootstrap
+### TODO: Fix known_hosts_github to use ssh-keyscan, or attributes
+### TODO: Install github known_hosts for root also! (bash-it fails b/c git ls-remote is run via root)
+- sprout-ssh::known_hosts_github
+- sprout-ssh::dot_ssh_config_github
+- sprout-git::global_config
+- lyraphase_workstation::homebrew_sudoers # Workaround for chef-cookbooks/homebrew#105
+- homebrew
+- homebrew::install_taps
+- homebrew::install_casks
+# Deprecated by new gpg-suite Cask! Finally an up to date GPG 2.2!
+#- lyraphase_workstation::gpg21 ## Must be before homebrew::install_formulas to avoid symlink conflict error
+- homebrew::install_formulas
+#- sprout-homebrew::launchctl ## Functionality not yet in homebrew cookbook
+
+# apps
+#- sprout-osx-apps::iterm2 ## Superceded by lyraphase_workstation::iterm2 for loading Prefs from Dropbox
+- sprout-osx-apps::shiftit
+- sprout-osx-settings::screen_sharing_app
+
+# settings
+- sprout-osx-settings::sshd_on
+- sprout-osx-settings::tcp_keepalive
+- sprout-osx-settings::inputrc
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-settings::function_keys
+- sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::input_on_login
+- sprout-osx-settings::inputrc
+- sprout-osx-settings::keyboard
+- sprout-osx-settings::locate
+- sprout-osx-settings::machine_name
+- sprout-osx-settings::set_menubar_clock_format
+- sprout-osx-settings::shared_memory
+- sprout-osx-settings::dock_preferences
+- sprout-terminal
+- sprout-ssh::known_hosts_github
+
+# development (general)
+- sprout-base::workspace_directory
+- sprout-git
+- sprout-git::default_editor
+- sprout-git::projects
+#- sprout-git::git_scripts
+
+# (added by gloo)
+#- sprout-ssh
+
+# development (rails)
+#- sprout-rbenv
+- sprout-ruby
+#- sprout-mysql
+#- sprout-postgresql
+
+# apps (editors)
+#- sprout-jetbrains-editors::rubymine
+
+# apps (added for gloo)
+#- sprout-osx-apps::cyberduck
+#- sprout-osx-apps::gist
+#- sprout-osx-apps::gpg
+#- sprout-osx-apps::gpgtools
+#- sprout-osx-apps::hipchat
+#- sprout-osx-apps::java
+#- sprout-osx-apps::lastpass
+# - sprout-osx-apps::libreoffice
+- sprout-osx-apps::s3cmd
+#- sprout-osx-apps::sublime_text
+# - sprout-osx-apps::vlc
+# - sprout-osx-apps::wemux
+
+### Lyraphase Workstation & Custom
+- lyraphase_workstation::iterm2
+- lyraphase_workstation::iterm2_shell_integration
+- lyraphase_workstation::airfoil
+- lyraphase_workstation::ableton_live
+- lyraphase_workstation::ableton_live_options
+- lyraphase_workstation::max_for_live
+- lyraphase_workstation::traktor
+- lyraphase_workstation::traktor_audio_2
+- lyraphase_workstation::dmgaudio_dualism
+- lyraphase_workstation::oxium
+- lyraphase_workstation::polyverse_infected_mushroom_i_wish
+- lyraphase_workstation::polyverse_infected_mushroom_manipulator
+- lyraphase_workstation::mixed_in_key
+- lyraphase_workstation::korg_kontrol_editor
+- lyraphase_workstation::sublime_text_settings
+- lyraphase_workstation::nfs_mounts
+- lyraphase_workstation::bash_it_custom_plugins
+- lyraphase_workstation::daisydisk
+- lyraphase_workstation::drobo_dashboard
+
+### Hardware Hacking
+# Driver for USB -> Serial RS232 Adapter
+- lyraphase_workstation::prolific_pl2303_driver
+
+node_attributes:
+  current_user: jcuzella
+  bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
+    enabled_plugins:
+      plugins:
+        - base
+        - osx
+        - rvm
+        - ssh
+        - vagrant
+      aliases:
+        - ag
+        - bundler
+        - general
+        - vagrant
+      completions:
+        - awscli
+        - bash-it
+        - brew
+        - defaults
+        - dockerterm
+        - gem
+        - git
+        - rake
+        - ssh
+        - tmux
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
+  sprout:
+    terminal:
+      default_profile: 'Pro'
+    settings:
+      clock_format: EEE MMM d  h:mm:ss a
+    screensaver:
+      ask_for_password: true
+      ask_for_password_delay: 0
+      timeout: 600
+      disksleep: 10
+      sleep: 1
+      displaysleep: 2
+    menubar:
+      transparency: true
+    shared_memory:
+      shmall: 1024
+      shmmax: 4194304
+    dock_preferences:
+      orientation: 'bottom'
+      auto_hide: true
+      clear_apps: false
+      tile_size: 35
+      magnification': false
+    git:
+      projects:
+        - url: https://gist.github.com/f59a8308d42d71fdba41.git
+          name: iterm_open_with
+          workspace_path: ~/src/pub
+          post_clone_commands:
+            - "[ ! -d ~jcuzella/bin ] && mkdir ~jcuzella/bin || true"
+            - ln -sf ~jcuzella/src/pub/iterm_open_with/iterm_open_with ~jcuzella/bin/iterm_open_with
+      aliases:
+        - ci "commit -S"
+#        - oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1"'
+        - >
+          oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne '\''s/^ //p'\'' | head -1"'
+        - unstage-all "reset HEAD --"
+      global_config:
+        core.pager: '"less -FXRS -x2"'
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        apply.whitespace: nowarn
+        color.branch: auto
+        color.diff: auto
+        color.interactive: auto
+        color.status: auto
+        color.ui: auto
+        branch.autosetupmerge: 'true'
+        rebase.autosquash: 'true'
+        push.default: simple
+      # Custom git config settings
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.signingkey: 09F02FCD
+        push.default: simple
+        bash-it.hide-status: '1'
+        url."git@github.com:".insteadOf: https://github.com/
+        commit.gpgsign: 'true'
+        gpg.program: gpg2
+        merge.tool: meld
+  homebrew:
+    taps:
+      - caskroom/versions
+      - homebrew/versions
+      - homebrew/homebrew-core
+      - jlhonora/lsusb
+      - caskroom/drivers
+      - chef/homebrew-chef
+    formulas:
+      - bash-completion
+#      - ctags-exuberant
+      - ag
+      - grc
+#      - boot2docker
+#      - chromedriver
+      - docker-machine
+      - docker-machine-nfs
+#      - imagemagick
+      - openssl
+      - xz
+      - node
+      - p7zip
+      - pstree
+      - htop-osx
+#      - iperf3
+#      - qt
+      - ssh-copy-id
+      - tmux
+# For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+# Also fixes Sublime Text "subl" command not working
+      - reattach-to-user-namespace
+      - tree
+      - socat
+      - watch
+      - wget
+#      - rbenv-binstubs
+#      - rbenv-gem-rehash
+      - gist
+      - hub
+      - git-subrepo
+      - mosh
+#      - parallel
+      - wemux
+      - s3cmd
+      - ack
+      - cfv
+      - name: ffmpeg
+        options: --with-fdk-aac --with-fontconfig --with-freetype --with-libass --with-libbluray --with-libsoxr --with-libssh --with-libvorbis --with-opencore-amr --with-openh264 --with-openjpeg --with-openssl --with-sdl2 --with-snappy --with-tools --with-webp --with-x265 --with-xz
+      - mediainfo
+      - youtube-dl
+      - sleepwatcher
+      - wakeonlan
+      - mtr
+      - jq
+      - expect
+      - rename
+      - lastpass-cli
+      - pwgen
+      - terminal-notifier
+      - yubikey-personalization
+# Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
+    casks:
+# Resin.io mmc card img writer tool
+      - balenaetcher
+# Let the lyraphase_workstation::airfoil recipe do this instead
+#      - airfoil
+      - keyfinder
+      - soundflowerbed
+      - ocenaudio
+      - obs
+#      - ccmenu
+#      - cord
+      - firefox
+#      - freefilesync
+#      - gitx-rowanj
+      - garmin-express
+      - github
+      - google-chrome
+      - kid3
+      - chefdk
+      - musicbrainz-picard
+      - netspot
+#      - google-hangouts
+      - logitech-options
+      - skype
+      - steam
+      - textmate
+      - vagrant
+      - virtualbox
+      - virtualbox-extension-pack
+      - vmware-fusion
+#      - wireshark
+      - xquartz
+      - xscope
+      - keybase
+      - gpg-suite
+      - veracrypt
+      - osxfuse
+      - lastpass
+      - yubico-authenticator
+      - yubico-yubikey-manager
+      - yubico-yubikey-piv-manager
+      - yubico-yubikey-personalization-gui
+      - java
+#      - cyberduck
+      - dropbox
+#      - hex-fiend
+#      - beyond-compare
+#      - mumble
+#      - teamspeak
+#      - sublime-text3
+## Commented out until they update to Sublime Text 3
+      - sublime-text
+      - meld
+
+  workspace_directory: src
+  vim_alias_vi_to_minimal_vim: false
+  versions:
+    rvm: 1.26.11
+  rvm:
+    default_ruby: ruby-2.2.2
+    multithread_build: true
+# TODO: Dynamically get AWS user & key?
+#  s3cfg:
+#    access_key:
+#    secret_key:
+#  lyraphase_workstation:
+#    daisydisk:
+#      license:
+#        customer_name:
+#        registration_key:
+#    airfoil:
+#      license:
+#        code: 
+#        name: 
+  lyraphase_workstation:
+    ableton_live:
+      managed_versions: all
+      options:
+        - EnableMapToSiblings
+#      dmg:
+#        source: http://cdn2-downloads.ableton.com/channels/9.6.1b5/ableton_live_beta_961b5_64.dmg
+#        source: http://www.lyraphase.com/doc/installers/mac/ableton_live_beta_97b9_64.dmg
+#        checksum: eb67ba3a96b415ac3c159d68ff8d7dbfcdecf6d0555739f3897fafa0e5232084
+#        volumes_dir: Ableton Live 9.7 Beta Installer
+#        dmg_name: ableton_live_beta_97b9_64
+#        app: Ableton Live 9.7 Beta
+    nfs_mounts:
+      - "#/../Volumes/saturn    -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export"
+      - "/../Volumes/terabyte    -fstype=nfs,vers=3,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
+      - "/System/Volumes/Data/Volumes/terabyte    -fstype=nfs,vers=3,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"

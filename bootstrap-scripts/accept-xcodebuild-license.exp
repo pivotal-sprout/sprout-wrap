@@ -53,10 +53,14 @@ expect {
   }
   -regex {.*Press 'space' for more, or 'q' to quit.*} { 
         set exp_internal 1 
-        send -- "G"
+        send -- " "
         exp_continue
       }
   -regex {.*agree, print, cancel.*} {
+        set exp_internal 1
+        send -- "agree\r"
+  }
+  -regex {.*By typing 'agree' you are agreeing*} {
         set exp_internal 1
         send -- "agree\r"
   }
