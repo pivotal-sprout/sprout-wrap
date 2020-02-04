@@ -56,7 +56,7 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
-  10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ;;
+  10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
   10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
   10.10*) XCODE_DMG='Xcode_6.3.2.dmg' ;;
