@@ -297,6 +297,8 @@ node_attributes:
       - yubico-yubikey-personalization-gui
       - java
       - java6
+      - zulu
+      - zulu8
       - sqlworkbenchj
       - mysqlworkbench
       - postico
