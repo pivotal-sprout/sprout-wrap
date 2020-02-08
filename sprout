@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -e
+
+function use_local_gems() {
+  SPROUT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  export SPROUT_HOME
+  export GEM_HOME="${SPROUT_HOME}/tmp/ruby/2.0.0"
+  export GEM_PATH="${GEM_HOME}"
+  export PATH="${GEM_HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+
+  current_ruby=$(which ruby)
+  if [ "${current_ruby}" != '/usr/bin/ruby' ]; then
+    echo -e "\033[31mWarning: sprout should be run with system ruby; using '${current_ruby}'\033[0m"
+  fi
+  echo "# - Using $(${current_ruby} -v)"
+}
+
+function ensure_in_sprout_home() {
+  if [ "${SPROUT_HOME}" != "$(pwd)" ]; then
+    echo "Error: sprout must be run from ${SPROUT_HOME}"
+    exit 1
+  fi
+}
+
+function bundle_exec() {
+  if bundler_installed; then
+    echo "# - Using $(bundle -v)"
+  else
+    gem install bundler --no-document
+  fi
+
+  if bundle check > /dev/null 2>&1; then
+    echo '# - Gemfile dependencies satisfied'
+  else
+    bundle install --jobs 6
+  fi
+
+  bundle exec "${@}"
+}
+
+function bundler_installed() {
+  command -v bundle > /dev/null
+}
+
+function update_resources() {
+  gem install bundler --no-document
+  bundle update
+  bundle exec librarian-chef update
+}
+
+function main() {
+  use_local_gems
+  ensure_in_sprout_home
+
+  case "${1}" in
+    '')
+      export LOG_LEVEL="warn" # make chef less noisy
+      bundle_exec soloist
+      ;;
+    exec)
+      shift
+      bundle_exec "${@}"
+      ;;
+    update)
+      update_resources
+      ;;
+    *)
+      echo "Usage:"
+      echo "  sprout               - install dependencies and run 'soloist'"
+      echo "  sprout exec some cmd - run 'some cmd' in this cookbooks's bundler context"
+      echo "  sprout update:       - update gems and cookbook dependencies"
+  esac
+}
+
+main "${@}"

@@ -7,11 +7,19 @@ recipes:
   - sprout-base::var_chef_cache
   # - sprout-base::homebrew ## Deprecated by new homebrew cookbook
   # - sprout-homebrew       ## Deprecated by new homebrew cookbook
+  # Need user git config for 1st time bootstrap
+  ### TODO: Fix known_hosts_github to use ssh-keyscan, or attributes
+  ### TODO: Install github known_hosts for root also! (bash-it fails b/c git ls-remote is run via root)
+  - sprout-ssh::known_hosts_github
+  - sprout-ssh::dot_ssh_config_github
+  - sprout-git::global_config
+  - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
   - homebrew
   - homebrew::install_taps
   - homebrew::install_casks
   ## Must be before homebrew::install_formulas to avoid symlink conflict error
-  - lyraphase_workstation::gpg21
+  # - lyraphase_workstation::gpg21
+  - lyraphase_workstation::hammerspoon_shiftit
   - homebrew::install_formulas
   ## Functionality not yet in homebrew cookbook
   ## - sprout-homebrew::launchctl
@@ -24,7 +32,6 @@ recipes:
   - sprout-osx-settings::locate
   - sprout-osx-settings::machine_name
   - sprout-terminal
-  - sprout-ssh::known_hosts_github
 
   # development (general)
   - sprout-base::workspace_directory
@@ -42,7 +49,7 @@ recipes:
   # apps
   - sprout-osx-apps::iterm2
   # - sprout-osx-apps::flycut
-  - sprout-osx-apps::shiftit
+  # - sprout-osx-apps::shiftit
   # - sprout-osx-apps::keycastr
   ## TODO:
   # Follow up on https://github.com/pivotal-sprout/sprout-osx-settings/issues/24
@@ -68,10 +75,11 @@ recipes:
   - lyraphase_workstation::airfoil
   - lyraphase_workstation::loopback_alias_ip
   - lyraphase_workstation::ssh_tunnel_port_override
+  - lyraphase_workstation::sublime_text_settings
   # - lyraphase_workstation::bash4
-  # - lyraphase_workstation::bash_it_custom_plugins
-  # - lyraphase_workstation::iterm2
-  # - lyraphase_workstation::iterm2_shell_integration
+  - lyraphase_workstation::bash_it_custom_plugins
+  - lyraphase_workstation::iterm2
+  - lyraphase_workstation::iterm2_shell_integration
 
 node_attributes:
   bash_it:
@@ -82,11 +90,11 @@ node_attributes:
         - osx
         - rvm
         - ssh
-        - vagrant
       aliases:
         - ag
         - bundler
         - general
+        - kubectl
         - vagrant
       completions:
         - awscli
@@ -96,9 +104,14 @@ node_attributes:
         - dockerterm
         - gem
         - git
+        - kubectl
+        - minikube
         - rake
         - ssh
+        - terraform
         - tmux
+        - travis
+        - vault
     custom_plugins:
       sprout-base:
         - bash_it/custom/disable_ctrl-s_output_control.bash
@@ -155,34 +168,41 @@ node_attributes:
         rebase.autosquash: 'true'
         # Custom git config settings
         core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.name: '"James Cuzella"'
+        user.email: 'james.cuzella@lyraphase.com'
         user.signingkey: 09F02FCD
         push.default: simple
         bash-it.hide-status: '1'
         url."git@github.com:".insteadOf: https://github.com/
         commit.gpgsign: 'true'
-        gpg.program: gpg2
+        gpg.program: gpg
         merge.tool: meld
   homebrew:
     taps:
       - chef/chef
       - caskroom/versions
+      - homebrew/cask-drivers
       - trinitronx/truecrypt
-      - insomniacslk/dublin-traceroute
+      - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
       - jlhonora/lsusb
     formulas:
       - bash-completion
       - ctags-exuberant
       - ag
       - grc
+      - ansible
+      - pyenv
       - docker
       - docker-compose
       - docker-machine
       - docker-machine-nfs
       - terraform
+      - vault
       - kubernetes-cli
       - kops
       - imagemagick
       - openssl
+      - mitmproxy
       - xz
       - go
       - node
@@ -195,16 +215,19 @@ node_attributes:
       - iperf3
       - qt
       - ssh-copy-id
+      - shellcheck
       - tmux
       # For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
       # Also fixes Sublime Text "subl" command not working
       - reattach-to-user-namespace
       - tree
       - socat
+      - nmap
       - watch
       - wget
       - gist
       - hub
+      - travis
       - mosh
       - parallel
       - macvim
@@ -212,14 +235,15 @@ node_attributes:
       - awscli
       - s3cmd
       - ack
+      - gettext
       - mediainfo
-      - keybase
       - sleepwatcher
       - wakeonlan
       - mtr
       - proxytunnel
       - jq
       - xmlstarlet
+      - pgcli
       - expect
       - rename
       - lastpass-cli
@@ -236,6 +260,7 @@ node_attributes:
     casks:
       - ccmenu
       - cord
+      - displaylink
       - firefox
       # - flux
       # - freefilesync ### DOWNLOAD FAILED!  TODO
@@ -246,9 +271,12 @@ node_attributes:
       - chefdk
       # - near-lock
       - netspot
+      - hammerspoon
       - google-hangouts
+      - microsoft-teams
       - skype
       - textmate
+      - docker
       - vagrant
       - virtualbox
       - virtualbox-extension-pack
@@ -262,17 +290,23 @@ node_attributes:
       - veracrypt
       - osxfuse
       - lastpass
+      - keybase
       - yubico-authenticator
       - yubico-yubikey-manager
       - yubico-yubikey-piv-manager
       - yubico-yubikey-personalization-gui
       - java
       - java6
+      - zulu
+      - zulu8
       - sqlworkbenchj
       - mysqlworkbench
+      - postico
       - intellij-idea-ce
+      - vienna
       - cyberduck
       - dropbox
+      - google-drive-file-stream
       - hex-fiend
       - beyond-compare
       # - mumble
@@ -287,12 +321,20 @@ node_attributes:
   versions:
     rvm: 1.26.11
   rvm:
-    default_ruby: ruby-2.2.2
-    rubies:
-      ruby-1.9.3-p392:
-        :command_line_options: <
-          --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
-    multithread_build: true
+    user_installs:
+      - user: jcuzella
+        install_rubies: true
+        default_ruby: ruby-2.6.3
+        rubies:
+          ruby-2.6.3:
+            :command_line_options: <
+              --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
+        multithread_build: true
+    user_global_gems:
+      - bcat
+      - kramdown
+      - openssl
+      - wirble
 # TODO: Dynamically get AWS user & key?
 #  s3cfg:
 #    access_key:
