@@ -191,7 +191,6 @@ node_attributes:
         merge.tool: meld
   homebrew:
     taps:
-      - caskroom/versions
       - homebrew/versions
       - homebrew/homebrew-core
       - jlhonora/lsusb
