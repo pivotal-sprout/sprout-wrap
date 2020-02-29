@@ -134,7 +134,7 @@ GEM
     public_suffix (3.0.2)
     rack (2.0.5)
     rainbow (3.0.0)
-    rake (12.3.1)
+    rake (13.0.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
