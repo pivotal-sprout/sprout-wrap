@@ -279,6 +279,7 @@ node_attributes:
       - steam
       - textmate
       - vagrant
+      - vagrant-vmware-utility
       - virtualbox
       - virtualbox-extension-pack
       - vmware-fusion
