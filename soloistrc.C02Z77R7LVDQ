@@ -208,6 +208,7 @@ node_attributes:
       - node
       - maven
       - thrift
+      - jfrog-cli-go
       - p7zip
       - pstree
       - unrar
