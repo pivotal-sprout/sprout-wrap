@@ -193,7 +193,6 @@ node_attributes:
       - ansible
       - pyenv
       - docker
-      - docker-compose
       - docker-machine
       - docker-machine-nfs
       - terraform
