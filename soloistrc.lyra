@@ -280,6 +280,7 @@ node_attributes:
       - skype
       - steam
       - textmate
+      - vcv-rack
       - vagrant
       - virtualbox
       - virtualbox-extension-pack
