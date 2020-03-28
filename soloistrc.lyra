@@ -280,6 +280,7 @@ node_attributes:
       - skype
       - steam
       - textmate
+      - sysex-librarian
       - vcv-rack
       - vagrant
       - virtualbox
