@@ -197,6 +197,7 @@ node_attributes:
       - terraform
       - vault
       - kubernetes-cli
+      - kubectx
       - kops
       - imagemagick
       - openssl
