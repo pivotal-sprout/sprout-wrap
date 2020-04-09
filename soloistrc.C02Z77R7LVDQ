@@ -192,12 +192,12 @@ node_attributes:
       - grc
       - ansible
       - pyenv
-      - docker
       - docker-machine
       - docker-machine-nfs
       - terraform
       - vault
       - kubernetes-cli
+      - kubectx
       - kops
       - imagemagick
       - openssl
