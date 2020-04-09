@@ -342,4 +342,4 @@ node_attributes:
     nfs_mounts:
       - "#/../Volumes/saturn    -fstype=nfs,noowners,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export"
       - "/../Volumes/terabyte    -fstype=nfs,vers=3,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
-      - "/System/Volumes/Data/Volumes/terabyte    -fstype=nfs,vers=3,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
+      - "/System/Volumes/Data/../Data/Volumes/terabyte    -fstype=nfs,vers=3,nolockd,resvport,hard,bg,intr,rw,tcp,nfc nfs://192.168.1.100:/export/terabyte"
