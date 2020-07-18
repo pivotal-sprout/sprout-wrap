@@ -254,7 +254,7 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
-# Resin.io mmc card img writer tool
+# Balena.io (formerly Resin.io) mmc card img writer tool
       - balenaetcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
