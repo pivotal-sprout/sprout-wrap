@@ -272,7 +272,7 @@ node_attributes:
       - github
       - google-chrome
       - kid3
-      - chefdk
+      - chef-workstation
       - musicbrainz-picard
       - netspot
 #      - google-hangouts
