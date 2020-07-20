@@ -285,6 +285,7 @@ node_attributes:
       - wireshark
       - xquartz
       - xscope
+      - logitech-options
       - gpg-suite
       - truecrypt
       - veracrypt
