@@ -46,6 +46,21 @@ The `caffeinate` command will keep your computer awake while installing; dependi
 
 ## Problems?
 
+### ObjectiveC Fork Error
+
+As of macOS `10.14`, the [behavior of underlying ObjectiveC macOS Foundation framework changed][objc-fork-mojave]. (Big surprise, Apple changes fundamental development platform dependencies so often it causes many things to break 🍎💩)
+This results in the following errors:
+
+    objc[37813]: +[__NSPlaceholderDictionary initialize] may have been in progress in another thread when fork() was called.
+    objc[37813]: +[__NSPlaceholderDictionary initialize] may have been in progress in another thread when fork() was called. We cannot safely call it or ignore it in the fork() child process. Crashing instead. Set a breakpoint on objc_initializeAfterForkError to debug.
+    [2020-07-20T16:25:31-06:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process terminated by signal 6 (IOT)
+    [2020-07-20T16:25:31-06:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process terminated by signal 6 (IOT)
+
+The workaround is to run `soloist` / `chef-solo` with the following environment variable:
+
+    export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+    bundle exec soloist run_recipe homebrew::install_casks ## For example
+
 ### clang error
 
 If you receive errors like this:
@@ -95,3 +110,5 @@ See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
 
 * Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
 * [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
+
+[objc-fork-mojave]: https://blog.phusion.nl/2017/10/13/why-ruby-app-servers-break-on-macos-high-sierra-and-what-can-be-done-about-it/
