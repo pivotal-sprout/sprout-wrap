@@ -306,7 +306,7 @@ node_attributes:
       - intellij-idea-ce
       - vienna
       - cyberduck
-      - dropbox
+      - pcloud-drive
       - google-drive-file-stream
       - hex-fiend
       - beyond-compare
