@@ -276,7 +276,7 @@ node_attributes:
       - microsoft-teams
       - skype
       - textmate
-      - docker
+      - docker-edge
       - vagrant
       - virtualbox
       - virtualbox-extension-pack
