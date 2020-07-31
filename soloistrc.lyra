@@ -260,6 +260,7 @@ node_attributes:
 #      - airfoil
       - keyfinder
       - blackhole
+      - elektron-overbridge
       - soundflowerbed
       - ocenaudio
       - obs
