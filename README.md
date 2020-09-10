@@ -61,7 +61,7 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 ## Roadmap
 
-See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
+See Pivotal Tracker: <https://www.pivotaltracker.com/n/projects/884116>
 
 ## Discussion List
 
