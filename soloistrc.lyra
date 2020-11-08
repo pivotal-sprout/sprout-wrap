@@ -240,6 +240,7 @@ node_attributes:
       - mediainfo
       - bpm-tools
       - sox
+      - surge-synthesizer
       - guetzli
       - youtube-dl
       - sleepwatcher
