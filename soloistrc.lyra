@@ -240,7 +240,6 @@ node_attributes:
       - mediainfo
       - bpm-tools
       - sox
-      - surge-synthesizer
       - guetzli
       - youtube-dl
       - sleepwatcher
@@ -281,10 +280,12 @@ node_attributes:
       - musicbrainz-picard
       - netspot
 #      - google-hangouts
+      - elektron-overbridge
       - logitech-options
       - skype
       - steam
       - textmate
+      - surge-synthesizer
       - sysex-librarian
       - vcv-rack
       - vagrant
