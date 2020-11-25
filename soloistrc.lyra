@@ -212,7 +212,7 @@ node_attributes:
       - p7zip
       - pstree
       - htop-osx
-#      - iperf3
+      - iperf3
 #      - qt
       - ssh-copy-id
       - tmux
