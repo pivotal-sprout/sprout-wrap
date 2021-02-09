@@ -4,7 +4,7 @@ REPO_NAME := sprout-wrap
 REPO := $(REPO_NAME)
 #REV := $(shell TZ=UTC date +'%Y%m%dT%H%M%S')-$(shell git rev-parse --short HEAD)
 
-.PHONY: clean librarian-clean librarian-clean-install bootstrap test
+.PHONY: clean librarian-clean librarian-clean-install librarian-update bootstrap test
 
 include $(SELF_DIR)/main.mk
 
@@ -23,6 +23,16 @@ librarian-clean: ## Cleans up all cookbooks & librarian cache files
 librarian-install: $(SELF_DIR)/cookbooks Cheffile.lock ## Runs librarian-chef install, if needed
 
 librarian-clean-install: librarian-clean librarian-install ## Runs librarian-clean then install
+
+ifeq (librarian-update,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "librarian-update"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+
+librarian-update: ## Update librarian managed cookbook(s)
+	bundle exec librarian-chef update $(RUN_ARGS)
 
 bootstrap: ## Run bootstrap & soloist on this node
 	./bootstrap-scripts/bootstrap.sh
