@@ -266,6 +266,7 @@ node_attributes:
       - elektron-overbridge
       - soundflowerbed
       - ocenaudio
+      - streamlabs-obs
       - obs
 #      - ccmenu
 #      - cord
