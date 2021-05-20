@@ -269,6 +269,7 @@ node_attributes:
       - ocenaudio
       - streamlabs-obs
       - obs
+      - jamkazam
 #      - ccmenu
 #      - cord
       - firefox
