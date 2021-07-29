@@ -279,6 +279,7 @@ node_attributes:
       - chef-workstation
       - musicbrainz-picard
       - netspot
+      - openvpn-connect
 #      - google-hangouts
       - elektron-overbridge
       - logitech-options
