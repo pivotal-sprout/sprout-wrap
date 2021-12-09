@@ -9,7 +9,7 @@
 #     ./bootstrap.sh
 #
 # http://github.com/trinitronx/sprout-wrap
-# (c) 2013-2019, James Cuzella
+# Copyright (C) © 🄯  2013-2021 James Cuzella
 # This script may be freely distributed under the MIT license.
 
 ## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
