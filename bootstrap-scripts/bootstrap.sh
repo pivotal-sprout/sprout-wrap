@@ -49,6 +49,7 @@ SOLOIST_DIR="${HOME}/src/pub/soloist"
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
 SPROUT_WRAP_BRANCH='macos-big-sur-11.6'
+HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
 REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 
@@ -194,12 +195,24 @@ else
   git checkout $SPROUT_WRAP_BRANCH
 fi
 
+# Non-Chef Homebrew install
+brew --version
+[ ! -x "$(which brew)" -a "$?" -eq 0 ] || /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+
 rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
+# Install Chef Workstation SDK via Brewfile
+[ -x "$(which brew)" ] && brew bundle install
+
 [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
 $USE_SUDO gem update -n /usr/local/bin --system
-if ! bundle check 2>&1 >/dev/null; then bundle install --path vendor/bundle --without development ; fi
+if ! bundle check 2>&1 >/dev/null; then
+  bundle config set --local path 'vendor/bundle' ;
+  bundle config set --local without 'development' ;
+  # --path & --without have deprecation warnings... but for now we'll try them
+  bundle install --path vendor/bundle --without development ;
+fi
 # We need bundler in vendor path too
 [ -x "$(bundle exec which bundler)" ] || bundle exec gem install bundler
 
