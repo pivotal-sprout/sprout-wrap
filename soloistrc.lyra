@@ -261,6 +261,7 @@ node_attributes:
       - balenaetcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
 #      - airfoil
+#      - loopback ## TODO
       - keyfinder
       - blackhole
       - elektron-overbridge
