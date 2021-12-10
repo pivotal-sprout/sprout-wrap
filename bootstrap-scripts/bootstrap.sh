@@ -214,7 +214,7 @@ if ! bundle check 2>&1 >/dev/null; then
   bundle install --path vendor/bundle --without development ;
 fi
 # We need bundler in vendor path too
-[ -x "$(bundle exec which bundler)" ] || bundle exec gem install bundler
+[ -x "$(bundle exec which bundler)" ] || bundle exec gem install "bundler:$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
 
 # TODO: Fix last chicken-egg issues
 echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
