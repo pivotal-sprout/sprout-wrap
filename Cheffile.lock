@@ -4,7 +4,7 @@ SITE
     build-essential (3.2.0)
       seven_zip (>= 0.0.0)
     dmg (4.1.1)
-    homebrew (5.0.8)
+    homebrew (5.2.2)
     mingw (0.1.1)
       seven_zip (>= 0.0.0)
     seven_zip (3.1.0)
@@ -140,7 +140,7 @@ GIT
 
 DEPENDENCIES
   build-essential (= 3.2.0)
-  homebrew (>= 1.13.0)
+  homebrew (>= 5.1.1)
   lyraphase_workstation (~> 2.0)
   mingw (= 0.1.1)
   osx (>= 0)
