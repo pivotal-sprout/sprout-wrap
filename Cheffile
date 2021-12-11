@@ -54,9 +54,7 @@ cookbook 'lyraphase_workstation', '~> 2.0',
 #   :github => 'trinitronx/sprout-rubymine'
 
 cookbook 'homebrew',
-    '>= 1.13.0'
-#  :github => 'kbruner/homebrew',
-#  :ref => 'issue71'
+    '>= 5.1.1'
 
 cookbook 'sprout-jetbrains-editors',
   :github => 'pivotal-sprout/sprout-jetbrains-editors'
