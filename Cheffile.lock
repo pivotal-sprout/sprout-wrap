@@ -129,9 +129,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 333efd0c374d9aafdab3f8fe73a1084f6add068f
+  sha: bde4cd83f4c587fcfdf3895dd76a868ad823d41d
   specs:
-    lyraphase_workstation (3.1.1)
+    lyraphase_workstation (3.2.0)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
@@ -141,7 +141,7 @@ GIT
 DEPENDENCIES
   build-essential (= 3.2.0)
   homebrew (>= 5.1.1)
-  lyraphase_workstation (~> 3.1)
+  lyraphase_workstation (~> 3.2)
   mingw (= 0.1.1)
   osx (>= 0)
   plist (>= 0)
