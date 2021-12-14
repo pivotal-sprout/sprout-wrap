@@ -1,6 +1,6 @@
 language: objective-c
 os: osx
-osx_image: xcode9.3beta
+osx_image: xcode13.1
 rvm: system
 install:
   # we expect sprout to provide homebrew so we should ensure it isn't present
@@ -12,4 +12,5 @@ install:
   - for ruby in $(rvm list strings); do rvm uninstall "${ruby}"; done
   - travis_wait sudo rvm implode --force # We are testing installation of Rubies, so should uninstall everything
 script:
+  - ./bootstrap-scripts/bootstrap.sh
   - ./sprout
