@@ -56,8 +56,10 @@ REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 detect_platform_version
 
 # Determine which XCode version to use based on platform version
+# https://developer.apple.com/downloads/index.action
 case $platform_version in
-  11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export INSTALL_SDK_HEADERS=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  12.0*)  XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
