@@ -13,6 +13,8 @@ recipes:
   - sprout-ssh::known_hosts_github
   - sprout-ssh::dot_ssh_config_github
   - sprout-git::global_config
+  - lyraphase_workstation::root_bootstrap_ssh_config
+  - lyraphase_workstation::user_default_shell
   - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
   - homebrew
   - homebrew::install_taps
