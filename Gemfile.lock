@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.2)
     awesome_print (1.9.2)
     builder (3.2.4)
     chef (13.10.0)
@@ -47,12 +48,48 @@ GEM
       mixlib-log (~> 1.3)
       rack (~> 2.0)
       uuidtools (~> 2.1)
+    chefspec (7.3.4)
+      chef (>= 12.16.42)
+      fauxhai (>= 4)
+      rspec (~> 3.0)
+    coderay (1.1.3)
     diff-lcs (1.4.4)
     erubis (2.7.0)
+    fauxhai (6.0.1)
+      net-ssh
     ffi (1.11.1)
     ffi-yajl (2.3.1)
       libyajl2 (~> 1.2)
+    foodcritic (16.3.0)
+      erubis
+      ffi-yajl (~> 2.0)
+      nokogiri (>= 1.5, < 2.0)
+      rake
+      rufus-lru (~> 1.0)
+      treetop (~> 1.4)
+    formatador (0.3.0)
     fuzzyurl (0.9.0)
+    guard (2.18.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, < 4.0)
+      lumberjack (>= 1.0.12, < 2.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.13.0)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-bundler (3.0.0)
+      bundler (>= 2.1, < 3)
+      guard (~> 2.2)
+      guard-compat (~> 1.1)
+    guard-compat (1.2.1)
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
+    guard-shell (0.7.2)
+      guard (>= 2.0.0)
+      guard-compat (~> 1.0)
     hashie (2.1.2)
     highline (1.7.10)
     iniparse (1.5.0)
@@ -66,6 +103,11 @@ GEM
       librarian (~> 0.1.0)
       minitar (>= 0.5.2)
     libyajl2 (1.2.0)
+    listen (3.7.0)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
+    lumberjack (1.2.8)
+    method_source (1.0.0)
     mini_portile2 (2.4.0)
     minitar (0.9)
     mixlib-archive (0.4.20)
@@ -77,6 +119,7 @@ GEM
     mixlib-log (1.7.1)
     mixlib-shellout (2.4.4)
     multi_json (1.15.0)
+    nenv (0.3.0)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-sftp (2.1.2)
@@ -90,6 +133,9 @@ GEM
     net-telnet (0.1.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
+    notiffany (0.1.3)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     ohai (13.12.6)
       chef-config (>= 12.5.0.alpha.1, < 14)
       ffi (~> 1.9)
@@ -102,10 +148,24 @@ GEM
       plist (~> 3.1)
       systemu (~> 2.6.4)
       wmi-lite (~> 1.0)
+    parallel (1.21.0)
+    parser (3.0.3.2)
+      ast (~> 2.4.1)
     plist (3.6.0)
+    polyglot (0.3.5)
     proxifier (1.0.3)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (4.0.6)
     rack (2.2.3)
+    rainbow (3.0.0)
+    rake (13.0.6)
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+    regexp_parser (2.2.0)
+    rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -125,12 +185,26 @@ GEM
     rspec_junit_formatter (0.2.3)
       builder (< 4)
       rspec-core (>= 2, < 4, != 2.12.0)
+    rubocop (1.23.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.12.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.15.0)
+      parser (>= 3.0.1.1)
+    ruby-progressbar (1.11.0)
+    rufus-lru (1.1.0)
     serverspec (2.41.8)
       multi_json
       rspec (~> 3.0)
       rspec-its
       specinfra (~> 2.72)
     sfl (2.3)
+    shellany (0.0.1)
     soloist (1.0.3)
       awesome_print
       chef
@@ -147,18 +221,31 @@ GEM
     systemu (2.6.5)
     thor (0.20.3)
     tomlrb (1.3.0)
+    treetop (1.6.11)
+      polyglot (~> 0.3)
+    unicode-display_width (2.1.0)
     uuidtools (2.1.5)
     wmi-lite (1.0.5)
 
 PLATFORMS
+  ruby
   universal-darwin-20
 
 DEPENDENCIES
   bundler
   chef-zero (~> 13.1)
+  chefspec
+  fauxhai (~> 6.0.0)
+  foodcritic
+  guard
+  guard-bundler
+  guard-rspec
+  guard-shell
   librarian-chef
   nokogiri
   plist
+  rspec
+  rubocop
   soloist
 
 BUNDLED WITH
