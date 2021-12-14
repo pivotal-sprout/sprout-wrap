@@ -42,7 +42,7 @@ cookbook 'plist',
  :ref => 'master',
  :path => 'vendor/cookbooks/plist'
 
-cookbook 'lyraphase_workstation', '~> 3.1',
+cookbook 'lyraphase_workstation', '~> 3.2',
  :github => 'trinitronx/lyraphase_workstation'
 # :ref => 'develop'
 # :git => '/Users/jcuzella/src/pub/cookbooks/lyraphase_workstation',
