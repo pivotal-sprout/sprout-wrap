@@ -2,6 +2,8 @@ language: objective-c
 os: osx
 osx_image: xcode13.1
 rvm: system
+before_install:
+  - gem install "bundler:$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
 install:
   # we expect sprout to provide homebrew so we should ensure it isn't present
   - brew cask list && brew cask uninstall $(brew cask list)
