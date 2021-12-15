@@ -193,9 +193,13 @@ node_attributes:
       - pyenv
       - docker-machine
       - docker-machine-nfs
-      - terraform
+      # - terraform ## Conflicts with tfenv version manager
+      - tfenv
+      - tgenv
       - vault
       - packer
+      - blackbox
+      - rancher-cli
       - kubernetes-cli
       - kubectx
       - kops
@@ -292,12 +296,14 @@ node_attributes:
       - veracrypt
       - osxfuse
       - lastpass
+      - 1password
 #      - keybase
       - yubico-authenticator
       - yubico-yubikey-manager
       - yubico-yubikey-piv-manager
       - yubico-yubikey-personalization-gui
       - aws-vault
+      - aws-vpn-client
       - cyberduck
       - pcloud-drive
       - hex-fiend
