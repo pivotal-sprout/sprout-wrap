@@ -91,7 +91,6 @@
   cask 'logitech-options'
   cask 'gpg-suite'
   cask 'veracrypt'
-  cask 'osxfuse'
   cask 'lastpass'
   cask '1password'
   cask 'yubico-authenticator'

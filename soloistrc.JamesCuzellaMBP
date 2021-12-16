@@ -294,7 +294,7 @@ node_attributes:
       - logitech-options
       - gpg-suite
       - veracrypt
-      - osxfuse
+      # - osxfuse ## Does not support arm64 / M1
       - lastpass
       - 1password
 #      - keybase
