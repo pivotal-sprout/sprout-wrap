@@ -20,9 +20,13 @@ function detect_platform_version() {
   major_version=$(echo $platform_version | cut -d. -f1,2)
   
   # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
+  # macOS Monterey + Apple M1 Silicon (arm64) gives empty string for this x86_64 check
   x86_64=$(sysctl -n hw.optional.x86_64)
-  if [ $x86_64 -eq 1 ]; then
+  arm64=$(sysctl -n hw.optional.arm64)
+  if [[ "$x86_64" == '1' ]]; then
     machine="x86_64"
+  elif [[ "$arm64" == '1' ]]; then
+    machine="arm64"
   fi
 }
 
