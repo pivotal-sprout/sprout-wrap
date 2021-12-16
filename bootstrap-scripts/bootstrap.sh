@@ -133,19 +133,23 @@ readonly sudo_loop_PID  # Make PID readonly for security ;-)
 
 # Try xcode-select --install first
 if [[ "$TRY_XCI_OSASCRIPT_FIRST" == '1' ]]; then
-	# Try the AppleScript automation method rather than relying on manual .xip / .dmg download & mirroring
-	# Note: Apple broke automated Xcode installer downloads.  Now requires manual Apple ID sign-in.
-	# Source: https://web.archive.org/web/20211210020829/https://techviewleo.com/install-xcode-command-line-tools-macos/
-  xcode-select --install
-  sleep 1
-  osascript <<-EOD
-	  tell application "System Events"
-	    tell process "Install Command Line Developer Tools"
-	      keystroke return
-	      click button "Agree" of window "License Agreement"
-	    end tell
-	  end tell
+  # Try the AppleScript automation method rather than relying on manual .xip / .dmg download & mirroring
+  # Note: Apple broke automated Xcode installer downloads.  Now requires manual Apple ID sign-in.
+  # Source: https://web.archive.org/web/20211210020829/https://techviewleo.com/install-xcode-command-line-tools-macos/
+  if [ ! -d /Library/Developer/CommandLineTools ]; then
+    xcode-select --install
+    sleep 1
+    osascript <<-EOD
+  	  tell application "System Events"
+  	    tell process "Install Command Line Developer Tools"
+  	      keystroke return
+  	      click button "Agree" of window "License Agreement"
+  	    end tell
+  	  end tell
 EOD
+  else
+    echo "INFO: Found /Library/Developer/CommandLineTools already existing. skipping..."
+  fi
 else
 	# !! This script is no longer supported !!
 	#  Apple broke all direct downloads without logging with an Apple ID first.
@@ -220,7 +224,10 @@ if ! bundle check 2>&1 >/dev/null; then
   bundle install --path vendor/bundle --without development ;
 fi
 # We need bundler in vendor path too
-[ -x "$(bundle exec which bundler)" ] || bundle exec gem install "bundler:$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
+BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
+if ! bundle list | grep -q "bundler.*${BUNDLER_VER}"; then
+  bundle exec gem install "bundler:${BUNDLER_VER}"
+fi
 
 # TODO: Fix last chicken-egg issues
 echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
