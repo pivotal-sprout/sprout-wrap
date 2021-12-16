@@ -175,7 +175,7 @@ else
 fi
 
 
-if [ "$INSTALL_SDK_HEADERS" -eq 1 ]; then
+if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   # Reference: https://github.com/Homebrew/homebrew-core/issues/18533#issuecomment-332501316
   if ruby_mkmf_output="$(ruby -r mkmf -e 'print $hdrdir + "\n"')" && [ -d "$ruby_mkmf_output" ];
   then
