@@ -1,5 +1,5 @@
   tap 'homebrew/cask-drivers'
-  tap 'insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute'
+  tap 'insomniacslk/dublin-traceroute', 'https://github.com/insomniacslk/dublin-traceroute'
   tap 'jlhonora/lsusb'
   tap 'trinitronx/pcloud'
   

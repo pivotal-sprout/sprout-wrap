@@ -7,7 +7,7 @@ require 'yaml'
 class SoloistrcToBrewfile < ERB
   def self.template
    brewfile_erb_template = <<-EOBREWFILE
-  <% for  @tap in @taps %>tap '<%= @tap %>'
+  <% for @tap in @taps do %>tap '<%= @tap.split(' ').join("', '") %>'
   <% end  %>
   
   <% for  @formula in @formulas %>brew '<%= @formula %>'
