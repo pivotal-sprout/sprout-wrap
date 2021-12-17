@@ -101,6 +101,7 @@
   cask 'aws-vpn-client'
   cask 'cyberduck'
   cask 'pcloud-drive'
+  cask 'dropbox'
   cask 'hex-fiend'
   cask 'beyond-compare'
   cask 'rar'
