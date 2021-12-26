@@ -208,7 +208,7 @@ brew --version
 [ ! -x "$(which brew)" -a "$?" -eq 0 ] || /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
 
 rvm --version 2>/dev/null
-[ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
+[ -x "$(which gem)" -a "$?" -eq 0 ] && USE_SUDO='' || USE_SUDO='sudo'
 
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
