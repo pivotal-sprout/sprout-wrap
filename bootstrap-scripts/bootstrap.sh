@@ -191,16 +191,24 @@ if [ "$INSTALL_SDK_HEADERS" -eq 1 ]; then
   fi
 fi
 
-# Checkout sprout-wrap after XCode CLI tools, because we need it for git now
-mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
-
-echo "INFO: Checking out sprout-wrap..."
-if [ -d sprout-wrap ]; then
-  pushd sprout-wrap && git pull
+if [[ "$CI" == 'true' ]]; then
+  echo "INFO: CI run detected via \$CI=$CI env var"
+  echo "INFO: NOT checking out git repo"
+  echo "INFO: Running soloist from ${REPO_BASE}/test/fixtures"
+  # Must use pushd to keep dir stack 2 items deep
+  pushd "${REPO_BASE}/test/fixtures"
 else
-  git clone $SPROUT_WRAP_URL
-  pushd sprout-wrap
-  git checkout $SPROUT_WRAP_BRANCH
+  # Checkout sprout-wrap after XCode CLI tools, because we need it for git now
+  mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
+
+  echo "INFO: Checking out sprout-wrap..."
+  if [ -d sprout-wrap ]; then
+    pushd sprout-wrap && git pull
+  else
+    git clone $SPROUT_WRAP_URL
+    pushd sprout-wrap
+    git checkout $SPROUT_WRAP_BRANCH
+  fi
 fi
 
 # Non-Chef Homebrew install

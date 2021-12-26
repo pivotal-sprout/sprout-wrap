@@ -42,5 +42,4 @@ jobs:
           EOGEMRC
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
-          cd ./test/fixtures
-          make -C ../../ bootstrap
+          make bootstrap
