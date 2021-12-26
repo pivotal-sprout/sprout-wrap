@@ -1,0 +1,27 @@
+---
+name: ci
+
+"on":
+  pull_request:
+    branches:
+      - master
+      - main
+      - develop
+  push:
+    branches:
+      - master
+      - main
+      - develop
+
+jobs:
+  bootstrap:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-11]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run bootstrap.sh
+        run: |
+          ./bootstrap-scripts/bootstrap.sh
