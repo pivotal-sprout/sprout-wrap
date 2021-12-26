@@ -34,6 +34,12 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - name: Add --no-document to .gemrc
+        run: |
+          tee -a $HOME/.gemrc <<EOGEMRC
+          install: --no-document
+          update: --no-document
+          EOGEMRC
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
           cd ./test/fixtures
