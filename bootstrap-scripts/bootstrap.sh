@@ -49,6 +49,7 @@ trap kill_sudo_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common ter
 trap "exit" INT # Run exit when this script receives Ctrl-C
 
 
+use_system_ruby=0
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
@@ -221,26 +222,54 @@ rvm --version 2>/dev/null
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
 
-[ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
-$USE_SUDO gem update -n /usr/local/bin --system
-if ! bundle check 2>&1 >/dev/null; then
-  bundle config set --local path 'vendor/bundle' ;
-  bundle config set --local without 'development' ;
-  # --path & --without have deprecation warnings... but for now we'll try them
-  bundle install --path vendor/bundle --without development ;
+if [[ $use_system_ruby == "1" ]]; then
+  echo "WARN: Using macOS system Ruby is not recommended!" >&2
+  echo "WARN: Updating system bundler gem will modify stock macOS system files!" >&2
+  if [[ "$override_use_system_ruby_prompt" != '1' ]]; then
+    read -p 'Are you sure you want to continue and use macOS System Ruby? [y/N]: ' -d $'\n' use_system_ruby_answer
+    use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr 'A-Z' 'a-z')"
+    if [[ "$use_system_ruby_answer" != 'y' ]]; then
+      echo "Exiting..." >&2
+      exit 1
+    fi
+  fi
+
+  echo "INFO: Updating system bundler gem!" >&2
+  [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
+  $USE_SUDO gem update -n /usr/local/bin --system
+
+else
+  export rvm_user_install_flag=1
+  export rvm_prefix="$HOME"
+  export rvm_path="${rvm_prefix}/.rvm"
+
+  echo "Installing RVM..." >&2
+
+  bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh"
+
+  # Install bundler in RVM path
+  rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
+  # [ -x "$(which bundle)" ] || gem install bundler
+  gem update --system
 fi
+
 # We need bundler in vendor path too
 BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
 if ! bundle list | grep -q "bundler.*${BUNDLER_VER}"; then
   bundle exec gem install "bundler:${BUNDLER_VER}"
 fi
 
+
 # TODO: Fix last chicken-egg issues
 echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
 
-export rvm_user_install_flag=1
-export rvm_prefix="$HOME"
-export rvm_path="${rvm_prefix}/.rvm"
+# Bundle install soloist + gems
+if ! bundle check 2>&1 >/dev/null; then
+  bundle config set --local path 'vendor/bundle' ;
+  bundle config set --local without 'development' ;
+  # --path & --without have deprecation warnings... but for now we'll try them
+  bundle install --path vendor/bundle --without development ;
+fi
 
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
