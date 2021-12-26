@@ -4,7 +4,7 @@ SITE
     build-essential (3.2.0)
       seven_zip (>= 0.0.0)
     dmg (4.1.1)
-    homebrew (5.0.8)
+    homebrew (5.2.2)
     mingw (0.1.1)
       seven_zip (>= 0.0.0)
     seven_zip (3.1.0)
@@ -129,9 +129,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 6367d82e83a3e21c29d5feca7a5f2b2856f28195
+  sha: f32ea28a4686b9335889bb6217a74d8e40846ef1
   specs:
-    lyraphase_workstation (2.3.1)
+    lyraphase_workstation (3.2.2)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
@@ -140,8 +140,8 @@ GIT
 
 DEPENDENCIES
   build-essential (= 3.2.0)
-  homebrew (>= 1.13.0)
-  lyraphase_workstation (~> 2.0)
+  homebrew (>= 5.1.1)
+  lyraphase_workstation (~> 3.2)
   mingw (= 0.1.1)
   osx (>= 0)
   plist (>= 0)

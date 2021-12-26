@@ -9,7 +9,7 @@
 #     ./bootstrap.sh
 #
 # http://github.com/trinitronx/sprout-wrap
-# (c) 2013-2019, James Cuzella
+# Copyright (C) © 🄯  2013-2021 James Cuzella
 # This script may be freely distributed under the MIT license.
 
 ## Figure out OSX version (source: https://www.opscode.com/chef/install.sh)
@@ -48,7 +48,8 @@ trap "exit" INT # Run exit when this script receives Ctrl-C
 SOLOIST_DIR="${HOME}/src/pub/soloist"
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
-SPROUT_WRAP_BRANCH='spica-local-devbox'
+SPROUT_WRAP_BRANCH='macos-big-sur-11.6'
+HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
 REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 
@@ -56,6 +57,8 @@ detect_platform_version
 
 # Determine which XCode version to use based on platform version
 case $platform_version in
+  11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export INSTALL_SDK_HEADERS=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
   10.11*) XCODE_DMG='Xcode_7.3.1.dmg' ;;
@@ -71,6 +74,8 @@ errorout() {
 
 pushd `pwd`
 
+# TODO: Figure out if Xcodes CLI tool will work?
+#       https://github.com/RobotsAndPencils/Xcodes
 # Bootstrap XCode from dmg
 if [ ! -d "/Applications/Xcode.app" ]; then
   echo "INFO: XCode.app not found. Installing XCode..."
@@ -120,8 +125,29 @@ fi
 prevent_sudo_timeout
 readonly sudo_loop_PID  # Make PID readonly for security ;-)
 
-
-curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/37fd83386e7715aa6dca74f6bed220d3c9facea6/xcode-cli-tools.sh | sudo bash
+# Try xcode-select --install first
+if [[ "$TRY_XCI_OSASCRIPT_FIRST" == '1' ]]; then
+	# Try the AppleScript automation method rather than relying on manual .xip / .dmg download & mirroring
+	# Note: Apple broke automated Xcode installer downloads.  Now requires manual Apple ID sign-in.
+	# Source: https://web.archive.org/web/20211210020829/https://techviewleo.com/install-xcode-command-line-tools-macos/
+  xcode-select --install
+  sleep 1
+  osascript <<-EOD
+	  tell application "System Events"
+	    tell process "Install Command Line Developer Tools"
+	      keystroke return
+	      click button "Agree" of window "License Agreement"
+	    end tell
+	  end tell
+EOD
+else
+	# !! This script is no longer supported !!
+	#  Apple broke all direct downloads without logging with an Apple ID first.
+	#   The number of hoops that a script would need to jump through to login,
+	#   store cookies, and download is prohibitive.
+	#   Now we all must manually download and mirror the files for this to work at all :'-(
+	curl -Ls https://gist.githubusercontent.com/trinitronx/6217746/raw/d0c12be945f1984fc7c40501f5235ff4b93e71d6/xcode-cli-tools.sh | sudo bash
+fi
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
@@ -169,14 +195,26 @@ else
   git checkout $SPROUT_WRAP_BRANCH
 fi
 
+# Non-Chef Homebrew install
+brew --version
+[ ! -x "$(which brew)" -a "$?" -eq 0 ] || /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+
 rvm --version 2>/dev/null
 [ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
 
+# Install Chef Workstation SDK via Brewfile
+[ -x "$(which brew)" ] && brew bundle install
+
 [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
 $USE_SUDO gem update -n /usr/local/bin --system
-if ! bundle check 2>&1 >/dev/null; then bundle install --path vendor/bundle --without development ; fi
+if ! bundle check 2>&1 >/dev/null; then
+  bundle config set --local path 'vendor/bundle' ;
+  bundle config set --local without 'development' ;
+  # --path & --without have deprecation warnings... but for now we'll try them
+  bundle install --path vendor/bundle --without development ;
+fi
 # We need bundler in vendor path too
-[ -x "$(bundle exec which bundler)" ] || bundle exec gem install bundler
+[ -x "$(bundle exec which bundler)" ] || bundle exec gem install "bundler:$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
 
 # TODO: Fix last chicken-egg issues
 echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
