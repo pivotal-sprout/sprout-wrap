@@ -16,6 +16,9 @@ cookbook 'lyraphase_workstation', '~> 3.2',
 
 cookbook 'homebrew', '~> 5.3.0'
 
+cookbook 'osx',
+  :github => 'pivotal-sprout/osx'
+
 cookbook 'sprout-osx-settings',
   :github => 'pivotal-sprout/sprout-osx-settings'
 
