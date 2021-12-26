@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'sprout-base',
+  :github => 'pivotal-sprout/sprout-base'
+
+cookbook 'sprout-ssh',
+  :github => 'pivotal-sprout/sprout-ssh'
+
+cookbook 'sprout-git',
+  :github => 'pivotal-sprout/sprout-git'
+
+cookbook 'lyraphase_workstation', '~> 3.2',
+ :github => 'trinitronx/lyraphase_workstation'
+
+cookbook 'homebrew', '~> 5.3.0'
+
+cookbook 'sprout-osx-settings',
+  :github => 'pivotal-sprout/sprout-osx-settings'
+
+cookbook 'sprout-terminal',
+  :github => 'pivotal-sprout/sprout-terminal'
+
