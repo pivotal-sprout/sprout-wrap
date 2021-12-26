@@ -25,3 +25,14 @@ jobs:
       - name: Run bootstrap.sh
         run: |
           ./bootstrap-scripts/bootstrap.sh
+      - name: Cache Xcode installer
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-xcode-installer
+        with:
+          path: |
+            ./X[Cc]ode*.xip
+            ./X[Cc]ode*.dmg
+          key: ${{ runner.os }}-${{ env.cache-name }}
+          restore-keys: |
+            ${{ runner.os }}-
