@@ -229,8 +229,7 @@ if [[ $use_system_ruby == "1" ]]; then
     read -p 'Are you sure you want to continue and use macOS System Ruby? [y/N]: ' -d $'\n' use_system_ruby_answer
     use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr 'A-Z' 'a-z')"
     if [[ "$use_system_ruby_answer" != 'y' ]]; then
-      echo "Exiting..." >&2
-      exit 1
+      errorout "Abort modifying System Ruby! Exiting..."
     fi
   fi
 
@@ -246,6 +245,12 @@ else
   echo "Installing RVM..." >&2
 
   bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh"
+
+  # Install .ruby-version @ .ruby-gemset
+  rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')@$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
 
   # Install bundler in RVM path
   rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
