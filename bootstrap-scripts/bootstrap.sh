@@ -45,10 +45,18 @@ trap kill_sudo_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common ter
 trap "exit" INT # Run exit when this script receives Ctrl-C
 
 
-SOLOIST_DIR="${HOME}/src/pub/soloist"
+# CI setup
+if [[ "$CI" == 'true' ]]; then
+  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
+  set -x
+  SOLOIST_DIR="${GITHUB_WORKSPACE}/.."
+  SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
+fi
+
+SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
-SPROUT_WRAP_BRANCH='macos-big-sur-11.6'
+SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
 REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
