@@ -1,0 +1,146 @@
+---
+recipes:
+  # base (required by sprout)
+  - sprout-base
+  - sprout-base::bash_it
+  - sprout-base::var_chef_cache
+  - sprout-ssh::known_hosts_github
+  - sprout-ssh::dot_ssh_config_github
+  - sprout-git::global_config
+  - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
+  - homebrew
+  - homebrew::install_taps
+  - homebrew::install_casks
+  - lyraphase_workstation::hammerspoon_shiftit
+  - homebrew::install_formulas
+
+  # settings
+  - sprout-osx-settings
+  - sprout-osx-settings::dock_preferences
+  - sprout-osx-settings::inputrc
+  - sprout-osx-settings::defaults_fast_key_repeat_rate
+  - sprout-osx-settings::locate
+  - sprout-osx-settings::machine_name
+  - sprout-terminal
+
+  # development (general)
+  - sprout-base::workspace_directory
+  - sprout-git
+  - sprout-git::default_editor
+
+  # LyraPhase recipes
+  - lyraphase_workstation::bash_it_custom_plugins
+
+node_attributes:
+  bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
+    enabled_plugins:
+      plugins:
+        - base
+        - osx
+        - rvm
+        - ssh
+      aliases:
+        - ag
+        - bundler
+        - general
+        - kubectl
+        - vagrant
+      completions:
+        - awscli
+        - bash-it
+        - brew
+        - defaults
+        - dockerterm
+        - gem
+        - git
+        - kubectl
+        - minikube
+        - rake
+        - ssh
+        - terraform
+        - tmux
+        - travis
+        - vault
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
+  sprout:
+    terminal:
+      default_profile: 'Pro'
+    settings:
+      clock_format: EEE MMM d  h:mm:ss a
+      # EEE h:mm:ss a
+    screensaver:
+      ask_for_password: true
+      ask_for_password_delay: 0
+      timeout: 600
+      disksleep: 10
+      sleep: 1
+      displaysleep: 2
+    menubar:
+      transparency: true
+    shared_memory:
+      shmall: 1024
+      shmmax: 4194304
+    dock_preferences:
+      orientation: 'bottom'
+      auto_hide: false
+      clear_apps: false
+      tile_size: 35
+      magnification': false
+    git:
+      aliases:
+        - ci "commit"
+        - >
+          oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne '\''s/^ //p'\'' | head -1"'
+        - unstage-all "reset HEAD --"
+      global_config:
+        core.pager: '"less -FXRS -x2"'
+        apply.whitespace: nowarn
+        color.branch: auto
+        color.diff: auto
+        color.interactive: auto
+        color.status: auto
+        color.ui: auto
+        branch.autosetupmerge: 'true'
+        rebase.autosquash: 'true'
+        # Custom git config settings
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.name: '"Barney Rubble"'
+        user.email: 'brubble@example.com'
+        push.default: simple
+        bash-it.hide-status: '1'
+        url."git@github.com:".insteadOf: https://github.com/
+        gpg.program: gpg
+        merge.tool: meld
+  homebrew:
+    taps:
+      - homebrew/cask-drivers
+      - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
+      - jlhonora/lsusb
+      - trinitronx/pcloud
+    formulas:
+      - bash-completion
+      - ag
+      - lua
+      - ssh-copy-id
+      - reattach-to-user-namespace
+      - wget
+      - mediainfo
+      - sleepwatcher
+      - wakeonlan
+      - mtr
+      - jq
+      # Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
+    casks:
+      - cord
+      - xquartz
+      - pcloud-drive
+
+  workspace_directory: src
+  vim_alias_vi_to_minimal_vim: false

@@ -1,0 +1,342 @@
+---
+recipes:
+
+  # base (required by sprout)
+  - sprout-base
+  - sprout-base::bash_it
+  - sprout-base::var_chef_cache
+  # - sprout-base::homebrew ## Deprecated by new homebrew cookbook
+  # - sprout-homebrew       ## Deprecated by new homebrew cookbook
+  # Need user git config for 1st time bootstrap
+  ### TODO: Fix known_hosts_github to use ssh-keyscan, or attributes
+  ### TODO: Install github known_hosts for root also! (bash-it fails b/c git ls-remote is run via root)
+  - sprout-ssh::known_hosts_github
+  - sprout-ssh::dot_ssh_config_github
+  - sprout-git::global_config
+  - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
+  - homebrew
+  - homebrew::install_taps
+  - homebrew::install_casks
+  ## Must be before homebrew::install_formulas to avoid symlink conflict error
+  # - lyraphase_workstation::gpg21
+  - lyraphase_workstation::hammerspoon_shiftit
+  - homebrew::install_formulas
+  ## Functionality not yet in homebrew cookbook
+  ## - sprout-homebrew::launchctl
+
+  # settings
+  - sprout-osx-settings
+  - sprout-osx-settings::dock_preferences
+  - sprout-osx-settings::inputrc
+  - sprout-osx-settings::defaults_fast_key_repeat_rate
+  - sprout-osx-settings::locate
+  - sprout-osx-settings::machine_name
+  - sprout-terminal
+
+  # development (general)
+  - sprout-base::workspace_directory
+  - sprout-git
+  - sprout-git::default_editor
+  - sprout-git::projects
+  # - sprout-git::git_scripts
+
+  # development (rails)
+  # - sprout-rbenv
+  - sprout-ruby
+  # - sprout-mysql
+  # - sprout-postgresql
+
+  # apps
+  - sprout-osx-apps::iterm2
+  # - sprout-osx-apps::flycut
+  # - sprout-osx-apps::shiftit
+  # - sprout-osx-apps::keycastr
+  ## TODO:
+  # Follow up on https://github.com/pivotal-sprout/sprout-osx-settings/issues/24
+  # - sprout-osx-settings::screen_sharing_app
+  # - sprout-osx-apps::menumeters
+
+  # apps (editors)
+  # - sprout-osx-apps::textmate_preferences
+  # - sprout-osx-apps::macvim
+  # - sprout-rubymine
+
+  # (added by jcuzella)
+  # apps
+  # - sprout-osx-apps::menumeters
+  # - sprout-osx-apps::virtualbox
+  # - sprout-osx-apps::vagrant
+
+  # apps (added for gloo)
+  ## Commented out until they update to Sublime Text 3
+  # - sprout-osx-apps::sublime_text
+
+  ### Lyraphase Workstation & Custom
+  - lyraphase_workstation::airfoil
+  - lyraphase_workstation::loopback_alias_ip
+  - lyraphase_workstation::ssh_tunnel_port_override
+  - lyraphase_workstation::sublime_text_settings
+  # - lyraphase_workstation::bash4
+  - lyraphase_workstation::bash_it_custom_plugins
+  - lyraphase_workstation::iterm2
+  - lyraphase_workstation::iterm2_shell_integration
+
+node_attributes:
+  bash_it:
+    repository: 'https://github.com/Bash-it/bash-it.git'
+    enabled_plugins:
+      plugins:
+        - base
+        - osx
+        - rvm
+        - ssh
+      aliases:
+        - ag
+        - bundler
+        - general
+        - kubectl
+        - vagrant
+      completions:
+        - awscli
+        - bash-it
+        - brew
+        - defaults
+        - dockerterm
+        - gem
+        - git
+        - kubectl
+        - minikube
+        - rake
+        - ssh
+        - terraform
+        - tmux
+        - travis
+        - vault
+    custom_plugins:
+      sprout-base:
+        - bash_it/custom/disable_ctrl-s_output_control.bash
+        - bash_it/custom/enable_ctrl-o_history_execution.bash
+  sprout:
+    terminal:
+      default_profile: 'Pro'
+    settings:
+      clock_format: EEE MMM d  h:mm:ss a
+      # EEE h:mm:ss a
+    screensaver:
+      ask_for_password: true
+      ask_for_password_delay: 0
+      timeout: 600
+      disksleep: 10
+      sleep: 1
+      displaysleep: 2
+    menubar:
+      transparency: true
+    shared_memory:
+      shmall: 1024
+      shmmax: 4194304
+    dock_preferences:
+      orientation: 'bottom'
+      auto_hide: false
+      clear_apps: false
+      tile_size: 35
+      magnification': false
+    git:
+      projects:
+        - url: https://gist.github.com/f59a8308d42d71fdba41.git
+          name: iterm_open_with
+          workspace_path: ~/src/pub
+          post_clone_commands:
+            - "[ ! -d ~jcuzella/bin ] && mkdir ~jcuzella/bin || true"
+            - >
+              ln -sf ~jcuzella/src/pub/iterm_open_with/iterm_open_with ~jcuzella/bin/iterm_open_with
+      aliases:
+        - ci "commit -S"
+        # - >
+        #  oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1"'
+        - >
+          oldest-ancestor '!bash -c "diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne '\''s/^ //p'\'' | head -1"'
+        - unstage-all "reset HEAD --"
+      global_config:
+        core.pager: '"less -FXRS -x2"'
+        apply.whitespace: nowarn
+        color.branch: auto
+        color.diff: auto
+        color.interactive: auto
+        color.status: auto
+        color.ui: auto
+        branch.autosetupmerge: 'true'
+        rebase.autosquash: 'true'
+        # Custom git config settings
+        core.excludesfile: /Users/jcuzella/.gitignore_global
+        user.name: '"James Cuzella"'
+        user.email: 'james.cuzella@lyraphase.com'
+        user.signingkey: 09F02FCD
+        push.default: simple
+        bash-it.hide-status: '1'
+        url."git@github.com:".insteadOf: https://github.com/
+        commit.gpgsign: 'true'
+        gpg.program: gpg
+        merge.tool: meld
+  homebrew:
+    taps:
+      - chef/chef
+      - caskroom/versions
+      - homebrew/cask-drivers
+      - trinitronx/truecrypt
+      - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
+      - jlhonora/lsusb
+    formulas:
+      - bash-completion
+      - ctags-exuberant
+      - ag
+      - grc
+      - ansible
+      - pyenv
+      - docker-machine
+      - docker-machine-nfs
+      - terraform
+      - vault
+      - kubernetes-cli
+      - kubectx
+      - kops
+      - imagemagick
+      - openssl
+      - mitmproxy
+      - xz
+      - go
+      - node
+      - maven
+      - thrift
+      - jfrog-cli-go
+      - p7zip
+      - pstree
+      - unrar
+      - htop-osx
+      - iperf3
+      - qt
+      - ssh-copy-id
+      - shellcheck
+      - tmux
+      # For pbcopy to work in tmux: http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+      # Also fixes Sublime Text "subl" command not working
+      - reattach-to-user-namespace
+      - tree
+      - socat
+      - nmap
+      - watch
+      - wget
+      - gist
+      - hub
+      - travis
+      - mosh
+      - parallel
+      - macvim
+      - wemux
+      - awscli
+      - s3cmd
+      - ack
+      - gettext
+      - mediainfo
+      - sleepwatcher
+      - wakeonlan
+      - mtr
+      - proxytunnel
+      - jq
+      - xmlstarlet
+      - pgcli
+      - expect
+      - rename
+      - lastpass-cli
+      - pwgen
+      - terminal-notifier
+      - yubikey-personalization
+      # Intel Edison / IoT tools
+      - dfu-util
+      - coreutils
+      - lsusb
+      # OSX Fuse FS drivers
+      - ext2fuse
+      - ext4fuse
+    casks:
+      - ccmenu
+      - cord
+      - displaylink
+      - firefox
+      # - flux
+      # - freefilesync ### DOWNLOAD FAILED!  TODO
+      # - gitx-rowanj ### CASK DOES NOT EXIST TODO
+      - github
+      - google-chrome
+      - chromedriver
+      - chefdk
+      # - near-lock
+      - netspot
+      - hammerspoon
+      - google-hangouts
+      - microsoft-teams
+      - skype
+      - textmate
+      - docker-edge
+      - vagrant
+      - virtualbox
+      - virtualbox-extension-pack
+      - vmware-fusion
+      - minikube
+      - wireshark
+      - xquartz
+      - xscope
+      - logitech-options
+      - gpg-suite
+      - truecrypt
+      - veracrypt
+      - osxfuse
+      - lastpass
+      - keybase
+      - yubico-authenticator
+      - yubico-yubikey-manager
+      - yubico-yubikey-piv-manager
+      - yubico-yubikey-personalization-gui
+      - java
+      - java6
+      - zulu
+      - zulu8
+      - sqlworkbenchj
+      - mysqlworkbench
+      - postico
+      - intellij-idea-ce
+      - vienna
+      - cyberduck
+      - pcloud-drive
+      - google-drive-file-stream
+      - hex-fiend
+      - beyond-compare
+      # - mumble
+      # - teamspeak
+      ## Commented out until they update to Sublime Text 3
+      - sublime-text
+      - meld
+      - balenaetcher
+
+  workspace_directory: src
+  vim_alias_vi_to_minimal_vim: false
+  versions:
+    rvm: 1.26.11
+  rvm:
+    user_installs:
+      - user: jcuzella
+        install_rubies: true
+        default_ruby: ruby-2.6.3
+        rubies:
+          ruby-2.6.3:
+            :command_line_options: <
+              --verify-downloads 1  --enable-shared  --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
+        multithread_build: true
+    user_global_gems:
+      - bcat
+      - kramdown
+      - openssl
+      - wirble
+# TODO: Dynamically get AWS user & key?
+#  s3cfg:
+#    access_key:
+#    secret_key:

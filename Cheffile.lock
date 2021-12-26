@@ -1,52 +1,61 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    dmg (2.2.0)
-    homebrew (1.9.0)
+    build-essential (3.2.0)
+      seven_zip (>= 0.0.0)
+    dmg (4.1.1)
+    homebrew (5.2.2)
+    mingw (0.1.1)
+      seven_zip (>= 0.0.0)
+    seven_zip (3.1.0)
+      windows (>= 0.0.0)
+    windows (5.3.0)
 
 GIT
-  remote: https://github.com/TangoGroup/gloo-workstation.git
+  remote: https://github.com/carsomyr/chef-plist
+  path: vendor/cookbooks/plist
   ref: master
-  sha: 0269bdd7fae3b6a4e25f6bf995429a393384e5ae
+  sha: b66cf5a243c26b33a8e822c69fd5beb20bf60836
   specs:
-    gloo-workstation (0.1.5)
-      dmg (>= 0.0.0)
+    plist (0.9.4)
 
 GIT
   remote: https://github.com/pivotal-sprout/osx
   ref: master
-  sha: 5d7deecd6a928db62a7061907c790b3e07f47e22
+  sha: 57820f0c0f4b08e9cff82a57a7489f9dcc9345f7
   specs:
     osx (0.1.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-base
   ref: master
-  sha: a2b7bd48ea5c11f9118086f2abda28f3c291e6cb
+  sha: a7f515dd6ec08e682c9fb0637c8a153fa275e19f
   specs:
-    sprout-base (0.1.0)
+    sprout-base (0.7.0)
+      homebrew (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-git
   ref: master
-  sha: d30726876e5e6c706ae825854a3b974555c12c1f
+  sha: 4b9cbcad5cfc88b7324f00a78439117e8c7a7e77
   specs:
-    sprout-git (0.1.0)
+    sprout-git (0.4.0)
       homebrew (>= 0.0.0)
       sprout-base (>= 0.0.0)
 
 GIT
-  remote: https://github.com/pivotal-sprout/sprout-homebrew
+  remote: https://github.com/pivotal-sprout/sprout-jetbrains-editors
   ref: master
-  sha: c865c801f574a904f64aeae4beadd0d3a20be7c8
+  sha: bcfcb62c1095a9ef33477f896ebda47918ad7618
   specs:
-    sprout-homebrew (0.1.0)
-      homebrew (>= 1.5.4)
+    sprout-jetbrains-editors (0.1.0)
+      homebrew (>= 0.0.0)
+      sprout-base (>= 0.0.0)
 
 GIT
   remote: https://github.com/pivotal-sprout/sprout-mysql
   ref: master
-  sha: 8c54f34a85fa6fd9330f2d442cead0ef26151746
+  sha: 12a264fe5418ae9fc6f5300fe56abec058f4a743
   specs:
     sprout-mysql (0.1.0)
       homebrew (>= 0.0.0)
@@ -55,9 +64,9 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-apps
   ref: master
-  sha: bc44cd3f968a383569360e5857707f9cf539032a
+  sha: abe74e25ac963746f6178cb8e371d51c8bbd9de0
   specs:
-    sprout-osx-apps (0.1.0)
+    sprout-osx-apps (0.2.0)
       dmg (>= 0.0.0)
       homebrew (>= 1.6.6)
       sprout-base (>= 0.0.0)
@@ -66,7 +75,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-osx-settings
   ref: master
-  sha: 6083f771f4f80b25dae9fd40784599ee5c578a09
+  sha: 62630bea50cea7b24058854a5a216c3a4dbbe4ef
   specs:
     sprout-osx-settings (0.1.0)
       homebrew (>= 0.0.0)
@@ -76,7 +85,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-postgresql
   ref: master
-  sha: 0a1d648f76a94719e09c9a9f9742d12f4da95b5f
+  sha: 97558d741bc7f0e1ea6c2f896dd2a3706b26c7ec
   specs:
     sprout-postgresql (0.1.0)
       homebrew (>= 1.5.4)
@@ -85,7 +94,7 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-rbenv
   ref: master
-  sha: 830f723d4980b02d6fa487c99b2fa0860cd4bb4d
+  sha: aacfd19f867511715e6070988013ed453d268efb
   specs:
     sprout-rbenv (0.1.0)
       homebrew (>= 0.0.0)
@@ -94,24 +103,15 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-ruby
   ref: master
-  sha: 72613b6ba2af9ef6a5921901376460b4f6e3e718
+  sha: 2fc7d5273fccd978321450b61088bbd608867dfc
   specs:
     sprout-ruby (0.1.0)
       sprout-base (>= 0.0.0)
 
 GIT
-  remote: https://github.com/pivotal-sprout/sprout-rubymine
-  ref: master
-  sha: 480350080c8b8e4542874a2e5523446130ceea6f
-  specs:
-    sprout-rubymine (0.1.0)
-      sprout-base (>= 0.0.0)
-      sprout-homebrew (>= 0.0.0)
-
-GIT
   remote: https://github.com/pivotal-sprout/sprout-ssh
   ref: master
-  sha: bf22d255dc9eba8bca0ad8cd8c94a87cd9503462
+  sha: b3ac3a04d9b9494b32514e69b33720fd51f46224
   specs:
     sprout-ssh (0.1.0)
       sprout-base (>= 0.0.0)
@@ -120,25 +120,40 @@ GIT
 GIT
   remote: https://github.com/pivotal-sprout/sprout-terminal
   ref: master
-  sha: 7ffaecfb03720a55b72a08eeb3ae7f3d4e708b59
+  sha: 6d9be928aa0041f455d3721b14c89c5e068f5e04
   specs:
     sprout-terminal (0.1.0)
       osx (>= 0.0.0)
       sprout-base (>= 0.0.0)
 
+GIT
+  remote: https://github.com/trinitronx/lyraphase_workstation
+  ref: master
+  sha: f32ea28a4686b9335889bb6217a74d8e40846ef1
+  specs:
+    lyraphase_workstation (3.2.2)
+      dmg (>= 0.0.0)
+      homebrew (>= 0.0.0)
+      osx (>= 0.0.0)
+      plist (~> 0.9)
+      sprout-base (>= 0.0.0)
+
 DEPENDENCIES
-  gloo-workstation (>= 0)
+  build-essential (= 3.2.0)
+  homebrew (>= 5.1.1)
+  lyraphase_workstation (~> 3.2)
+  mingw (= 0.1.1)
   osx (>= 0)
+  plist (>= 0)
   sprout-base (>= 0)
   sprout-git (>= 0)
-  sprout-homebrew (>= 0)
+  sprout-jetbrains-editors (>= 0)
   sprout-mysql (>= 0)
   sprout-osx-apps (>= 0)
   sprout-osx-settings (>= 0)
   sprout-postgresql (>= 0)
   sprout-rbenv (>= 0)
   sprout-ruby (>= 0)
-  sprout-rubymine (>= 0)
   sprout-ssh (>= 0)
   sprout-terminal (>= 0)
 
