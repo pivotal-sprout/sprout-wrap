@@ -217,7 +217,7 @@ else
 fi
 
 rvm --version 2>/dev/null
-[ ! -x "$(which gem)" -a "$?" -eq 0 ] || USE_SUDO='sudo'
+[ -x "$(which gem)" -a "$?" -eq 0 ] && USE_SUDO='' || USE_SUDO='sudo'
 
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
@@ -230,6 +230,8 @@ if [[ $use_system_ruby == "1" ]]; then
     use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr 'A-Z' 'a-z')"
     if [[ "$use_system_ruby_answer" != 'y' ]]; then
       errorout "Abort modifying System Ruby! Exiting..."
+    else
+      USE_SUDO='sudo'
     fi
   fi
 
