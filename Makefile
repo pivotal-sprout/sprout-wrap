@@ -34,7 +34,7 @@ brewfile: /tmp/Brewfile
 	ruby ./bin/convert_soloistrc_to_brewfile.rb
 
 clean:: ## Remove temporary/cache files.
-	rm -rf tmp/librarian/ 
-	rmdir tmp/ || true
-	sudo rm -rf nodes/
-	rm -f cookies
+	[ -d '$(TEMP_PATH)' ] && rm -rf $(TEMP_PATH) || true
+	[ -d 'tmp/librarian/' ] && rm -rf tmp/librarian/ || true
+	[ -d 'tmp/' ] && rmdir tmp/ || true
+	[ -d 'nodes/' ] && sudo rm -rf nodes/ || true
