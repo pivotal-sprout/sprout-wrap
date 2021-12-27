@@ -1,0 +1,58 @@
+---
+name: ci
+
+"on":
+  pull_request:
+    branches:
+      - master
+      - main
+      - develop
+  push:
+    branches:
+      - master
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6 # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run make test
+        run: |
+          bundle exec make test
+  bootstrap:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-11]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Add --no-document to .gemrc
+        run: |
+          tee -a $HOME/.gemrc <<EOGEMRC
+          install: --no-document
+          update: --no-document
+          EOGEMRC
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Add SSH_AUTH_SOCK to root shell .profile
+        run: |
+          sudo tee -a ~root/.profile <<EOPROFILE
+          SSH_AUTH_SOCK=${{ env.SSH_AUTH_SOCK }}
+          EOPROFILE
+      - name: Disable checksum offloading
+        # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
+        run: |
+          sudo sysctl -w net.link.generic.system.hwcksum_tx=0
+          sudo sysctl -w net.link.generic.system.hwcksum_rx=0
+      - name: Run bootstrap.sh + soloist with test fixtures
+        run: |
+          make bootstrap

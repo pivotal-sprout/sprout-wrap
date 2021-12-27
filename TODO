@@ -1,0 +1,27 @@
+Recipes to Merge in
+===================
+
+ - fisa-vim-config!
+ - sprout-vim ??
+ - DaisyDisk License handling: https://github.com/trinitronx/sprout/blob/develop/sprout-osx-apps/templates/default/License.DaisyDisk.erb
+ - DaisyDisk Recipe: https://github.com/trinitronx/sprout/blob/develop/sprout-osx-apps/recipes/daisydisk.rb
+ - Maybe??
+ - sprout-osx-base::apple-gcc42 => sprout-homebrew: formulae: apple-gcc42
+
+macOS Deprecated Cookbook Upgrades
+==================================
+
+ - [pivotal-sprout/osx][1] cookbook needs replacement!
+   - Must support some form of `osx_defaults` and `osx_sysctl` LWRPs
+     - [pivotal-sprout/sprout-osx-settings][2] cookbook depends on these LWRPs
+   - [Sous-Chefs-Boneyard/mac_os_x][3] cookbook deprecated in favor of [microsoft/macos-cookbook][4] (oh the irony!)
+ - [carsomyr/chef-plist][5] cookbook needs replacement!
+   - Must support some form of `plist_file` LWRP
+   - [microsoft/macos-cookbook][6] provides this too... :thinking:
+
+[1]: https://github.com/pivotal-sprout/osx
+[2]: https://github.com/pivotal-sprout/sprout-osx-settings
+[3]: https://github.com/Sous-Chefs-Boneyard/mac_os_x/issues/20
+[4]: https://github.com/Microsoft/macos-cookbook
+[5]: https://github.com/carsomyr/chef-plist/tree/master/vendor/cookbooks/plist
+[6]: https://github.com/microsoft/macos-cookbook/blob/master/resources/plist.rb
