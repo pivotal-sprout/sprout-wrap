@@ -36,7 +36,9 @@ end
 
 
 # Set Soloist Config Paths
-brewfile_out_path = '/tmp/Brewfile'
+brewfile_out_path = ENV['RUNNER_TEMP'] || '/tmp'
+
+brewfile_out_path = File.join(brewfile_out_path, 'Brewfile')
 
 # Extract & Convert Homebrew node_attribute data
 brewfile = SoloistrcToBrewfile.new('soloistrc')
