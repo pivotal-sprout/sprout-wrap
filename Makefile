@@ -41,10 +41,12 @@ bootstrap: ## Run bootstrap & soloist on this node
 .PHONY: brewfile
 brewfile: $(BREWFILE_PATH)
 $(BREWFILE_PATH): $(SOLOISTRC_PATH) ## Convert soloistrc to Brewfile
-	export SOLOISTRC_PATH BREWFILE_PATH; bundle exec ruby ./bin/convert_soloistrc_to_brewfile.rb
+	mkdir -p $(TEMP_PATH)
+	export SOLOISTRC_PATH=$(SOLOISTRC_PATH) BREWFILE_PATH=$(BREWFILE_PATH); \
+    bundle exec ruby ./bin/convert_soloistrc_to_brewfile.rb
 
 clean:: ## Remove temporary/cache files.
 	[ -d '$(TEMP_PATH)' ] && rm -rf $(TEMP_PATH) || true
 	[ -d 'tmp/librarian/' ] && rm -rf tmp/librarian/ || true
-	[ -d 'tmp/' ] && rmdir tmp/ || true
+	[ -d '$(TEMP_PATH)' ] && rmdir $(TEMP_PATH) || true
 	[ -d 'nodes/' ] && sudo rm -rf nodes/ || true
