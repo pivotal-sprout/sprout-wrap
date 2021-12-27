@@ -256,13 +256,14 @@ if [[ $use_system_ruby == "1" ]]; then
   $USE_SUDO gem update -n /usr/local/bin --system
 
 else
+  USE_SUDO=''
   export rvm_user_install_flag=1
   export rvm_prefix="$HOME"
   export rvm_path="${rvm_prefix}/.rvm"
 
   echo "Installing RVM..." >&2
 
-  bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh"
+  bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh $USER"
 
   # Install .ruby-version @ .ruby-gemset
   rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
