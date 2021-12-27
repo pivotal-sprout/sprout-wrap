@@ -48,6 +48,29 @@ jobs:
           sudo tee -a ~root/.profile <<EOPROFILE
           SSH_AUTH_SOCK=${{ env.SSH_AUTH_SOCK }}
           EOPROFILE
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 1
+      - name: Set BREWFILE_PATH env var
+        run: echo "BREWFILE_PATH=${RUNNER_TEMP}/Brewfile" >> $GITHUB_ENV
+      - name: Test BREWFILE_PATH
+        run: echo $BREWFILE_PATH
+      - name: Generate Brewfile from soloistrc
+        run: |
+          pushd test/fixtures/
+          bundle exec ../../bin/convert_soloistrc_to_brewfile.rb
+          popd
+      - name: Configure Homebrew cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/Library/Caches/Homebrew/*--*
+            ~/Library/Caches/Homebrew/downloads/*--*
+            /usr/local/Homebrew/Library/Taps/**
+            /opt/Homebrew/Library/Taps/**
+          key: brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+          restore-keys: brew-
       - name: Disable checksum offloading
         # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
         run: |

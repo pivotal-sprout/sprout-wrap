@@ -27,6 +27,12 @@ librarian-clean-install: librarian-clean librarian-install ## Runs librarian-cle
 bootstrap: ## Run bootstrap & soloist on this node
 	./bootstrap-scripts/bootstrap.sh
 
+# Testing in /tmp first...
+.PHONY: brewfile
+brewfile: /tmp/Brewfile
+/tmp/Brewfile: soloistrc ## Convert soloistrc to Brewfile
+	ruby ./bin/convert_soloistrc_to_brewfile.rb
+
 clean:: ## Remove temporary/cache files.
 	rm -rf tmp/librarian/ 
 	rmdir tmp/ || true

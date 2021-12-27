@@ -20,9 +20,13 @@ function detect_platform_version() {
   major_version=$(echo $platform_version | cut -d. -f1,2)
   
   # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
+  # macOS Monterey + Apple M1 Silicon (arm64) gives empty string for this x86_64 check
   x86_64=$(sysctl -n hw.optional.x86_64)
-  if [ $x86_64 -eq 1 ]; then
+  arm64=$(sysctl -n hw.optional.arm64)
+  if [[ "$x86_64" == '1' ]]; then
     machine="x86_64"
+  elif [[ "$arm64" == '1' ]]; then
+    machine="arm64"
   fi
 }
 
@@ -53,6 +57,7 @@ if [[ "$CI" == 'true' ]]; then
   SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
 fi
 
+use_system_ruby=0
 SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
@@ -64,8 +69,10 @@ REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 detect_platform_version
 
 # Determine which XCode version to use based on platform version
+# https://developer.apple.com/downloads/index.action
 case $platform_version in
-  11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export INSTALL_SDK_HEADERS=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  12.0*)  XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.12*) XCODE_DMG='Xcode_8.1.xip' ;;
@@ -135,19 +142,23 @@ readonly sudo_loop_PID  # Make PID readonly for security ;-)
 
 # Try xcode-select --install first
 if [[ "$TRY_XCI_OSASCRIPT_FIRST" == '1' ]]; then
-	# Try the AppleScript automation method rather than relying on manual .xip / .dmg download & mirroring
-	# Note: Apple broke automated Xcode installer downloads.  Now requires manual Apple ID sign-in.
-	# Source: https://web.archive.org/web/20211210020829/https://techviewleo.com/install-xcode-command-line-tools-macos/
-  xcode-select --install
-  sleep 1
-  osascript <<-EOD
-	  tell application "System Events"
-	    tell process "Install Command Line Developer Tools"
-	      keystroke return
-	      click button "Agree" of window "License Agreement"
-	    end tell
-	  end tell
+  # Try the AppleScript automation method rather than relying on manual .xip / .dmg download & mirroring
+  # Note: Apple broke automated Xcode installer downloads.  Now requires manual Apple ID sign-in.
+  # Source: https://web.archive.org/web/20211210020829/https://techviewleo.com/install-xcode-command-line-tools-macos/
+  if [ ! -d /Library/Developer/CommandLineTools ]; then
+    xcode-select --install
+    sleep 1
+    osascript <<-EOD
+  	  tell application "System Events"
+  	    tell process "Install Command Line Developer Tools"
+  	      keystroke return
+  	      click button "Agree" of window "License Agreement"
+  	    end tell
+  	  end tell
 EOD
+  else
+    echo "INFO: Found /Library/Developer/CommandLineTools already existing. skipping..."
+  fi
 else
 	# !! This script is no longer supported !!
 	#  Apple broke all direct downloads without logging with an Apple ID first.
@@ -173,7 +184,7 @@ else
 fi
 
 
-if [ "$INSTALL_SDK_HEADERS" -eq 1 ]; then
+if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   # Reference: https://github.com/Homebrew/homebrew-core/issues/18533#issuecomment-332501316
   if ruby_mkmf_output="$(ruby -r mkmf -e 'print $hdrdir + "\n"')" && [ -d "$ruby_mkmf_output" ];
   then
@@ -213,7 +224,13 @@ fi
 
 # Non-Chef Homebrew install
 brew --version
-[ ! -x "$(which brew)" -a "$?" -eq 0 ] || /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+[ ! -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+
+if [ "$machine" == "arm64" ]; then
+  export PATH="/opt/homebrew/bin:${PATH}"
+else
+  export PATH="/usr/local/homebrew/bin:${PATH}"
+fi
 
 rvm --version 2>/dev/null
 [ -x "$(which gem)" -a "$?" -eq 0 ] && USE_SUDO='' || USE_SUDO='sudo'
@@ -221,23 +238,62 @@ rvm --version 2>/dev/null
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
 
-[ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
-$USE_SUDO gem update -n /usr/local/bin --system
+if [[ $use_system_ruby == "1" ]]; then
+  echo "WARN: Using macOS system Ruby is not recommended!" >&2
+  echo "WARN: Updating system bundler gem will modify stock macOS system files!" >&2
+  if [[ "$override_use_system_ruby_prompt" != '1' ]]; then
+    read -p 'Are you sure you want to continue and use macOS System Ruby? [y/N]: ' -d $'\n' use_system_ruby_answer
+    use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr 'A-Z' 'a-z')"
+    if [[ "$use_system_ruby_answer" != 'y' ]]; then
+      errorout "Abort modifying System Ruby! Exiting..."
+    else
+      USE_SUDO='sudo'
+    fi
+  fi
+
+  echo "INFO: Updating system bundler gem!" >&2
+  [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
+  $USE_SUDO gem update -n /usr/local/bin --system
+
+else
+  USE_SUDO=''
+  export rvm_user_install_flag=1
+  export rvm_prefix="$HOME"
+  export rvm_path="${rvm_prefix}/.rvm"
+
+  echo "Installing RVM..." >&2
+
+  bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh $USER"
+
+  # Install .ruby-version @ .ruby-gemset
+  rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')@$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+
+  # Install bundler in RVM path
+  rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
+  # [ -x "$(which bundle)" ] || gem install bundler
+  gem update --system
+fi
+
+# We need bundler in vendor path too
+BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
+if ! bundle list | grep -q "bundler.*${BUNDLER_VER}"; then
+  bundle exec gem install "bundler:${BUNDLER_VER}"
+fi
+
+
+# TODO: Fix last chicken-egg issues
+echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
+
+# Bundle install soloist + gems
 if ! bundle check 2>&1 >/dev/null; then
   bundle config set --local path 'vendor/bundle' ;
   bundle config set --local without 'development' ;
   # --path & --without have deprecation warnings... but for now we'll try them
   bundle install --path vendor/bundle --without development ;
 fi
-# We need bundler in vendor path too
-[ -x "$(bundle exec which bundler)" ] || bundle exec gem install "bundler:$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
-
-# TODO: Fix last chicken-egg issues
-echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
-
-export rvm_user_install_flag=1
-export rvm_prefix="$HOME"
-export rvm_path="${rvm_prefix}/.rvm"
 
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
