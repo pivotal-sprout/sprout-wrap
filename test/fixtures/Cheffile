@@ -22,7 +22,7 @@ cookbook 'osx',
 cookbook 'plist',
  :github => 'carsomyr/chef-plist',
  :ref => 'master',
- :path => 'vendor/cookbooks/plist
+ :path => 'vendor/cookbooks/plist'
 
 cookbook 'sprout-osx-settings',
   :github => 'pivotal-sprout/sprout-osx-settings'
