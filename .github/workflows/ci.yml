@@ -40,6 +40,14 @@ jobs:
           install: --no-document
           update: --no-document
           EOGEMRC
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Add SSH_AUTH_SOCK to root shell .profile
+        run: |
+          sudo tee -a ~root/.profile <<EOPROFILE
+          SSH_AUTH_SOCK=${{ env.SSH_AUTH_SOCK }}
+          EOPROFILE
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
           make bootstrap
