@@ -52,6 +52,10 @@ jobs:
         with:
           bundler-cache: true
           cache-version: 1
+      - name: Set BREWFILE_PATH env var
+        run: echo ::set-env name=BREWFILE_PATH::${{ env.RUNNER_TEMP }}/Brewfile
+      - name: Test BREWFILE_PATH
+        run: echo $BREWFILE_PATH
       - name: Generate Brewfile from soloistrc
         run: |
           pushd test/fixtures/
@@ -65,7 +69,7 @@ jobs:
             ~/Library/Caches/Homebrew/downloads/*--*
             /usr/local/Homebrew/Library/Taps/**
             /opt/Homebrew/Library/Taps/**
-          key: brew-${{ hashFiles(join( [env.RUNNER_TEMP, 'Brewfile'], '/' ), '**/Brewfile.lock.json') }}
+          key: brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
           restore-keys: brew-
       - name: Disable checksum offloading
         # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
