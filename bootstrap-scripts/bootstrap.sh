@@ -4,11 +4,11 @@
 #
 # Usage:
 #   Running the script remotely:
-#     bash < <(curl -s https://raw.github.com/trinitronx/sprout-wrap/spica-local-devbox/bootstrap-scripts/bootstrap.sh )
+#     bash < <(curl -s https://raw.github.com/LyraPhase/sprout-wrap/master/bootstrap-scripts/bootstrap.sh )
 #   Running the script if you have downloaded it:
 #     ./bootstrap.sh
 #
-# http://github.com/trinitronx/sprout-wrap
+# http://github.com/LyraPhase/sprout-wrap
 # Copyright (C) © 🄯  2013-2021 James Cuzella
 # This script may be freely distributed under the MIT license.
 
@@ -55,7 +55,7 @@ fi
 
 SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
-SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
+SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
 SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
