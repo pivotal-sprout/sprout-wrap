@@ -54,8 +54,10 @@ jobs:
           cache-version: 1
       - name: Set BREWFILE_PATH env var
         run: echo "BREWFILE_PATH=${RUNNER_TEMP}/Brewfile" >> $GITHUB_ENV
-      - name: Test BREWFILE_PATH
-        run: echo $BREWFILE_PATH
+      - name: Debug GitHub Cache Paths BREWFILE_PATH
+        run: |
+          echo BREWFILE_PATH=$BREWFILE_PATH
+          echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
       - name: Generate Brewfile from soloistrc
         run: |
           pushd test/fixtures/
