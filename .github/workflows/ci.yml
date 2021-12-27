@@ -53,7 +53,7 @@ jobs:
           bundler-cache: true
           cache-version: 1
       - name: Set BREWFILE_PATH env var
-        run: echo "BREWFILE_PATH=${{ env.RUNNER_TEMP }}/Brewfile" >> $GITHUB_ENV
+        run: echo "BREWFILE_PATH=${RUNNER_TEMP}/Brewfile" >> $GITHUB_ENV
       - name: Test BREWFILE_PATH
         run: echo $BREWFILE_PATH
       - name: Generate Brewfile from soloistrc
