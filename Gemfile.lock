@@ -57,7 +57,7 @@ GEM
     erubis (2.7.0)
     fauxhai (6.0.1)
       net-ssh
-    ffi (1.11.1)
+    ffi (1.15.4)
     ffi-yajl (2.3.1)
       libyajl2 (~> 1.2)
     foodcritic (16.3.0)
@@ -236,6 +236,7 @@ DEPENDENCIES
   chef-zero (~> 13.1)
   chefspec
   fauxhai (~> 6.0.0)
+  ffi (>= 1.15.2)
   foodcritic
   guard
   guard-bundler

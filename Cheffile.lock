@@ -4,7 +4,6 @@ SITE
     build-essential (3.2.0)
       seven_zip (>= 0.0.0)
     dmg (4.1.1)
-    homebrew (5.2.2)
     mingw (0.1.1)
       seven_zip (>= 0.0.0)
     seven_zip (3.1.0)
@@ -127,11 +126,18 @@ GIT
       sprout-base (>= 0.0.0)
 
 GIT
+  remote: https://github.com/trinitronx/homebrew
+  ref: serverspec-inspec-issues
+  sha: 55c777a64d0bdc1d15ed81c61c9d6b70794ab6ae
+  specs:
+    homebrew (5.2.2)
+
+GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: f32ea28a4686b9335889bb6217a74d8e40846ef1
+  sha: 50f5f84bcfc81ed6898d7c1954feeba20b3b0118
   specs:
-    lyraphase_workstation (3.2.2)
+    lyraphase_workstation (3.2.5)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
