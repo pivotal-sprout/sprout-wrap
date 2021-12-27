@@ -4,11 +4,11 @@
 #
 # Usage:
 #   Running the script remotely:
-#     bash < <(curl -s https://raw.github.com/trinitronx/sprout-wrap/spica-local-devbox/bootstrap-scripts/bootstrap.sh )
+#     bash < <(curl -s https://raw.github.com/LyraPhase/sprout-wrap/master/bootstrap-scripts/bootstrap.sh )
 #   Running the script if you have downloaded it:
 #     ./bootstrap.sh
 #
-# http://github.com/trinitronx/sprout-wrap
+# http://github.com/LyraPhase/sprout-wrap
 # Copyright (C) © 🄯  2013-2021 James Cuzella
 # This script may be freely distributed under the MIT license.
 
@@ -49,11 +49,19 @@ trap kill_sudo_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common ter
 trap "exit" INT # Run exit when this script receives Ctrl-C
 
 
+# CI setup
+if [[ "$CI" == 'true' ]]; then
+  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
+  set -x
+  SOLOIST_DIR="${GITHUB_WORKSPACE}/.."
+  SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
+fi
+
 use_system_ruby=0
-SOLOIST_DIR="${HOME}/src/pub/soloist"
+SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
-SPROUT_WRAP_URL='https://github.com/trinitronx/sprout-wrap.git'
-SPROUT_WRAP_BRANCH='macos-big-sur-11.6'
+SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
+SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
 REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
@@ -194,16 +202,24 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   fi
 fi
 
-# Checkout sprout-wrap after XCode CLI tools, because we need it for git now
-mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
-
-echo "INFO: Checking out sprout-wrap..."
-if [ -d sprout-wrap ]; then
-  pushd sprout-wrap && git pull
+if [[ "$CI" == 'true' ]]; then
+  echo "INFO: CI run detected via \$CI=$CI env var"
+  echo "INFO: NOT checking out git repo"
+  echo "INFO: Running soloist from ${REPO_BASE}/test/fixtures"
+  # Must use pushd to keep dir stack 2 items deep
+  pushd "${REPO_BASE}/test/fixtures"
 else
-  git clone $SPROUT_WRAP_URL
-  pushd sprout-wrap
-  git checkout $SPROUT_WRAP_BRANCH
+  # Checkout sprout-wrap after XCode CLI tools, because we need it for git now
+  mkdir -p "$SOLOIST_DIR"; cd "$SOLOIST_DIR/"
+
+  echo "INFO: Checking out sprout-wrap..."
+  if [ -d sprout-wrap ]; then
+    pushd sprout-wrap && git pull
+  else
+    git clone $SPROUT_WRAP_URL
+    pushd sprout-wrap
+    git checkout $SPROUT_WRAP_BRANCH
+  fi
 fi
 
 # Non-Chef Homebrew install

@@ -7,6 +7,8 @@ recipes:
   - sprout-ssh::known_hosts_github
   - sprout-ssh::dot_ssh_config_github
   - sprout-git::global_config
+  - lyraphase_workstation::root_bootstrap_ssh_config
+  - lyraphase_workstation::user_default_shell
   - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
   - homebrew
   - homebrew::install_taps
@@ -32,6 +34,9 @@ recipes:
   - lyraphase_workstation::bash_it_custom_plugins
 
 node_attributes:
+  lyraphase_workstation:
+    root_bootstrap_ssh_config:
+      identity_file: 'identity.lyraphase-runner'
   bash_it:
     repository: 'https://github.com/Bash-it/bash-it.git'
     enabled_plugins:
