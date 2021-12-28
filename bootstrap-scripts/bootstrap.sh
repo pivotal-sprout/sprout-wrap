@@ -283,12 +283,9 @@ elif [[ "$CI" != 'true' ]]; then
   if ! type rvm 2>/dev/null 1>/dev/null ; then
     # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
     export PATH="$PATH:$HOME/.rvm/bin"
-    set +x
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-    set -x
   fi
   # Install .ruby-version @ .ruby-gemset
-  set +x
   rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
@@ -296,7 +293,6 @@ elif [[ "$CI" != 'true' ]]; then
 
   # Install bundler in RVM path
   rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
-  set -x
   # [ -x "$(which bundle)" ] || gem install bundler
   gem update --system
 fi
