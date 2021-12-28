@@ -4,6 +4,7 @@ require 'yaml'
 
 # Minimal ERB rendering class
 # Reference: https://www.garethrees.co.uk/2014/01/12/create-a-template-rendering-class-with-erb/
+# TODO: Handle options Hash https://github.com/Homebrew/homebrew-bundle/blob/master/lib/bundle/dsl.rb#L47
 class SoloistrcToBrewfile < ERB
   def self.template
    brewfile_erb_template = <<-EOBREWFILE
@@ -36,12 +37,13 @@ end
 
 
 # Set Soloist Config Paths
-brewfile_out_path = ENV['RUNNER_TEMP'] || '/tmp'
-
-brewfile_out_path = File.join(brewfile_out_path, 'Brewfile')
+brewfile_out_path = ENV['BREWFILE_PATH'] || '/tmp/Brewfile'
+soloistrc_in_path = ENV['SOLOISTRC_PATH'] || 'soloistrc'
+puts "BREWFILE_PATH=#{brewfile_out_path}"
+puts "SOLOISTRC_PATH=#{soloistrc_in_path}"
 
 # Extract & Convert Homebrew node_attribute data
-brewfile = SoloistrcToBrewfile.new('soloistrc')
+brewfile = SoloistrcToBrewfile.new(soloistrc_in_path)
 output = brewfile.result()
 
 soloistrc = brewfile.instance_variable_get(:@soloistrc)
@@ -58,7 +60,7 @@ puts soloistrc['node_attributes']['homebrew']['formulas']
 puts ""
 
 # Write out Brewfile
-puts "Writing Persistent /tmp/chef-solo.rb from soloist config"
+puts "Writing Brewfile from soloist config"
 File.open(brewfile_out_path, 'w') do |f|
   f.write(output)
 end

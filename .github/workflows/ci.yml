@@ -12,7 +12,8 @@ name: ci
       - master
       - main
       - develop
-
+env:
+  debug_ci: false
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -53,29 +54,43 @@ jobs:
           bundler-cache: true
           cache-version: 1
       - name: Set BREWFILE_PATH env var
-        run: echo "BREWFILE_PATH=${RUNNER_TEMP}/Brewfile" >> $GITHUB_ENV
-      - name: Test BREWFILE_PATH
-        run: echo $BREWFILE_PATH
-      - name: Generate Brewfile from soloistrc
         run: |
-          pushd test/fixtures/
-          bundle exec ../../bin/convert_soloistrc_to_brewfile.rb
-          popd
+          echo "BREWFILE_PATH=${GITHUB_WORKSPACE}/test/fixtures/tmp/Brewfile.ci" >> $GITHUB_ENV
+      - name: DEBUG - GitHub Cache Paths BREWFILE_PATH
+        run: |
+          echo BREWFILE_PATH=$BREWFILE_PATH
+          echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
+        if: env.debug_ci == true
+      - name: DEBUG - Print all shell env exports
+        run: export -p
+        if: env.debug_ci == true
+      - name: DEBUG - List workspace and Homebrew contents
+        run: |
+          ls -lR ${GITHUB_WORKSPACE}
+          ls -lR /usr/local/Homebrew
+        if: env.debug_ci == true
+      - name: Generate Brewfile from soloistrc test fixture
+        run: make brewfile
       - name: Configure Homebrew cache
         uses: actions/cache@v2
         with:
           path: |
             ~/Library/Caches/Homebrew/*--*
             ~/Library/Caches/Homebrew/downloads/*--*
+            ~/Library/Caches/Homebrew/Cask/*--*
             /usr/local/Homebrew/Library/Taps/**
             /opt/Homebrew/Library/Taps/**
-          key: brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
-          restore-keys: brew-
-      - name: Disable checksum offloading
+            ./Brewfile.lock.json
+          key: brew-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+          restore-keys: |
+            brew-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+            brew-${{ runner.os }}-${{ runner.arch }}-
+            brew-${{ runner.os }}-
+      - name: Re-enable checksum offloading
         # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
         run: |
-          sudo sysctl -w net.link.generic.system.hwcksum_tx=0
-          sudo sysctl -w net.link.generic.system.hwcksum_rx=0
+          sudo sysctl -w net.link.generic.system.hwcksum_tx=1
+          sudo sysctl -w net.link.generic.system.hwcksum_rx=1
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
           make bootstrap
