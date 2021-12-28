@@ -241,6 +241,7 @@ fi
 # Non-Chef Homebrew install
 brew --version
 [ ! -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+[ "$?" -eq 0 ] || errorout 'Homebrew failed to install. This is NOT a problem inside sprout-wrap. Aborting soloist bootstrap!'
 
 if [ "$machine" == "arm64" ]; then
   export PATH="/opt/homebrew/bin:${PATH}"
@@ -288,12 +289,14 @@ elif [[ "$CI" != 'true' ]]; then
   fi
   # Install .ruby-version @ .ruby-gemset
   rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  [ "$?" -eq 0 ] || errorout "RVM failed to install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') ... Aborting soloist bootstrap!"
   rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
   rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')@$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
 
   # Install bundler in RVM path
-  rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
+  rvm $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') do gem install bundler
+  [ "$?" -eq 0 ] || errorout "RVM failed to install bundler gem for ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') ... Aborting soloist bootstrap!"
   # [ -x "$(which bundle)" ] || gem install bundler
   gem update --system
 else
