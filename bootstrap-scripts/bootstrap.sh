@@ -36,18 +36,27 @@ prevent_sudo_timeout() {
   echo "Please enter your sudo password to make changes to your machine"
   sudo -v # Asks for passwords
   ( while true; do sudo -v; sleep 40; done ) &   # update the user's timestamp
-  export sudo_loop_PID=$!
+  export timeout_loop_PID=$!
 }
 
 # Kill sudo timestamp refresh PID and invalidate sudo timestamp
-kill_sudo_loop() {
-  echo "Killing $sudo_loop_PID due to trap"
-  kill -TERM $sudo_loop_PID
+kill_timeout_loop() {
+  echo "Killing $timeout_loop_PID due to trap"
+  kill -TERM $timeout_loop_PID
   sudo -K
 }
-trap kill_sudo_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common terminate signals
+trap kill_timeout_loop EXIT HUP TSTP QUIT SEGV TERM INT ABRT  # trap all common terminate signals
 trap "exit" INT # Run exit when this script receives Ctrl-C
 
+## Drop-In replacement for prevent_sudo_timeout in CI
+## CI has sudo, but long-running jobs can timeout
+## unless log output is frequent enough
+prevent_ci_log_timeout() {
+  echo "INFO: CI run detected via \$CI=$CI env var"
+  echo "INFO: Starting log timeout prevention process..."
+  ( while true; do echo '.'; done ) &   # update STDOUT logs
+  export timeout_loop_PID=$!
+}
 
 # CI setup
 if [[ "$CI" == 'true' ]]; then
@@ -137,8 +146,14 @@ fi
 
 # Hack to make sure sudo caches sudo password correctly...
 # And so it stays available for the duration of the Chef run
-prevent_sudo_timeout
-readonly sudo_loop_PID  # Make PID readonly for security ;-)
+if [[ "$CI" == 'true' ]]; then
+  set +x
+  prevent_ci_log_timeout
+  set -x
+else
+  prevent_sudo_timeout
+fi
+readonly timeout_loop_PID  # Make PID readonly for security ;-)
 
 # Try xcode-select --install first
 if [[ "$TRY_XCI_OSASCRIPT_FIRST" == '1' ]]; then
