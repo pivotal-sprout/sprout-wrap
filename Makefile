@@ -39,8 +39,8 @@ bootstrap: ## Run bootstrap & soloist on this node
 
 # Testing in /tmp first...
 .PHONY: brewfile
-brewfile: $(BREWFILE_PATH)
-$(BREWFILE_PATH): $(SOLOISTRC_PATH) ## Convert soloistrc to Brewfile
+brewfile: $(BREWFILE_PATH) ## Convert soloistrc to Brewfile
+$(BREWFILE_PATH): $(SOLOISTRC_PATH)
 	mkdir -p $(TEMP_PATH)
 	export SOLOISTRC_PATH=$(SOLOISTRC_PATH) BREWFILE_PATH=$(BREWFILE_PATH); \
     bundle exec ruby ./bin/convert_soloistrc_to_brewfile.rb
