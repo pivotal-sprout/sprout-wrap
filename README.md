@@ -25,7 +25,7 @@ Every little bit is appreciated! Thank you! 🙏
 ## Prerequisites
 
 
-## Installation under Mavericks (OS X 10.9)
+## Installation on macOS
 
 ### The Easy Way:
 
@@ -33,24 +33,30 @@ Every little bit is appreciated! Thank you! 🙏
 
 Open a terminal and run:
 
-    \curl -Ls https://git.io/viaJe | bash
+    \curl -Ls https://git.io/Jy0EQ | bash
+
+Alternatively, run:
+
+    git clone https://github.com/LyraPhase/sprout-wrap.git
+    cd sprout-wrap
+    make bootstrap
 
 ### The Semi-Manual Way:
 
-### 1. Install Command Line Tools
+#### 1. Install Command Line Tools
 
 [Download](https://developer.apple.com/support/xcode/) and install XCode or the XCode command line tools.
   
     xcode-select --install
 
-## Installation
+#### Installation
 
 To provision your machine, open up Terminal and enter the following:
 
 ```sh
 sudo xcodebuild -license
 xcode-select --install
-git clone https://github.com/pivotal-sprout/sprout-wrap.git
+git clone https://github.com/LyraPhase/sprout-wrap.git
 cd sprout-wrap
 caffeinate ./sprout
 ```
@@ -93,11 +99,9 @@ If you receive a message about the update server being unavailable and are on Ma
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
 to run a subset of the recipes in sprout's cookbooks.
 
-[Fork it](https://github.com/pivotal-sprout/sprout-wrap/fork) to 
-customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
+[Fork it](https://github.com/LyraPhase/sprout-wrap/fork) to customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
 you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
-of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an OS X 
-Mavericks workstation for Ruby development.
+of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an macOS workstation for development and as a Digital Audio Workstation environment.
 
 Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
 
@@ -105,23 +109,25 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
 
 ### Homebrew
 
+- Homebrew path prefix [has changed](https://github.com/Homebrew/discussions/discussions/417) on Apple Silicon to `/opt/homebrew`.  You may encounter issues after migrating from an Intel Mac unless running under Rosetta `Terminal.app`.  Fresh installs on `arm64` based hardware will use the new location and compile natively for Apple Silicon.
 - Homebrew cask has been [integrated](https://github.com/caskroom/homebrew-cask/pull/15381) with Homebrew proper. If you are experiencing problems installing casks and
   have an older installation of Homebrew, running `brew uninstall --force brew-cask; brew update` should fix things.
-- If you are updating from an older version of sprout-wrap, your homebrew configuration in soloistrc might be under `node_attributes.sprout.homebrew.formulae`
+- If you are updating from an older version of `sprout-wrap`, your homebrew configuration in `soloistrc` might be under `node_attributes.sprout.homebrew.formulae`
   and `node_attributes.sprout.homebrew.casks`. These will need to be updated to `node_attributes.homebrew.formulas` (note the change from formulae to formulas)
   and `node_attributes.homebrew.casks`.
 
 ## Roadmap
 
-See Pivotal Tracker: <https://www.pivotaltracker.com/s/projects/884116>
+See LyraPhase Sprout Project Tracker: <https://github.com/orgs/LyraPhase/projects/1>
 
 ## Discussion List
 
-  Join [sprout-users@googlegroups.com](https://groups.google.com/forum/#!forum/sprout-users) if you use Sprout.
+  Join [LyraPhase/sprout-wrap Discussions](https://github.com/LyraPhase/sprout-wrap/discussions) to discuss this fork.
+  You might also want to join [sprout-users@googlegroups.com](https://groups.google.com/forum/#!forum/sprout-users) if you use Sprout. (**Note:** This may not be very active anymore)
 
 ## References
 
-* Slides from @hiremaga's [lightning talk on Sprout](http://sprout-talk.cfapps.io/) at Pivotal Labs in June 2013
+* Slides from @hiremaga's [lightning talk on Sprout](https://web.archive.org/web/20130925173508/http://sprout-talk.cfapps.io/#1) at Pivotal Labs in June 2013
 * [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
 
 [objc-fork-mojave]: https://blog.phusion.nl/2017/10/13/why-ruby-app-servers-break-on-macos-high-sierra-and-what-can-be-done-about-it/
