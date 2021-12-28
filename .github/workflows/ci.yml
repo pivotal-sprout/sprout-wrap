@@ -56,6 +56,30 @@ jobs:
         run: |
           echo "BREWFILE_PATH=${GITHUB_WORKSPACE}/test/fixtures/tmp/Brewfile.ci" >> $GITHUB_ENV
           echo "HOMEBREW_NO_AUTO_UPDATE=1" >> $GITHUB_ENV
+      - name: Hack to avoid SLOW forced brew update + CI node Cellar migration
+        run: |
+          HOMEBREW_PREFIX=$(brew --prefix)
+          HOMEBREW_REPOSITORY=$(brew --repository)
+          if [[ -d "${HOMEBREW_REPOSITORY}/Cellar" ]]
+          then
+            HOMEBREW_CELLAR="${HOMEBREW_REPOSITORY}/Cellar"
+          else
+            HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
+          fi
+          if [[ "${HOMEBREW_PREFIX}" == "/usr/local" ]] &&
+             [[ "${HOMEBREW_PREFIX}" != "${HOMEBREW_REPOSITORY}" ]] &&
+             [[ "${HOMEBREW_CELLAR}" == "${HOMEBREW_REPOSITORY}/Cellar" ]]
+          then
+            if [[ -d "${HOMEBREW_REPOSITORY}/Cellar" && ! -d "${HOMEBREW_PREFIX}/Cellar" ]]; then
+              mv "${HOMEBREW_REPOSITORY}/Cellar" "${HOMEBREW_PREFIX}/Cellar"
+            elif [[ -d "${HOMEBREW_REPOSITORY}/Cellar" && -d "${HOMEBREW_PREFIX}/Cellar" ]]; then
+              mv "${HOMEBREW_REPOSITORY}/Cellar/*" "${HOMEBREW_PREFIX}/Cellar/"
+            else
+              mkdir -p "${HOMEBREW_PREFIX}/Cellar"
+            fi
+          else
+            mkdir -p "${HOMEBREW_PREFIX}/Cellar"
+          fi
       - name: Debug GitHub Cache Paths BREWFILE_PATH
         run: |
           echo BREWFILE_PATH=$BREWFILE_PATH
