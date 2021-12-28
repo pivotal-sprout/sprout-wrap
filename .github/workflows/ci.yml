@@ -73,11 +73,11 @@ jobs:
             /opt/Homebrew/Library/Taps/**
           key: brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
           restore-keys: brew-
-      - name: Disable checksum offloading
+      - name: Re-enable checksum offloading
         # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
         run: |
-          sudo sysctl -w net.link.generic.system.hwcksum_tx=0
-          sudo sysctl -w net.link.generic.system.hwcksum_rx=0
+          sudo sysctl -w net.link.generic.system.hwcksum_tx=1
+          sudo sysctl -w net.link.generic.system.hwcksum_rx=1
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
           make bootstrap
