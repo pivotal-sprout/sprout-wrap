@@ -280,6 +280,11 @@ else
 
   bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh $USER"
 
+  if ! type rvm 2>/dev/null 1>/dev/null ; then
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+  fi
   # Install .ruby-version @ .ruby-gemset
   rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
