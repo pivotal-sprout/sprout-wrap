@@ -56,10 +56,11 @@ jobs:
       - name: Set BREWFILE_PATH env var
         run: |
           echo "BREWFILE_PATH=${GITHUB_WORKSPACE}/test/fixtures/tmp/Brewfile.ci" >> $GITHUB_ENV
-      - name: Debug GitHub Cache Paths BREWFILE_PATH
+      - name: DEBUG - GitHub Cache Paths BREWFILE_PATH
         run: |
           echo BREWFILE_PATH=$BREWFILE_PATH
           echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
+        if: env.debug_ci == true
       - name: DEBUG - Print all shell env exports
         run: export -p
         if: env.debug_ci == true
