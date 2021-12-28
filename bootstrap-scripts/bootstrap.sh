@@ -295,6 +295,9 @@ elif [[ "$CI" != 'true' ]]; then
   rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
   # [ -x "$(which bundle)" ] || gem install bundler
   gem update --system
+else
+  # Just update bundler in CI
+  gem update --system
 fi
 
 # We need bundler in vendor path too
