@@ -67,6 +67,7 @@ if [[ "$CI" == 'true' ]]; then
 fi
 
 use_system_ruby=0
+SOLOISTRC=${SOLOISTRC:-soloistrc}
 SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
@@ -316,6 +317,15 @@ if ! bundle check 2>&1 >/dev/null; then
   bundle config set --local without 'development' ;
   # --path & --without have deprecation warnings... but for now we'll try them
   bundle install --path vendor/bundle --without development ;
+fi
+
+if [[ -n "$SOLOISTRC" && "$SOLOISTRC" != 'soloistrc' ]]; then
+  echo "INFO: Custom $SOLOISTRC passed: $SOLOISTRC"
+  if [[ -f "$SOLOISTRC" && "$(readlink soloistrc)" != "$SOLOISTRC" ]]; then
+    echo "WARN: default soloistrc file is NOT symlinked to $SOLOISTRC"
+    echo "WARN: Forcing re-link: soloistrc -> $SOLOISTRC"
+    ln -sf "$SOLOISTRC" soloistrc
+  fi
 fi
 
 # Now we provision with chef, et voilá!
