@@ -98,7 +98,7 @@ jobs:
             /usr/local/Homebrew/Library/Taps/**
             /opt/Homebrew/Library/Taps/**
             ./Brewfile.lock.json
-          key: ${{ runner.os }}-${{ runner.arch }}-brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+          key: brew-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
           restore-keys: |
             brew-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
             brew-${{ runner.os }}-${{ runner.arch }}-
