@@ -54,7 +54,7 @@ trap "exit" INT # Run exit when this script receives Ctrl-C
 prevent_ci_log_timeout() {
   echo "INFO: CI run detected via \$CI=$CI env var"
   echo "INFO: Starting log timeout prevention process..."
-  ( while true; do echo '.'; done ) &   # update STDOUT logs
+  ( while true; do echo '.'; sleep 40; done ) &   # update STDOUT logs
   export timeout_loop_PID=$!
 }
 
