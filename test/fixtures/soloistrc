@@ -126,6 +126,7 @@ node_attributes:
       - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
       - jlhonora/lsusb
       - trinitronx/pcloud
+      - trinitronx/bpm
     formulas:
       - bash-completion
       - lua
