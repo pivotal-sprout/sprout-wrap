@@ -29,7 +29,6 @@ recipes:
 
   # development (general)
   - sprout-base::workspace_directory
-  - sprout-git
   - sprout-git::default_editor
 
   # LyraPhase recipes
