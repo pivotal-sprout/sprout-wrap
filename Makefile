@@ -4,6 +4,16 @@ REPO_NAME := sprout-wrap
 REPO := $(REPO_NAME)
 #REV := $(shell TZ=UTC date +'%Y%m%dT%H%M%S')-$(shell git rev-parse --short HEAD)
 
+# If in CI, use soloistrc from ./test/fixtures
+ifeq ($(CI),true)
+  SOLOIST_PREFIX := ./test/fixtures/
+else
+  SOLOIST_PREFIX := ./
+endif
+TEMP_PATH := $(SOLOIST_PREFIX)/tmp/
+BREWFILE_PATH ?= $(TEMP_PATH)Brewfile
+SOLOISTRC_PATH ?= $(SOLOIST_PREFIX)soloistrc
+
 .PHONY: clean librarian-clean librarian-clean-install bootstrap test
 
 include $(SELF_DIR)/main.mk
@@ -29,12 +39,14 @@ bootstrap: ## Run bootstrap & soloist on this node
 
 # Testing in /tmp first...
 .PHONY: brewfile
-brewfile: /tmp/Brewfile
-/tmp/Brewfile: soloistrc ## Convert soloistrc to Brewfile
-	ruby ./bin/convert_soloistrc_to_brewfile.rb
+brewfile: $(BREWFILE_PATH) ## Convert soloistrc to Brewfile
+$(BREWFILE_PATH): $(SOLOISTRC_PATH)
+	mkdir -p $(TEMP_PATH)
+	export SOLOISTRC_PATH=$(SOLOISTRC_PATH) BREWFILE_PATH=$(BREWFILE_PATH); \
+    bundle exec ruby ./bin/convert_soloistrc_to_brewfile.rb
 
 clean:: ## Remove temporary/cache files.
-	rm -rf tmp/librarian/ 
-	rmdir tmp/ || true
-	sudo rm -rf nodes/
-	rm -f cookies
+	[ -d '$(TEMP_PATH)' ] && rm -rf $(TEMP_PATH) || true
+	[ -d 'tmp/librarian/' ] && rm -rf tmp/librarian/ || true
+	[ -d '$(TEMP_PATH)' ] && rmdir $(TEMP_PATH) || true
+	[ -d 'nodes/' ] && sudo rm -rf nodes/ || true
