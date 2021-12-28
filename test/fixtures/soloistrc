@@ -68,6 +68,7 @@ node_attributes:
         - tmux
         - travis
         - vault
+        - vagrant
     custom_plugins:
       sprout-base:
         - bash_it/custom/disable_ctrl-s_output_control.bash

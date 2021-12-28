@@ -69,7 +69,6 @@ node_attributes:
         - osx
         - rvm
         - ssh
-        - vagrant
       aliases:
         - ag
         - bundler
@@ -86,6 +85,7 @@ node_attributes:
         - rake
         - ssh
         - tmux
+        - vagrant
     custom_plugins:
       sprout-base:
         - bash_it/custom/disable_ctrl-s_output_control.bash
