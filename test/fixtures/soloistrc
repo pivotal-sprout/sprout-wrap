@@ -6,7 +6,9 @@ recipes:
   - sprout-base::var_chef_cache
   - sprout-ssh::known_hosts_github
   - sprout-ssh::dot_ssh_config_github
-  - sprout-git::global_config
+  ## Slowing down CI b/c includes:
+  ##   sprout-git::install -> homebrew -> brew update = SLOW!
+  # - sprout-git::global_config
   - lyraphase_workstation::root_bootstrap_ssh_config
   - lyraphase_workstation::user_default_shell
   - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
