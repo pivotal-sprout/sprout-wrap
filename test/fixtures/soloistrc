@@ -128,24 +128,16 @@ node_attributes:
       - trinitronx/pcloud
     formulas:
       - bash-completion
-      - ag
       - lua
       - ssh-copy-id
       - reattach-to-user-namespace
-      - wget
       - mediainfo
       - sleepwatcher
-      - wakeonlan
       - mtr
-      - jq
       # Intel Edison / IoT tools
-      - dfu-util
-      - coreutils
       - lsusb
     casks:
-      - cord
-      - xquartz
-      - pcloud-drive
+      - bpm
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
