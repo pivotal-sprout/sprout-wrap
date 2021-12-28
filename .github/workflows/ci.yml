@@ -53,16 +53,16 @@ jobs:
           bundler-cache: true
           cache-version: 1
       - name: Set BREWFILE_PATH env var
-        run: echo "BREWFILE_PATH=${RUNNER_TEMP}/Brewfile" >> $GITHUB_ENV
+        run: |
+          echo "BREWFILE_PATH=${GITHUB_WORKSPACE}/test/fixtures/tmp/Brewfile.ci" >> $GITHUB_ENV
       - name: Debug GitHub Cache Paths BREWFILE_PATH
         run: |
           echo BREWFILE_PATH=$BREWFILE_PATH
           echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
-      - name: Generate Brewfile from soloistrc
-        run: |
-          pushd test/fixtures/
-          bundle exec ../../bin/convert_soloistrc_to_brewfile.rb
-          popd
+      - name: DEBUG - Print all shell env exports
+        run: export -p
+      - name: Generate Brewfile from soloistrc test fixture
+        run: make brewfile
       - name: Configure Homebrew cache
         uses: actions/cache@v2
         with:
