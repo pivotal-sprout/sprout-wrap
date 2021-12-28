@@ -121,8 +121,9 @@ node_attributes:
         gpg.program: gpg
         merge.tool: meld
   homebrew:
+    enable-analytics: false
+    auto-update: false
     taps:
-      - homebrew/cask-drivers
       - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
       - jlhonora/lsusb
       - trinitronx/pcloud
@@ -131,10 +132,8 @@ node_attributes:
       - bash-completion
       - lua
       - ssh-copy-id
-      - reattach-to-user-namespace
       - mediainfo
       - sleepwatcher
-      - mtr
       # Intel Edison / IoT tools
       - lsusb
     casks:
