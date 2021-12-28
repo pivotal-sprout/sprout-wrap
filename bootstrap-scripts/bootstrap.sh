@@ -270,7 +270,7 @@ if [[ $use_system_ruby == "1" ]]; then
   [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
   $USE_SUDO gem update -n /usr/local/bin --system
 
-else
+elif [[ "$CI" != 'true' ]]; then
   USE_SUDO=''
   export rvm_user_install_flag=1
   export rvm_prefix="$HOME"
@@ -283,12 +283,12 @@ else
   if ! type rvm 2>/dev/null 1>/dev/null ; then
     # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
     export PATH="$PATH:$HOME/.rvm/bin"
-    [[ "$CI" == 'true' ]] && set +x
+    set +x
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-    [[ "$CI" == 'true' ]] && set -x
+    set -x
   fi
   # Install .ruby-version @ .ruby-gemset
-  [[ "$CI" == 'true' ]] && set +x
+  set +x
   rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
@@ -296,7 +296,7 @@ else
 
   # Install bundler in RVM path
   rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
-  [[ "$CI" == 'true' ]] && set -x
+  set -x
   # [ -x "$(which bundle)" ] || gem install bundler
   gem update --system
 fi
