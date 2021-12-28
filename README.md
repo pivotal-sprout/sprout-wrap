@@ -25,7 +25,7 @@ Every little bit is appreciated! Thank you! 🙏
 ## Prerequisites
 
 
-## Installation under Mavericks (OS X 10.9)
+## Installation on macOS
 
 ### The Easy Way:
 
