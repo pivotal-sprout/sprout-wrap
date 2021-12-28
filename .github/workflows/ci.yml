@@ -69,10 +69,15 @@ jobs:
           path: |
             ~/Library/Caches/Homebrew/*--*
             ~/Library/Caches/Homebrew/downloads/*--*
+            ~/Library/Caches/Homebrew/Cask/*--*
             /usr/local/Homebrew/Library/Taps/**
             /opt/Homebrew/Library/Taps/**
-          key: brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
-          restore-keys: brew-
+            ./Brewfile.lock.json
+          key: ${{ runner.os }}-${{ runner.arch }}-brew-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+          restore-keys:
+            - brew-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles( env.BREWFILE_PATH, '**/Brewfile.lock.json') }}
+            - brew-${{ runner.os }}-${{ runner.arch }}-
+            - brew-${{ runner.os }}-
       - name: Re-enable checksum offloading
         # See: https://github.com/actions/virtual-environments/issues/1187#issuecomment-696195756
         run: |
