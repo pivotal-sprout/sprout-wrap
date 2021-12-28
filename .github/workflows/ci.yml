@@ -12,7 +12,8 @@ name: ci
       - master
       - main
       - develop
-
+env:
+  debug_ci: ${{ false }}
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -61,10 +62,12 @@ jobs:
           echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
       - name: DEBUG - Print all shell env exports
         run: export -p
+        if: ${{ env.debug_ci }}
       - name: DEBUG - List workspace and Homebrew contents
         run: |
-          ls -l ${GITHUB_WORKSPACE}
+          ls -lR ${GITHUB_WORKSPACE}
           ls -lR /usr/local/Homebrew
+        if: ${{ env.debug_ci }}
       - name: Generate Brewfile from soloistrc test fixture
         run: make brewfile
       - name: Configure Homebrew cache
