@@ -58,6 +58,74 @@ prevent_ci_log_timeout() {
   export timeout_loop_PID=$!
 }
 
+function check_trace_state() {
+  if shopt -op 2>&1 | grep -q xtrace; then
+    trace_was_on=1
+  else
+    trace_was_on=0
+  fi
+}
+
+function turn_trace_on_if_was_on() {
+  [ "$trace_was_on" -eq 1 ] && set -x ## Turn trace back on
+}
+
+function turn_trace_off() {
+  set +x ## RVM trace is NOISY!
+}
+
+function check_sprout_locked_ruby_versions() {
+  # Check locked versions
+  sprout_ruby_version=$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  sprout_ruby_gemset=$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
+}
+
+function rvm_install_ruby_and_gemset() {
+  check_sprout_locked_ruby_versions
+
+  rvm install ruby-${sprout_ruby_version}
+  rvm use ruby-${sprout_ruby_version}
+  rvm gemset create $sprout_ruby_gemset
+  rvm use ruby-${sprout_ruby_version}@${sprout_ruby_gemset}
+}
+
+function rvm_install_bundler() {
+  check_sprout_locked_ruby_versions
+
+  # Install bundler in RVM path
+  echo rvm ${sprout_ruby_version} do gem update --system
+  rvm ${sprout_ruby_version} do gem update --system
+  echo rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
+  rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
+
+  # Install same version of bundler as Gemfile.lock
+  #BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '\s+')
+  #if ! rvm ${sprout_ruby_version} do gem list  2>&1 | grep -q "bundler.*${BUNDLER_VER}"; then
+  #   [ "$trace_was_on" -eq 1 ] && set +x ## Turn trace back off
+  #   rvm ${sprout_ruby_version} do gem install "bundler:${BUNDLER_VER}"
+  #   [ "$trace_was_on" -eq 1 ] && set -x ## Turn trace back on
+  #fi
+  # [ -x "$(which bundle)" ] || gem install bundler
+  # gem update --system
+
+}
+
+function rvm_debug_gems() {
+  if [ "$trace_was_on" -eq 1 ]; then
+    echo "======= DEBUG ============"
+    type rvm | head -1
+    which ruby
+    which bundler
+    rvm info
+    echo "GEMS IN SHELL ENV:"
+    gem list
+    echo "GEMS IN ${sprout_ruby_version}@${sprout_ruby_gemset}:"
+    rvm ${sprout_ruby_version}@${sprout_ruby_gemset} do gem list
+    echo "======= DEBUG ============"
+  fi
+}
+
 # CI setup
 if [[ "$CI" == 'true' ]]; then
   PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
@@ -240,8 +308,7 @@ fi
 
 # Non-Chef Homebrew install
 brew --version
-[ ! -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
-[ "$?" -eq 0 ] || errorout 'Homebrew failed to install. This is NOT a problem inside sprout-wrap. Aborting soloist bootstrap!'
+[ -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
 
 if [ "$machine" == "arm64" ]; then
   export PATH="/opt/homebrew/bin:${PATH}"
@@ -249,13 +316,13 @@ else
   export PATH="/usr/local/homebrew/bin:${PATH}"
 fi
 
-rvm --version 2>/dev/null
-[ -x "$(which gem)" -a "$?" -eq 0 ] && USE_SUDO='' || USE_SUDO='sudo'
 
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
 
 if [[ $use_system_ruby == "1" ]]; then
+  # We should never get here unless script has been edited by hand
+  # User probably knows what they're doing but warn anyway
   echo "WARN: Using macOS system Ruby is not recommended!" >&2
   echo "WARN: Updating system bundler gem will modify stock macOS system files!" >&2
   if [[ "$override_use_system_ruby_prompt" != '1' ]]; then
@@ -282,32 +349,35 @@ elif [[ "$CI" != 'true' ]]; then
 
   bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh $USER"
 
-  if ! type rvm 2>/dev/null 1>/dev/null ; then
+  # RVM trace is NOISY!
+  check_trace_state
+  turn_trace_off
+
+  if ! type rvm 2>&1 | grep -q 'rvm is a function' ; then
     # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
     export PATH="$PATH:$HOME/.rvm/bin"
+
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
   fi
-  # Install .ruby-version @ .ruby-gemset
-  rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
-  [ "$?" -eq 0 ] || errorout "RVM failed to install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') ... Aborting soloist bootstrap!"
-  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
-  rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
-  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')@$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
 
-  # Install bundler in RVM path
-  rvm $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') do gem install bundler
-  [ "$?" -eq 0 ] || errorout "RVM failed to install bundler gem for ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') ... Aborting soloist bootstrap!"
-  # [ -x "$(which bundle)" ] || gem install bundler
-  gem update --system
+  # Install .ruby-version @ .ruby-gemset
+  rvm_install_ruby_and_gemset
+
+  rvm_install_bundler
+
+  rvm_debug_gems
+
+  turn_trace_on_if_was_on
+
 else
   # Just update bundler in CI
   gem update --system
 fi
 
 # We need bundler in vendor path too
-BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
-if ! bundle list | grep -q "bundler.*${BUNDLER_VER}"; then
-  bundle exec gem install "bundler:${BUNDLER_VER}"
+check_sprout_locked_ruby_versions
+if ! bundle list | grep -q "bundler.*${sprout_bundler_ver}"; then
+  bundle exec gem install --default "bundler:${sprout_bundler_ver}"
 fi
 
 
