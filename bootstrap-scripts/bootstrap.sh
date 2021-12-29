@@ -132,6 +132,11 @@ function rvm_debug_gems() {
   fi
 }
 
+if [[ "$SOLOIST_DEBUG" == 'true' ]]; then
+  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
+  set -x
+fi
+
 # CI setup
 if [[ "$CI" == 'true' ]]; then
   PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
