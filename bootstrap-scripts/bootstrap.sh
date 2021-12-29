@@ -397,6 +397,7 @@ fi
 # Node, it's time you grew up to who you want to be
 caffeinate -dimsu bundle exec soloist || errorout "Soloist provisioning failed!"
 
+turn_trace_off ## RVM noisy on builtin: popd
 popd; popd
 
 exit
