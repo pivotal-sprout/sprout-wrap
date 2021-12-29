@@ -231,11 +231,10 @@ node_attributes:
       - travis
       - mosh
       - parallel
-      - macvim
+      # - macvim ## Broken compile w/RVM installed
       - wemux
       - awscli
       - s3cmd
-      - ack
       - gettext
       - mediainfo
       - sleepwatcher
