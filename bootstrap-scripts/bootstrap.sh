@@ -395,7 +395,7 @@ fi
 
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
-bundle exec soloist || errorout "Soloist provisioning failed!"
+caffeinate -dimsu bundle exec soloist || errorout "Soloist provisioning failed!"
 
 popd; popd
 
