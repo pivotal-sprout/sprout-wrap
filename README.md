@@ -116,6 +116,34 @@ Finally, if you've never used Chef before - we highly recommend you buy &amp; wa
   and `node_attributes.sprout.homebrew.casks`. These will need to be updated to `node_attributes.homebrew.formulas` (note the change from formulae to formulas)
   and `node_attributes.homebrew.casks`.
 
+## Development Tips & Tricks
+
+Some helpful commands and tricks to know when working on this repo:
+
+1. To run `bootstrap.sh` with a custom `soloistrc`:
+
+        export SOLOISTRC='soloistrc.lyra'
+
+2. To test `bootstrap.sh` `curl` piped to `bash` mode on a development branch (with `set -x` trace mode):
+
+        export SPROUT_WRAP_BRANCH=my-feature-branch
+        export SOLOISTRC=soloistrc.my-feature-test
+        \curl -Ls https://raw.githubusercontent.com/LyraPhase/sprout-wrap/${SPROUT_WRAP_BRANCH}/bootstrap-scripts/bootstrap.sh | bash -x
+
+3. To replicate what `bootstrap` CI workflow does:
+
+        export CI=true
+        # Ensure you have same Ruby + RubyGems + Bundler versions
+        bundle install
+        bundle exec make bootstrap
+
+4. To replicate what `test` CI workflow does:
+
+        export CI=true
+        # Ensure you have same Ruby + RubyGems + Bundler versions
+        bundle install
+        bundle exec make test
+
 ## Roadmap
 
 See LyraPhase Sprout Project Tracker: <https://github.com/orgs/LyraPhase/projects/1>
