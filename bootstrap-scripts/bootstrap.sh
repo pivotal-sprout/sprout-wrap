@@ -78,6 +78,7 @@ function check_sprout_locked_ruby_versions() {
   # Check locked versions
   sprout_ruby_version=$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
   sprout_ruby_gemset=$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  sprout_rubygems_ver=$(cat "${REPO_BASE}/.rubygems-version" | tr -d '\n') ## Passed to gem update --system
   sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
 }
 
@@ -90,12 +91,24 @@ function rvm_install_ruby_and_gemset() {
   rvm use ruby-${sprout_ruby_version}@${sprout_ruby_gemset}
 }
 
+## TODO: Hope we never need to do this... but save in git history for now
+#function rvm_uninstall_other_bundler() {
+#  check_sprout_locked_ruby_versions
+#  # Find all other bundler versions we don't want
+#  rvm_bundler_versions=$(rvm 2.6.3 do gem list | grep '^bundler[[:space:]]')
+#  ## TODO: Figure out this pseudocode
+#  echo -n $rvm_bundler_versions | sed -e 's/default://g' -e 's/bundler//g' -e "s/2.2.33//g" | tr -d '[(, )\n]'
+#  for each of these ; do
+#    rvm ${sprout_ruby_version} do gem uninstall bundler --version ${other_ver} -x
+#  done
+#}
+
 function rvm_install_bundler() {
   check_sprout_locked_ruby_versions
 
   # Install bundler in RVM path
-  echo rvm ${sprout_ruby_version} do gem update --system
-  rvm ${sprout_ruby_version} do gem update --system
+  echo rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
+  rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
   echo rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
   rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
 
