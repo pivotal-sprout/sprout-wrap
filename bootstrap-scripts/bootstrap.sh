@@ -134,7 +134,14 @@ SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
 SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
-REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+
+if [[ "${BASH_SOURCE[0]}" != '' ]]; then
+  # Running from checked out script
+  REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+else
+  # Running via curl | bash (piped)
+  REPO_BASE=${SOLOIST_DIR}/sprout-wrap
+fi
 
 detect_platform_version
 
