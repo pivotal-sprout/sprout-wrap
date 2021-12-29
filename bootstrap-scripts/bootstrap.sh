@@ -67,7 +67,7 @@ function check_trace_state() {
 }
 
 function turn_trace_on_if_was_on() {
-  [ "$trace_was_on" -eq 1 ] && set -x ## Turn trace back on
+  [ $trace_was_on -eq 1 ] && set -x ## Turn trace back on
 }
 
 function turn_trace_off() {
