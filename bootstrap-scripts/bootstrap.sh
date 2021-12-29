@@ -66,6 +66,11 @@ function check_trace_state() {
   fi
 }
 
+function init_trace_on() {
+  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
+  set -x
+}
+
 function turn_trace_on_if_was_on() {
   [ $trace_was_on -eq 1 ] && set -x ## Turn trace back on
 }
@@ -133,14 +138,12 @@ function rvm_debug_gems() {
 }
 
 if [[ "$SOLOIST_DEBUG" == 'true' ]]; then
-  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
-  set -x
+  init_trace_on
 fi
 
 # CI setup
 if [[ "$CI" == 'true' ]]; then
-  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
-  set -x
+  init_trace_on
   SOLOIST_DIR="${GITHUB_WORKSPACE}/.."
   SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
 fi
