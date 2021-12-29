@@ -2,6 +2,7 @@
 recipes:
 
   # base (required by sprout)
+  - lyraphase_workstation::root_bootstrap_ssh_config
   - sprout-base
   - sprout-base::bash_it
   - sprout-base::var_chef_cache
@@ -13,7 +14,6 @@ recipes:
   - sprout-ssh::known_hosts_github
   - sprout-ssh::dot_ssh_config_github
   - sprout-git::global_config
-  - lyraphase_workstation::root_bootstrap_ssh_config
   - lyraphase_workstation::user_default_shell
   - lyraphase_workstation::homebrew_sudoers  # Workaround for chef-cookbooks/homebrew#105
   - homebrew
@@ -231,11 +231,10 @@ node_attributes:
       - travis
       - mosh
       - parallel
-      - macvim
+      # - macvim ## Broken compile w/RVM installed
       - wemux
       - awscli
       - s3cmd
-      - ack
       - gettext
       - mediainfo
       - sleepwatcher
