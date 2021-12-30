@@ -66,6 +66,11 @@ function check_trace_state() {
   fi
 }
 
+function init_trace_on() {
+  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
+  set -x
+}
+
 function turn_trace_on_if_was_on() {
   [ $trace_was_on -eq 1 ] && set -x ## Turn trace back on
 }
@@ -82,8 +87,22 @@ function check_sprout_locked_ruby_versions() {
   sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
 }
 
+function rvm_set_compile_opts() {
+  turn_trace_on_if_was_on
+  if [[ "$RVM_COMPILE_OPTS_M1_LIBFFI" == "1" ]]; then
+    export optflags="-Wno-error=implicit-function-declaration"
+    export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+    export DLDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+  fi
+  turn_trace_off
+}
+
 function rvm_install_ruby_and_gemset() {
   check_sprout_locked_ruby_versions
+
+  rvm_set_compile_opts
 
   rvm install ruby-${sprout_ruby_version}
   rvm use ruby-${sprout_ruby_version}
@@ -118,10 +137,13 @@ function rvm_debug_gems() {
   fi
 }
 
+if [[ "$SOLOIST_DEBUG" == 'true' ]]; then
+  init_trace_on
+fi
+
 # CI setup
 if [[ "$CI" == 'true' ]]; then
-  PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
-  set -x
+  init_trace_on
   SOLOIST_DIR="${GITHUB_WORKSPACE}/.."
   SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
 fi
@@ -148,7 +170,8 @@ detect_platform_version
 # Determine which XCode version to use based on platform version
 # https://developer.apple.com/downloads/index.action
 case $platform_version in
-  12.0*)  XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  12.0*|12.1*)
+          XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; BREW_INSTALL_LIBFFI=1; RVM_COMPILE_OPTS_M1_LIBFFI=1 ;;
   11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
@@ -283,6 +306,10 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
 
     sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg  -target /
   fi
+fi
+
+if [[ "$BREW_INSTALL_LIBFFI" == "1" ]]; then
+  echo "brew 'libffi'" >> Brewfile
 fi
 
 if [[ "$CI" == 'true' ]]; then
