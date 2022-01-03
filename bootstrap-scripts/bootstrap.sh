@@ -58,29 +58,120 @@ prevent_ci_log_timeout() {
   export timeout_loop_PID=$!
 }
 
-# CI setup
-if [[ "$CI" == 'true' ]]; then
+function check_trace_state() {
+  if shopt -op 2>&1 | grep -q xtrace; then
+    trace_was_on=1
+  else
+    trace_was_on=0
+  fi
+}
+
+function init_trace_on() {
   PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }' ## Debugging prompt (for bash -x || set -x)
   set -x
+}
+
+function turn_trace_on_if_was_on() {
+  [ $trace_was_on -eq 1 ] && set -x ## Turn trace back on
+}
+
+function turn_trace_off() {
+  set +x ## RVM trace is NOISY!
+}
+
+function check_sprout_locked_ruby_versions() {
+  # Check locked versions
+  sprout_ruby_version=$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
+  sprout_ruby_gemset=$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  sprout_rubygems_ver=$(cat "${REPO_BASE}/.rubygems-version" | tr -d '\n') ## Passed to gem update --system
+  sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
+}
+
+function rvm_set_compile_opts() {
+  turn_trace_on_if_was_on
+  if [[ "$RVM_COMPILE_OPTS_M1_LIBFFI" == "1" ]]; then
+    export optflags="-Wno-error=implicit-function-declaration"
+    export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+    export DLDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+  fi
+  turn_trace_off
+}
+
+function rvm_install_ruby_and_gemset() {
+  check_sprout_locked_ruby_versions
+
+  rvm_set_compile_opts
+
+  rvm install ruby-${sprout_ruby_version}
+  rvm use ruby-${sprout_ruby_version}
+  rvm gemset create $sprout_ruby_gemset
+  rvm use ruby-${sprout_ruby_version}@${sprout_ruby_gemset}
+}
+
+function rvm_install_bundler() {
+  check_sprout_locked_ruby_versions
+
+  # Install bundler + rubygems in RVM path
+  echo rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
+  rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
+
+  # Install same version of bundler as Gemfile.lock
+  echo rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
+  rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
+}
+
+function rvm_debug_gems() {
+  if [ "$trace_was_on" -eq 1 ]; then
+    echo "======= DEBUG ============"
+    type rvm | head -1
+    which ruby
+    which bundler
+    rvm info
+    echo "GEMS IN SHELL ENV:"
+    gem list
+    echo "GEMS IN ${sprout_ruby_version}@${sprout_ruby_gemset}:"
+    rvm ${sprout_ruby_version}@${sprout_ruby_gemset} do gem list
+    echo "======= DEBUG ============"
+  fi
+}
+
+if [[ "$SOLOIST_DEBUG" == 'true' ]]; then
+  init_trace_on
+fi
+
+# CI setup
+if [[ "$CI" == 'true' ]]; then
+  init_trace_on
   SOLOIST_DIR="${GITHUB_WORKSPACE}/.."
   SPROUT_WRAP_BRANCH="$GITHUB_REF_NAME"
 fi
 
 use_system_ruby=0
+SOLOISTRC=${SOLOISTRC:-soloistrc}
 SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 #XCODE_DMG='XCode-4.6.3-4H1503.dmg'
 SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
 SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
 USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
-REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+
+if [[ "${BASH_SOURCE[0]}" != '' ]]; then
+  # Running from checked out script
+  REPO_BASE=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+else
+  # Running via curl | bash (piped)
+  REPO_BASE=${SOLOIST_DIR}/sprout-wrap
+fi
 
 detect_platform_version
 
 # Determine which XCode version to use based on platform version
 # https://developer.apple.com/downloads/index.action
 case $platform_version in
-  12.0*)  XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
+  12.0*|12.1*)
+          XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; BREW_INSTALL_LIBFFI=1; RVM_COMPILE_OPTS_M1_LIBFFI=1 ;;
   11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
@@ -217,6 +308,10 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   fi
 fi
 
+if [[ "$BREW_INSTALL_LIBFFI" == "1" ]]; then
+  echo "brew 'libffi'" >> Brewfile
+fi
+
 if [[ "$CI" == 'true' ]]; then
   echo "INFO: CI run detected via \$CI=$CI env var"
   echo "INFO: NOT checking out git repo"
@@ -238,8 +333,11 @@ else
 fi
 
 # Non-Chef Homebrew install
+check_trace_state
+turn_trace_off
 brew --version
-[ ! -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+[ -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+turn_trace_on_if_was_on
 
 if [ "$machine" == "arm64" ]; then
   export PATH="/opt/homebrew/bin:${PATH}"
@@ -247,13 +345,13 @@ else
   export PATH="/usr/local/homebrew/bin:${PATH}"
 fi
 
-rvm --version 2>/dev/null
-[ -x "$(which gem)" -a "$?" -eq 0 ] && USE_SUDO='' || USE_SUDO='sudo'
 
 # Install Chef Workstation SDK via Brewfile
 [ -x "$(which brew)" ] && brew bundle install
 
 if [[ $use_system_ruby == "1" ]]; then
+  # We should never get here unless script has been edited by hand
+  # User probably knows what they're doing but warn anyway
   echo "WARN: Using macOS system Ruby is not recommended!" >&2
   echo "WARN: Updating system bundler gem will modify stock macOS system files!" >&2
   if [[ "$override_use_system_ruby_prompt" != '1' ]]; then
@@ -270,7 +368,7 @@ if [[ $use_system_ruby == "1" ]]; then
   [ -x "/usr/local/bin/bundle" ] || $USE_SUDO gem install -n /usr/local/bin bundler
   $USE_SUDO gem update -n /usr/local/bin --system
 
-else
+elif [[ "$CI" != 'true' ]]; then
   USE_SUDO=''
   export rvm_user_install_flag=1
   export rvm_prefix="$HOME"
@@ -280,22 +378,35 @@ else
 
   bash -c "${REPO_BASE}/bootstrap-scripts/bootstrap-rvm.sh $USER"
 
-  # Install .ruby-version @ .ruby-gemset
-  rvm install ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
-  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
-  rvm gemset create $(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
-  rvm use ruby-$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')@$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
+  # RVM trace is NOISY!
+  check_trace_state
+  turn_trace_off
 
-  # Install bundler in RVM path
-  rvm do $(cat "${REPO_BASE}/.ruby-version" | tr -d '\n') gem install bundler
-  # [ -x "$(which bundle)" ] || gem install bundler
+  if ! type rvm 2>&1 | grep -q 'rvm is a function' ; then
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+  fi
+
+  # Install .ruby-version @ .ruby-gemset
+  rvm_install_ruby_and_gemset
+
+  rvm_install_bundler
+
+  rvm_debug_gems
+
+  turn_trace_on_if_was_on
+
+else
+  # Just update bundler in CI
   gem update --system
 fi
 
 # We need bundler in vendor path too
-BUNDLER_VER=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)
-if ! bundle list | grep -q "bundler.*${BUNDLER_VER}"; then
-  bundle exec gem install "bundler:${BUNDLER_VER}"
+check_sprout_locked_ruby_versions
+if ! bundle list | grep -q "bundler.*${sprout_bundler_ver}"; then
+  bundle exec gem install --default "bundler:${sprout_bundler_ver}"
 fi
 
 
@@ -310,10 +421,20 @@ if ! bundle check 2>&1 >/dev/null; then
   bundle install --path vendor/bundle --without development ;
 fi
 
+if [[ -n "$SOLOISTRC" && "$SOLOISTRC" != 'soloistrc' ]]; then
+  echo "INFO: Custom $SOLOISTRC passed: $SOLOISTRC"
+  if [[ -f "$SOLOISTRC" && "$(readlink soloistrc)" != "$SOLOISTRC" ]]; then
+    echo "WARN: default soloistrc file is NOT symlinked to $SOLOISTRC"
+    echo "WARN: Forcing re-link: soloistrc -> $SOLOISTRC"
+    ln -sf "$SOLOISTRC" soloistrc
+  fi
+fi
+
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
-bundle exec soloist || errorout "Soloist provisioning failed!"
+caffeinate -dimsu bundle exec soloist || errorout "Soloist provisioning failed!"
 
+turn_trace_off ## RVM noisy on builtin: popd
 popd; popd
 
 exit

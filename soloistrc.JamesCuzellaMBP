@@ -285,8 +285,8 @@ node_attributes:
       - docker
       # - docker-edge
       - vagrant
-      - virtualbox
-      - virtualbox-extension-pack
+      # - virtualbox ## arm64 not supported
+      # - virtualbox-extension-pack
       - vmware-fusion
       - wireshark
       - xquartz
