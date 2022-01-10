@@ -445,6 +445,8 @@ if [[ -n "$SOLOISTRC" && "$SOLOISTRC" != 'soloistrc' ]]; then
   fi
 fi
 
+# Auto-accept Chef license for non-interactive automation
+export CHEF_LICENSE=accept
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
 caffeinate -dimsu bundle exec soloist || errorout "Soloist provisioning failed!"
