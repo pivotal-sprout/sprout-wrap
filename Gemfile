@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'soloist', require: false
+gem 'soloist', require: false,
+  git: 'https://github.com/trinitronx/soloist.git',
+  branch: 'develop'
 
 # >= 1.15.2 supports macOS 12.0 / Xcode 13.2
 #  ffi clang M1 compile

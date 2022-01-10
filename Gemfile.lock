@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/trinitronx/soloist.git
+  revision: 535584a4e375905bb97afbc482b15ca86d3b23f7
+  branch: develop
+  specs:
+    soloist (2.0.0alpha)
+      chef
+      chef-bin
+      chef-zero
+      librarian-chef
+      thor
+
 GEM
   remote: https://rubygems.org/
   specs:
