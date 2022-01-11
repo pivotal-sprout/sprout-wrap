@@ -429,7 +429,7 @@ fi
 echo "WARN: Please set up github SSH / HTTPS credentials for Chef Homebrew recipes to work!"
 
 # Bundle install soloist + gems
-if ! bundle check 2>&1 >/dev/null; then
+if ! bundle check >/dev/null 2>&1; then
   bundle config set --local path 'vendor/bundle' ;
   bundle config set --local without 'development' ;
   # --path & --without have deprecation warnings... but for now we'll try them
