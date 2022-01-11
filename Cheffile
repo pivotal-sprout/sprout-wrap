@@ -49,7 +49,7 @@ cookbook 'lyraphase_workstation', '~> 3.2',
 # :ref => 'develop'
 
 ## Broken dependency on sprout-homebrew
-## Deprecated by sprout-jetbrains-editors::rubymine 
+## Deprecated by sprout-jetbrains-editors::rubymine
 # cookbook 'sprout-rubymine',
 #   :github => 'trinitronx/sprout-rubymine'
 

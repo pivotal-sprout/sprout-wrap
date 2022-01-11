@@ -18,7 +18,7 @@ function detect_platform_version() {
   platform_version=$(sw_vers | awk '/^ProductVersion:/ { print $2 }')
 
   major_version=$(echo $platform_version | cut -d. -f1,2)
-  
+
   # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
   # macOS Monterey + Apple M1 Silicon (arm64) gives empty string for this x86_64 check
   x86_64=$(sysctl -n hw.optional.x86_64)
@@ -218,7 +218,7 @@ if [ ! -d "/Applications/Xcode.app" ]; then
       curl --fail --user-agent "$USER_AGENT" -L -O "http://lyraphase.com/doc/installers/mac/${XCODE_DMG}" || curl --fail -L -O "http://adcdownload.apple.com/Developer_Tools/${XCODE_DMG%%.dmg}/${XCODE_DMG}"
     fi
   fi
-    
+
   # Why does Apple have to make everything more difficult?
   if [[ "$XCODE_DMG" =~ ^.*\.xip$ ]]; then
     pkgutil --check-signature $XCODE_DMG

@@ -12,7 +12,7 @@ end
 
 
 royal_crown = Soloist::RoyalCrown.new(:path => 'soloistrc')
-# For some reason, the init method does not actually initialize the object... 
+# For some reason, the init method does not actually initialize the object...
 # we must reload it after path is set.
 royal_crown =  royal_crown.reload
 config = Soloist::Config.new( royal_crown )

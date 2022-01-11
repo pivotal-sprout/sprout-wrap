@@ -10,10 +10,10 @@ class SoloistrcToBrewfile < ERB
    brewfile_erb_template = <<-EOBREWFILE
   <% for @tap in @taps do %>tap '<%= @tap.split(' ').join("', '") %>'
   <% end  %>
-  
+
   <% for  @formula in @formulas %>brew '<%= @formula %>'
   <% end  %>
-  
+
   <% for  @cask in @casks %>cask '<%= @cask %>'
   <% end  %>
 EOBREWFILE

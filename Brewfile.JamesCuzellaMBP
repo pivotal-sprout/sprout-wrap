@@ -2,8 +2,8 @@
   tap 'insomniacslk/dublin-traceroute', 'https://github.com/insomniacslk/dublin-traceroute'
   tap 'jlhonora/lsusb'
   tap 'trinitronx/pcloud'
-  
-  
+
+
   brew 'bash-completion'
   brew 'ctags-exuberant'
   brew 'ag'
@@ -73,8 +73,8 @@
   brew 'dfu-util'
   brew 'coreutils'
   brew 'lsusb'
-  
-  
+
+
   cask 'cord'
   cask 'firefox'
   cask 'github'
@@ -109,4 +109,4 @@
   cask 'visual-studio-code'
   cask 'meld'
   cask 'balenaetcher'
-  
+

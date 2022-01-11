@@ -337,8 +337,8 @@ node_attributes:
 #        registration_key:
 #    airfoil:
 #      license:
-#        code: 
-#        name: 
+#        code:
+#        name:
   lyraphase_workstation:
     ableton_live:
       managed_versions: all
