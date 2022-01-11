@@ -17,7 +17,7 @@ function detect_platform_version() {
   # Matching the tab-space with sed is error-prone
   platform_version=$(sw_vers | awk '/^ProductVersion:/ { print $2 }')
 
-  major_version=$(echo $platform_version | cut -d. -f1,2)
+  major_version=$(echo "$platform_version" | cut -d. -f1,2)
 
   # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
   # macOS Monterey + Apple M1 Silicon (arm64) gives empty string for this x86_64 check
@@ -120,22 +120,22 @@ function rvm_install_ruby_and_gemset() {
 
   rvm_set_compile_opts
 
-  rvm install ruby-${sprout_ruby_version}
-  rvm use ruby-${sprout_ruby_version}
-  rvm gemset create $sprout_ruby_gemset
-  rvm use ruby-${sprout_ruby_version}@${sprout_ruby_gemset}
+  rvm install "ruby-${sprout_ruby_version}"
+  rvm use "ruby-${sprout_ruby_version}"
+  rvm gemset create "$sprout_ruby_gemset"
+  rvm use "ruby-${sprout_ruby_version}"@"${sprout_ruby_gemset}"
 }
 
 function rvm_install_bundler() {
   check_sprout_locked_ruby_versions
 
   # Install bundler + rubygems in RVM path
-  echo rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
-  rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}
+  echo rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
+  rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
 
   # Install same version of bundler as Gemfile.lock
-  echo rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
-  rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}
+  echo rvm "${sprout_ruby_version}" do gem install --default bundler:"${sprout_bundler_ver}"
+  rvm "${sprout_ruby_version}" do gem install --default "bundler:${sprout_bundler_ver}"
 }
 
 function rvm_debug_gems() {
@@ -148,7 +148,7 @@ function rvm_debug_gems() {
     echo "GEMS IN SHELL ENV:"
     gem list
     echo "GEMS IN ${sprout_ruby_version}@${sprout_ruby_gemset}:"
-    rvm ${sprout_ruby_version}@${sprout_ruby_gemset} do gem list
+    rvm "${sprout_ruby_version}"@"${sprout_ruby_gemset}" do gem list
     echo "======= DEBUG ============"
   fi
 }
@@ -228,8 +228,8 @@ if [ ! -d "/Applications/Xcode.app" ]; then
       xip -x "${REPO_BASE}/${XCODE_DMG}"
       sudo mv ./Xcode.app /Applications/
     else
-      xar -C ${TMP_DIR}/ -xf $XCODE_DMG
-      pushd $TMP_DIR
+      xar -C "${TMP_DIR}/" -xf "$XCODE_DMG"
+      pushd "$TMP_DIR"
       curl -O https://gist.githubusercontent.com/pudquick/ff412bcb29c9c1fa4b8d/raw/24b25538ea8df8d0634a2a6189aa581ccc6a5b4b/parse_pbzx2.py
       python parse_pbzx2.py Content
       xz -d Content.part*.cpio.xz
@@ -319,7 +319,7 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
     sudo xcode-select --install
     xcode_clt_pid=$(ps auxww | grep -i 'Install Command Line Developer Tools' | grep -v grep | awk '{ print $2 }')
     # wait for non-child PID of CLT installer dialog UI
-    while ps -p $xcode_clt_pid >/dev/null ; do sleep 1; done
+    while ps -p "$xcode_clt_pid" >/dev/null ; do sleep 1; done
 
     sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg  -target /
   fi
@@ -341,9 +341,9 @@ else
   if [ -d sprout-wrap ]; then
     pushd sprout-wrap && git pull
   else
-    git clone $SPROUT_WRAP_URL
+    git clone "$SPROUT_WRAP_URL"
     pushd sprout-wrap
-    git checkout $SPROUT_WRAP_BRANCH
+    git checkout "$SPROUT_WRAP_BRANCH"
   fi
 fi
 
