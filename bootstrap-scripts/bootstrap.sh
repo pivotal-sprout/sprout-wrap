@@ -144,8 +144,8 @@ function rvm_debug_gems() {
   if [ "$trace_was_on" -eq 1 ]; then
     echo "======= DEBUG ============"
     type rvm | head -1
-    which ruby
-    which bundler
+    command -v ruby
+    command -v bundler
     rvm info
     echo "GEMS IN SHELL ENV:"
     gem list
@@ -226,7 +226,7 @@ if [ ! -d "/Applications/Xcode.app" ]; then
     pkgutil --check-signature $XCODE_DMG
     TMP_DIR=$(mktemp -d /tmp/xcode-installer.XXXXXXXXXX)
 
-    if [[ -x "$(which xip)" ]]; then
+    if [[ -x "$(command -v xip)" ]]; then
       xip -x "${REPO_BASE}/${XCODE_DMG}"
       sudo mv ./Xcode.app /Applications/
     else
@@ -295,13 +295,13 @@ fi
 
 # We need to accept the xcodebuild license agreement before building anything works
 # Evil Apple...
-if [ -x "$(which expect)" ]; then
+if [ -x "$(command -v expect)" ]; then
   echo "INFO: GNU expect found! By using this script, you automatically accept the XCode License agreement found here: http://www.apple.com/legal/sla/docs/xcode.pdf"
   # Git.io short URL to: ./bootstrap-scripts/accept-xcodebuild-license.exp
   #curl -Ls 'https://git.io/viaLD' | sudo expect -
   sudo expect "${REPO_BASE}/bootstrap-scripts/accept-xcodebuild-license.exp"
 else
-  echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(which expect)' executable?)"
+  echo -e "\x1b[31;1mERROR:\x1b[0m Could not find expect utility (is '$(command -v expect)' executable?)"
   echo -e "\x1b[31;1mWarning:\x1b[0m You have not agreed to the Xcode license.\nBuilds will fail! Agree to the license by opening Xcode.app or running:\n
     xcodebuild -license\n\nOR for system-wide acceptance\n
     sudo xcodebuild -license"
@@ -355,7 +355,7 @@ fi
 check_trace_state
 turn_trace_off
 
-if [ -x "$(which brew)" ] && brew --version; then
+if [ -x "$(command -v brew)" ] && brew --version; then
   :
 else
   echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
@@ -370,7 +370,7 @@ fi
 
 
 # Install Chef Workstation SDK via Brewfile
-[ -x "$(which brew)" ] && brew bundle install
+[ -x "$(command -v brew)" ] && brew bundle install
 
 if [[ $use_system_ruby == "1" ]]; then
   # We should never get here unless script has been edited by hand
