@@ -7,6 +7,7 @@ Recipes to Merge in
  - DaisyDisk Recipe: https://github.com/trinitronx/sprout/blob/develop/sprout-osx-apps/recipes/daisydisk.rb
  - Maybe??
  - sprout-osx-base::apple-gcc42 => sprout-homebrew: formulae: apple-gcc42
+ - hub config with node-specific encrypted data_bag support for tokens
 
 macOS Deprecated Cookbook Upgrades
 ==================================
