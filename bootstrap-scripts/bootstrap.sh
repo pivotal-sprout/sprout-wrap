@@ -320,6 +320,7 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
     # Reference: https://donatstudios.com/MojaveMissingHeaderFiles
     sudo rm -rf /Library/Developer/CommandLineTools
     sudo xcode-select --install
+    # shellcheck disable=SC2009
     xcode_clt_pid=$(ps auxww | grep -i 'Install Command Line Developer Tools' | grep -v grep | awk '{ print $2 }')
     # wait for non-child PID of CLT installer dialog UI
     while ps -p "$xcode_clt_pid" >/dev/null ; do sleep 1; done
