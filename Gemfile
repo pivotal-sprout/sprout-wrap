@@ -14,6 +14,9 @@ gem 'librarian-chef', require: false
 gem 'nokogiri', require: false
 
 group :development do
+  gem 'pry', require: false
+  gem 'pry-coolline', require: false
+  gem 'pry-byebug', require: false
   gem 'bundler', require: false
   gem 'guard', require: false
   gem 'guard-rspec', require: false

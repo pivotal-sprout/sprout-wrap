@@ -95,8 +95,24 @@ function rvm_set_compile_opts() {
     export DLDFLAGS="-L/opt/homebrew/opt/libffi/lib"
     export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+    bundle config build.ffi --enable-system-libffi
+  fi
+
+  if [[ "$RVM_COMPILE_OPTS_M1_NOKOGIRI" == "1" ]]; then
+    bundle config build.nokogiri --platform=ruby -- --use-system-libraries
   fi
   turn_trace_off
+}
+
+function brew_install_rvm_libs() {
+  if [[ "$BREW_INSTALL_LIBFFI" == "1" ]]; then
+    grep -q 'libffi' Brewfile || echo "brew 'libffi'" >> Brewfile
+  fi
+  if [[ "$BREW_INSTALL_NOKOGIRI_LIBS" == "1" ]]; then
+    grep -q 'libxml2' Brewfile || echo "brew 'libxml2'" >> Brewfile
+    grep -q 'libxslt' Brewfile || echo "brew 'libxslt'" >> Brewfile
+    grep -q 'libiconv' Brewfile || echo "brew 'libiconv'" >> Brewfile
+  fi
 }
 
 function rvm_install_ruby_and_gemset() {
@@ -171,7 +187,8 @@ detect_platform_version
 # https://developer.apple.com/downloads/index.action
 case $platform_version in
   12.0*|12.1*)
-          XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; BREW_INSTALL_LIBFFI=1; RVM_COMPILE_OPTS_M1_LIBFFI=1 ;;
+          XCODE_DMG='Xcode_13.2.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; BREW_INSTALL_LIBFFI=1; RVM_COMPILE_OPTS_M1_LIBFFI=1 ;
+          BREW_INSTALL_NOKOGIRI_LIBS="1" ; RVM_COMPILE_OPTS_M1_NOKOGIRI=1 ;;
   11.6*)  XCODE_DMG='Xcode_13.1.xip'; export TRY_XCI_OSASCRIPT_FIRST=1; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.15*) XCODE_DMG='Xcode_12.4.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
   10.14*) XCODE_DMG='Xcode_11_GM_Seed.xip'; export INSTALL_SDK_HEADERS=1 ; export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES ;;
@@ -308,9 +325,7 @@ if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   fi
 fi
 
-if [[ "$BREW_INSTALL_LIBFFI" == "1" ]]; then
-  echo "brew 'libffi'" >> Brewfile
-fi
+brew_install_rvm_libs
 
 if [[ "$CI" == 'true' ]]; then
   echo "INFO: CI run detected via \$CI=$CI env var"
@@ -430,6 +445,8 @@ if [[ -n "$SOLOISTRC" && "$SOLOISTRC" != 'soloistrc' ]]; then
   fi
 fi
 
+# Auto-accept Chef license for non-interactive automation
+export CHEF_LICENSE=accept
 # Now we provision with chef, et voilá!
 # Node, it's time you grew up to who you want to be
 caffeinate -dimsu bundle exec soloist || errorout "Soloist provisioning failed!"
