@@ -126,18 +126,20 @@ function rvm_install_ruby_and_gemset() {
   rvm use "ruby-${sprout_ruby_version}"@"${sprout_ruby_gemset}"
 }
 
+# shellcheck disable=SC1010
 function rvm_install_bundler() {
   check_sprout_locked_ruby_versions
 
   # Install bundler + rubygems in RVM path
-  echo rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
+  echo "rvm ${sprout_ruby_version} do gem update --system ${sprout_rubygems_ver}"
   rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
 
   # Install same version of bundler as Gemfile.lock
-  echo rvm "${sprout_ruby_version}" do gem install --default bundler:"${sprout_bundler_ver}"
+  echo "rvm ${sprout_ruby_version} do gem install --default bundler:${sprout_bundler_ver}"
   rvm "${sprout_ruby_version}" do gem install --default "bundler:${sprout_bundler_ver}"
 }
 
+# shellcheck disable=SC1010
 function rvm_debug_gems() {
   if [ "$trace_was_on" -eq 1 ]; then
     echo "======= DEBUG ============"
