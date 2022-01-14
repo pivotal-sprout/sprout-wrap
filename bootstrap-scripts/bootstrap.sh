@@ -206,7 +206,7 @@ errorout() {
   echo -e "\x1b[31;1mERROR:\x1b[0m ${1}"; exit 1
 }
 
-pushd `pwd`
+pushd "$(pwd)"
 
 # TODO: Figure out if Xcodes CLI tool will work?
 #       https://github.com/RobotsAndPencils/Xcodes
