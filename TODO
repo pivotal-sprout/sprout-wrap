@@ -19,6 +19,40 @@ macOS Deprecated Cookbook Upgrades
    - Must support some form of `plist_file` LWRP
    - [microsoft/macos-cookbook][6] provides this too... :thinking:
 
+Deprecation warnings that must be addressed before upgrading to Chef Infra 18:
+
+  The  resource in the homebrew cookbook should declare `unified_mode true` at 1 location:
+    - /var/chef/cache/cookbooks/homebrew/resources/tap.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+  The  resource in the sprout-base cookbook should declare `unified_mode true` at 2 locations:
+    - /var/chef/cache/cookbooks/sprout-base/resources/bash_it_custom_plugin.rb
+    - /var/chef/cache/cookbooks/sprout-base/resources/bash_it_enable_feature.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+  The  resource in the osx cookbook should declare `unified_mode true` at 2 locations:
+    - /var/chef/cache/cookbooks/osx/resources/defaults.rb
+    - /var/chef/cache/cookbooks/osx/resources/sysctl.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+  The  resource in the plist cookbook should declare `unified_mode true` at 1 location:
+    - /var/chef/cache/cookbooks/plist/resources/file.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+  The  resource in the dmg cookbook should declare `unified_mode true` at 1 location:
+    - /var/chef/cache/cookbooks/dmg/resources/package.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+  The  resource in the sprout-osx-apps cookbook should declare `unified_mode true` at 1 location:
+    - /var/chef/cache/cookbooks/sprout-osx-apps/resources/sublime_package.rb
+   See https://docs.chef.io/deprecations_unified_mode/ for further details.
+
+Misc
+====
+
+ - Update GitHub `known_hosts` keys to use [their newer public key algorithms][7]:
+  - ECDSA:
+  - Ed25519:
+
+        ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+
+
 [1]: https://github.com/pivotal-sprout/osx
 [2]: https://github.com/pivotal-sprout/sprout-osx-settings
 [3]: https://github.com/Sous-Chefs-Boneyard/mac_os_x/issues/20
