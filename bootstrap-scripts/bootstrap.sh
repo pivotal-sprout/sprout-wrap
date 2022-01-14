@@ -311,6 +311,7 @@ fi
 
 if [[ "$INSTALL_SDK_HEADERS" == '1' ]]; then
   # Reference: https://github.com/Homebrew/homebrew-core/issues/18533#issuecomment-332501316
+  # shellcheck disable=SC2016
   if ruby_mkmf_output="$(ruby -r mkmf -e 'print $hdrdir + "\n"')" && [ -d "$ruby_mkmf_output" ];
   then
      echo "INFO: Ruby header files successfully found!"
