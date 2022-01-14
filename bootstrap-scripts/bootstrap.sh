@@ -239,7 +239,7 @@ if [ ! -d "/Applications/Xcode.app" ]; then
       sudo mv ./Xcode.app /Applications/
       popd
     fi
-    [ -d "$TMP_DIR" ] && rm -rf "$TMP_DIR/"
+    [ -d "$TMP_DIR" ] && rm -rf "${TMP_DIR:?}/"
   else
     hdiutil attach "$XCODE_DMG"
     export __CFPREFERENCES_AVOID_DAEMON=1
