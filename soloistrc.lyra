@@ -310,6 +310,7 @@ node_attributes:
       - java
 #      - cyberduck
       - dropbox
+      - zoom
 #      - hex-fiend
 #      - beyond-compare
 #      - mumble
