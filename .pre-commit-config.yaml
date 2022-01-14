@@ -5,7 +5,7 @@ exclude: |
         Cheffile\.lock|
         vendor/bundle/.*|
         tmp/.*|
-        cookbooks/.*
+        cookbooks/.*|
         nodes/.*
     )$
 repos:
@@ -16,7 +16,6 @@ repos:
     -   id: check-merge-conflict
     -   id: check-symlinks
     -   id: check-yaml
-        exclude: config/.*$
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
         exclude: .*\.patch
@@ -37,4 +36,9 @@ repos:
         name: Check for bad patterns in Hook files
         entry: ./bin/pre-commit/bad-patterns.sh
         language: system
-        files: hooks/*
+        exclude: ^\.git/hooks/.*\.sample
+        files: |
+            (?x)^(
+                \.git/hooks/.*|
+                hooks/.*
+            )$
