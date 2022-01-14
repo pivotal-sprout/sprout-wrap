@@ -46,7 +46,7 @@ Alternatively, run:
 #### 1. Install Command Line Tools
 
 [Download](https://developer.apple.com/support/xcode/) and install XCode or the XCode command line tools.
-  
+
     xcode-select --install
 
 #### Installation
@@ -99,11 +99,11 @@ If you receive a message about the update server being unavailable and are on Ma
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
 to run a subset of the recipes in sprout's cookbooks.
 
-[Fork it](https://github.com/LyraPhase/sprout-wrap/fork) to customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes 
-you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one 
+[Fork it](https://github.com/LyraPhase/sprout-wrap/fork) to customize its [attributes](http://docs.chef.io/attributes.html) in [soloistrc](/soloistrc) and the list of recipes
+you'd like to use for your team. You may also want to add other cookbooks to its [Cheffile](/Cheffile), perhaps one
 of the many [community cookbooks](https://supermarket.chef.io/cookbooks). By default it configures an macOS workstation for development and as a Digital Audio Workstation environment.
 
-Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates. 
+Finally, if you've never used Chef before - we highly recommend you buy &amp; watch [this excellent 17 minute screencast](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates.
 
 ## Caveats
 

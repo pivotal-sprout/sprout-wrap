@@ -1,0 +1,40 @@
+exclude: |
+    (?x)^(
+        Gemfile\.lock|
+        Brewfile\.lock\.json|
+        Cheffile\.lock|
+        vendor/bundle/.*|
+        tmp/.*|
+        cookbooks/.*
+        nodes/.*
+    )$
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v1.1.1
+    hooks:
+    -   id: check-added-large-files
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: check-yaml
+        exclude: config/.*$
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+        exclude: .*\.patch
+-   repo: https://github.com/detailyang/pre-commit-shell.git
+    rev: 1.0.2
+    hooks:
+    -   id: shell-lint
+        args: ["--exclude=SC1090,SC1091,SC2034,SC2039,SC2140,SC2148,SC2153,SC2154,SC2164"]
+        exclude: |
+            (?x)^(
+                vendor/bundle/.*|
+                tmp/.*|
+                cookbooks/.*
+            )$
+-   repo: local
+    hooks:
+    -   id: bad-patterns
+        name: Check for bad patterns in Hook files
+        entry: ./bin/pre-commit/bad-patterns.sh
+        language: system
+        files: hooks/*

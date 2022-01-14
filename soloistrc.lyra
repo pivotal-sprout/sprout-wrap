@@ -257,6 +257,7 @@ node_attributes:
       - coreutils
       - lsusb
     casks:
+      - asana
 # Balena.io (formerly Resin.io) mmc card img writer tool
       - balenaetcher
 # Let the lyraphase_workstation::airfoil recipe do this instead
@@ -267,7 +268,9 @@ node_attributes:
       - elektron-overbridge
       - soundflowerbed
       - ocenaudio
+      - streamlabs-obs
       - obs
+      - jamkazam
 #      - ccmenu
 #      - cord
       - firefox
@@ -310,6 +313,7 @@ node_attributes:
       - java
 #      - cyberduck
       - dropbox
+      - zoom
 #      - hex-fiend
 #      - beyond-compare
 #      - mumble
@@ -337,8 +341,8 @@ node_attributes:
 #        registration_key:
 #    airfoil:
 #      license:
-#        code: 
-#        name: 
+#        code:
+#        name:
   lyraphase_workstation:
     ableton_live:
       managed_versions: all
