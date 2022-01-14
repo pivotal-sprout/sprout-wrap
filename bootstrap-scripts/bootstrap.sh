@@ -81,9 +81,9 @@ function turn_trace_off() {
 
 function check_sprout_locked_ruby_versions() {
   # Check locked versions
-  sprout_ruby_version=$(cat "${REPO_BASE}/.ruby-version" | tr -d '\n')
-  sprout_ruby_gemset=$(cat "${REPO_BASE}/.ruby-gemset" | tr -d '\n')
-  sprout_rubygems_ver=$(cat "${REPO_BASE}/.rubygems-version" | tr -d '\n') ## Passed to gem update --system
+  sprout_ruby_version=$(tr -d '\n' < "${REPO_BASE}/.ruby-version")
+  sprout_ruby_gemset=$(tr -d '\n' < "${REPO_BASE}/.ruby-gemset")
+  sprout_rubygems_ver=$(tr -d '\n' < "${REPO_BASE}/.rubygems-version") ## Passed to gem update --system
   sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
 }
 
