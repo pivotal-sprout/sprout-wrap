@@ -355,7 +355,7 @@ fi
 check_trace_state
 turn_trace_off
 brew --version
-[ -x "$(which brew)" -a "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
+[ -x "$(which brew)" ] && [ "$?" -eq 0 ] || echo | /bin/bash -c "$(curl -fsSL "$HOMEBREW_INSTALLER_URL" )"
 turn_trace_on_if_was_on
 
 if [ "$machine" == "arm64" ]; then
