@@ -5,6 +5,7 @@
 
 
 set -euo pipefail
+# shellcheck disable=SC2206
 requested=($@)
 # If we source files in our hook scripts, we need to check them too.
 additional=()
@@ -20,11 +21,13 @@ add_sourced() {
     echo "Unable to check included file: ${sourced}"
     return
   fi
+  # shellcheck disable=SC2206
   additional+=($sourced)
 }
 
 file_check() {
   if [ ! -f "$1" ]; then
+    # shellcheck disable=SC2206
     missing_source+=($1)
     return 1
   fi
