@@ -3,11 +3,12 @@ GIT
   revision: 535584a4e375905bb97afbc482b15ca86d3b23f7
   branch: develop
   specs:
-    soloist (2.0.0alpha)
+    soloist (1.0.3)
+      awesome_print
       chef
-      chef-bin
-      chef-zero
+      hashie (~> 2.0)
       librarian-chef
+      net-ssh
       thor
 
 GEM
@@ -217,13 +218,6 @@ GEM
       specinfra (~> 2.72)
     sfl (2.3)
     shellany (0.0.1)
-    soloist (1.0.3)
-      awesome_print
-      chef
-      hashie (~> 2.0)
-      librarian-chef
-      net-ssh
-      thor
     specinfra (2.83.1)
       net-scp
       net-ssh (>= 2.7)
@@ -242,6 +236,7 @@ GEM
 PLATFORMS
   ruby
   universal-darwin-20
+  x86_64-darwin-19
 
 DEPENDENCIES
   bundler
@@ -259,7 +254,7 @@ DEPENDENCIES
   plist
   rspec
   rubocop
-  soloist
+  soloist!
 
 BUNDLED WITH
    2.2.33
