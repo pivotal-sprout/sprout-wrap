@@ -27,7 +27,7 @@ $(SELF_DIR)/cookbooks Cheffile.lock: ## no-help
 
 librarian-clean: ## Cleans up all cookbooks & librarian cache files
 	bundle exec librarian-chef clean
-	rm -rf tmp/librarian/ 
+	rm -rf tmp/librarian/
 	rm -rf cookbooks/
 
 librarian-install: $(SELF_DIR)/cookbooks Cheffile.lock ## Runs librarian-chef install, if needed

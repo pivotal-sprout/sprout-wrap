@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   # doesn't already exist on the user's system.
   local_box = "#{ENV['HOME']}/src/pub/veewee/OSX-10.8.4-Mountain_Lion-x64.box"
   if File.exists? local_box
-    url = local_box 
+    url = local_box
   else
     url = 'http://bro-fs-01.bro.gloostate.com/boxes/OSX-10.8.4-Mountain_Lion-x64.box'
     # Check if bro-fs-01 is accessible, else use aws mirror
@@ -77,19 +77,19 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = [ 'cookbooks', 'site-cookbooks' ]
     chef.data_bags_path    = './data_bags'
     chef.encrypted_data_bag_secret_key_path = "#{ENV['HOME']}/.chef/encrypted_data_bag_secret"
-    
+
     # Set chef provisioner log level [ :debug, :info, :warn, :error, :fatal ]
     chef.log_level = :debug
 
     soloistrc = YAML.load(File.open('soloistrc', 'r'))
-    
+
     soloistrc['recipes'].each do |recipe|
       chef.add_recipe recipe
     end
-    
+
     # chef.add_recipe "mysql"
     # chef.add_role "web"
-  
+
     # You may also specify custom JSON attributes:
     # chef.json = { :mysql_password => "foo" }
   end

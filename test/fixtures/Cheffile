@@ -29,4 +29,3 @@ cookbook 'sprout-osx-settings',
 
 cookbook 'sprout-terminal',
   :github => 'pivotal-sprout/sprout-terminal'
-

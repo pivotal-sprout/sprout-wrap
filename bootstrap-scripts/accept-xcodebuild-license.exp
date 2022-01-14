@@ -55,8 +55,8 @@ expect {
     send -- "\r"
     exp_continue
   }
-  -regex {.*Press 'space' for more, or 'q' to quit.*} { 
-        set exp_internal 1 
+  -regex {.*Press 'space' for more, or 'q' to quit.*} {
+        set exp_internal 1
         send -- " "
         exp_continue
       }
