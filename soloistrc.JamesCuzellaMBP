@@ -314,6 +314,7 @@ node_attributes:
       - visual-studio-code
       - meld
       - balenaetcher
+      - vlc
 
   workspace_directory: src
   vim_alias_vi_to_minimal_vim: false
