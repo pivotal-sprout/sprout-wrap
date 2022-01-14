@@ -173,7 +173,7 @@ SOLOIST_DIR=${SOLOIST_DIR:-"${HOME}/src/pub/soloist"}
 SPROUT_WRAP_URL='https://github.com/LyraPhase/sprout-wrap.git'
 SPROUT_WRAP_BRANCH=${SPROUT_WRAP_BRANCH:-'master'}
 HOMEBREW_INSTALLER_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
-USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr 'A-Z' 'a-z')$(uname -r); +https://lyraphase.com)"
+USER_AGENT="Chef Bootstrap/$(git rev-parse HEAD) ($(curl --version | head -n1); $(uname -m)-$(uname -s | tr '[:upper:]' '[:lower:]')$(uname -r); +https://lyraphase.com)"
 
 if [[ "${BASH_SOURCE[0]}" != '' ]]; then
   # Running from checked out script
@@ -373,7 +373,7 @@ if [[ $use_system_ruby == "1" ]]; then
   echo "WARN: Updating system bundler gem will modify stock macOS system files!" >&2
   if [[ "$override_use_system_ruby_prompt" != '1' ]]; then
     read -p 'Are you sure you want to continue and use macOS System Ruby? [y/N]: ' -d $'\n' use_system_ruby_answer
-    use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr 'A-Z' 'a-z')"
+    use_system_ruby_answer="$(echo -n "$use_system_ruby_answer" | tr '[:upper:]' '[:lower:]')"
     if [[ "$use_system_ruby_answer" != 'y' ]]; then
       errorout "Abort modifying System Ruby! Exiting..."
     else
