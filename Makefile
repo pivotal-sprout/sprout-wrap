@@ -14,7 +14,7 @@ TEMP_PATH := $(SOLOIST_PREFIX)/tmp/
 BREWFILE_PATH ?= $(TEMP_PATH)Brewfile
 SOLOISTRC_PATH ?= $(SOLOIST_PREFIX)soloistrc
 
-.PHONY: clean librarian-clean librarian-clean-install bootstrap test
+.PHONY: clean librarian-clean librarian-clean-install bootstrap test sprout
 
 include $(SELF_DIR)/main.mk
 
@@ -36,6 +36,9 @@ librarian-clean-install: librarian-clean librarian-install ## Runs librarian-cle
 
 bootstrap: ## Run bootstrap & soloist on this node
 	./bootstrap-scripts/bootstrap.sh
+
+sprout: ## Run soloist on this node via sprout helper script
+	./sprout
 
 # Testing in /tmp first...
 .PHONY: brewfile
