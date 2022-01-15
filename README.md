@@ -22,6 +22,10 @@
       "*",
       "##### Install Ruby",
       "*",
+      "##### Install Gems",
+      "*",
+      "##### Run Sprout",
+      "*",
       "## Problems?",
       "+",
       "## Customization",
@@ -72,6 +76,11 @@ would you be willing to click one of the buttons below to Sponsor this project a
 Every little bit is appreciated! Thank you! 🙏
 
 ## Prerequisites
+
+This guide assumes that you have an Apple machine running a recent version of macOS.
+
+The Semi-Manual way section assumes that you know how to use RVM to install Ruby and Bundler to install Ruby Gems,
+but gives some commands to assist you in installing the supported versions.
 
 ## Installation on macOS
 
@@ -131,9 +140,14 @@ To provision your machine, open up Terminal and enter the following:
     if ! bundle list | grep -q "bundler.*${sprout_bundler_ver}"; then
       bundle exec gem install --default "bundler:${sprout_bundler_ver}"
     fi
+
+##### Install Gems
+
     bundle config set --local path 'vendor/bundle' ;
     bundle config set --local without 'development' ;
     bundle install
+
+##### Run Sprout
 
     caffeinate ./sprout
 
