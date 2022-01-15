@@ -1,3 +1,40 @@
+<!-- markdownlint-configure-file
+{
+  "required-headings": {
+    "headings": [
+      "# sprout-wrap",
+      "*",
+      "# NOTE: This is a Fork!",
+      "*",
+      "## Sponsor",
+      "*",
+      "## Prerequisites",
+      "*",
+      "## Installation on macOS",
+      "### The Easy Way:",
+      "#### 1. Run bootstrap script",
+      "### The Semi-Manual Way:",
+      "#### 1. Install Command Line Tools",
+      "#### Installation",
+      "*",
+      "## Problems?",
+      "+",
+      "## Customization",
+      "*",
+      "## Caveats",
+      "### Homebrew",
+      "*",
+      "## Development Tips & Tricks",
+      "*",
+      "## Roadmap",
+      "*",
+      "## Discussion List",
+      "## References"
+    ]
+  }
+}
+-->
+
 # sprout-wrap
 
 [![ci](https://github.com/LyraPhase/sprout-wrap/actions/workflows/ci.yml/badge.svg)](https://github.com/LyraPhase/sprout-wrap/actions/workflows/ci.yml)
