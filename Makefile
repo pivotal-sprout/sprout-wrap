@@ -48,7 +48,7 @@ bootstrap: ## Run bootstrap & soloist on this node
 	./bootstrap-scripts/bootstrap.sh
 
 sprout: ## Run soloist on this node via sprout helper script
-	./sprout
+	caffeinate ./sprout
 
 # Testing in /tmp first...
 .PHONY: brewfile
