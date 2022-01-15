@@ -4,18 +4,23 @@
     "headings": [
       "# sprout-wrap",
       "*",
-      "# NOTE: This is a Fork!",
+      "# NOTE: This is a Fork 🍴⚠️ 🔱",
       "*",
       "## Sponsor",
       "*",
       "## Prerequisites",
       "*",
       "## Installation on macOS",
-      "### The Easy Way:",
+      "### The Easy Way 🚀",
       "#### 1. Run bootstrap script",
-      "### The Semi-Manual Way:",
+      "### The Semi-Manual Way 💪",
       "#### 1. Install Command Line Tools",
       "#### Installation",
+      "*",
+      "#### 2. Ruby Installation",
+      "##### Install RVM",
+      "*",
+      "##### Install Ruby",
       "*",
       "## Problems?",
       "+",
@@ -29,7 +34,8 @@
       "## Roadmap",
       "*",
       "## Discussion List",
-      "## References"
+      "## References",
+      "*"
     ]
   }
 }
@@ -99,7 +105,9 @@ To provision your machine, open up Terminal and enter the following:
     git clone https://github.com/LyraPhase/sprout-wrap.git
     cd sprout-wrap
 
-# Install RVM
+#### 2. Ruby Installation
+
+##### Install RVM
 
     bash -c "./bootstrap-scripts/bootstrap-rvm.sh $USER"
     export PATH="$PATH:$HOME/.rvm/bin"
@@ -108,6 +116,8 @@ To provision your machine, open up Terminal and enter the following:
     sprout_ruby_gemset=$(tr -d '\n' < "${REPO_BASE}/.ruby-gemset")
     sprout_rubygems_ver=$(tr -d '\n' < "${REPO_BASE}/.rubygems-version") ## Passed to gem update --system
     sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
+
+##### Install Ruby
 
     # Install Ruby, Create Gemset and install Bundler + RubyGems
     ## NOTE: You might need to set compilation options for native gem extensions (e.g.: libffi, nokogiri)
