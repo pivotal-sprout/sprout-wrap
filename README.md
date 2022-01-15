@@ -94,38 +94,37 @@ Alternatively, run:
 
 To provision your machine, open up Terminal and enter the following:
 
-```sh
-sudo xcodebuild -license
-xcode-select --install
-git clone https://github.com/LyraPhase/sprout-wrap.git
-cd sprout-wrap
+    sudo xcodebuild -license
+    xcode-select --install
+    git clone https://github.com/LyraPhase/sprout-wrap.git
+    cd sprout-wrap
 
 # Install RVM
-bash -c "./bootstrap-scripts/bootstrap-rvm.sh $USER"
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-sprout_ruby_version=$(tr -d '\n' < "${REPO_BASE}/.ruby-version")
-sprout_ruby_gemset=$(tr -d '\n' < "${REPO_BASE}/.ruby-gemset")
-sprout_rubygems_ver=$(tr -d '\n' < "${REPO_BASE}/.rubygems-version") ## Passed to gem update --system
-sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
 
-# Install Ruby, Create Gemset and install Bundler + RubyGems
-## NOTE: You might need to set compilation options for native gem extensions (e.g.: libffi, nokogiri)
-rvm install "ruby-${sprout_ruby_version}"
-rvm use "ruby-${sprout_ruby_version}"
-rvm gemset create "$sprout_ruby_gemset"
-rvm use "ruby-${sprout_ruby_version}"@"${sprout_ruby_gemset}"
-rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
-rvm "${sprout_ruby_version}" do gem install --default "bundler:${sprout_bundler_ver}"
-if ! bundle list | grep -q "bundler.*${sprout_bundler_ver}"; then
-  bundle exec gem install --default "bundler:${sprout_bundler_ver}"
-fi
-bundle config set --local path 'vendor/bundle' ;
-bundle config set --local without 'development' ;
-bundle install
+    bash -c "./bootstrap-scripts/bootstrap-rvm.sh $USER"
+    export PATH="$PATH:$HOME/.rvm/bin"
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    sprout_ruby_version=$(tr -d '\n' < "${REPO_BASE}/.ruby-version")
+    sprout_ruby_gemset=$(tr -d '\n' < "${REPO_BASE}/.ruby-gemset")
+    sprout_rubygems_ver=$(tr -d '\n' < "${REPO_BASE}/.rubygems-version") ## Passed to gem update --system
+    sprout_bundler_ver=$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1 | tr -d '[:blank:]')
 
-caffeinate ./sprout
-```
+    # Install Ruby, Create Gemset and install Bundler + RubyGems
+    ## NOTE: You might need to set compilation options for native gem extensions (e.g.: libffi, nokogiri)
+    rvm install "ruby-${sprout_ruby_version}"
+    rvm use "ruby-${sprout_ruby_version}"
+    rvm gemset create "$sprout_ruby_gemset"
+    rvm use "ruby-${sprout_ruby_version}"@"${sprout_ruby_gemset}"
+    rvm "${sprout_ruby_version}" do gem update --system "${sprout_rubygems_ver}"
+    rvm "${sprout_ruby_version}" do gem install --default "bundler:${sprout_bundler_ver}"
+    if ! bundle list | grep -q "bundler.*${sprout_bundler_ver}"; then
+      bundle exec gem install --default "bundler:${sprout_bundler_ver}"
+    fi
+    bundle config set --local path 'vendor/bundle' ;
+    bundle config set --local without 'development' ;
+    bundle install
+
+    caffeinate ./sprout
 
 The `caffeinate` command will keep your computer awake while installing; depending on your network connection, `soloistrc`, and `run_list`, soloist can take from 10 minutes to 2 hours to complete.
 
