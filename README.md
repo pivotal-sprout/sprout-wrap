@@ -41,7 +41,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://github.com/LyraPhase/sprout-wrap/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/LyraPhase/sprout-wrap/actions/workflows/pre-commit.yml)
 
-# NOTE: This is a Fork!
+# NOTE: This is a Fork 🍴⚠️ 🔱
 
 This project uses [soloist](https://github.com/mkocher/soloist) and [librarian-chef](https://github.com/applicationsonline/librarian-chef)
 to run a custom set of the recipes in sprout-wrap's cookbooks.
