@@ -1,3 +1,15 @@
+<!-- markdownlint-configure-file
+{
+  "required-headers": {
+    "headings": [
+      "# FAQ",
+      "+",
+      "*"
+    ]
+  }
+}
+-->
+
 # FAQ
 
 #### Why does my chef run bomb out? Why can't I get my recipe to converge?
