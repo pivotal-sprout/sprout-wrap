@@ -251,6 +251,14 @@ Some helpful commands and tricks to know when working on this repo:
         bundle install
         bundle exec make test
 
+5. To run `sprout`:
+
+        make sprout
+
+6. For extra Makefile targets:
+
+        make help
+
 ## Roadmap
 
 See LyraPhase Sprout Project Tracker: <https://github.com/orgs/LyraPhase/projects/1>
