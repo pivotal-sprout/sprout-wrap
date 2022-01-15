@@ -68,9 +68,7 @@ would you be willing to click one of the buttons below to Sponsor this project a
 
 Every little bit is appreciated! Thank you! 🙏
 
-
 ## Prerequisites
-
 
 ## Installation on macOS
 
@@ -230,7 +228,7 @@ See LyraPhase Sprout Project Tracker: <https://github.com/orgs/LyraPhase/project
 
 ## References
 
-* Slides from @hiremaga's [lightning talk on Sprout](https://web.archive.org/web/20130925173508/http://sprout-talk.cfapps.io/#1) at Pivotal Labs in June 2013
-* [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
+- Slides from @hiremaga's [lightning talk on Sprout](https://web.archive.org/web/20130925173508/http://sprout-talk.cfapps.io/#1) at Pivotal Labs in June 2013
+- [Railscast on chef-solo](http://railscasts.com/episodes/339-chef-solo-basics) by Ryan Bates (PAID)
 
 [objc-fork-mojave]: https://blog.phusion.nl/2017/10/13/why-ruby-app-servers-break-on-macos-high-sierra-and-what-can-be-done-about-it/
