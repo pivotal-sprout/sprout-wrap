@@ -19,6 +19,10 @@ repos:
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
         exclude: .*\.patch
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.30.0
+  hooks:
+  - id: markdownlint
 -   repo: https://github.com/detailyang/pre-commit-shell.git
     rev: 1.0.2
     hooks:
