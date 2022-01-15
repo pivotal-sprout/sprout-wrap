@@ -11,7 +11,7 @@ $ which ruby
 
 Longer answer:  We test against system ruby, which is a good common denominator.  Also, using system ruby will bypass ownership issues (i.e. gems owned by root but installed under one's home directory).
 
-#### Why do my edits keep getting reverted?  I change the recipe, but every time I run soloist it's changed back.
+#### Why do my edits keep getting reverted?  I change the recipe, but every time I run soloist it's changed back
 
 You're editing the recipe under `sprout-wrap/cookbooks`.  That is a directory that is checked-out from the sources (as defined in `Cheffile`) every chef run&mdash;overwriting your changes.
 
