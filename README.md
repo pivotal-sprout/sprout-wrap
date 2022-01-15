@@ -68,7 +68,7 @@ Every little bit is appreciated! Thank you! 🙏
 
 ## Installation on macOS
 
-### The Easy Way:
+### The Easy Way 🚀
 
 #### 1. Run bootstrap script
 
@@ -82,7 +82,7 @@ Alternatively, run:
     cd sprout-wrap
     make bootstrap
 
-### The Semi-Manual Way:
+### The Semi-Manual Way 💪
 
 #### 1. Install Command Line Tools
 
