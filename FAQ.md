@@ -16,7 +16,7 @@
 
 Make sure you're using system ruby, not rvm or rbenv ruby.  If you're not sure, run the following command and check that the output is `/usr/bin/ruby`:
 
-```
+```bash
 $ which ruby
 /usr/bin/ruby
 ```
@@ -33,7 +33,7 @@ Make your changes under `sprout-wrap/site-cookbooks` instead; those changes won'
 
 You need to update the git SHAs specified in sprout-wrap's `Cheffile.lock`.  Run the following command in the root of your copy of the sprout-wrap repo:
 
-```
+```bash
 librarian-chef update
 ```
 
