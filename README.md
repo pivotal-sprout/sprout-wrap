@@ -227,7 +227,7 @@ Some helpful commands and tricks to know when working on this repo:
 
 1. To run `bootstrap.sh` with a custom `soloistrc`:
 
-        export SOLOISTRC='soloistrc.lyra'
+        export SOLOISTRC='soloistrc.lyra.yml'
 
 2. To test `bootstrap.sh` `curl` piped to `bash` mode on a development branch (with `set -x` trace mode):
 
