@@ -46,7 +46,15 @@ Deprecation warnings that must be addressed before upgrading to Chef Infra 18:
 Misc
 ====
 
- - Update GitHub `known_hosts` keys to use [their newer public key algorithms][7]:
+  - Should this fork change name & graduate to full-fledged non-fork repo?
+    - Pros:
+      - No more accidental pull requests to upstream
+      - Fully-fledged "greenfield" namespace
+      - Freedom to take project in new directions
+    - Cons:
+      - Not as easy to push changes back upstream (if it becomes active again)
+      - Not as much community support (if it becomes active again)
+  - Update GitHub `known_hosts` keys to use [their newer public key algorithms][7]:
   - ECDSA:
   - Ed25519:
 
