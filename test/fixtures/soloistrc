@@ -130,12 +130,14 @@ node_attributes:
       - jlhonora/lsusb
       - trinitronx/pcloud
       - trinitronx/bpm
+      - jesseduffield/lazydocker
     formulas:
       - bash-completion
       - lua
       - ssh-copy-id
       - mediainfo
       - sleepwatcher
+      - lazydocker
       # Intel Edison / IoT tools
       - lsusb
     casks:
