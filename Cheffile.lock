@@ -129,9 +129,9 @@ GIT
 GIT
   remote: https://github.com/trinitronx/lyraphase_workstation
   ref: master
-  sha: 86ba207ad04f8128a19cd97cb1065e1b724b206c
+  sha: c303c515aa817dfc708de10f2ec0d227a8fc2256
   specs:
-    lyraphase_workstation (3.2.5)
+    lyraphase_workstation (3.2.6)
       dmg (>= 0.0.0)
       homebrew (>= 0.0.0)
       osx (>= 0.0.0)
