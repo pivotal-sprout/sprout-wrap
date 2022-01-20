@@ -203,6 +203,7 @@ node_attributes:
       - vault
       - packer
       - blackbox
+      - eksctl
       - rancher-cli
       - kubernetes-cli
       - kubectx
