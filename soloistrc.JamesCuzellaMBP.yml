@@ -194,6 +194,8 @@ node_attributes:
       - pyenv
       - docker-machine
       - docker-machine-nfs
+      - libvirt
+      - qemu
       # - terraform ## Conflicts with tfenv version manager
       - tfenv
       - tgenv
