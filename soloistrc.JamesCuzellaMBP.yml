@@ -292,7 +292,7 @@ node_attributes:
       - vagrant
       # - virtualbox ## arm64 not supported
       # - virtualbox-extension-pack
-      - vmware-fusion
+      - vmware-fusion-tech-preview
       - wireshark
       - xquartz
       - xscope
