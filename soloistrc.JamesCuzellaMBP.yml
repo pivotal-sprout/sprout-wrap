@@ -183,6 +183,7 @@ node_attributes:
       - "insomniacslk/dublin-traceroute https://github.com/insomniacslk/dublin-traceroute"
       - jlhonora/lsusb
       - trinitronx/pcloud
+      - homebrew/cask-versions
       - jesseduffield/lazydocker
     formulas:
       - bash-completion
