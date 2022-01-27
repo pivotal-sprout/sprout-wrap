@@ -91,6 +91,8 @@ jobs:
         run: |
           sudo sysctl -w net.link.generic.system.hwcksum_tx=1
           sudo sysctl -w net.link.generic.system.hwcksum_rx=1
+      - name: Disable sprout-osx-settings::updates
+        run: sudo touch /var/chef/cache/last_software_update
       - name: Run bootstrap.sh + soloist with test fixtures
         run: |
           make bootstrap
