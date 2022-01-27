@@ -206,6 +206,7 @@ node_attributes:
       - blackbox
       - eksctl
       - rancher-cli
+      - kustomize
       - kubernetes-cli
       - kubectx
       - kops
