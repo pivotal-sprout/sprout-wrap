@@ -187,6 +187,7 @@ node_attributes:
       - jesseduffield/lazydocker
     formulas:
       - bash-completion
+      - pinentry-mac
       - ctags-exuberant
       - ag
       - grc
